@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        {% if title %}
-            <title>Flask 4th Year App - {{ title }}</title>
-        {% else %}
-            <title>Flask 4th Year App</title>
-        {% endif %}
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>  
-            <!--For loop to iterate through our dictionary entries-->
-            {% for post in posts %}
-            <!--Take 'title' from our post dictionary and print it-->
-            <h1>{{ post.title }}</h1> 
-            <p>By {{ post.author }} on {{ post.date_posted }}</p>
-            <p>{{ post.content }}</p>
-            <!--Declare the end of the for loop-->
-            {% endfor %} 
-    </body>
-</html>
+<!--Declare the html file we want to send our content to-->
+{% extends "layout.html" %}
+
+<!--Declare the block we want to insert into our the content section of our layout.html file with the name of 'content'-->
+{% block content %}
+<!--For loop to iterate through our dictionary entries-->
+    {% for post in posts %}
+        <!--Take 'title' from our post dictionary and print it-->
+        <h1>{{ post.title }}</h1>
+        <p>By {{ post.author }} on {{ post.date_posted }}</p>
+        <p>{{ post.content }}</p>
+        <!--Declare the end of the for loop-->
+    {% endfor %}
+<!--End the block of content, specifically defining the 'content' block-->
+{% endblock content %}
