@@ -6,9 +6,16 @@
 <!--For loop to iterate through our dictionary entries-->
     {% for post in posts %}
         <!--Take 'title' from our post dictionary and print it-->
-        <h1>{{ post.title }}</h1>
-        <p>By {{ post.author }} on {{ post.date_posted }}</p>
-        <p>{{ post.content }}</p>
+        <article class="media content-section">
+                <div class="media-body">
+                  <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <small class="text-muted">{{ post.date_posted }}</small>
+                  </div>
+                  <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                  <p class="article-content">{{ post.content }}</p>
+                </div>
+              </article>
         <!--Declare the end of the for loop-->
     {% endfor %}
 <!--End the block of content, specifically defining the 'content' block-->
