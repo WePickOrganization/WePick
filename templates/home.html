@@ -8,6 +8,14 @@
         <link rel="stylesheet" href="">
     </head>
     <body>  
-            <h1>Home Page</h1>    
+            <h1>Home Page</h1>
+            <!--For loop to iterate through our dictionary entries-->
+            {% for post in posts %}
+            <!--Take 'title' from our post dictionary and print it-->
+            <h1>{{ post.title }}</h1> 
+            <p>By {{ post.author }} on {{ post.date_posted }}</p>
+            <p>{{ post.content }}</p>
+            <!--Declare the end of the for loop-->
+            {% endfor %} 
     </body>
 </html>

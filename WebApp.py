@@ -1,16 +1,40 @@
 from flask import Flask, render_template
 app = Flask(__name__)
 
+# Dictonary
+posts = [
+    {
+        'author': 'Edward Eldridge',
+        'title': 'Eddies Project',
+        'content': 'First post content',
+        'date_posted': 'October 4, 2018'
+    },
+    {
+        'author': 'Keith Higgins',
+        'title': 'Keiths Project',
+        'content': 'Second post content',
+        'date_posted': 'October 4, 2018'
+    },
+    {
+        'author': 'Danielis Joniškis',
+        'title': 'Danielis Project',
+        'content': 'Third post content',
+        'date_posted': 'October 4, 2018'
+    }
+
+]
+
 # Home page
 @app.route("/")
 @app.route("/home")
 def home():
     # Return our home.html file from our 'templates' folder
-    return render_template('home.html')
+    return render_template('home.html', posts=posts)
 
 # About page
 @app.route("/about")
 def about():
+    # Return our about.html file from our 'templates' folder
     return render_template('about.html')
 
 # Run Flask by running the Python file
