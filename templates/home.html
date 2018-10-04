@@ -2,13 +2,16 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Home Page</title>
+        {% if title %}
+            <title>Flask 4th Year App - {{ title }}</title>
+        {% else %}
+            <title>Flask 4th Year App</title>
+        {% endif %}
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
     <body>  
-            <h1>Home Page</h1>
             <!--For loop to iterate through our dictionary entries-->
             {% for post in posts %}
             <!--Take 'title' from our post dictionary and print it-->

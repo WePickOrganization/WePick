@@ -35,7 +35,8 @@ def home():
 @app.route("/about")
 def about():
     # Return our about.html file from our 'templates' folder
-    return render_template('about.html')
+    # Pass in title to our if statement declared in HTML
+    return render_template('about.html', title='About')
 
 # Run Flask by running the Python file
 if __name__ == '__main__':
