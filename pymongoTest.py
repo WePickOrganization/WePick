@@ -14,6 +14,7 @@ dbList = myClient.list_database_names()
 # Check to see if our database is in the list of databases
 if "flaskDatabase" in dbList:
   print("\nDatabase found....")
+  print(myClient.database_names)
 else:
   print("No database found.")
 
@@ -27,16 +28,42 @@ print(myDatabase.list_collection_names())
 collectionList = myDatabase.list_collection_names()
 
 # Create a record to insert into our "Customers" collection
-myDictionary = { "name": "John", "address": "Highway 117" }
+myList = [
+  { "_id": 1, "name": "John", "address": "Highway 37"},
+  { "_id": 2, "name": "Peter", "address": "Lowstreet 27"},
+  { "_id": 3, "name": "Amy", "address": "Apple st 652"},
+  { "_id": 4, "name": "Hannah", "address": "Mountain 21"},
+  { "_id": 5, "name": "Michael", "address": "Valley 345"},
+  { "_id": 6, "name": "Sandy", "address": "Ocean blvd 2"},
+  { "_id": 7, "name": "Betty", "address": "Green Grass 1"},
+  { "_id": 8, "name": "Richard", "address": "Sky st 331"},
+  { "_id": 9, "name": "Susan", "address": "One way 98"},
+  { "_id": 10, "name": "Vicky", "address": "Yellow Garden 2"},
+  { "_id": 11, "name": "Ben", "address": "Park Lane 38"},
+  { "_id": 12, "name": "William", "address": "Central st 954"},
+  { "_id": 13, "name": "Chuck", "address": "Main Road 989"},
+  { "_id": 14, "name": "Viola", "address": "Sideway 1633"}
+]
 
-# Insert the record into our collection and print what we just inserted
-x = myCollection.insert_one(myDictionary)
-print("\n---RECORDS---")
-print(x.inserted_id)
+# Insert the record into our collection
+x = myCollection.insert_many(myList)
+
+# Print the ID's of each record
+print("\n---RECORDS(ID)---")
+print(x.inserted_ids)
+
+# Print the name of each record
+print("\n---NAMES---\n")
+#findOneDocument = myCollection.find_one()
+#print(findOneDocument)
+
+# Print the address of each recrod
+#print("\n---ADDRESSES---\n")
+#print(x.inserted_ids)
 
 
 
-# Check to see if our collection is in our database
+
 
 
 
