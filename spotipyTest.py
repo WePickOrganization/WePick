@@ -1,15 +1,18 @@
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+import spotipy.oauth2 as oauth2
+import spotipy.util as util
 
-client_credentials_manager = SpotifyClientCredentials(client_id='e6b98ce6b2cf483c832c652aada81bea', client_secret='5325fce64c6b4c4aad72b34029085111')
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+# Client ID e6b98ce6b2cf483c832c652aada81bea
+# Client Secret 5325fce64c6b4c4aad72b34029085111
 
-playlists = sp.user_playlists('steadueddie')
+# Prompt for the username of the Spotify account we want to search for
+username = input("Enter username: ")
 
-while playlists:
-    for i, playlist in enumerate(playlists['items']):
-        print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))
-    if playlists['next']:
-        playlists = sp.next(playlists)
-    else:
-        playlists = None
+# Define the scope of the information we want to recieve so the user has some idea of what information the application is recieveing
+# https://developer.spotify.com/documentation/general/guides/scopes/
+scope = 'user-read-email'
+
+# 
+token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111',redirect_uri='http://google.com/')
+
+
