@@ -58,11 +58,19 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 # Login page
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     # Return our about.html file from our 'templates' folder
     # Pass in title to our if statement declared in HTML
     form = LoginForm()
+    # Validate our data before we 'POST' it
+    if form.validate_on_submit():
+        # Display a message to the user that hey have successfully registered and style the alert using Bootstraps 'success' class
+        if form.email.data == 'admin@app.com' and form.password.data == 'password':
+          flash('You have been logged in!', 'success')
+          return redirect(url_for('home'))
+        else:
+          flash('Login unsuccessful. Username = admin@app.com and password = password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
 # Run Flask by running the Python file
