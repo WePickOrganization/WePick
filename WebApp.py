@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
@@ -45,11 +45,16 @@ def about():
     return render_template('about.html', title='About')
 
 # Registration page
-@app.route("/register")
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     # Return our about.html file from our 'templates' folder
     # Pass in title to our if statement declared in HTML
-    form = RegistrationForm()
+    form = RegistrationForm()  
+    # Validate our data before we 'POST' it
+    if form.validate_on_submit():
+        # Display a message to the user that hey have successfully registered and style the alert using Bootstraps 'success' class
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 
 # Login page
