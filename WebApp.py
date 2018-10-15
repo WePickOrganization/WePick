@@ -1,4 +1,6 @@
 from flask import Flask, render_template, url_for
+from forms import RegistrationForm, LoginForm
+
 app = Flask(__name__)
 
 
@@ -41,6 +43,22 @@ def about():
     # Return our about.html file from our 'templates' folder
     # Pass in title to our if statement declared in HTML
     return render_template('about.html', title='About')
+
+# Registration page
+@app.route("/register")
+def register():
+    # Return our about.html file from our 'templates' folder
+    # Pass in title to our if statement declared in HTML
+    form = RegistrationForm()
+    return render_template('register.html', title='Register', form=form)
+
+# Login page
+@app.route("/login")
+def login():
+    # Return our about.html file from our 'templates' folder
+    # Pass in title to our if statement declared in HTML
+    form = LoginForm()
+    return render_template('login.html', title='Login', form=form)
 
 # Run Flask by running the Python file
 if __name__ == '__main__':
