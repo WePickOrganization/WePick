@@ -1,5 +1,5 @@
 body {
-    background: #fafafa;
+    background: #db7c2e71;
     color: #333333;
     margin-top: 5rem;
   }
@@ -9,11 +9,11 @@ body {
   }
   
   .bg-steel {
-    background-color: #5f788a;
+    background-color:#008d07f5;
   }
   
   .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
+    color: #000000;
   }
   
   .site-header .navbar-nav .nav-link:hover {
