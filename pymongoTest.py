@@ -4,9 +4,6 @@ import pprint
 # Import Fernet from the Cryptography library to encrypt the password for out database
 from cryptography.fernet import Fernet
 
-# Remote Connection URI
-# # MongoDB Server Connection URI: mongo 54.76.32.181 --username mongo --authenticationDatabase admin -p
-
 # Load in the password for the database from an encrypted text file
 file = open("secret.txt","r")
 	
@@ -14,6 +11,17 @@ if file.mode == 'r':
   	contents =file.read()
 
 print(contents)
+
+# Generate a key using Fernet encryption
+privateKey = Fernet.generate_key()
+
+f = Fernet(privateKey)
+
+token = f.encrypt
+# Remote Connection URI
+# # MongoDB Server Connection URI: mongo 54.76.32.181 --username mongo --authenticationDatabase admin -p
+
+
 
 URI = "mongo 54.76.32.181 --username mongo --authenticationDatabase admin -p"
 
