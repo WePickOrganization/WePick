@@ -1,29 +1,21 @@
 import pymongo
 import pprint
+from pymongo import MongoClient
 
-# Import Fernet from the Cryptography library to encrypt the password for out database
-from cryptography.fernet import Fernet
-
-# Load in the password for the database from an encrypted text file
-file = open("secret.txt","r")
-	
-if file.mode == 'r':
-  	contents =file.read()
-
-print(contents)
-
-# Generate a key using Fernet encryption
-privateKey = Fernet.generate_key()
-
-f = Fernet(privateKey)
-
-token = f.encrypt
 # Remote Connection URI
 # # MongoDB Server Connection URI: mongo 54.76.32.181 --username mongo --authenticationDatabase admin -p
 
+# Load in the password and IP address for the database from a config file found locally
+with open("config.txt", "r") as ins:
+    configurationVariables = []
+    for line in ins:
+        configurationVariables.append(line)
 
+# Asign the variables found in 
+pwFromConfigFile = configurationVariables[0]
+ipFromConfigFile = configurationVariables[1]
 
-URI = "mongo 54.76.32.181 --username mongo --authenticationDatabase admin -p"
+URI = "mongodb://mongo:"+str(pwFromConfigFile)+"@"+str(ipFromConfigFile)+"/?authSource=admin&authMechanism=SCRAM-SHA-1"
 
 # Setup Client
 myClient = pymongo.MongoClient(URI)
