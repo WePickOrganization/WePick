@@ -54,8 +54,6 @@ def deleteUser(id):
 # Test function
 #addUser(123, 'Steven', 'BobMarley', 'Jamming')
 showUsers()
-deleteUser(123)
-showUsers()
 
 
 
