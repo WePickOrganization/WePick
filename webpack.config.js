@@ -1,5 +1,11 @@
 var HTMLWebpackPlugin = require('html-webpack-plugin');
-var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({/* configuration object here */});
+var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
+    template: __dirname + '/app/index.html',
+    filename: 'index.html',
+    inject: 'body'
+});
+
+
 
 //In Node.js __dirname refers to the currently executing file.
 //Webpack grabs the outermost component class file.
@@ -24,5 +30,6 @@ module.exports = {
     output: {
         filename: 'transformed.js',
         path: __dirname + '/build'
-    }
+    },
+    plugins: [HTMLWebpackPluginConfig]
 };
