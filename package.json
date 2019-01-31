@@ -1,0 +1,28 @@
+{
+  "name": "wepick",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <b>A conceptual big data data center embedded in a meta-level multimedia toolkit</b><br>\r </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WePickOrganization/WePick.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WePickOrganization/WePick/issues"
+  },
+  "homepage": "https://github.com/WePickOrganization/WePick#readme",
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-react": "^6.24.1"
+  }
+}
