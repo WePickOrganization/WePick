@@ -22,7 +22,7 @@ scope = 'user-read-email'
 # This should only have to be done once hopefully.
 token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8',redirect_uri='http://localhost/')
 
-print("Token is: " + token)
+spotifyObject = spotipy.Spotify(auth=token)
 
 
 
