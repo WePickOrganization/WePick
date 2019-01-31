@@ -1,3 +1,6 @@
+var HTMLWebpackPlugin = require('html-webpack-plugin');
+var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({/* configuration object here */});
+
 //In Node.js __dirname refers to the currently executing file.
 //Webpack grabs the outermost component class file.
 module.exports = {
@@ -17,5 +20,9 @@ module.exports = {
             }
         ]
     },
-    output: {}
+    //Saveing the transformed Javascript into a new file.
+    output: {
+        filename: 'transformed.js',
+        path: __dirname + '/build'
+    }
 };
