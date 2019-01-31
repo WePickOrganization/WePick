@@ -1,6 +1,6 @@
 
 <p align="center">
-  <b>A conceptual big data data center embedded in a meta-level multimedia toolkit</b><br>
+  <b>A dynamic web app that creates curated playlists based on multiple user's music preferences using Spotify</b><br>
 </p>
 
 ## Contents
