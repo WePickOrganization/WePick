@@ -36,23 +36,26 @@ else:
   print("No database found.")
 
 # The collection of users in the database
-userCollection = WePickDatabase["Users"]
+usersCollection = WePickDatabase["Users"]
 
 # Add user
 def addUser(id, name, favoriteArtists, favoriteSong):
-  userCollection.insert_one({'id': id, 'name': name, 'fav_artist': favoriteArtists, 'fav_song': favoriteSong})
+  usersCollection.insert_one({'id': id, 'name': name, 'fav_artist': favoriteArtists, 'fav_song': favoriteSong})
    
 # Show users
 def showUsers():
-  for x in userCollection.find():
+  for x in usersCollection.find():
     print(x)
 
-
+# Delete user
+def deleteUser(id):
+  usersCollection.delete_one({'id': id}) 
 
 # Test function
 #addUser(123, 'Steven', 'BobMarley', 'Jamming')
 showUsers()
-
+deleteUser(123)
+showUsers()
 
 
 
