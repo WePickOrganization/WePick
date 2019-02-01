@@ -1,9 +1,11 @@
+
 var HTMLWebpackPlugin = require('html-webpack-plugin');
 var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
     template: __dirname + '/app/index.html',
     filename: 'index.html',
     inject: 'body'
 });
+
 
 
 
@@ -15,14 +17,16 @@ module.exports = {
     module: {
         /*Each "loader" that is added to the loaders array will represent a transformation,
           that the code will go through before reaching the browser*/
-        loaders: [
+        rules: [
             {   //The test property specifies which files will be affected by the loader.
                 //This regexp is for all strings that end with .js
                 test: /\.js$/,
                 //No .js files in node_modules to be transformed.
                 exclude: /node_modules/,
+                use:{
                 //The transformation to be executed. The babel-loader will transform all the JSX in Javascript.
                 loader: 'babel-loader'
+                }
             }
         ]
     },
