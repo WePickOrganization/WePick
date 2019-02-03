@@ -106,3 +106,6 @@ venv.bak/
 
 # Specifics
 config.txt
+
+# Node stuff
+node_modules

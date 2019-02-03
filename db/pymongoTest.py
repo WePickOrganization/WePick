@@ -1,6 +1,5 @@
 import pymongo
 import pprint
-from pymongo import MongoClient
 
 # Remote Connection URI
 # # MongoDB Server Connection URI: mongo 54.76.32.181 --username mongo --authenticationDatabase admin -p
@@ -53,8 +52,6 @@ def deleteUser(id):
 
 # Test function
 #addUser(123, 'Steven', 'BobMarley', 'Jamming')
-showUsers()
-deleteUser(123)
 showUsers()
 
 
