@@ -18,9 +18,17 @@
 
 ## How to run the program
 
-Test for branching
-**Run**
+From inside react-frontend
+`npm run dev`
 
+From inside flask-backend
+
+`python WebApp.py`
+
+From inside react-frontend
+`npm run start`
+
+Modify "index.jsx" to see results change on refresh
 
 ## Information
 
