@@ -29,22 +29,29 @@ class DatabaseConnector:
 
             # Create a list of all our databases and print them
             dbList = myClient.list_database_names()
-            print("=== DATABASE NAMES ===")
+            print("\n=== DATABASE NAMES ===")
             print(myClient.list_database_names())
 
             # Check to see if our database is in the list of databases
             if "WePickUsers" in dbList:
-              print("\nDatabase found....\n")
-              print(myClient.database_names)
+              print("\nDatabase WePickUsers found from the list....\n")
             else:
-              print("No database found.")
+              print("Database WePickUsers was not found.")
 
             # The collection of users in the database
-            usersCollection = WePickDatabase["Users"]
-      
-            
+            print("\nSearching for Users collection in WePickUsers database...\n")
 
-              
+            usersCollection = WePickDatabase["Users"]
+            self.usersCollection = usersCollection
+
+
+            if usersCollection is not None:
+              print("\nUsers collection found!\n")
+            else:
+              print("\nUserrs collection could not be found.\n")
+
+         
+
 
         # Add user
         def addUser(self, id, name, favoriteArtists, favoriteSong):
@@ -52,7 +59,7 @@ class DatabaseConnector:
           
         # Show users
         def showUsers(self):
-          for x in usersCollection.find():
+          for x in self.usersCollection.find():
             print(x)
 
         # Delete user
