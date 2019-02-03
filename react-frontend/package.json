@@ -4,9 +4,8 @@
   "description": "<p align=\"center\">\r   <b>A conceptual big data data center embedded in a meta-level multimedia toolkit</b><br>\r </p>",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "webpack-dev-server"
+    "dev": "webpack --mode development",
+    "start": "webpack --mode development --watch"
   },
   "repository": {
     "type": "git",
