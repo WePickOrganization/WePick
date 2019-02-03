@@ -1,6 +1,5 @@
 import pymongo
 import pprint
-from pymongo import MongoClient
 
 # Remote Connection URI
 # # MongoDB Server Connection URI: mongo 54.76.32.181 --username mongo --authenticationDatabase admin -p
