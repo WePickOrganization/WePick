@@ -48,6 +48,10 @@ print(playlists['id'])
 
 spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
 
+## Recommendations
+Recommendation = spotifyObject.recommendations(seed_artists= ["3TVXtAsR1Inumwj472S9r4"], limit=5)
+pprint.pprint("song reccommend = " + Recommendation['tracks'][1]['id'])
+
 # Print playlist info (Json)
 pprint.pprint(playlists)
 
