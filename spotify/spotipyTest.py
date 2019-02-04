@@ -48,9 +48,14 @@ print(playlists['id'])
 
 spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
 
+## Convert to artist id (Bugy)
+artistID = spotifyObject.search("{Eminem}")
+artistID = artistID['tracks']['items'][0]['artists'][0]['id']
+pprint.pprint("artist id: " + artistID)
+
 ## Recommendations
 Recommendation = spotifyObject.recommendations(seed_artists= ["3TVXtAsR1Inumwj472S9r4"], limit=5)
-pprint.pprint("song reccommend = " + Recommendation['tracks'][1]['id'])
+pprint.pprint("song reccommend = " + Recommendation['tracks'][0]['id'])
 
 # Print playlist info (Json)
 pprint.pprint(playlists)
