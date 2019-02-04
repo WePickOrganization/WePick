@@ -41,8 +41,10 @@ followers = user['followers']['total']
 spotifyObject.trace = False
 playlists = spotifyObject.user_playlist_create(username, "test", public=True)
 
+# Print playlist info (Json)
 pprint.pprint(playlists)
 
+# Show basic stats of user 
 print("Display Name: " + displayName + " Followers :" + str(followers))
 
 
