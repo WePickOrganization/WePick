@@ -16,7 +16,7 @@ username = input("Enter username: ")
 
 # Define the scope of the information we want to recieve so the user has some idea of what information the application is recieveing
 # https://developer.spotify.com/documentation/general/guides/scopes/
-scope = 'user-read-email'
+scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read'
 
 # This token is generated in the web browser
 # Can change redirect_uri to website name soon and parse it somehow
@@ -30,21 +30,13 @@ spotifyObject = spotipy.Spotify(auth=token)
 
 # Information about user
 # Get current device
-devices = spotifyObject.devices()
-deviceID = devices['devices'][0]['id']
-
-# Current track information
-track = spotifyObject.current_user_playing_track()
-artist = track['item']['artists'][0]['name']
-track = track['item']['name']
-
-if artist != "":
-    print("Currently playing " + artist + " - " + track)
 
 # User information
 user = spotifyObject.current_user()
 displayName = user['display_name']
 followers = user['followers']['total']
+
+print("Display Name: " + displayName + " Followers :" + str(followers))
 
 
 
