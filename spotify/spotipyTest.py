@@ -41,6 +41,13 @@ followers = user['followers']['total']
 spotifyObject.trace = False
 playlists = spotifyObject.user_playlist_create(username, "test", public=True)
 
+# Track ids
+tracks = ["1pAyyxlkPuGnENdj4g7Y4f", "7D2xaUXQ4DGY5JJAdM5mGP"]
+["spotify:track:" + track for track in tracks][0]
+print(playlists['id'])
+
+spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
+
 # Print playlist info (Json)
 pprint.pprint(playlists)
 
