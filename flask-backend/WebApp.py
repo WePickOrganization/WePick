@@ -48,13 +48,11 @@ def user():
         # Take the query from the HTTP request argumments
         query = request.args
 
-        print(databaseConnection.getURI())
-
         # Query the database and get the data from the query
         databaseResponse = mongo.db.Users.find_one(query)
-
-    # Return the information as JSON with status code 200
-    return jsonify(databaseResponse), 200
+        
+        # Return the information as JSON with status code 200
+        return jsonify(databaseResponse), 200
 
     data = request.get_json()
     # If the HTTP Request is a 'POST' request
@@ -62,9 +60,9 @@ def user():
 
        # Show that a GET request is being recieved
         print("\n - POST REQUEST RECIEVED - \n")
-
-        if data.get('name', None) is not None and data.get('id', 
-            None) is not None:
+        print(data)
+        
+        if data.get('name', None) is not None and data.get('fav_artist', None) is not None:
             mongo.db.Users.insert_one(data)
             return jsonify({'ok': True, 'message': 'User created successfully!'}), 200
         else:
