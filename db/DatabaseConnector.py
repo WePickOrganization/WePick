@@ -65,10 +65,18 @@ class DatabaseConnector:
         def showUsers(self):
           for x in self.usersCollection.find():
             print(x)
-
+		
         # Delete user
         def deleteUser(self, id):
           usersCollection.delete_one({'id': id}) 
+        
+        # Shows user and favourite Artist from database
+        def showUsersFavArtist(self):
+          for x in self.usersCollection.find({},{'name':1,'fav_artist':1}):
+            print(x)
+	
+		
+			
 
         def getUsersCollection(self):
           return self.usersCollection
@@ -79,6 +87,8 @@ class DatabaseConnector:
         def getClient(self):
           return self.myClient
 
+		    # self.usersCollection.find({name:1,fav_artist:1})
+        
         # Test function
         #addUser(123, 'Steven', 'BobMarley', 'Jamming')
 

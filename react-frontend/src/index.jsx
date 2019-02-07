@@ -8,7 +8,8 @@ import ReactDOM from 'react-dom';
 class App extends React.Component {
     render() {
         return (
-            <div>Wagwan boys!!!! This is a test! Let's see if I can add new stuff!</div>
+            <div>Wagwan boy This is a test Let's see if I can add new stuff! This works on my machine also keith </div>
+			
         );
     }
 }

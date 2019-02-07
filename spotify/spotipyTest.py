@@ -1,6 +1,7 @@
 import spotipy
 import spotipy.oauth2 as oauth2
 import spotipy.util as util
+import pprint
 import json
 from json.decoder import JSONDecodeError
 
@@ -16,7 +17,7 @@ username = input("Enter username: ")
 
 # Define the scope of the information we want to recieve so the user has some idea of what information the application is recieveing
 # https://developer.spotify.com/documentation/general/guides/scopes/
-scope = 'user-read-email'
+scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
 
 # This token is generated in the web browser
 # Can change redirect_uri to website name soon and parse it somehow
@@ -30,21 +31,37 @@ spotifyObject = spotipy.Spotify(auth=token)
 
 # Information about user
 # Get current device
-devices = spotifyObject.devices()
-deviceID = devices['devices'][0]['id']
-
-# Current track information
-track = spotifyObject.current_user_playing_track()
-artist = track['item']['artists'][0]['name']
-track = track['item']['name']
-
-if artist != "":
-    print("Currently playing " + artist + " - " + track)
 
 # User information
 user = spotifyObject.current_user()
 displayName = user['display_name']
 followers = user['followers']['total']
+
+# Create Playlist
+spotifyObject.trace = False
+playlists = spotifyObject.user_playlist_create(username, "test", public=True)
+
+# Track ids
+tracks = ["1pAyyxlkPuGnENdj4g7Y4f", "7D2xaUXQ4DGY5JJAdM5mGP"]
+["spotify:track:" + track for track in tracks][0]
+print(playlists['id'])
+
+spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
+
+## Convert to artist id (Bugy)
+artistID = spotifyObject.search("{Eminem}")
+artistID = artistID['tracks']['items'][0]['artists'][0]['id']
+pprint.pprint("artist id: " + artistID)
+
+## Recommendations
+Recommendation = spotifyObject.recommendations(seed_artists= ["3TVXtAsR1Inumwj472S9r4"], limit=5)
+pprint.pprint("song reccommend = " + Recommendation['tracks'][0]['id'])
+
+# Print playlist info (Json)
+pprint.pprint(playlists)
+
+# Show basic stats of user 
+print("Display Name: " + displayName + " Followers :" + str(followers))
 
 
 
