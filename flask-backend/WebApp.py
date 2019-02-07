@@ -54,15 +54,15 @@ def user():
         # Return the information as JSON with status code 200
         return jsonify(databaseResponse), 200
 
-    data = request.get_json()
+    data = request.get_json(force=True)
     # If the HTTP Request is a 'POST' request
     if request.method == 'POST':
 
        # Show that a GET request is being recieved
         print("\n - POST REQUEST RECIEVED - \n")
         print(data)
-        
-        if data.get('name', None) is not None and data.get('fav_artist', None) is not None:
+
+        if data.get('fav_artist', None) is not None and data.get('name', None) is not None:
             mongo.db.Users.insert_one(data)
             return jsonify({'ok': True, 'message': 'User created successfully!'}), 200
         else:
