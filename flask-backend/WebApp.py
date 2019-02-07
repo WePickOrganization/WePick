@@ -70,6 +70,19 @@ def user():
             # Return a bad request response in JSON if the paramaters are incorrect
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
+    # If the HTTP Request is a 'DELETE' request
+    if request.method == 'DELETE':
+        # If the data is in the correct format
+        if data.get('name', None) is not None:
+            db_response = mongo.db.Users.delete_one({'name': data['name']})
+            if db_response.deleted_count == 1:
+                response = {'ok': True, 'message': 'Record deleted'}
+            else:
+                response = {'ok': True, 'message': 'No record found'}
+            return jsonify(response), 200
+        else:
+          return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
+
 @app.route("/")
 def index():
   return render_template('index.html')
