@@ -1,7 +1,9 @@
 import os
+import sys
+sys.path.append('..')
 import json
 import datetime
-import DatabaseConnector
+from db import DatabaseConnector
 from bson.objectid import ObjectId
 from flask import Flask
 from flask_pymongo import PyMongo
