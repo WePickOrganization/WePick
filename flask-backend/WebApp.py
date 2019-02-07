@@ -83,6 +83,15 @@ def user():
         else:
           return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
+    # If the HTTP Request is a 'PATCH' request
+    if request.method == 'PATCH':
+        # If the data is in the correct format
+        if data.get('query', {}) != {}:
+            mongo.db.Users.update_one(
+                data['query'], {'$set': data.get('payload', {})})
+            return jsonify({'ok': True, 'message': 'Record updated'}), 200
+        else:
+          return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 @app.route("/")
 def index():
   return render_template('index.html')
