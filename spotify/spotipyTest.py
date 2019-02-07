@@ -3,7 +3,14 @@ import spotipy.oauth2 as oauth2
 import spotipy.util as util
 import pprint
 import json
-from json.decoder import JSONDecodeError
+import sys
+sys.path.append('..')
+
+from db import DatabaseConnector
+
+
+databaseConnection = DatabaseConnector.DatabaseConnector()
+databaseConnection.showUsersFavArtist()
 
 # Client ID e6b98ce6b2cf483c832c652aada81bea
 # Client Secret 5325fce64c6b4c4aad72b34029085111
