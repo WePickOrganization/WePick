@@ -12,6 +12,10 @@ from db import DatabaseConnector
 databaseConnection = DatabaseConnector.DatabaseConnector()
 databaseConnection.showUsersFavArtist()
 
+databaseList = databaseConnection.showUsersFavArtist()
+print(type(databaseList))
+pprint.pprint(databaseList)
+
 # Client ID e6b98ce6b2cf483c832c652aada81bea
 # Client Secret 5325fce64c6b4c4aad72b34029085111
 
