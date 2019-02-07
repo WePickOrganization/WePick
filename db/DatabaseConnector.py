@@ -67,6 +67,7 @@ class DatabaseConnector:
         def showUsers(self):
           for x in self.usersCollection.find():
             print(x)
+            
 		
         # Delete user
         def deleteUser(self, id):
@@ -76,6 +77,11 @@ class DatabaseConnector:
         def showUsersFavArtist(self):
           for x in self.usersCollection.find({},{'name':1,'fav_artist':1}):
             print(x)
+            userList = x.items()
+            userList.append(x.items())
+            
+          
+          return userList
 	
 		
 			
