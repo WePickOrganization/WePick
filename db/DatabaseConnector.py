@@ -1,5 +1,6 @@
 import pymongo
 import pprint
+sys.path.append('..')
 
 # Remote Connection URI
 # # MongoDB Server Connection URI: mongo 54.76.32.181 --username mongo --authenticationDatabase admin -p
@@ -10,7 +11,7 @@ class DatabaseConnector:
             print("DatabaseConnector initialized...")
 
             # Load in the password and IP address for the database from a config file found locally
-            with open("config.txt", "r") as ins:
+            with open("../db/config.txt", "r") as ins:
                 configurationVariables = []
                 for line in ins:
                     configurationVariables.append(line)
@@ -42,13 +43,16 @@ class DatabaseConnector:
             print("\nSearching for Users collection in WePickUsers database...\n")
 
             usersCollection = WePickDatabase["Users"]
-            self.usersCollection = usersCollection
-
-
+          
             if usersCollection is not None:
               print("\nUsers collection found!\n")
             else:
               print("\nUserrs collection could not be found.\n")
+            
+            # Getters and Setters
+            self.usersCollection = usersCollection
+            self.URI = URI
+            self.myClient = myClient
 
          
 
@@ -65,6 +69,15 @@ class DatabaseConnector:
         # Delete user
         def deleteUser(self, id):
           usersCollection.delete_one({'id': id}) 
+
+        def getUsersCollection(self):
+          return self.usersCollection
+        
+        def getURI(self):
+          return self.URI
+
+        def getClient(self):
+          return self.myClient
 
         # Test function
         #addUser(123, 'Steven', 'BobMarley', 'Jamming')
