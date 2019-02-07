@@ -1,5 +1,6 @@
 import pymongo
 import pprint
+import sys
 sys.path.append('..')
 
 # Remote Connection URI
@@ -20,7 +21,7 @@ class DatabaseConnector:
             pwFromConfigFile = configurationVariables[0].rstrip()
             ipFromConfigFile = configurationVariables[1]
 
-            URI = "mongodb://mongo:"+str(pwFromConfigFile)+"@"+str(ipFromConfigFile)+"/?authSource=admin&authMechanism=SCRAM-SHA-1"
+            URI = "mongodb://mongo:"+str(pwFromConfigFile)+"@"+str(ipFromConfigFile)+"/WePickUsers?authSource=admin&authMechanism=SCRAM-SHA-1"
 
             # Setup Client
             myClient = pymongo.MongoClient(URI)
@@ -53,6 +54,7 @@ class DatabaseConnector:
             self.usersCollection = usersCollection
             self.URI = URI
             self.myClient = myClient
+            self.WePickDatabase = WePickDatabase
 
          
 
@@ -86,6 +88,9 @@ class DatabaseConnector:
 
         def getClient(self):
           return self.myClient
+
+        def getDatabase(self):
+          return self.WePickDatabase
 
 		    # self.usersCollection.find({name:1,fav_artist:1})
         
