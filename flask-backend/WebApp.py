@@ -7,7 +7,8 @@ from db import DatabaseConnector
 from bson.objectid import ObjectId
 from flask import Flask
 from flask_pymongo import PyMongo
-import logger
+from flask import Flask, request, render_template
+from flask import jsonify
 
 # Create instance of DatabaseConnector
 databaseConnection = DatabaseConnector.DatabaseConnector()
@@ -35,22 +36,39 @@ class JSONEncoder(json.JSONEncoder):
 # use the modified encoder class to handle ObjectId & datetime object while jsonifying the response.
 app.json_encoder = JSONEncoder
 
-
-
 # Define the routes through our Flask application
 @app.route('/user', methods=['GET', 'POST', 'DELETE', 'PATCH'])
 def user():
     # If the HTTP Request is a 'GET' request
     if request.method == 'GET':
         
+        # Show that a GET request is being recieved
+        print("\n - GET REQUEST RECIEVED - \n")
+
         # Take the query from the HTTP request argumments
         query = request.args
 
+        print(databaseConnection.getURI())
+
         # Query the database and get the data from the query
-        data = mongo.db.WePickUsers.find_one(query)
+        databaseResponse = mongo.db.Users.find_one(query)
 
     # Return the information as JSON with status code 200
-    return jsonify(data), 200
+    return jsonify(databaseResponse), 200
+
+    data = request.get_json()
+    # If the HTTP Request is a 'POST' request
+    if request.method == 'POST':
+
+       # Show that a GET request is being recieved
+        print("\n - POST REQUEST RECIEVED - \n")
+
+        if data.get('name', None) is not None and data.get('id', 
+            None) is not None:
+            mongo.db.Users.insert_one(data)
+            return jsonify({'ok': True, 'message': 'User created successfully!'}), 200
+        else:
+            return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
 @app.route("/")
 def index():
