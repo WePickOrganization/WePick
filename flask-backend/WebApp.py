@@ -60,12 +60,14 @@ def user():
 
        # Show that a GET request is being recieved
         print("\n - POST REQUEST RECIEVED - \n")
-        print(data)
 
+        # If the data is in the correct format
         if data.get('fav_artist', None) is not None and data.get('name', None) is not None:
+            # Successful response
             mongo.db.Users.insert_one(data)
             return jsonify({'ok': True, 'message': 'User created successfully!'}), 200
         else:
+            # Return a bad request response in JSON if the paramaters are incorrect
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
 @app.route("/")
