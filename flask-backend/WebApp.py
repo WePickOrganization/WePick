@@ -72,6 +72,10 @@ def user():
 
     # If the HTTP Request is a 'DELETE' request
     if request.method == 'DELETE':
+
+        # Show that a GET request is being recieved
+        print("\n - DELETE REQUEST RECIEVED - \n")
+
         # If the data is in the correct format
         if data.get('name', None) is not None:
             db_response = mongo.db.Users.delete_one({'name': data['name']})
@@ -85,6 +89,10 @@ def user():
 
     # If the HTTP Request is a 'PATCH' request
     if request.method == 'PATCH':
+
+        # Show that a GET request is being recieved
+        print("\n - PATCH REQUEST RECIEVED - \n")
+
         # If the data is in the correct format
         if data.get('query', {}) != {}:
             mongo.db.Users.update_one(
@@ -92,6 +100,7 @@ def user():
             return jsonify({'ok': True, 'message': 'Record updated'}), 200
         else:
           return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
+
 @app.route("/")
 def index():
   return render_template('index.html')

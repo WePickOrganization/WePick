@@ -9,7 +9,6 @@ class App extends React.Component {
     render() {
         return (
             <div>Wagwan boy This is a test Let's see if I can add new stuff! This works on my machine also keith </div>
-			
         );
     }
 }
