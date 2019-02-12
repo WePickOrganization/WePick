@@ -11,6 +11,7 @@ from flask import Flask, request, render_template
 from flask import jsonify
 from bson.json_util import dumps
 
+
 # Create instance of DatabaseConnector
 databaseConnection = DatabaseConnector.DatabaseConnector()
 
@@ -34,9 +35,15 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
     
 
-
 # use the modified encoder class to handle ObjectId & datetime object while jsonifying the response.
 app.json_encoder = JSONEncoder
+
+
+# The default route for the app
+@app.route("/")
+def index():
+  return render_template('index.html')
+
 
 # Define the routes through our Flask application
 @app.route('/showUser', methods=['GET'])
@@ -55,7 +62,6 @@ def showUser():
         
         # Return the information as JSON with status code 200
         return jsonify(databaseResponse), 200
-
 
 # Define the routes through our Flask application
 @app.route('/showAllUsers', methods=['GET'])
@@ -148,10 +154,6 @@ def updateUser():
         else:
           return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
-# The default route for the app
-@app.route("/")
-def index():
-  return render_template('index.html')
 
 # Notify the user the server is starting
 print("Starting Flask server...")
