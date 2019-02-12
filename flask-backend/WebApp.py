@@ -9,6 +9,7 @@ from flask import Flask
 from flask_pymongo import PyMongo
 from flask import Flask, request, render_template
 from flask import jsonify
+from bson.json_util import dumps
 
 # Create instance of DatabaseConnector
 databaseConnection = DatabaseConnector.DatabaseConnector()
@@ -54,6 +55,31 @@ def showUser():
         
         # Return the information as JSON with status code 200
         return jsonify(databaseResponse), 200
+
+
+# Define the routes through our Flask application
+@app.route('/showAllUsers', methods=['GET'])
+def showAllUsers():
+    # If the HTTP Request is a 'GET' request
+    if request.method == 'GET':
+        
+        # Show that a GET request is being recieved
+        print("\n - GET REQUEST RECIEVED - \n")
+
+        # Take the query from the HTTP request argumments
+        query = request.args
+
+        # Query the database and get the data from the query
+        databaseResponse = mongo.db.Users.find()
+        
+        collectionList = list(databaseResponse)\
+
+        # Print the entries in the console
+        for document in databaseResponse:
+            print document
+
+        # Return the information as JSON with status code 200
+        return dumps(collectionList), 200
 
 # Route for creating a user
 @app.route('/createUser', methods=['POST'])
@@ -102,7 +128,7 @@ def deleteUser():
           return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
 
-@app.route('updateUser', methods=['PATCH'])
+@app.route('/updateUser', methods=['PATCH'])
 def updateUser():
 
     # Define the incoming json data from the request as 'data'
@@ -126,7 +152,8 @@ def updateUser():
 @app.route("/")
 def index():
   return render_template('index.html')
-    
+
+# Notify the user the server is starting
 print("Starting Flask server...")
 
 # Run the app
