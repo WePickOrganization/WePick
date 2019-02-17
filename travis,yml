@@ -1,10 +1,15 @@
 language: node_js
 
 node_js:
-  - stable
+  - "stable"
 
-install:
-  - npm install
+cache:
+  directories:
+    - node_modules
 
 script:
-- npm test
+  - npm test
+  - npm run build
+
+on:
+  branch: master
