@@ -50,42 +50,15 @@ class DatabaseConnector:
             else:
               print("\nUserrs collection could not be found.\n")
             
-            # Getters and Setters
+            # Setters
             self.usersCollection = usersCollection
             self.URI = URI
             self.myClient = myClient
             self.WePickDatabase = WePickDatabase
 
          
-
-
-        # Add user
-        def addUser(self, id, name, favoriteArtists, favoriteSong):
-          usersCollection.insert_one({'id': id, 'name': name, 'fav_artist': favoriteArtists, 'fav_song': favoriteSong})
-          
-        # Show users
-        def showUsers(self):
-          for x in self.usersCollection.find():
-            print(x)
-            
-		
-        # Delete user
-        def deleteUser(self, id):
-          usersCollection.delete_one({'id': id}) 
-        
-        # Shows user and favourite Artist from database
-        def showUsersFavArtist(self):
-          for x in self.usersCollection.find({},{'name':1,'fav_artist':1}):
-            print(x)
-            userList = x.items()
-            userList.append(x.items())
-            
-          
-          return userList
-	
-		
-			
-
+        		
+        # Getters
         def getUsersCollection(self):
           return self.usersCollection
         
@@ -98,6 +71,32 @@ class DatabaseConnector:
         def getDatabase(self):
           return self.WePickDatabase
 
+        # === FUNCTIONS === *
+        
+        # Add user
+        def addUser(self, id, name, favoriteArtists, favoriteSong):
+          self.usersCollection.insert_one({'id': id, 'name': name, 'fav_artist': favoriteArtists, 'fav_song': favoriteSong})
+          
+        # Show users
+        def showUsers(self):
+          for x in self.usersCollection.find():
+            print(x)
+            
+		
+        # Delete user
+        def deleteUser(self, id):
+          self.usersCollection.delete_one({'id': id}) 
+        
+        # Shows user and favourite Artist from database
+        def showUsersFavArtist(self):
+          for x in self.usersCollection.find({},{'name':1,'fav_artist':1}):
+            print(x)
+            userList = x.items()
+            userList.append(x.items())
+            
+          
+          return userList
+	
 		    # self.usersCollection.find({name:1,fav_artist:1})
         
         # Test function
