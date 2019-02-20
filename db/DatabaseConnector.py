@@ -69,13 +69,12 @@ class DatabaseConnector:
         
         # Shows user and favourite Artist from database
         def showUsersFavArtist(self):
+          all = dict()
           for x in self.usersCollection.find({},{'name':1,'fav_artist':1}):
             print(x)
-            userList = x.items()
-            userList.append(x.items())
-            
-          
-          return userList
+            print(type(x))
+            all.update(x)
+          return all
 	
 		
 			
