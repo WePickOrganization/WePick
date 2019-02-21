@@ -8,6 +8,16 @@ sys.path.append('..')
 
 from db import DatabaseConnector
 
+# Function which creates function of an artist 
+def GeneratePlaylist(artist):
+    artistID = spotifyObject.search(artist)
+    artistID = artistID['tracks']['items'][0]['artists'][0]['id']
+    Recommendation = spotifyObject.recommendations(seed_artists= ["3TVXtAsR1Inumwj472S9r4"], limit=5)
+
+    for i in range(5):
+        pprint.pprint("In function! song reccommend = " + Recommendation['tracks'][i]['id'])
+
+
 
 databaseConnection = DatabaseConnector.DatabaseConnector()
 databaseConnection.showUsersFavArtist()
@@ -59,20 +69,23 @@ print(playlists['id'])
 
 spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
 
+GeneratePlaylist("Eminem")
+
 ## Convert to artist id (Bugy)
-artistID = spotifyObject.search("{Eminem}")
-artistID = artistID['tracks']['items'][0]['artists'][0]['id']
-pprint.pprint("artist id: " + artistID)
+#artistID = spotifyObject.search("{Eminem}")
+#artistID = artistID['tracks']['items'][0]['artists'][0]['id']
+#pprint.pprint("artist id: " + artistID)
 
 ## Recommendations
-Recommendation = spotifyObject.recommendations(seed_artists= ["3TVXtAsR1Inumwj472S9r4"], limit=5)
-pprint.pprint("song reccommend = " + Recommendation['tracks'][0]['id'])
+#Recommendation = spotifyObject.recommendations(seed_artists= ["3TVXtAsR1Inumwj472S9r4"], limit=5)
+#pprint.pprint("song reccommend = " + Recommendation['tracks'][0]['id'])
 
 # Print playlist info (Json)
-pprint.pprint(playlists)
+#pprint.pprint(playlists)
 
 # Show basic stats of user 
 print("Display Name: " + displayName + " Followers :" + str(followers))
+
 
 
 
