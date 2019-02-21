@@ -10,8 +10,9 @@ import axios from 'axios'
 class App extends React.Component {
       constructor(){
         super()
+        
         this.state = {
-          username: ''
+          infos: []
         }
 
         this.handleClick = this.handleClick.bind(this)
@@ -19,8 +20,8 @@ class App extends React.Component {
 
       handleClick(){
         console.log('Success!')
-        axios.get('https://api.github.com/users/jawneck')
-          .then(response =>this.setState({username: response.data.name}))
+        axios.get('http://localhost:5000/showAllUsers')
+          .then(response =>{this.state.infos = response.data;console.dir(this.state.infos);this.forceUpdate();})
       }
 
       render() {
@@ -29,7 +30,9 @@ class App extends React.Component {
           <button className='button' onClick={this.handleClick}>
             Click Me
           </button>
-          <p>{this.state.username}</p>
+          <ul>
+          {this.state.infos.map(infos => <li>{infos.name}</li>)}
+          </ul>
           </div>
         )
       }
