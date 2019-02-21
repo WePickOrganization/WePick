@@ -5,16 +5,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './app.css'
+import axios from 'axios'
 
 class App extends React.Component {
       constructor(){
         super()
+        this.state = {
+          username: ''
+        }
 
         this.handleClick = this.handleClick.bind(this)
       }
 
       handleClick(){
         console.log('Success!')
+        axios.get('https://api.github.com/users/jawneck')
+          .then(response =>this.setState({username: response.data.name}))
       }
 
       render() {
@@ -23,6 +29,7 @@ class App extends React.Component {
           <button className='button' onClick={this.handleClick}>
             Click Me
           </button>
+          <p>{this.state.username}</p>
           </div>
         )
       }
