@@ -19,6 +19,8 @@ class App extends React.Component {
 
       handleClick(){
         console.log('Success!')
+        axios.get('https://api.github.com/users/maecapozzi')
+          .then(response => console.log(response))
       }
 
       render() {
