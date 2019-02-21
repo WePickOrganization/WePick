@@ -4,13 +4,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import './app.css'
 
 class App extends React.Component {
-    render() {
+      render() {
         return (
-            <div>Wagwan boy This is a test Let's see if I can add new stuff! This works on my machine also keith </div>
+          <div id='body'> CSS LOADER ADDED </div>
         );
-    }
+      }
 }
-
+  
 ReactDOM.render(<App />, document.getElementById('app'));

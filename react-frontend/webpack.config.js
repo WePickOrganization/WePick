@@ -16,6 +16,7 @@ module.exports = {
     module: {
         /*Each "loader" that is added to the loaders array will represent a transformation,
           that the code will go through before reaching the browser*/  
+        
         rules: [
             {   //The test property specifies which files will be affected by the loader.
                 //This regexp is for all strings that end with .js
@@ -25,9 +26,15 @@ module.exports = {
                 use:{
                 //The transformation to be executed. The babel-loader will transform all the JSX in Javascript.
                 loader: 'babel-loader'
+                
                 }
+            },
+            {
+                test: /\.(css|less)$/,
+                use: ["style-loader", "css-loader"]
             }
         ]
+       
     },
     //Saveing the transformed Javascript into a new file.
     output: {

@@ -82,7 +82,7 @@ def showAllUsers():
 
         # Print the entries in the console
         for document in databaseResponse:
-            print document
+            print (document)
 
         # Return the information as JSON with status code 200
         return dumps(collectionList), 200
