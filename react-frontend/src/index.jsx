@@ -9,7 +9,9 @@ import './app.css'
 class App extends React.Component {
       render() {
         return (
-          <div id='body'> CSS LOADER ADDED </div>
+          <div class= 'button__container'>  
+          <button class='button'>Click Me</button>
+          </div>
         );
       }
 }
