@@ -1,3 +1,5 @@
+
+
 language: node_js
 
 node_js:
@@ -6,6 +8,8 @@ node_js:
 cache:
   directories:
     - node_modules
+
+before_script: cd react-frontend
 
 script:
   - npm run dev
