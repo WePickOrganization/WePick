@@ -4,13 +4,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import './app.css'
 
 class App extends React.Component {
-    render() {
-        return (
-            <div>Wagwan boy This is a test Let's see if I can add new stuff! This works on my machine also keith </div>
-        );
-    }
-}
+      constructor(){
+        super()
 
+        this.handleClick = this.handleClick.bind(this)
+      }
+
+      handleClick(){
+        console.log('Success!')
+      }
+
+      render() {
+        return (
+          <div className= 'button__container'>  
+          <button className='button' onClick={this.handleClick}>
+            Click Me
+          </button>
+          </div>
+        )
+      }
+}
+  
 ReactDOM.render(<App />, document.getElementById('app'));
