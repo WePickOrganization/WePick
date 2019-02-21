@@ -10,7 +10,7 @@ class App extends React.Component {
       constructor(){
         super()
 
-        this.handleClick = this.handleClick.bind(bind)
+        this.handleClick = this.handleClick.bind(this)
       }
 
       handleClick(){
@@ -19,10 +19,12 @@ class App extends React.Component {
 
       render() {
         return (
-          <div class= 'button__container'>  
-          <button class='button'>Click Me</button>
+          <div className= 'button__container'>  
+          <button className='button' onClick={this.handleClick}>
+            Click Me
+          </button>
           </div>
-        );
+        )
       }
 }
   
