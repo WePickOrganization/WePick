@@ -9,8 +9,10 @@ cache:
   directories:
     - node_modules
 
-before_script: cd react-frontend npm install
-
+before_script: 
+  - cd react-frontend 
+  - npm install --dev
+  
 script:
   - npm run dev
 
