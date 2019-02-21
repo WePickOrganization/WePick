@@ -7,6 +7,16 @@ import ReactDOM from 'react-dom';
 import './app.css'
 
 class App extends React.Component {
+      constructor(){
+        super()
+
+        this.handleClick = this.handleClick.bind(bind)
+      }
+
+      handleClick(){
+        console.log('Success!')
+      }
+
       render() {
         return (
           <div class= 'button__container'>  
