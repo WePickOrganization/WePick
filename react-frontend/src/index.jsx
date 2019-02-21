@@ -9,6 +9,9 @@ import './app.css'
 class App extends React.Component {
       constructor(){
         super()
+        this.state = {
+          username: ''
+        }
 
         this.handleClick = this.handleClick.bind(this)
       }
