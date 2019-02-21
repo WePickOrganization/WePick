@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"div {\\r\\n    background-color: #d5f4e6;\\r\\n  }\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./src/app.css?./node_modules/css-loader/dist/cjs.js");
+eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \".button__container {\\r\\n  margin-top: 200px;\\r\\n  text-align: center;\\r\\n}\\r\\n.button {\\r\\n  background-color:green;\\r\\n  border: none;\\r\\n  color: white;\\r\\n  font-size: 16px;\\r\\n  height: 40px;\\r\\n  width: 200px;\\r\\n}\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./src/app.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
