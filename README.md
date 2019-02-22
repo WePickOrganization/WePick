@@ -1,7 +1,11 @@
+<img style="float: center;  margin-left: 800px;" src="https://user-images.githubusercontent.com/22448079/53239511-21b3c500-3694-11e9-8933-f1bb63284c72.png">
 
 <p align="center">
-  <b>A dynamic web app that creates curated playlists based on multiple user's music preferences using Spotify</b><br>
+  <b>A dynamic web app that creates curated playlists based on multiple user's music preferences using Spotify. Built with React, Flask, Python, Node.js, Mocha, AWS and Mongo.</b><br>
 </p>
+
+[![Build Status](https://travis-ci.com/WePickOrganization/WePick.svg?branch=master)](https://travis-ci.com/WePickOrganization/WePick)
+
 
 ## Contents
 * [Description](#description)
@@ -17,10 +21,6 @@
 ## Description
 
 ## How to run the program
-
-From inside react-frontend
-`npm run dev`
-
 From inside flask-backend
 
 `python WebApp.py`
@@ -41,9 +41,12 @@ Modify "index.jsx" to see results change on refresh
 ## Technologies and Software
 **Technologies**
 
-
-**Software**
-
+- AWS
+- MongoDB
+- Flask
+- Python
+- Mocha 
+- React
 
 ## Resources
 
