@@ -47,8 +47,13 @@ class App extends React.Component {
                 </div>
 
                 <div className="FormTitle">
-                  <Link to="/Login" className="FormTitle__Link">Sign In</Link> or <Link to="/"
-                     className="FormTitle__Link FormTitle__Link--Active">Sign Up</Link>
+                  <NavLink to="/Login"
+
+                     activeClassName="FormTitle__Link--Active"
+                     className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/"
+                    
+                     activeClassName="FormTitle__Link--Active" 
+                     className="FormTitle__Link">Sign Up</NavLink>
                 </div>
 
                 {/* Define an exact route for when the components below will be rendered */}
