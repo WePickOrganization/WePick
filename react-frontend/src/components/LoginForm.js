@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class RegisterForm extends Component
 {
@@ -37,6 +38,21 @@ class RegisterForm extends Component
     {
         event.preventDefault();
         console.log(this.state);
+
+        // Perform Axios GET Request
+        // Sent to Flask server's route '/createUser'
+        axios.get('/loginUser', {
+            params: {
+              email: this.state.email,
+              password: this.state.password
+            }
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     render()

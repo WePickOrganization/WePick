@@ -45,7 +45,37 @@ def index():
   return render_template('index.html')
 
 
+
+
 # Define the routes through our Flask application
+@app.route('/loginUser', methods=['GET'])
+def loginUser():
+    # If the HTTP Request is a 'GET' request
+    if request.method == 'GET':
+        
+        # Show that a GET request is being recieved
+        print("\n - GET REQUEST RECIEVED - \n")
+
+        # Take the query from the HTTP request argumments
+        loginData = request.args
+
+        # Store the arguments for easy querying
+        password = loginData["password"]
+        email = loginData["email"]
+        
+        # If the data is in the correct format
+        if loginData is not None:
+            # Query the database and get the data from the query
+            if mongo.db.Users.find({"email": email},{'username': password}).count() > 0:
+                # Return the information as JSON with status code 200
+                return jsonify({'ok': True, 'message': 'Record exists.. Logging in..'}), 200
+            return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 400
+        # Return a bad request response in JSON if the paramaters are incorrect
+        return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
+
+       
+
+
 @app.route('/showUser', methods=['GET'])
 def showUser():
     # If the HTTP Request is a 'GET' request
