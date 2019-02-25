@@ -12,29 +12,20 @@ import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 
 class App extends React.Component {
-      constructor(){
+      constructor()
+      {
         super()
         
         this.state = {
-          infos: []
-        }
 
-        this.handleClick = this.handleClick.bind(this)
+          email: '',
+          password: ''
+        };
+        
       }
 
-      handleClick()
+      render() 
       {
-        console.log('Success!')
-        axios.get('http://localhost:5000/showAllUsers')
-          .then(response =>
-          {
-            this.state.infos = response.data;
-            console.dir(this.state.infos);
-            this.forceUpdate();
-          })
-      }
-
-      render() {
         return (
           <Router>
           <div className= "App">
@@ -64,7 +55,6 @@ class App extends React.Component {
                 {/* Define an exact route for when the components below will be rendered */}
                 {/* E.G. When on the path '/Login', render the LoginForm found in components/LoginForm.js */}
                 <Route path="/Login" component={LoginForm}>
-                  <h1>Sign In!</h1>
                 </Route>
                 </div>
 
