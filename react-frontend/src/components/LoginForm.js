@@ -2,18 +2,20 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-class RegisterForm extends Component
+// A LoginForm component that can be exported at the end of the file and can be reused anywhere
+class LoginForm extends Component
 {
     constructor()
     {
       super()
       
+      // Define the variables to be stored in our state
       this.state = {
-
         email: '',
         password: ''
       };
       
+      // This lets us define functions outside of the constructor
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     
@@ -40,7 +42,8 @@ class RegisterForm extends Component
         console.log(this.state);
 
         // Perform Axios GET Request
-        // Sent to Flask server's route '/createUser'
+        // Sent to Flask server's route '/createUser'\
+        // Send our state variables captured by our handleChange function 
         axios.get('/loginUser', {
             params: {
               email: this.state.email,
@@ -57,6 +60,7 @@ class RegisterForm extends Component
 
     render()
     {
+        // Render the forms required for login
         return(
             <div className="FormCenter">
 
@@ -91,5 +95,5 @@ class RegisterForm extends Component
         }
     }
     
-    export default RegisterForm
+    export default LoginForm
     

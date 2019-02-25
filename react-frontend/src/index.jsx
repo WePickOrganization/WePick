@@ -1,5 +1,3 @@
-//import React from "react"
-//import ReactDOM from "react-dom"
 //The entry point is the outermost component class the React app.
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -16,8 +14,8 @@ class App extends React.Component {
       {
         super()
         
+        // Define the variables to be stored in our state
         this.state = {
-
           email: '',
           password: ''
         };
@@ -28,23 +26,27 @@ class App extends React.Component {
       {
         return (
           <Router>
-          <div className= "App">
-              <div className= 'App__Aside'></div>
+            <div className="App">
               
-              <div className= 'App__Form'>
-                <div className="PageSwitcher">
-                    <a href="#" className="PageSwitcher__Item PageSwitcher__Item">Sign In</a>
-                    <a href="#" className="PageSwitcher__Item PageSwitcher__Item--Active">Sign Up</a>
+               {/* The blank space to the left of the forms*/}
+              <div className='App__Aside'></div>
+
+              <div className='App__Form'>
+
+                {/* Header bar would go here */}
+                <div className="HEADERBAR">
+                  HEADER BAR PLACEHOLDER
                 </div>
 
+                {/* Login/Signup text links above the forms */}
                 <div className="FormTitle">
                   <NavLink to="/Login"
 
-                     activeClassName="FormTitle__Link--Active"
-                     className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/"
-                    
-                     activeClassName="FormTitle__Link--Active" 
-                     className="FormTitle__Link">Sign Up</NavLink>
+                    activeClassName="FormTitle__Link--Active"
+                    className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/"
+
+                      activeClassName="FormTitle__Link--Active"
+                      className="FormTitle__Link">Sign Up</NavLink>
                 </div>
 
                 {/* Define an exact route for when the components below will be rendered */}
@@ -56,9 +58,9 @@ class App extends React.Component {
                 {/* E.G. When on the path '/Login', render the LoginForm found in components/LoginForm.js */}
                 <Route path="/Login" component={LoginForm}>
                 </Route>
-                </div>
+              </div>
 
-          </div>
+            </div>
           </Router>
 
         )

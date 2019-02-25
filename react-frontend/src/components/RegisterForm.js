@@ -46,6 +46,7 @@ class RegisterForm extends Component
 
         // Perform Axios POST Request
         // Sent to Flask server's route '/createUser'
+        // Send our state variables captured by our handleChange function 
         axios.post('/createUser', {
             name: this.state.name,
             email: this.state.email,
@@ -64,6 +65,7 @@ class RegisterForm extends Component
 
     render()
     {
+        // Render the forms required for register
         return(
             <div className="FormCenter">
 
