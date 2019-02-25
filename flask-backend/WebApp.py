@@ -101,7 +101,7 @@ def createUser():
         print("\n - POST REQUEST RECIEVED - \n")
 
         # If the data is in the correct format
-        if jsonData.get('fav_artist', None) is not None and jsonData.get('name', None) is not None:
+        if jsonData.get('email', None) is not None and jsonData.get('name', None) is not None and jsonData.get('password', None) is not None:
             # Successful response
             mongo.db.Users.insert_one(jsonData)
             return jsonify({'ok': True, 'message': 'User created successfully!'}), 200

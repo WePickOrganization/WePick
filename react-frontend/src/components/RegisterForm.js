@@ -1,27 +1,29 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
-
+// A RegisterForm component that can be exported at the end of the file and can be reused anywhere
 class RegisterForm extends Component
 {
     constructor()
     {
       super()
       
+      // Define the variables to be stored in our state
       this.state = {
-        
         name:'',
         email: '',
         password: '',
         hasAgreed: false
       };
       
+      // This lets us define functions outside of the constructor
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
-
+    // Function that gets called
     handleChange(event) 
     {
         let target = event.target;
@@ -35,10 +37,27 @@ class RegisterForm extends Component
         });
     }
     
+    // Function that gets called when we press our submit button, in this case SignUp/Login
     handleSubmit(event)
     {
+        // Log the details
         event.preventDefault();
         console.log(this.state);
+
+        // Perform Axios POST Request
+        // Sent to Flask server's route '/createUser'
+        axios.post('/createUser', {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
     }
 
     
@@ -72,7 +91,7 @@ class RegisterForm extends Component
                     </div>
                 
                     <div className="FormField">
-                        <button className="FormField__Button mr-20">Sign Up</button> <Link to="/Login"
+                        <button className="FormField__Button mr-20" onSubmit={this.handleSubmit}>Sign Up</button> <Link to="/Login"
                         className="FormField__Link">I'm already member</Link>
                     </div>
 

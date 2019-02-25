@@ -18,6 +18,7 @@ class RegisterForm extends Component
     
     }
 
+    // Function that gets called when values inside a text field are changed and sets them in our state
     handleChange(event) 
     {
         let target = event.target;
@@ -31,6 +32,7 @@ class RegisterForm extends Component
         });
     }
     
+    // Function that gets called when we press our submit button, in this case SignUp/Login
     handleSubmit(event)
     {
         event.preventDefault();
