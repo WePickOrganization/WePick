@@ -9,6 +9,7 @@ import './stylesheets/app.css'
 import './stylesheets/index.css'
 import axios from 'axios'
 import RegisterForm from './components/RegisterForm'
+import LoginForm from './components/LoginForm'
 
 class App extends React.Component {
       constructor(){
@@ -51,11 +52,13 @@ class App extends React.Component {
                 </div>
 
                 {/* Define an exact route for when the components below will be rendered */}
+                {/* E.G. When on the path '/', render the RegisterForm found in components/RegisterForm.js */}
                 <Route exact path="/" component={RegisterForm}>
-                  
                 </Route>
 
-                <Route path="/Login">
+                {/* Define an exact route for when the components below will be rendered */}
+                {/* E.G. When on the path '/Login', render the LoginForm found in components/LoginForm.js */}
+                <Route path="/Login" component={LoginForm}>
                   <h1>Sign In!</h1>
                 </Route>
                 </div>
