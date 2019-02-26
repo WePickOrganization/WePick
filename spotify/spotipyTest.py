@@ -40,7 +40,8 @@ def CreatePlaylist(tracks):
     spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
     pprint.pprint("Successfully created playlist")   
 
-
+##########################################################################################
+############################### Connect to database ######################################
 databaseConnection = DatabaseConnector.DatabaseConnector()
 databaseConnection.showUsersFavArtist()
 
@@ -48,8 +49,8 @@ databaseList = databaseConnection.showUsersFavArtist()
 print(type(databaseList))
 pprint.pprint(databaseList)
 
-# Client ID e6b98ce6b2cf483c832c652aada81bea
-# Client Secret 5325fce64c6b4c4aad72b34029085111
+##########################################################################################
+################### Current authentication (need to make not hardcoded) ##################
 
 ## Keith Client Key for test ##
 # Client Id: 0dc45951e1c9441db418cfcd3950414f
@@ -68,55 +69,26 @@ scope = 'user-read-email user-read-private user-read-playback-state user-modify-
 # This should only have to be done once hopefully.
 token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8',redirect_uri='http://localhost/')
 
-
 # Spotify Object
 spotifyObject = spotipy.Spotify(auth=token)
 
-# Information about user
-# Get current device
+##########################################################################################
 
-# User information
-user = spotifyObject.current_user()
-displayName = user['display_name']
-followers = user['followers']['total']
-
-# Create Playlist
-
-
-
-# Track ids
-#tracks = ["1pAyyxlkPuGnENdj4g7Y4f", "7D2xaUXQ4DGY5JJAdM5mGP"]
-#["spotify:track:" + track for track in tracks][0]
-#print(playlists['id'])
-
-
-
-# Testing functions
+# Simple artist list
 Artists = ['Eminem','Rihanna','Travis Scott']
 
+## Convert artists -> artistid
 ArtistsID = GetArtistID(Artists)
+
+## Get back track list of recommentations
 Tracks = GeneratePlaylist(ArtistsID)
+
+## Create playlist of these tracks 
 CreatePlaylist(Tracks)
 
 pprint.pprint(ArtistsID)
 pprint.pprint(Tracks)
 
-
-
-## Convert to artist id (Bugy)
-#artistID = spotifyObject.search("{Eminem}")
-#artistID = artistID['tracks']['items'][0]['artists'][0]['id']
-#pprint.pprint("artist id: " + artistID)
-
-## Recommendations
-#Recommendation = spotifyObject.recommendations(seed_artists= ["3TVXtAsR1Inumwj472S9r4"], limit=5)
-#pprint.pprint("song reccommend = " + Recommendation['tracks'][0]['id'])
-
-# Print playlist info (Json)
-#pprint.pprint(playlists)
-
-# Show basic stats of user 
-print("Display Name: " + displayName + " Followers :" + str(followers))
 
 
 
