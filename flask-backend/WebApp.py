@@ -10,6 +10,7 @@ from flask_pymongo import PyMongo
 from flask import Flask, request, render_template
 from flask import jsonify
 from bson.json_util import dumps
+from spotify import spotipyTest
 
 
 # Create instance of DatabaseConnector
