@@ -28,6 +28,10 @@ def GetArtistID(artists):
 
     return artistsList
 
+def CreatePlaylist(artists):
+    spotifyObject.trace = False
+    playlists = spotifyObject.user_playlist_create(username, "Recommended", public=True)
+
 
 
 databaseConnection = DatabaseConnector.DatabaseConnector()
@@ -70,8 +74,8 @@ displayName = user['display_name']
 followers = user['followers']['total']
 
 # Create Playlist
-spotifyObject.trace = False
-playlists = spotifyObject.user_playlist_create(username, "test", public=True)
+
+
 
 # Track ids
 tracks = ["1pAyyxlkPuGnENdj4g7Y4f", "7D2xaUXQ4DGY5JJAdM5mGP"]
