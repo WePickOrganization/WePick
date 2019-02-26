@@ -10,9 +10,10 @@ from db import DatabaseConnector
 
 # Function which creates recommendation based of an artist id/ids
 def GeneratePlaylist(artistsID):
+    
     Recommendation = spotifyObject.recommendations(seed_artists= artistsID, limit=20)
     RecommendationList = []
-    for i in range(5):
+    for i in range(20):
         pprint.pprint("In function! song reccommend = " + Recommendation['tracks'][i]['id'])
         RecommendationList.append(Recommendation['tracks'][i]['id'])
 
@@ -33,11 +34,11 @@ def GetArtistID(artists):
     return artistsList
 
 # Function which creates playlist of a given list 
-def CreatePlaylist(artists):
+def CreatePlaylist(tracks):
     spotifyObject.trace = False
     playlists = spotifyObject.user_playlist_create(username, "Recommended", public=True)
     spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
-
+    pprint.pprint("Successfully created playlist")   
 
 
 databaseConnection = DatabaseConnector.DatabaseConnector()
@@ -95,6 +96,7 @@ Artists = ['Eminem','Rihanna','Travis Scott']
 
 ArtistsID = GetArtistID(Artists)
 Tracks = GeneratePlaylist(ArtistsID)
+CreatePlaylist(Tracks)
 
 pprint.pprint(ArtistsID)
 pprint.pprint(Tracks)
