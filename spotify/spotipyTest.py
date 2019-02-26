@@ -9,16 +9,24 @@ sys.path.append('..')
 from db import DatabaseConnector
 
 # Function which creates recommendation based of an artist id/ids
-def GeneratePlaylist(artistID):
-    Recommendation = spotifyObject.recommendations(seed_artists= ["3TVXtAsR1Inumwj472S9r4"], limit=5)
+def GeneratePlaylist(artistsID):
+    Recommendation = spotifyObject.recommendations(seed_artists= artistsID, limit=20)
 
     for i in range(5):
         pprint.pprint("In function! song reccommend = " + Recommendation['tracks'][i]['id'])
 
 # Function which converts artist name to id (Very slightly glitchy)
-def GetArtistID(artist):
-    artistID = spotifyObject.search(artist)
-    artistID = artistID['tracks']['items'][0]['artists'][0]['id']
+def GetArtistID(artists):
+    array_length = len(artists)
+    pprint.pprint(array_length)
+    artistsList = []    
+    for i in range(array_length):
+        artistID = spotifyObject.search(artists[i])
+        artistID = artistID['tracks']['items'][0]['artists'][0]['id']
+        artistsList.append(artistID)
+        pprint.pprint("Artist name: " + artists[i] + " : Artist ID: " + artistID)
+
+    return artistsList
 
 
 
@@ -72,7 +80,13 @@ print(playlists['id'])
 
 spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
 
-GeneratePlaylist("Eminem")
+# Testing functions
+Artists = ['Eminem','Rihanna','Travis Scott']
+
+ArtistsID = GetArtistID(Artists)
+pprint.pprint(ArtistsID)
+GeneratePlaylist(ArtistsID)
+
 
 ## Convert to artist id (Bugy)
 #artistID = spotifyObject.search("{Eminem}")
