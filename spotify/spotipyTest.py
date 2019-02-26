@@ -8,14 +8,17 @@ sys.path.append('..')
 
 from db import DatabaseConnector
 
-# Function which creates function of an artist 
-def GeneratePlaylist(artist):
-    artistID = spotifyObject.search(artist)
-    artistID = artistID['tracks']['items'][0]['artists'][0]['id']
+# Function which creates recommendation based of an artist id/ids
+def GeneratePlaylist(artistID):
     Recommendation = spotifyObject.recommendations(seed_artists= ["3TVXtAsR1Inumwj472S9r4"], limit=5)
 
     for i in range(5):
         pprint.pprint("In function! song reccommend = " + Recommendation['tracks'][i]['id'])
+
+# Function which converts artist name to id (Very slightly glitchy)
+def GetArtistID(artist):
+    artistID = spotifyObject.search(artist)
+    artistID = artistID['tracks']['items'][0]['artists'][0]['id']
 
 
 
