@@ -11,9 +11,13 @@ from db import DatabaseConnector
 # Function which creates recommendation based of an artist id/ids
 def GeneratePlaylist(artistsID):
     Recommendation = spotifyObject.recommendations(seed_artists= artistsID, limit=20)
-
+    RecommendationList = []
     for i in range(5):
         pprint.pprint("In function! song reccommend = " + Recommendation['tracks'][i]['id'])
+        RecommendationList.append(Recommendation['tracks'][i]['id'])
+
+    pprint.pprint(RecommendationList)
+    return RecommendationList
 
 # Function which converts artist name to id (Very slightly glitchy)
 def GetArtistID(artists):
@@ -28,9 +32,11 @@ def GetArtistID(artists):
 
     return artistsList
 
+# Function which creates playlist of a given list 
 def CreatePlaylist(artists):
     spotifyObject.trace = False
     playlists = spotifyObject.user_playlist_create(username, "Recommended", public=True)
+    spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
 
 
 
@@ -78,18 +84,21 @@ followers = user['followers']['total']
 
 
 # Track ids
-tracks = ["1pAyyxlkPuGnENdj4g7Y4f", "7D2xaUXQ4DGY5JJAdM5mGP"]
-["spotify:track:" + track for track in tracks][0]
-print(playlists['id'])
+#tracks = ["1pAyyxlkPuGnENdj4g7Y4f", "7D2xaUXQ4DGY5JJAdM5mGP"]
+#["spotify:track:" + track for track in tracks][0]
+#print(playlists['id'])
 
-spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
+
 
 # Testing functions
 Artists = ['Eminem','Rihanna','Travis Scott']
 
 ArtistsID = GetArtistID(Artists)
+Tracks = GeneratePlaylist(ArtistsID)
+
 pprint.pprint(ArtistsID)
-GeneratePlaylist(ArtistsID)
+pprint.pprint(Tracks)
+
 
 
 ## Convert to artist id (Bugy)
