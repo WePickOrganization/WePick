@@ -1,6 +1,6 @@
-import os
 import sys
 sys.path.append('..')
+import os
 import json
 import datetime
 from db import DatabaseConnector
@@ -10,7 +10,7 @@ from flask_pymongo import PyMongo
 from flask import Flask, request, render_template
 from flask import jsonify
 from bson.json_util import dumps
-from spotify import spotipyTest
+from spotify import SpotipyAPI
 
 
 # Create instance of DatabaseConnector

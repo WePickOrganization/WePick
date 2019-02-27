@@ -1,10 +1,10 @@
+import sys
+sys.path.append('..')
 import spotipy
 import spotipy.oauth2 as oauth2
 import spotipy.util as util
 import pprint
 import json
-import sys
-sys.path.append('..')
 
 from db import DatabaseConnector
 
