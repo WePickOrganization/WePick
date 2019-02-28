@@ -58,6 +58,9 @@ class App extends React.Component {
                 {/* E.G. When on the path '/Login', render the LoginForm found in components/LoginForm.js */}
                 <Route path="/Login" component={LoginForm}>
                 </Route>
+
+                <Route path="NavBar" component={NavBar}>
+                </Route>
               </div>
 
             </div>
