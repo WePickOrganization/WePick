@@ -8,6 +8,7 @@ import './stylesheets/index.css'
 import axios from 'axios'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
+import ArtistEnter from './components/ArtistEnter'
 
 class App extends React.Component {
       constructor()
@@ -29,7 +30,12 @@ class App extends React.Component {
             <div className="App">
               
                {/* The blank space to the left of the forms*/}
-              <div className='App__Aside'></div>
+              <div className='App__Aside'>
+              
+              <Route exact path="/Create" component={ArtistEnter}>
+              </Route>
+              
+              </div>
 
               <div className='App__Form'>
 
@@ -59,8 +65,7 @@ class App extends React.Component {
                 <Route path="/Login" component={LoginForm}>
                 </Route>
 
-                <Route path="NavBar" component={NavBar}>
-                </Route>
+                
               </div>
 
             </div>
