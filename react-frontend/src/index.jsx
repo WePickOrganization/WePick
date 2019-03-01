@@ -9,70 +9,85 @@ import axios from 'axios'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 import ArtistEnter from './components/ArtistEnter'
+import NavBar from './components/NavBar'
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
 
 class App extends React.Component {
-      constructor()
-      {
-        super()
-        
-        // Define the variables to be stored in our state
-        this.state = {
-          email: '',
-          password: ''
-        };
-        
-      }
+  constructor(props) {
+    super(props)
 
-      render() 
-      {
-        return (
-          <Router>
-            <div className="App">
-              
-               {/* The blank space to the left of the forms*/}
-              <div className='App__Aside'>
-              
+    // Define the variables to be stored in our state
+    this.state = {
+      email: '',
+      password: '',
+      isLoggedIn: false
+    };
+
+    this.setLoggedIn = this.setLoggedIn.bind(this)
+  }
+
+  setLoggedIn() {
+    this.setState({
+      isLoggedIn: true
+    })
+  }
+
+  render() {
+    return (
+      <Router>
+        <div className="App">
+
+          {/* Header bar would go here */}
+          <div className="NavBar">
+            <Route exact path="/" component={NavBar}>
+            </Route>
+
+             {/* The blank space to the left of the forms*/}
+             <div className='App__Aside'>
               <Route exact path="/Create" component={ArtistEnter}>
               </Route>
-              
-              </div>
+            </div>
 
-              <div className='App__Form'>
+            <div className='App__Form'>
 
-                {/* Header bar would go here */}
-                <div className="HEADERBAR">
-                  HEADER BAR PLACEHOLDER
-                </div>
+              {/* Login/Signup text links above the forms */}
+              <div className="FormTitle">
+                <NavLink to="/Login"
 
-                {/* Login/Signup text links above the forms */}
-                <div className="FormTitle">
-                  <NavLink to="/Login"
+                  activeClassName="FormTitle__Link--Active"
+                  className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/"
 
                     activeClassName="FormTitle__Link--Active"
-                    className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/"
-
-                      activeClassName="FormTitle__Link--Active"
-                      className="FormTitle__Link">Sign Up</NavLink>
-                </div>
-
-                {/* Define an exact route for when the components below will be rendered */}
-                {/* E.G. When on the path '/', render the RegisterForm found in components/RegisterForm.js */}
-                <Route exact path="/" component={RegisterForm}>
-                </Route>
-
-                {/* Define an exact route for when the components below will be rendered */}
-                {/* E.G. When on the path '/Login', render the LoginForm found in components/LoginForm.js */}
-                <Route path="/Login" component={LoginForm}>
-                </Route>
-
-                
+                    className="FormTitle__Link">Sign Up</NavLink>
               </div>
 
-            </div>
-          </Router>
+              {/* Define an exact route for when the components below will be rendered */}
+              {/* E.G. When on the path '/', render the RegisterForm found in components/RegisterForm.js */}
+              <Route exact path="/" component={RegisterForm}>
+              </Route>
 
-        )
-      }
+              {/* Define an exact route for when the components below will be rendered */}
+              {/* E.G. When on the path '/Login', render the LoginForm found in components/LoginForm.js */}
+              <Route path="/Login" render={() => (
+                <LoginForm setLoggedIn={this.setLoggedIn} />
+              )} />
+            </div>
+          </div>
+
+          <div className="BelowNavBar">
+
+           
+
+          </div>
+
+
+        </div>
+      </Router>
+
+    )
+  }
 }
-  
+
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -17,8 +17,8 @@ class LoginForm extends Component
       
       // This lets us define functions outside of the constructor
       this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    
+      this.handleSubmit = this.handleSubmit.bind(this); 
+      this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this); 
     }
 
     // Function that gets called when values inside a text field are changed and sets them in our state
@@ -38,6 +38,8 @@ class LoginForm extends Component
     {
         event.preventDefault();
         console.log(this.state);
+        
+        var self = this;
 
         // Perform Axios GET Request
         // Sent to Flask server's route '/createUser'\
@@ -49,21 +51,30 @@ class LoginForm extends Component
             }
           })
           .then(function (response) {
-            console.log(response);
-        
+            if(response.status === 200){
+                console.log("SUCCESSS");
+                console.log(response);
+                self.handleSuccessfulLogin();
+            }
           })
           .catch(function (error) {
             console.log(error);
           });
     }
 
+    handleSuccessfulLogin()
+    {
+        this.props.setLoggedIn();
+    }
+
     render()
     {
+
         // Render the forms required for login
         return(
             <div className="FormCenter">
 
-                <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="FormFields">
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="email">Email</label>
@@ -76,13 +87,7 @@ class LoginForm extends Component
                     </div>
 
                     <div className="FormField">
-                        <label className="FormField__CheckboxLabel">
-                            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" /> I agree all statements in <a href="" className="FormField__TermsLink">terms of service</a>
-                        </label>
-                    </div>
-
-                    <div className="FormField">
-                        <button className="FormField__Button mr-20">Sign Up</button> <Link to="/"
+                        <button className="FormField__Button mr-20">Sign In</button> <Link to="/"
                             className="FormField__Link">Create an account</Link>
                     </div>
 
