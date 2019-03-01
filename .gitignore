@@ -110,3 +110,8 @@ config.txt
 
 # Node stuff
 node_modules
+
+#dissertation stuff
+project.aux
+project.fdb_latexmk
+project.fls
