@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
-class LoginForm extends Component
+class ArtistEnter extends Component
 {
     constructor()
     {
@@ -11,8 +11,10 @@ class LoginForm extends Component
       
       // Define the variables to be stored in our state
       this.state = {
-        email: '',
-        password: ''
+        artistOne: '',
+        artistTwo: '',
+        artistThree: '',
+        artistFour: ''
       };
       
       // This lets us define functions outside of the constructor
@@ -25,11 +27,15 @@ class LoginForm extends Component
     handleChange(event) 
     {
         let target = event.target;
-        let value = target.type === 'checkbox' ? target.checked : target.value;
-        let name = target.name;
+        let artistOne = target.artistOne;
+        let artistTwo = target.artistTwo;
+        let artistThree = target.artistThree;
+        let artistFour = target.rtistFour;
 
         this.setState({
-            [name]: value,        
+        
+            [name]: value     
+            
         });
     }
     
@@ -42,15 +48,17 @@ class LoginForm extends Component
         // Perform Axios GET Request
         // Sent to Flask server's route '/createUser'\
         // Send our state variables captured by our handleChange function 
-        axios.get('/loginUser', {
+        axios.get('/CreatePlaylist', {
             params: {
-              email: this.state.email,
-              password: this.state.password
+              artistOne: this.state.artistOne,
+              artistTwo: this.state.artistTwo,
+              artistThree: this.state.artistThree,
+              artistFour: this.state.artistFour
+
             }
           })
           .then(function (response) {
             console.log(response);
-        
           })
           .catch(function (error) {
             console.log(error);
@@ -67,23 +75,29 @@ class LoginForm extends Component
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="email">Email</label>
-                        <input type="email" id="email" className="FormField__Input" placeholder="Enter your email address" name="email" value={this.state.email} onChange={this.handleChange}></input>
+                        <input type="text" id="artistOne" className="FormField__Input" placeholder="Enter your email address" name="email" value={this.state.email} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="password">Password</label>
-                        <input type="Password" id="Password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange}></input>
+                        <input type="text" id="artistTwo" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
-                        <label className="FormField__CheckboxLabel">
-                            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" /> I agree all statements in <a href="" className="FormField__TermsLink">terms of service</a>
-                        </label>
+                        <label className="FormField__Label" htmlFor="password">Password</label>
+                        <input type="text" id="artistThree" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
-                        <button className="FormField__Button mr-20">Sign Up</button> <Link to="/"
-                            className="FormField__Link">Create an account</Link>
+                        <label className="FormField__Label" htmlFor="password">Password</label>
+                        <input type="text" id="artistFour" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange}></input>
+                    </div>
+
+
+
+                    <div className="FormField">
+                        <button className="FormField__Button mr-20">Create</button> <Link to="/"
+                            className="FormField__Link">Create a playlist</Link>
                     </div>
 
                 </form>
@@ -94,5 +108,5 @@ class LoginForm extends Component
         }
     }
     
-    export default LoginForm
+export default ArtistEnter
     
