@@ -38,6 +38,7 @@ class LoginForm extends Component
     {
         event.preventDefault();
         console.log(this.state);
+        
         var self = this;
 
         // Perform Axios GET Request
