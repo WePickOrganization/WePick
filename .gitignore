@@ -25,6 +25,7 @@ wheels/
 *.egg
 MANIFEST
 *.vscode
+.cache*
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -106,3 +107,6 @@ venv.bak/
 
 # Specifics
 config.txt
+
+# Node stuff
+node_modules

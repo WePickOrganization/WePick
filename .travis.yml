@@ -1,0 +1,20 @@
+
+
+language: node_js
+
+node_js:
+  - "stable"
+
+cache:
+  directories:
+    - node_modules
+
+before_script: 
+  - cd react-frontend 
+  - npm install
+  
+script:
+  - npm test
+
+on:
+  branch: master
