@@ -1,5 +1,11 @@
 div.NavBar {
+  position: relative;
   width: 100%;
-  margin: auto;
   border: 3px solid rgb(255, 0, 0);
+}
+
+div.BelowNavBar {
+  position: relative;
+  width: 100%;
+  border: 3px solid rgb(0, 255, 76);
 }

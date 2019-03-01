@@ -41,11 +41,14 @@ class App extends React.Component {
 
           {/* Header bar would go here */}
           <div className="NavBar">
-            <Route exact path="/" component={NavBar}>
+            <Route path="/" component={NavBar}>
             </Route>
+          </div>
 
-             {/* The blank space to the left of the forms*/}
-             <div className='App__Aside'>
+          <div className="BelowNavBar">
+
+            {/* The blank space to the left of the forms*/}
+            <div className='App__Aside'>
               <Route exact path="/Create" component={ArtistEnter}>
               </Route>
             </div>
@@ -76,11 +79,10 @@ class App extends React.Component {
             </div>
           </div>
 
-          <div className="BelowNavBar">
 
-           
 
-          </div>
+
+
 
 
         </div>
