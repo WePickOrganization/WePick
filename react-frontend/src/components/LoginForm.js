@@ -12,7 +12,8 @@ class LoginForm extends Component
       // Define the variables to be stored in our state
       this.state = {
         email: '',
-        password: ''
+        password: '',
+        redirect: false
       };
       
       // This lets us define functions outside of the constructor
@@ -29,7 +30,7 @@ class LoginForm extends Component
         let name = target.name;
 
         this.setState({
-            [name]: value,        
+            [name]: value   
         });
     }
     
@@ -38,6 +39,7 @@ class LoginForm extends Component
     {
         event.preventDefault();
         console.log(this.state);
+        //this.setState({ redirect: true });
 
         // Perform Axios GET Request
         // Sent to Flask server's route '/createUser'\
@@ -50,6 +52,13 @@ class LoginForm extends Component
           })
           .then(function (response) {
             console.log(response);
+            console.log("in Then")
+            if(response.status = 200){
+                console.log("status 200");
+                //console.log(redirect);
+               
+            }
+
         
           })
           .catch(function (error) {
