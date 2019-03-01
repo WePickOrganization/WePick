@@ -11,16 +11,24 @@ import LoginForm from './components/LoginForm'
 import ArtistEnter from './components/ArtistEnter'
 
 class App extends React.Component {
-      constructor()
+      constructor(props)
       {
-        super()
+        super(props)
         
         // Define the variables to be stored in our state
         this.state = {
           email: '',
-          password: ''
+          password: '',
+          isLoggedIn: false
         };
         
+        this.setLoggedIn = this.setLoggedIn.bind(this)
+      }
+
+      setLoggedIn() {
+        this.setState({
+          isLoggedIn: true
+        })
       }
 
       render() 
@@ -62,8 +70,9 @@ class App extends React.Component {
 
                 {/* Define an exact route for when the components below will be rendered */}
                 {/* E.G. When on the path '/Login', render the LoginForm found in components/LoginForm.js */}
-                <Route path="/Login" component={LoginForm}>
-                </Route>
+                <Route path="/Login" render={() => (
+                  <LoginForm setLoggedIn={this.setLoggedIn}/>
+                )} />
 
                 
               </div>
