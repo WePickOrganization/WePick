@@ -403,7 +403,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Imports\nexports.push([module.i, \"@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);\", \"\"]);\n\n// Module\nexports.push([module.i, \"* {\\n  box-sizing: border-box;\\n  font-family: \\\"Roboto\\\", sans-serif;\\n}\\n\\nbody {\\n  margin: 0;\\n  padding: 0;\\n}\\n\\n.mr-20 {\\n  margin-right: 20px !important;\\n}\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./src/stylesheets/index.css?./node_modules/css-loader/dist/cjs.js");
+eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Imports\nexports.push([module.i, \"@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);\", \"\"]);\n\n// Module\nexports.push([module.i, \"* {\\r\\n  box-sizing: border-box;\\r\\n  font-family: \\\"Roboto\\\", sans-serif;\\r\\n}\\r\\n\\r\\nbody {\\r\\n  margin: 0;\\r\\n  padding: 0;\\r\\n}\\r\\n\\r\\n.mr-20 {\\r\\n  margin-right: 20px !important;\\r\\n}\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./src/stylesheets/index.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
