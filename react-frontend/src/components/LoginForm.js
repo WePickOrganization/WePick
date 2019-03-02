@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-
+import {withRouter} from 'react-router-dom'
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
 class LoginForm extends Component
 {
@@ -20,6 +20,7 @@ class LoginForm extends Component
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this); 
       this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this); 
+      this.handleFailedLogin = this.handleFailedLogin.bind(this); 
     }
 
     // Function that gets called when values inside a text field are changed and sets them in our state
@@ -57,24 +58,32 @@ class LoginForm extends Component
             self.handleSuccessfulLogin();
             if(response.status = 200){
                 console.log("status 200");
-                //console.log(redirect);
-               
             }
 
         
           })
           .catch(function (error) {
             console.log(error);
+            self.handleFailedLogin();
+
           });
     }
 
     handleSuccessfulLogin()
     {
         this.props.setLoggedIn();
+        this.props.history.push('/Create');
+    }
+
+    handleFailedLogin()
+    {
+        this.props.setLoggedOut();
     }
 
     render()
     {
+
+       
 
         // Render the forms required for login
         return(
@@ -105,5 +114,5 @@ class LoginForm extends Component
         }
     }
     
-    export default LoginForm
+    export default withRouter(LoginForm)
     

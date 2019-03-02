@@ -5,9 +5,9 @@ import axios from 'axios';
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
 class ArtistEnter extends Component
 {
-    constructor()
+    constructor(props)
     {
-      super()
+      super(props)
       
       // Define the variables to be stored in our state
       this.state = {
@@ -20,6 +20,7 @@ class ArtistEnter extends Component
       // This lets us define functions outside of the constructor
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+
     
     }
 
@@ -30,7 +31,7 @@ class ArtistEnter extends Component
         let artistOne = target.artistOne;
         let artistTwo = target.artistTwo;
         let artistThree = target.artistThree;
-        let artistFour = target.rtistFour;
+        let artistFour = target.artistFour;
 
         this.setState({
         

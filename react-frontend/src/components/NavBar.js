@@ -4,6 +4,7 @@ MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
+import withRouter from 'react-router-dom'; 
 
 class NavbarPage extends Component {
 state = {
@@ -54,7 +55,7 @@ render() {
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default" right>
                 <MDBDropdownItem href="#/Login">Account Login/Register</MDBDropdownItem>
-                <MDBDropdownItem href="#!">Edit preferences</MDBDropdownItem>
+                <MDBDropdownItem href="#/Create">Edit preferences</MDBDropdownItem>
                 <MDBDropdownItem href="#/Logout">Logout</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
@@ -66,4 +67,4 @@ render() {
   }
 }
 
-export default NavbarPage;
+export default NavbarPage

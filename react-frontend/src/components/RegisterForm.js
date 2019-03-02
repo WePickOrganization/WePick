@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import withRouter from 'react-router-dom'; 
 
 // A RegisterForm component that can be exported at the end of the file and can be reused anywhere
 class RegisterForm extends Component

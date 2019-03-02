@@ -1,8 +1,8 @@
 //The entry point is the outermost component class the React app.
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
-
+import { HashRouter as Router, Route, Link, NavLink, Redirect} from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import './stylesheets/app.css'
 import './stylesheets/index.css'
 import axios from 'axios'
@@ -26,18 +26,38 @@ class App extends React.Component {
     };
 
     this.setLoggedIn = this.setLoggedIn.bind(this)
+    this.setLoggedOut = this.setLoggedOut.bind(this)
   }
 
   setLoggedIn() {
     this.setState({
       isLoggedIn: true
     })
+    console.log("Correct details.. Logging in and redirecting to /Create");
+    <Route path="/" render={() => (
+      loggedIn ? (
+        <Redirect to="/Create"/ >
+      ) : (
+        <Redirect to="/Login"/ >
+      )
+    )}/>
   }
 
+  setLoggedOut(){
+    this.setState({
+      isLoggedIn: false
+    })
+    console.log("Incorrect details.. Logging out")
+    return <Redirect to="/Login" />;
+  }
+  
   render() {
+
+
+
     return (
-      
       <Router>
+
         <div className="App">
 
           {/* Header bar would go here */}
@@ -95,6 +115,9 @@ class App extends React.Component {
 
     )
   }
+
+   
+  
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
