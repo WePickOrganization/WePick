@@ -115,3 +115,8 @@ node_modules
 project.aux
 project.fdb_latexmk
 project.fls
+project.bbl
+project.blg
+project.out
+project.synctex.gz
+project.toc
