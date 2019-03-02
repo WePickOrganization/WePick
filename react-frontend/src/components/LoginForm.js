@@ -39,6 +39,7 @@ class LoginForm extends Component
     {
         event.preventDefault();
         console.log(this.state);
+        var self = this;
         //this.setState({ redirect: true });
 
         // Perform Axios GET Request
@@ -52,7 +53,8 @@ class LoginForm extends Component
           })
           .then(function (response) {
             console.log(response);
-            console.log("in Then")
+            console.log("in Then");
+            self.handleSuccessfulLogin();
             if(response.status = 200){
                 console.log("status 200");
                 //console.log(redirect);

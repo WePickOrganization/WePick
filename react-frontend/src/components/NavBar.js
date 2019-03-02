@@ -41,7 +41,7 @@ render() {
                 <MDBDropdownItem href="#!">What is WePick?</MDBDropdownItem>
                 <MDBDropdownItem href="#!">How to use</MDBDropdownItem>
                 <MDBDropdownItem href="#!">Common problems</MDBDropdownItem>
-                <MDBDropdownItem href="#!">GitHub</MDBDropdownItem>
+                <MDBDropdownItem href="https://github.com/WePickOrganization/WePick">GitHub</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
@@ -53,8 +53,9 @@ render() {
                 <MDBIcon icon="user" />
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default" right>
+                <MDBDropdownItem href="#/Login">Account Login/Register</MDBDropdownItem>
                 <MDBDropdownItem href="#!">Edit preferences</MDBDropdownItem>
-                <MDBDropdownItem href="#!">Logout</MDBDropdownItem>
+                <MDBDropdownItem href="#/Logout">Logout</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>

@@ -15,23 +15,25 @@
 
 .App {
   height: 100vh;
-  color: white;
+  color: rgb(255, 255, 255);
   margin-left:auto;
   margin-right:auto;
   height:auto; 
   width:auto;
+  text-align: center;
 }
 
 .App__Aside {
-  width: 50%;
+  width: 0%;
   background-color: #66DAC7;
 }
 
 .App__Form {
-  width: 50%;
-  background-color: #2E4158;
+  width: 25%;
+  background-color: rgba(4, 168, 67, 0.308);
   padding: 25px 40px;
   overflow: auto;
+  display: inline-block;
 }
 
 .PageSwitcher {
@@ -41,7 +43,7 @@
 }
 
 .PageSwitcher__Item {
-  background-color: #4C5D72;
+  background-color: rgba(56, 0, 58, 0.637);
   color: #9DA6B1;
   padding: 10px 25px;
   cursor: pointer;
@@ -105,7 +107,7 @@
   color: white;
 }
 .FormField__Input {
-  width: 85%;
+  width: 75%;
   background-color: transparent;
   border: none;
   color: white;

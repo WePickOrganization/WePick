@@ -36,6 +36,7 @@ class App extends React.Component {
 
   render() {
     return (
+      
       <Router>
         <div className="App">
 
@@ -49,11 +50,15 @@ class App extends React.Component {
 
             {/* The blank space to the left of the forms*/}
             <div className='App__Aside'>
-              <Route exact path="/Create" component={ArtistEnter}>
-              </Route>
+         
             </div>
 
+           
+
             <div className='App__Form'>
+
+            <Route exact path="/Create" component={ArtistEnter}>
+              </Route>
 
               {/* Login/Signup text links above the forms */}
               <div className="FormTitle">
