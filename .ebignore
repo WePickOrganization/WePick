@@ -1,6 +1,9 @@
 __pycache__/
+.git/
+.vs/
+.vscode/
 .gitignore
-.vs
-.vscode
 README.md
-.travvis.yml
+.travis.yml
+docs/
+flask-backend/
