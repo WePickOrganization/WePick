@@ -1,7 +1,7 @@
 //The entry point is the outermost component class the React app.
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter as Router, Route, Link, NavLink, Redirect} from 'react-router-dom';
+import { HashRouter as Router, Route, Link, NavLink, Redirect } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import './stylesheets/app.css'
 import './stylesheets/index.css'
@@ -10,6 +10,8 @@ import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 import ArtistEnter from './components/ArtistEnter'
 import NavBar from './components/NavBar'
+import Logout from './components/Logout'
+
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
@@ -29,32 +31,36 @@ class App extends React.Component {
     this.setLoggedOut = this.setLoggedOut.bind(this)
   }
 
-  setLoggedIn() {
+  setLoggedIn(email) {
+
     this.setState({
-      isLoggedIn: true
+      isLoggedIn: true,
+      email: email
     })
     console.log("Correct details.. Logging in and redirecting to /Create");
     <Route path="/" render={() => (
       loggedIn ? (
-        <Redirect to="/Create"/ >
+        <Redirect to="/Create" />
       ) : (
-        <Redirect to="/Login"/ >
-      )
-    )}/>
+          <Redirect to="/Login" />
+        )
+    )} />
+
+    this.forceUpdate();
   }
 
-  setLoggedOut(){
+  setLoggedOut() {
     this.setState({
-      isLoggedIn: false
+      isLoggedIn: false,
+      email:'',
+      password:''
     })
-    console.log("Incorrect details.. Logging out")
-    return <Redirect to="/Login" />;
+    console.log("Logging out....")
+    return <Redirect to="/Login" />
   }
-  
+
+
   render() {
-
-
-
     return (
       <Router>
 
@@ -62,23 +68,29 @@ class App extends React.Component {
 
           {/* Header bar would go here */}
           <div className="NavBar">
-            <Route path="/" component={NavBar}>
+            <Route path="/" component={(props) => <NavBar email={this.state.email}>{props.children}</NavBar>}>
             </Route>
           </div>
 
           <div className="BelowNavBar">
 
+           
             {/* The blank space to the left of the forms*/}
             <div className='App__Aside'>
-         
+
             </div>
 
-           
+
 
             <div className='App__Form'>
 
-            <Route exact path="/Create" component={ArtistEnter}>
+            <Route path="/Logout" render={() => (
+                <Logout setLoggedOut={this.setLoggedOut} />
+              )} />
+
+              <Route path="/Create" component={ArtistEnter}>
               </Route>
+
 
               {/* Login/Signup text links above the forms */}
               <div className="FormTitle">
@@ -116,8 +128,8 @@ class App extends React.Component {
     )
   }
 
-   
-  
+
+
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

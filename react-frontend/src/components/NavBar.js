@@ -4,16 +4,28 @@ MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-import withRouter from 'react-router-dom'; 
+import {withRouter} from 'react-router-dom'
 
 class NavbarPage extends Component {
-state = {
-  isOpen: false
-};
+         
+          constructor(props)
+          {
+            super(props);
+                 
+          
+
+          this.state = {
+            isOpen: false,
+            email: this.props.email
+          };
+
+
+        }
 
 toggleCollapse = () => {
   this.setState({ isOpen: !this.state.isOpen });
 }
+
 
 render() {
   return (
@@ -25,13 +37,13 @@ render() {
       <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
         <MDBNavbarNav left>
           <MDBNavItem active>
-            <MDBNavLink to="#!">Home</MDBNavLink>
+            <MDBNavLink to="#/Home">Home</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="#!">Profile</MDBNavLink>
+            <MDBNavLink to="#/Create">Profile</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="#!">Generate</MDBNavLink>
+            <MDBNavLink to="#/Generate">Generate</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
             <MDBDropdown>
@@ -48,6 +60,9 @@ render() {
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
+        <MDBNavItem>
+            <MDBNavLink to="#/Create">{this.state.email}</MDBNavLink>
+          </MDBNavItem>
           <MDBNavItem>
             <MDBDropdown>
               <MDBDropdownToggle nav caret>
@@ -67,4 +82,4 @@ render() {
   }
 }
 
-export default NavbarPage
+export default withRouter(NavbarPage)

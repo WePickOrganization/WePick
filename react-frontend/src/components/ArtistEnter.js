@@ -55,7 +55,6 @@ class ArtistEnter extends Component
               artistTwo: this.state.artistTwo,
               artistThree: this.state.artistThree,
               artistFour: this.state.artistFour
-
             }
           })
           .then(function (response) {
@@ -71,7 +70,6 @@ class ArtistEnter extends Component
         // Render the forms required for login
         return(
             <div className="FormCenter">
-
                 <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
 
                     <div className="FormField">

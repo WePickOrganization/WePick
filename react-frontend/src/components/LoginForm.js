@@ -5,9 +5,9 @@ import {withRouter} from 'react-router-dom'
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
 class LoginForm extends Component
 {
-    constructor()
+    constructor(props)
     {
-      super()
+      super(props)
       
       // Define the variables to be stored in our state
       this.state = {
@@ -54,24 +54,17 @@ class LoginForm extends Component
           })
           .then(function (response) {
             console.log(response);
-            console.log("in Then");
             self.handleSuccessfulLogin();
-            if(response.status = 200){
-                console.log("status 200");
-            }
-
-        
           })
           .catch(function (error) {
             console.log(error.response);
             self.handleFailedLogin();
-
           });
     }
 
     handleSuccessfulLogin()
     {
-        this.props.setLoggedIn();
+        this.props.setLoggedIn(this.state.email);
         this.props.history.push('/Create');
     }
 
@@ -79,7 +72,6 @@ class LoginForm extends Component
     {
         this.props.setLoggedOut();
         this.props.history.push('/Login');
-
     }
 
     render()
