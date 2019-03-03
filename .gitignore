@@ -122,3 +122,6 @@ project.synctex.gz
 project.toc
 
 # AWS Elastic Beanstalk stuff
+.ebextensions/
+.elasticbeanstalk/
+.ebignore
