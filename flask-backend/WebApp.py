@@ -16,14 +16,14 @@ from spotify import SpotipyAPI
 # Create instance of DatabaseConnector
 databaseConnection = DatabaseConnector.DatabaseConnector()
 
-# Create the Flask app and tell it where to look to serve HTML files
-app = Flask(__name__, template_folder='../react-frontend/templates', static_folder='../react-frontend/static')
+# Create the Flask application and tell it where to look to serve HTML files
+application = Flask(__name__, template_folder='../react-frontend/templates', static_folder='../react-frontend/static')
 
 # Prepare the mongo instance
-app.config["MONGO_URI"] = databaseConnection.getURI()
+application.config["MONGO_URI"] = databaseConnection.getURI()
 
-# Create the Mongo object with our Flask app
-mongo = PyMongo(app)
+# Create the Mongo object with our Flask application
+mongo = PyMongo(application)
 
 # Extend the JSONEncoder class to support more stuff
 class JSONEncoder(json.JSONEncoder):
@@ -37,17 +37,17 @@ class JSONEncoder(json.JSONEncoder):
     
 
 # use the modified encoder class to handle ObjectId & datetime object while jsonifying the response.
-app.json_encoder = JSONEncoder
+application.json_encoder = JSONEncoder
 
 
-# The default route for the app
-@app.route("/")
+# The default route for the application
+@application.route("/")
 def index():
   return render_template('index.html')
 
 
-# Define the routes through our Flask application
-@app.route('/loginUser', methods=['GET'])
+# Define the routes through our Flask applicationlication
+@application.route('/loginUser', methods=['GET'])
 def loginUser():
     # If the HTTP Request is a 'GET' request
     if request.method == 'GET':
@@ -80,7 +80,7 @@ def loginUser():
         # Return a bad request response in JSON if the paramaters are incorrect
         return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
-@app.route('/showUser', methods=['GET'])
+@application.route('/showUser', methods=['GET'])
 def showUser():
     # If the HTTP Request is a 'GET' request
     if request.method == 'GET':
@@ -97,8 +97,8 @@ def showUser():
         # Return the information as JSON with status code 200
         return jsonify(databaseResponse), 200
 
-# Define the routes through our Flask application
-@app.route('/showAllUsers', methods=['GET'])
+# Define the routes through our Flask applicationlication
+@application.route('/showAllUsers', methods=['GET'])
 def showAllUsers():
     # If the HTTP Request is a 'GET' request
     if request.method == 'GET':
@@ -122,7 +122,7 @@ def showAllUsers():
         return dumps(collectionList), 200
 
 # Route for creating a user
-@app.route('/createUser', methods=['POST'])
+@application.route('/createUser', methods=['POST'])
 def createUser():
 
     # Define the incoming json data from the request as 'data'
@@ -144,7 +144,7 @@ def createUser():
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
 # Route for deleting a user
-@app.route('/deleteUser', methods=['DELETE'])
+@application.route('/deleteUser', methods=['DELETE'])
 def deleteUser():
 
     # Define the incoming json data from the request as 'data'
@@ -168,7 +168,7 @@ def deleteUser():
           return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
 
-@app.route('/updateUser', methods=['PATCH'])
+@application.route('/updateUser', methods=['PATCH'])
 def updateUser():
 
     # Define the incoming json data from the request as 'data'
@@ -192,6 +192,6 @@ def updateUser():
 # Notify the user the server is starting
 print("Starting Flask server...")
 
-# Run the app
+# Run the application
 if __name__ == '__main__':
-  app.run()
+  application.run()
