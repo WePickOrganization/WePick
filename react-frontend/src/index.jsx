@@ -27,17 +27,22 @@ class App extends React.Component {
       isLoggedIn: false
     };
 
+    // Declare these functions here so we can use them outside the constructor
     this.setLoggedIn = this.setLoggedIn.bind(this)
     this.setLoggedOut = this.setLoggedOut.bind(this)
   }
 
-  setLoggedIn(email) {
-
+    // Handle a user logging in by setting some state and passsing in the email from the LoginForm component
+  setLoggedIn(emailFromLogin) 
+  {
     this.setState({
       isLoggedIn: true,
-      email: email
+      email: emailFromLogin
     })
+
     console.log("Correct details.. Logging in and redirecting to /Create");
+
+    // Depending on the current loggedIn status, redirect the user
     <Route path="/" render={() => (
       loggedIn ? (
         <Redirect to="/Create" />
@@ -49,14 +54,18 @@ class App extends React.Component {
     this.forceUpdate();
   }
 
-  setLoggedOut() {
+  // Handle a user logging out by clearing the state and redirecting back to home page
+  setLoggedOut() 
+  {
     this.setState({
       isLoggedIn: false,
       email:'',
       password:''
     })
+
     console.log("Logging out....")
-    return <Redirect to="/Login" />
+
+    return <Redirect to="/Home" />
   }
 
 
@@ -67,6 +76,7 @@ class App extends React.Component {
         <div className="App">
 
           {/* Header bar would go here */}
+          {/* Here we pass the current email held in state as props to our NavBar child component*/}
           <div className="NavBar">
             <Route path="/" component={(props) => <NavBar email={this.state.email}>{props.children}</NavBar>}>
             </Route>

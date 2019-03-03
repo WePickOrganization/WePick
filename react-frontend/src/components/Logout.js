@@ -13,13 +13,12 @@ class Logout extends Component
 
     componentDidMount()
     {
+        // Clear any state held by the parent component (Index.jsx)
         this.props.setLoggedOut();
-        console.log("Counting down")
 
-        setTimeout(function() { //Start the timer
+        // After 3 seconds, redirect the user to the home page
+        setTimeout(function() {
             this.props.history.push('/Home');
-            console.log("Done Counting down")
-
         }.bind(this), 3000)
 
     }
