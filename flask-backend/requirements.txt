@@ -1,4 +1,0 @@
-Flask=1.0.2
-Flask-PyMongo=2.2.0     
-pymongo=3.7.2     
-spotipy=2.4.4
