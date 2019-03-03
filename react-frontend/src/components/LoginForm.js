@@ -63,7 +63,7 @@ class LoginForm extends Component
         
           })
           .catch(function (error) {
-            console.log(error);
+            console.log(error.response);
             self.handleFailedLogin();
 
           });
@@ -78,6 +78,8 @@ class LoginForm extends Component
     handleFailedLogin()
     {
         this.props.setLoggedOut();
+        this.props.history.push('/Login');
+
     }
 
     render()

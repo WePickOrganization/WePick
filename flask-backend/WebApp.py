@@ -65,10 +65,18 @@ def loginUser():
         # If the data is in the correct format
         if loginData is not None:
             # Query the database and get the data from the query
-            if mongo.db.Users.find({"email": email},{'username': password}).count() > 0:
+            databaseResponse = mongo.db.Users.aggregate([{ "$match": {"email": email,"password": password}}])
+
+            # Parse the response as a list so we can check it's properties
+            databaseResponseList = list(databaseResponse)
+
+            # If the list is empty due to an error with login detaills, motify the user
+            if databaseResponseList==[]:
+                return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 400
+            else:
                 # Return the information as JSON with status code 200
                 return jsonify({'ok': True, 'message': 'Record exists.. Logging in..'}), 200
-            return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 400
+
         # Return a bad request response in JSON if the paramaters are incorrect
         return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
