@@ -120,3 +120,6 @@ project.blg
 project.out
 project.synctex.gz
 project.toc
+
+# AWS Elastic Beanstalk stuff
+.elasticbeanstalk
