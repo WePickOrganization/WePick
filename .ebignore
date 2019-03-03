@@ -3,4 +3,5 @@ __pycache__/
 .vs
 .vscode
 README.md
-.travvis.yml
+.travis.yml
+docs
