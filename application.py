@@ -1,9 +1,6 @@
 import sys
 sys.path.append('..')
 import os
-APP_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_PATH = os.path.join(APP_PATH, 'react-frontend/templates')
-sys.path.append(APP_PATH)
 import json
 import datetime
 from db import DatabaseConnector
@@ -20,12 +17,13 @@ from spotify import SpotipyAPI
 databaseConnection = DatabaseConnector.DatabaseConnector()
 
 # Create the Flask application and tell it where to look to serve HTML files
-application = Flask(__name__, template_folder=TEMPLATE_PATH, static_folder='react-frontend/static')
+application = Flask(__name__, template_folder='react-frontend/templates', static_folder='react-frontend/static')
 
 print(application.template_folder)
 
 # Prepare the mongo instance
 application.config["MONGO_URI"] = databaseConnection.getURI()
+
 
 # Create the Mongo object with our Flask application
 mongo = PyMongo(application)
