@@ -27,11 +27,13 @@ class ArtistEnter extends Component
     // Function that gets called when values inside a text field are changed and sets them in our state
     handleChange(event) 
     {
-
-        this.setState({artistOne : event.target.artistOne});
-        this.setState({artistTwo : event.target.artistTwo});
-        this.setState({artistThree : event.target.artistThree});
-        this.setState({artistFour : event.target.artistFour});
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        
+        this.setState({
+            [name]: value
+        });
             
     }
     
@@ -62,6 +64,7 @@ class ArtistEnter extends Component
 
     render()
     {
+        const { artistOne, artistTwo, artistThree, artistFour } = this.state;
         // Render the forms required for login
         return(
             <div className="FormCenter">
@@ -69,22 +72,22 @@ class ArtistEnter extends Component
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="artistOne">Artist 1</label>
-                        <input type="text" id="artistOne" className="FormField__Input" placeholder="Enter artist name" name="artistOne" value={this.state.artistOne || ''} onChange={this.handleChange}></input>
+                        <input type="text" id="artistOne" className="FormField__Input" placeholder="Enter artist name" name="artistOne" value={this.state.artistOne} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="artistTwo">Artist 2</label>
-                        <input type="text" id="artistTwo" className="FormField__Input" placeholder="Enter artist name" name="artistTwo" value={this.state.artistTwo || ''} onChange={this.handleChange}></input>
+                        <input type="text" id="artistTwo" className="FormField__Input" placeholder="Enter artist name" name="artistTwo" value={this.state.artistTwo} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="artistThree">Artist 3</label>
-                        <input type="text" id="artistThree" className="FormField__Input" placeholder="Enter artist name" name="artistThree" value={this.state.artistThree || ''} onChange={this.handleChange}></input>
+                        <input type="text" id="artistThree" className="FormField__Input" placeholder="Enter artist name" name="artistThree" value={this.state.artistThree} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="artistFour">Artist 4</label>
-                        <input type="text" id="artistFour" className="FormField__Input" placeholder="Enter your password" name="artistFour" value={this.state.artistFour || ''} onChange={this.handleChange}></input>
+                        <input type="text" id="artistFour" className="FormField__Input" placeholder="Enter your password" name="artistFour" value={this.state.artistFour} onChange={this.handleChange}></input>
                     </div>
 
 
