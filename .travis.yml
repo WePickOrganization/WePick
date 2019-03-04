@@ -23,8 +23,8 @@ deploy:
   secret_access_key:
     secure: "$SECRETACCESSKEY"
   region: "eu-west-1"  
-  app: "app-5d26-190303_210954"
-  env: "e-bhxmrptftw"
+  app: "WePick3"
+  env: "WePickFinal"
   bucket_name: "elasticbeanstalk-eu-west-1-855059450301"
   on:
   branch: master
