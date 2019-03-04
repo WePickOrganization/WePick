@@ -27,17 +27,12 @@ class ArtistEnter extends Component
     // Function that gets called when values inside a text field are changed and sets them in our state
     handleChange(event) 
     {
-        let target = event.target;
-        let artistOne = target.artistOne;
-        let artistTwo = target.artistTwo;
-        let artistThree = target.artistThree;
-        let artistFour = target.artistFour;
 
-        this.setState({
-        
-            [name]: value     
+        this.setState({artistOne : event.target.artistOne});
+        this.setState({artistTwo : event.target.artistTwo});
+        this.setState({artistThree : event.target.artistThree});
+        this.setState({artistFour : event.target.artistFour});
             
-        });
     }
     
     // Function that gets called when we press our submit button, in this case SignUp/Login
@@ -49,7 +44,7 @@ class ArtistEnter extends Component
         // Perform Axios GET Request
         // Sent to Flask server's route '/createUser'\
         // Send our state variables captured by our handleChange function 
-        axios.get('/CreatePlaylist', {
+        axios.post('/CreatePlaylist', {
             params: {
               artistOne: this.state.artistOne,
               artistTwo: this.state.artistTwo,
@@ -73,23 +68,23 @@ class ArtistEnter extends Component
                 <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
 
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="email">Artist 1</label>
-                        <input type="text" id="artistOne" className="FormField__Input" placeholder="Enter artist name" name="email" value={this.state.artistOne} onChange={this.handleChange}></input>
+                        <label className="FormField__Label" htmlFor="artistOne">Artist 1</label>
+                        <input type="text" id="artistOne" className="FormField__Input" placeholder="Enter artist name" name="artistOne" value={this.state.artistOne || ''} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="password">Artist 2</label>
-                        <input type="text" id="artistTwo" className="FormField__Input" placeholder="Enter artist name" name="password" value={this.state.artistTwo} onChange={this.handleChange}></input>
+                        <label className="FormField__Label" htmlFor="artistTwo">Artist 2</label>
+                        <input type="text" id="artistTwo" className="FormField__Input" placeholder="Enter artist name" name="artistTwo" value={this.state.artistTwo || ''} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="password">Artist 3</label>
-                        <input type="text" id="artistThree" className="FormField__Input" placeholder="Enter artist name" name="password" value={this.state.artistThree} onChange={this.handleChange}></input>
+                        <label className="FormField__Label" htmlFor="artistThree">Artist 3</label>
+                        <input type="text" id="artistThree" className="FormField__Input" placeholder="Enter artist name" name="artistThree" value={this.state.artistThree || ''} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="password">Artist 4</label>
-                        <input type="text" id="artistFour" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.artistFour} onChange={this.handleChange}></input>
+                        <label className="FormField__Label" htmlFor="artistFour">Artist 4</label>
+                        <input type="text" id="artistFour" className="FormField__Input" placeholder="Enter your password" name="artistFour" value={this.state.artistFour || ''} onChange={this.handleChange}></input>
                     </div>
 
 

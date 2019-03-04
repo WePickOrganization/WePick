@@ -42,6 +42,18 @@ class JSONEncoder(json.JSONEncoder):
 # use the modified encoder class to handle ObjectId & datetime object while jsonifying the response.
 application.json_encoder = JSONEncoder
 
+@application.route('/CreatePlaylist', methods=['POST'])
+def CreatePlaylist():
+    # Take the query from the HTTP request argumments
+    ArtistData = request.args
+    artistOne = ArtistData["artistOne"]
+    artistTwo = ArtistData["artistTwo"]
+    artistThree = ArtistData["artistThree"]
+    artistFour = ArtistData["artistFour"]
+
+    print(artistOne + artistTwo + artistThree + artistFour)
+
+
 
 # The default route for the application
 @application.route("/")
