@@ -73,23 +73,23 @@ class ArtistEnter extends Component
                 <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
 
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="email">Email</label>
-                        <input type="text" id="artistOne" className="FormField__Input" placeholder="Enter your email address" name="email" value={this.state.email} onChange={this.handleChange}></input>
+                        <label className="FormField__Label" htmlFor="email">Artist 1</label>
+                        <input type="text" id="artistOne" className="FormField__Input" placeholder="Enter artist name" name="email" value={this.state.artistOne} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="password">Password</label>
-                        <input type="text" id="artistTwo" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange}></input>
+                        <label className="FormField__Label" htmlFor="password">Artist 2</label>
+                        <input type="text" id="artistTwo" className="FormField__Input" placeholder="Enter artist name" name="password" value={this.state.artistTwo} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="password">Password</label>
-                        <input type="text" id="artistThree" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange}></input>
+                        <label className="FormField__Label" htmlFor="password">Artist 3</label>
+                        <input type="text" id="artistThree" className="FormField__Input" placeholder="Enter artist name" name="password" value={this.state.artistThree} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="password">Password</label>
-                        <input type="text" id="artistFour" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange}></input>
+                        <label className="FormField__Label" htmlFor="password">Artist 4</label>
+                        <input type="text" id="artistFour" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.artistFour} onChange={this.handleChange}></input>
                     </div>
 
 
