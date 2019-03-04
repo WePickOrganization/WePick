@@ -24,7 +24,7 @@ deploy:
     secure: "$SECRETACCESSKEY"
   region: "eu-west-1"  
   app: "WePickFinal"
-  env: "e-bhxmrptftw"
+  env: "app-7371a-190304_001503"
   bucket_name: "elasticbeanstalk-eu-west-1-855059450301"
   on:
   branch: master
