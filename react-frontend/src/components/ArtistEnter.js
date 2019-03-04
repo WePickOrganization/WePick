@@ -30,7 +30,7 @@ class ArtistEnter extends Component
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        
+
         this.setState({
             [name]: value
         });
@@ -46,7 +46,7 @@ class ArtistEnter extends Component
         // Perform Axios GET Request
         // Sent to Flask server's route '/createUser'\
         // Send our state variables captured by our handleChange function 
-        axios.post('/CreatePlaylist', {
+        axios.get('/CreatePlaylist', {
             params: {
               artistOne: this.state.artistOne,
               artistTwo: this.state.artistTwo,
