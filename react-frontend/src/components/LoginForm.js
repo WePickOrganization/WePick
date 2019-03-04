@@ -86,7 +86,7 @@ class LoginForm extends Component
                 <form onSubmit={this.handleSubmit} className="FormFields">
 
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="email">Email</label>
+                        <label className="FormField__Label" htmlFor="email">THIS IS A TEST PLEASE REMOVE ME Email</label>
                         <input type="email" id="email" className="FormField__Input" placeholder="Enter your email address" name="email" value={this.state.email} onChange={this.handleChange}></input>
                     </div>
 

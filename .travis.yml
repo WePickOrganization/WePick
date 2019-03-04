@@ -16,5 +16,17 @@ before_script:
 script:
   - npm test
 
-on:
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $ACCESSKEYID
+  secret_access_key:
+    secure: "$SECRETACCESSKEY"
+  region: "eu-west-1"  
+  app: "WePickFinal"
+  env: "e-bhxmrptftw"
+  bucket_name: "elasticbeanstalk-eu-west-1-855059450301"
+  on:
   branch: master
+
+  
