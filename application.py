@@ -51,7 +51,11 @@ def CreatePlaylist():
     artistThree = ArtistData["artistThree"]
     artistFour = ArtistData["artistFour"]
 
-    print(artistOne + artistTwo + artistThree + artistFour)
+    artistList = ['']
+
+    artistList.append(artistOne,artistTwo,artistThree,artistFour)
+
+    print(artistList)
 
 
 
