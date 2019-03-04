@@ -42,6 +42,11 @@ class JSONEncoder(json.JSONEncoder):
 # use the modified encoder class to handle ObjectId & datetime object while jsonifying the response.
 application.json_encoder = JSONEncoder
 
+# The default route for the application
+@application.route("/")
+def index():
+  return render_template('index.html')
+
 @application.route('/CreatePlaylist', methods=['GET'])
 def CreatePlaylist():
     # Take the query from the HTTP request argumments
@@ -51,21 +56,18 @@ def CreatePlaylist():
     artistThree = ArtistData["artistThree"]
     artistFour = ArtistData["artistFour"]
 
-    artistList = ['']
+    artistList = []
 
-    artistList.append(artistOne,artistTwo,artistThree,artistFour)
+    
+    artistList.append(artistOne)
+    artistList.append(artistTwo)
+    artistList.append(artistThree)
+    artistList.append(artistFour)
+
 
     print(artistList)
 
     return artistList
-
-
-
-# The default route for the application
-@application.route("/")
-def index():
-  return render_template('index.html')
-
 
 # Define the routes through our Flask applicationlication
 @application.route('/loginUser', methods=['GET'])
