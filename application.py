@@ -44,6 +44,11 @@ application.json_encoder = JSONEncoder
 
 @application.route('/CreatePlaylist', methods=['GET'])
 def CreatePlaylist():
+    jsonData = request.get_json(force=True)
+
+    print(json.loads(jsonData))
+    
+
     # Take the query from the HTTP request argumments
     ArtistData = request.args
     artistOne = ArtistData["artistOne"]
@@ -53,11 +58,15 @@ def CreatePlaylist():
 
     artistList = ['']
 
-    artistList.append(artistOne,artistTwo,artistThree,artistFour)
+    artistList.append(artistOne)
+    artistList.append(artistTwo)
+    artistList.append(artistThree)
+    artistList.append(artistFour)
 
     print(artistList)
 
-    return artistList
+    return jsonify(jsonData)
+
 
 
 
