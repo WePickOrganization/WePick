@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {withRouter} from 'react-router-dom'
 import Countdown from 'react-countdown-now';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
 
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
 class Logout extends Component
@@ -26,7 +29,13 @@ class Logout extends Component
     {
         // Render the forms required for login
         return(
+            <div>
                 <div>Logged out.. Redirecting to home..</div>
+                <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+              
             );
    
         }

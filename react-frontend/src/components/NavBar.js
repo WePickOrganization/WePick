@@ -6,26 +6,24 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import {withRouter} from 'react-router-dom'
 
-class NavbarPage extends Component {
+class NavbarPage extends Component 
+{
          
           constructor(props)
           {
-            super(props);
-                 
-          
+              super(props);
+                  
+            
 
-          this.state = {
-            isOpen: false,
-            email: this.props.email
-          };
-
-
+            this.state = {
+              isOpen: false,
+              email: this.props.email
+            };
         }
 
-toggleCollapse = () => {
-  this.setState({ isOpen: !this.state.isOpen });
-}
-
+        toggleCollapse = () => {
+          this.setState({ isOpen: !this.state.isOpen });
+        }
 
 render() {
   return (
