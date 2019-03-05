@@ -29,12 +29,7 @@ class ArtistEnter extends Component
     {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
-            
+        const name = target.name;            
     }
     
     // Function that gets called when we press our submit button, in this case SignUp/Login
@@ -106,4 +101,3 @@ class ArtistEnter extends Component
     }
     
 export default ArtistEnter
-    
