@@ -10,6 +10,15 @@ from db import DatabaseConnector
 # Function which creates recommendation based of an artist id/ids
 def GeneratePlaylist(artistsID):
     
+    username = input("Enter username: ")
+
+    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+
+    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8',redirect_uri='http://localhost/')
+
+    # Spotify Object
+    spotifyObject = spotipy.Spotify(auth=token)
+    
     Recommendation = spotifyObject.recommendations(seed_artists= artistsID, limit=20)
     RecommendationList = []
     for i in range(20):
@@ -21,6 +30,14 @@ def GeneratePlaylist(artistsID):
 
 # Function which converts artist name to id (Very slightly glitchy)
 def GetArtistID(artists):
+    username = input("Enter username: ")
+
+    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+
+    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8',redirect_uri='http://localhost/')
+
+    # Spotify Object
+    spotifyObject = spotipy.Spotify(auth=token)
     array_length = len(artists)
     pprint.pprint(array_length)
     artistsList = []    
@@ -34,6 +51,14 @@ def GetArtistID(artists):
 
 # Function which creates playlist of a given list 
 def CreatePlaylist(tracks):
+    username = input("Enter username: ")
+
+    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+
+    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8',redirect_uri='http://localhost/')
+
+    # Spotify Object
+    spotifyObject = spotipy.Spotify(auth=token)
     spotifyObject.trace = False
     playlists = spotifyObject.user_playlist_create(username, "Recommended", public=True)
     spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
@@ -42,12 +67,12 @@ def CreatePlaylist(tracks):
 ##########################################################################################
 ############################### Connect to database ######################################
 def testFunction():
-    databaseConnection = DatabaseConnector.DatabaseConnector()
-    databaseConnection.showUsersFavArtist()
+    #databaseConnection = DatabaseConnector.DatabaseConnector()
+    #databaseConnection.showUsersFavArtist()
 
-    databaseList = databaseConnection.showUsersFavArtist()
-    print(type(databaseList))
-    pprint.pprint(databaseList)
+    #databaseList = databaseConnection.showUsersFavArtist()
+    #print(type(databaseList))
+    #pprint.pprint(databaseList)
 
     ##########################################################################################
     ################### Current authentication (need to make not hardcoded) ##################
