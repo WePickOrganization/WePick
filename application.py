@@ -20,6 +20,9 @@ from jsonschema.exceptions import SchemaError
 user_schema = {
     "type": "object",
     "properties": {
+        "name": {
+            "type": "string",
+        },
         "email": {
             "type": "string",
             "format": "email"
@@ -31,6 +34,7 @@ user_schema = {
     "required": ["email", "password"],
     "additionalProperties": False
 }
+
 
 # Create instance of DatabaseConnector
 databaseConnection = DatabaseConnector.DatabaseConnector()
@@ -59,6 +63,16 @@ class JSONEncoder(json.JSONEncoder):
             return str(o)
         return json.JSONEncoder.default(self, o)
     
+
+
+def validateRequest(jsonData):
+    try:
+        validate(jsonData, user_schema)
+    except ValidationError as e:
+        return {'ok': False, 'message': e}
+    except SchemaError as e:
+        return {'ok': False, 'message': e}
+    return {'ok': True, 'data': jsonData}
 
 # use the modified encoder class to handle ObjectId & datetime object while jsonifying the response.
 application.json_encoder = JSONEncoder
@@ -179,20 +193,28 @@ def showAllUsers():
 @application.route('/createUser', methods=['POST'])
 def createUser():
 
-    # Define the incoming json data from the request as 'data'
-    jsonData = request.get_json(force=True)
-
     # If the HTTP Request is a 'POST' request
     if request.method == 'POST':
 
        # Show that a GET request is being recieved
         print("\n - POST REQUEST RECIEVED - \n")
-
+            
+        # Pass the jsonData into our function to validate it
+        jsonData = validateRequest(request.get_json(force=True))
+        
         # If the data is in the correct format
-        if jsonData.get('email', None) is not None and jsonData.get('name', None) is not None and jsonData.get('password', None) is not None:
-            # Successful response
+        if jsonData['ok']:
+            
+            jsonData = jsonData['data']
+
+            # Encrypt the password before inserting it into the database
+            jsonData['password'] = flask_bcrypt.generate_password_hash(jsonData['password'])
+
             mongo.db.Users.insert_one(jsonData)
+
+            # Successful response
             return jsonify({'ok': True, 'message': 'User created successfully!'}), 200
+
         else:
             # Return a bad request response in JSON if the paramaters are incorrect
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
@@ -249,13 +271,3 @@ print("Starting Flask server...")
 # Run the application
 if __name__ == '__main__':
   application.run()
-
-
-def validate_user(data):
-    try:
-        validate(data, user_schema)
-    except ValidationError as e:
-        return {'ok': False, 'message': e}
-    except SchemaError as e:
-        return {'ok': False, 'message': e}
-return {'ok': True, 'data': data}
