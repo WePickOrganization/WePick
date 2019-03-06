@@ -11,7 +11,26 @@ from flask import Flask, request, render_template
 from flask import jsonify
 from bson.json_util import dumps
 from spotify import SpotipyAPI
+from flask_jwt_extended import JWTManager
+from flask_bcrypt import Bcrypt
+from jsonschema import validate
+from jsonschema.exceptions import ValidationError
+from jsonschema.exceptions import SchemaError
 
+user_schema = {
+    "type": "object",
+    "properties": {
+        "email": {
+            "type": "string",
+            "format": "email"
+        },
+        "password": {
+            "type": "string",
+        }
+    },
+    "required": ["email", "password"],
+    "additionalProperties": False
+}
 
 # Create instance of DatabaseConnector
 databaseConnection = DatabaseConnector.DatabaseConnector()
@@ -27,6 +46,8 @@ application.config["MONGO_URI"] = databaseConnection.getURI()
 
 # Create the Mongo object with our Flask application
 mongo = PyMongo(application)
+flask_bcrypt = Bcrypt(application)
+jwt = JWTManager(application)
 
 # Extend the JSONEncoder class to support more stuff
 class JSONEncoder(json.JSONEncoder):
@@ -228,3 +249,13 @@ print("Starting Flask server...")
 # Run the application
 if __name__ == '__main__':
   application.run()
+
+
+def validate_user(data):
+    try:
+        validate(data, user_schema)
+    except ValidationError as e:
+        return {'ok': False, 'message': e}
+    except SchemaError as e:
+        return {'ok': False, 'message': e}
+return {'ok': True, 'data': data}
