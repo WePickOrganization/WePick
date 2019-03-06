@@ -103,12 +103,10 @@ def unauthorized_response(callback):
 def index():
   return render_template('index.html')
 
-@jwt_required
 @application.route('/CreatePlaylist', methods=['POST'])
+@jwt_required
 def CreatePlaylist():
     jsonData = request.get_json(force=True)
-
-    print(jsonData)    
 
     # Take the query from the HTTP request argumments
     ArtistData = request.args
@@ -125,13 +123,6 @@ def CreatePlaylist():
     artistList.append(artistThree)
     artistList.append(artistFour)
 
-    artistList.append(artistOne)
-    artistList.append(artistTwo)
-    artistList.append(artistThree)
-    artistList.append(artistFour)
-
-    print(artistList)
-
     return jsonify(jsonData)
 
 
@@ -146,7 +137,7 @@ def loginUser():
         print("\n - POST REQUEST RECIEVED - \n")
         print("\n - In Route '/Login' - \n")
         
-        loginData = request.get_json()
+        loginData = request.get_json(force=True)
 
         # See json format
         jsonData = loginData['params']

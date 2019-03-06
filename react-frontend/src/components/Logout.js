@@ -31,8 +31,8 @@ class Logout extends Component
         return(
             <div>
                 <div>Logged out.. Redirecting to home..</div>
-                <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
+                <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
                 </div>
             </div>
               
