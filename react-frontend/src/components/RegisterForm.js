@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
 import withRouter from 'react-router-dom'; 
+import { HashRouter as Router, Route, Link, NavLink, Redirect } from 'react-router-dom';
 
+import '../stylesheets/app.css'
+import '../stylesheets/index.css'
 // A RegisterForm component that can be exported at the end of the file and can be reused anywhere
 class RegisterForm extends Component
 {
@@ -69,6 +71,17 @@ class RegisterForm extends Component
         // Render the forms required for register
         return(
             <div className="FormCenter">
+            
+              {/* Login/Signup text links above the forms */}
+              <div className="FormTitle">
+                    <NavLink to="/Login"
+                    activeClassName="FormTitle__Link--Active"
+                    className="FormTitle__Link">Sign In</NavLink> or
+
+                    <NavLink to="/Register"
+                    activeClassName="FormTitle__Link--Active"
+                    className="FormTitle__Link">Sign Up</NavLink>
+             </div>
 
                 <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
                     

@@ -16,6 +16,8 @@ from flask_bcrypt import Bcrypt
 from jsonschema import validate
 from jsonschema.exceptions import ValidationError
 from jsonschema.exceptions import SchemaError
+from flask_jwt_extended import (create_access_token, create_refresh_token,
+jwt_required, jwt_refresh_token_required, get_jwt_identity)
 
 user_schema = {
     "type": "object",
@@ -42,16 +44,16 @@ databaseConnection = DatabaseConnector.DatabaseConnector()
 # Create the Flask application and tell it where to look to serve HTML files
 application = Flask(__name__, template_folder='react-frontend/templates', static_folder='react-frontend/static')
 
-print(application.template_folder)
-
 # Prepare the mongo instance
 application.config["MONGO_URI"] = databaseConnection.getURI()
 application.config['JWT_ACCESS_TOKEN_EXPIRES'] =  datetime.timedelta(days=1)
+application.config['PROPAGATE_EXCEPTIONS'] = True
 
 # Create the Mongo object with our Flask application
 mongo = PyMongo(application)
 flask_bcrypt = Bcrypt(application)
 jwt = JWTManager(application)
+
 
 # Extend the JSONEncoder class to support more stuff
 class JSONEncoder(json.JSONEncoder):
@@ -65,6 +67,9 @@ class JSONEncoder(json.JSONEncoder):
     
 
 
+# use the modified encoder class to handle ObjectId & datetime object while jsonifying the response.
+application.json_encoder = JSONEncoder
+
 def validateRequest(jsonData):
     try:
         validate(jsonData, user_schema)
@@ -74,34 +79,57 @@ def validateRequest(jsonData):
         return {'ok': False, 'message': e}
     return {'ok': True, 'data': jsonData}
 
-# use the modified encoder class to handle ObjectId & datetime object while jsonifying the response.
-application.json_encoder = JSONEncoder
+# Authentication Stuff
+@application.route('/refresh', methods=['POST'])
+@jwt_refresh_token_required
+def refresh():
+    current_user = get_jwt_identity()
+    ret = {
+            'token': create_access_token(identity=current_user)
+    }
+    return jsonify({'ok': True, 'data': ret}), 200
+
+@jwt.unauthorized_loader
+def unauthorized_response(callback):
+    return jsonify({
+        'ok': False,
+        'message': 'Missing Authorization Header'
+    }), 401
+
 
 # The default route for the application
 @application.route("/")
 def index():
   return render_template('index.html')
 
-@application.route('/CreatePlaylist', methods=['POST'])
+@jwt_required
+@application.route('/CreatePlaylist', methods=['GET'])
 def CreatePlaylist():
     jsonData = request.get_json(force=True)
 
-    print(jsonData)
-    print(jsonData['params']['artistOne'])
-    print(jsonData['params']['artistTwo'])
-    print(jsonData['params']['artistThree'])
-    print(jsonData['params']['artistFour'])
+    print(json.loads(jsonData))
+    
+
+    # Take the query from the HTTP request argumments
+    ArtistData = request.args
+    artistOne = ArtistData["artistOne"]
+    artistTwo = ArtistData["artistTwo"]
+    artistThree = ArtistData["artistThree"]
+    artistFour = ArtistData["artistFour"]
 
     artistList = []
 
     
-    artistList.append(jsonData['params']['artistOne'])
-    artistList.append(jsonData['params']['artistTwo'])
-    artistList.append(jsonData['params']['artistThree'])
-    artistList.append(jsonData['params']['artistFour'])
+    artistList.append(artistOne)
+    artistList.append(artistTwo)
+    artistList.append(artistThree)
+    artistList.append(artistFour)
 
-    artistid = SpotipyAPI.GetArtistID(artistList)
-    SpotipyAPI.GeneratePlaylist(artistid)
+    artistList.append(artistOne)
+    artistList.append(artistTwo)
+    artistList.append(artistThree)
+    artistList.append(artistFour)
+
     print(artistList)
 
     return jsonify(jsonData)
@@ -109,15 +137,26 @@ def CreatePlaylist():
 
 # Define the routes through our Flask applicationlication
 @application.route('/loginUser', methods=['GET'])
+@jwt_required
 def loginUser():
+
+    print(request.get_json)
+
     # If the HTTP Request is a 'GET' request
     if request.method == 'GET':
         
         # Show that a GET request is being recieved
         print("\n - GET REQUEST RECIEVED - \n")
+        
+        print(request.get_json(force=True))
+        print(request.get_json)
+        
+        jsonData = request.get_json(force=True)
+
 
         # Pass the jsonData into our function to validate it
-        jsonData = validateRequest(request.get_json(force=True))
+        validateRequest(jsonData)
+
 
         # If the data is in the correct format
         if jsonData['ok']:
@@ -125,13 +164,12 @@ def loginUser():
             # See json format
             jsonData = jsonData['data']
 
-            user = mongo.db.Users.find_one({'email': jsonData['email']},{"_id": 0})
-            
-            # Query the database and get the data from the query
-            databaseResponse = mongo.db.Users.aggregate([{ "$match": {"email": email,"password": password}}])
-
+            user = mongo.db.Users.find_one({'email': jsonData['email']})
+        
             # If the users password is correct
             if user and flask_bcrypt.check_password_hash(user['password'],jsonData['password']):
+
+                print("Details correct!")
 
                 # Delete their password and give them an access token
                 del user['password']
@@ -140,15 +178,17 @@ def loginUser():
                 user['token'] = access_token
                 user['refresh'] = refresh_token
                  # Return the information as JSON with status code 200
-                return jsonify({'ok': True, 'message': 'Record exists.. Creating access token and Logging in..'}), 200
+                return jsonify({'ok': True, 'data': user, 'message': 'Record exists.. Creating access token and Logging in..'}), 200
 
             else:
-                # If the list is empty due to an error with login detaills, motify the user
-                return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 400
+                print("Details incorrect!")
+
+                # If the list is empty due to an error with login details, motify the user
+                return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 401
                
 
         # Return a bad request response in JSON if the paramaters are incorrect
-        return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
+        return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 402
 
 @application.route('/showUser', methods=['GET'])
 def showUser():
@@ -267,10 +307,10 @@ def updateUser():
         else:
           return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
-
 # Notify the user the server is starting
 print("Starting Flask server...")
 
 # Run the application
 if __name__ == '__main__':
   application.run()
+
