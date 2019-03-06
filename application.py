@@ -46,7 +46,7 @@ print(application.template_folder)
 
 # Prepare the mongo instance
 application.config["MONGO_URI"] = databaseConnection.getURI()
-
+application.config['JWT_ACCESS_TOKEN_EXPIRES'] =  datetime.timedelta(days=1)
 
 # Create the Mongo object with our Flask application
 mongo = PyMongo(application)
@@ -123,27 +123,36 @@ def loginUser():
         # Show that a GET request is being recieved
         print("\n - GET REQUEST RECIEVED - \n")
 
-        # Take the query from the HTTP request argumments
-        loginData = request.args
+        # Pass the jsonData into our function to validate it
+        jsonData = validateRequest(request.get_json(force=True))
 
-        # Store the arguments for easy querying
-        password = loginData["password"]
-        email = loginData["email"]
-        
         # If the data is in the correct format
-        if loginData is not None:
+        if jsonData['ok']:
+            
+            # See json format
+            jsonData = jsonData['data']
+
+            user = mongo.db.Users.find_one({'email': jsonData['email']},{"_id": 0})
+            
             # Query the database and get the data from the query
             databaseResponse = mongo.db.Users.aggregate([{ "$match": {"email": email,"password": password}}])
 
-            # Parse the response as a list so we can check it's properties
-            databaseResponseList = list(databaseResponse)
+            # If the users password is correct
+            if user and flask_bcrypt.check_password_hash(user['password'],jsonData['password']):
 
-            # If the list is empty due to an error with login detaills, motify the user
-            if databaseResponseList==[]:
-                return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 400
+                # Delete their password and give them an access token
+                del user['password']
+                access_token = create_access_token(identity=jsonData)
+                refresh_token = create_refresh_token(identity=jsonData)
+                user['token'] = access_token
+                user['refresh'] = refresh_token
+                 # Return the information as JSON with status code 200
+                return jsonify({'ok': True, 'message': 'Record exists.. Creating access token and Logging in..'}), 200
+
             else:
-                # Return the information as JSON with status code 200
-                return jsonify({'ok': True, 'message': 'Record exists.. Logging in..'}), 200
+                # If the list is empty due to an error with login detaills, motify the user
+                return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 400
+               
 
         # Return a bad request response in JSON if the paramaters are incorrect
         return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
@@ -205,6 +214,7 @@ def createUser():
         # If the data is in the correct format
         if jsonData['ok']:
             
+            # See json format
             jsonData = jsonData['data']
 
             # Encrypt the password before inserting it into the database
