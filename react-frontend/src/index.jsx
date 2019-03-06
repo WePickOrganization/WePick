@@ -64,6 +64,7 @@ class App extends React.Component {
     })
 
     console.log("Logging out....")
+    localStorage.clear();
 
     return <Redirect to="/Home" />
   }
@@ -90,40 +91,27 @@ class App extends React.Component {
 
             </div>
 
-
-
             <div className='App__Form'>
-
-            <Route path="/Logout" render={() => (
-                <Logout setLoggedOut={this.setLoggedOut} />
-              )} />
-
+              
               <Route path="/Create" component={ArtistEnter}>
               </Route>
 
+              <Route path="/Logout" render={() => (
+                  <Logout setLoggedOut={this.setLoggedOut} />
+                )} />
 
-              {/* Login/Signup text links above the forms */}
-              <div className="FormTitle">
-                <NavLink to="/Login"
+              
+                {/* Define an exact route for when the components below will be rendered */}
+                {/* E.G. When on the path '/', render the RegisterForm found in components/RegisterForm.js */}
+                <Route path="/Register" component={RegisterForm}>
+                </Route>
 
-                  activeClassName="FormTitle__Link--Active"
-                  className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/"
-
-                    activeClassName="FormTitle__Link--Active"
-                    className="FormTitle__Link">Sign Up</NavLink>
+                {/* Define an exact route for when the components below will be rendered */}
+                {/* E.G. When on the path '/Login', render the LoginForm found in components/LoginForm.js */}
+                <Route path="/Login" render={() => (
+                  <LoginForm setLoggedIn={this.setLoggedIn} />
+                )} />
               </div>
-
-              {/* Define an exact route for when the components below will be rendered */}
-              {/* E.G. When on the path '/', render the RegisterForm found in components/RegisterForm.js */}
-              <Route exact path="/" component={RegisterForm}>
-              </Route>
-
-              {/* Define an exact route for when the components below will be rendered */}
-              {/* E.G. When on the path '/Login', render the LoginForm found in components/LoginForm.js */}
-              <Route path="/Login" render={() => (
-                <LoginForm setLoggedIn={this.setLoggedIn} />
-              )} />
-            </div>
           </div>
 
 
