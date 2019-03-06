@@ -108,21 +108,23 @@ def index():
 def CreatePlaylist():
     jsonData = request.get_json(force=True)
 
-    # Take the query from the HTTP request argumments
-    ArtistData = request.args
-    artistOne = ArtistData["artistOne"]
-    artistTwo = ArtistData["artistTwo"]
-    artistThree = ArtistData["artistThree"]
-    artistFour = ArtistData["artistFour"]
+    print(jsonData)
+    print(jsonData['params']['artistOne'])
+    print(jsonData['params']['artistTwo'])
+    print(jsonData['params']['artistThree'])
+    print(jsonData['params']['artistFour'])
 
     artistList = []
 
     
-    artistList.append(artistOne)
-    artistList.append(artistTwo)
-    artistList.append(artistThree)
-    artistList.append(artistFour)
+    artistList.append(jsonData['params']['artistOne'])
+    artistList.append(jsonData['params']['artistTwo'])
+    artistList.append(jsonData['params']['artistThree'])
+    artistList.append(jsonData['params']['artistFour'])
 
+    artistid = SpotipyAPI.GetArtistID(artistList)
+    SpotipyAPI.GeneratePlaylist(artistid)
+    print(artistList)
     return jsonify(jsonData)
 
 
