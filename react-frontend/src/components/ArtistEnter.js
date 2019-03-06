@@ -7,6 +7,7 @@ class ArtistEnter extends Component
 {
     constructor(props)
     {
+    
       super(props)
       
       // Define the variables to be stored in our state
@@ -29,8 +30,15 @@ class ArtistEnter extends Component
     {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;            
+        const name = target.name;    
+        
+        this.setState({
+        
+            [name]: value     
+            
+        });
     }
+    
     
     // Function that gets called when we press our submit button, in this case SignUp/Login
     handleSubmit(event)
@@ -41,7 +49,7 @@ class ArtistEnter extends Component
         // Perform Axios GET Request
         // Sent to Flask server's route '/createUser'\
         // Send our state variables captured by our handleChange function 
-        axios.get('/CreatePlaylist', {
+        axios.post('/CreatePlaylist', {
             params: {
               artistOne: this.state.artistOne,
               artistTwo: this.state.artistTwo,
@@ -59,7 +67,7 @@ class ArtistEnter extends Component
 
     render()
     {
-        const { artistOne, artistTwo, artistThree, artistFour } = this.state;
+        
         // Render the forms required for login
         return(
             <div className="FormCenter">
@@ -98,6 +106,6 @@ class ArtistEnter extends Component
             );
    
         }
-    }
     
+    }   
 export default ArtistEnter
