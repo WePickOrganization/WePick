@@ -50,7 +50,7 @@ class LoginForm extends Component
         // Perform Axios GET Request
         // Sent to Flask server's route '/createUser'\
         // Send our state variables captured by our handleChange function 
-        axios.get('/loginUser', {
+        axios.post('/loginUser', {
             params: {
               email: this.state.email,
               password: this.state.password

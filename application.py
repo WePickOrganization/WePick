@@ -48,6 +48,7 @@ application = Flask(__name__, template_folder='react-frontend/templates', static
 application.config["MONGO_URI"] = databaseConnection.getURI()
 application.config['JWT_ACCESS_TOKEN_EXPIRES'] =  datetime.timedelta(days=1)
 application.config['PROPAGATE_EXCEPTIONS'] = True
+application.config['SECRET_KEY'] = "'\xe9\xa5'"
 
 # Create the Mongo object with our Flask application
 mongo = PyMongo(application)
@@ -103,12 +104,11 @@ def index():
   return render_template('index.html')
 
 @jwt_required
-@application.route('/CreatePlaylist', methods=['GET'])
+@application.route('/CreatePlaylist', methods=['POST'])
 def CreatePlaylist():
     jsonData = request.get_json(force=True)
 
-    print(json.loads(jsonData))
-    
+    print(jsonData)    
 
     # Take the query from the HTTP request argumments
     ArtistData = request.args
@@ -136,33 +136,31 @@ def CreatePlaylist():
 
 
 # Define the routes through our Flask applicationlication
-@application.route('/loginUser', methods=['GET'])
-@jwt_required
+@application.route('/loginUser', methods=['POST'])
 def loginUser():
 
-    print(request.get_json)
-
     # If the HTTP Request is a 'GET' request
-    if request.method == 'GET':
+    if request.method == 'POST':
         
         # Show that a GET request is being recieved
-        print("\n - GET REQUEST RECIEVED - \n")
+        print("\n - POST REQUEST RECIEVED - \n")
+        print("\n - In Route '/Login' - \n")
         
-        print(request.get_json(force=True))
-        print(request.get_json)
-        
-        jsonData = request.get_json(force=True)
+        loginData = request.get_json()
 
+        # See json format
+        jsonData = loginData['params']
 
         # Pass the jsonData into our function to validate it
-        validateRequest(jsonData)
-
+        jsonData = validateRequest(jsonData)
 
         # If the data is in the correct format
         if jsonData['ok']:
             
-            # See json format
-            jsonData = jsonData['data']
+            # Remove the ok part of JsonData
+            jsonData = loginData['params']
+
+            print(jsonData)
 
             user = mongo.db.Users.find_one({'email': jsonData['email']})
         
@@ -185,10 +183,9 @@ def loginUser():
 
                 # If the list is empty due to an error with login details, motify the user
                 return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 401
-               
-
-        # Return a bad request response in JSON if the paramaters are incorrect
-        return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 402
+        else:
+            # Return a bad request response in JSON if the paramaters are incorrect
+            return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 402
 
 @application.route('/showUser', methods=['GET'])
 def showUser():

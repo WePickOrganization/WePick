@@ -64,6 +64,7 @@ class App extends React.Component {
     })
 
     console.log("Logging out....")
+    localStorage.clear();
 
     return <Redirect to="/Home" />
   }
