@@ -15,9 +15,9 @@ class Home extends Component {
         color='#121019'
         hidden={this.state.hidden}
       >
-<Button variant="primary" size="lg" block>
+    <Button variant="primary" size="lg" block>
     Block level button
-  </Button>
+    </Button>
 
       </ParticleEffectButton>
     )
