@@ -6,6 +6,7 @@ import spotipy.util as util
 import pprint
 import json
 from db import DatabaseConnector
+print(spotipy.__file__)
 
 # Function which creates recommendation based of an artist id/ids
 def GeneratePlaylist(artistsID):
@@ -14,8 +15,8 @@ def GeneratePlaylist(artistsID):
 
     scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
 
-    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8',redirect_uri='http://localhost/')
-
+    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8')
+    print("Token:" + token)
     # Spotify Object
     spotifyObject = spotipy.Spotify(auth=token)
     
@@ -30,11 +31,14 @@ def GeneratePlaylist(artistsID):
 
 # Function which converts artist name to id (Very slightly glitchy)
 def GetArtistID(artists):
+
+
     username = input("Enter username: ")
+
 
     scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
 
-    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8',redirect_uri='http://localhost/')
+    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8')
 
     # Spotify Object
     spotifyObject = spotipy.Spotify(auth=token)
@@ -55,7 +59,7 @@ def CreatePlaylist(tracks):
 
     scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
 
-    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8',redirect_uri='http://localhost/')
+    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8')
 
     # Spotify Object
     spotifyObject = spotipy.Spotify(auth=token)
