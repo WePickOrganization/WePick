@@ -11,6 +11,8 @@ import LoginForm from './components/LoginForm'
 import ArtistEnter from './components/ArtistEnter'
 import NavBar from './components/NavBar'
 import Logout from './components/Logout'
+import Home from './components/Home'
+
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
@@ -69,6 +71,8 @@ class App extends React.Component {
     return <Redirect to="/Home" />
   }
 
+  
+
 
   render() {
     return (
@@ -84,6 +88,10 @@ class App extends React.Component {
           </div>
 
           <div className="BelowNavBar">
+
+            
+          <Route path="/Home" component={Home}>
+              </Route>
 
            
             {/* The blank space to the left of the forms*/}

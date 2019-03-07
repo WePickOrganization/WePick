@@ -1,26 +1,27 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
-import withRouter from 'react-router-dom'; 
+import React, { Component } from 'react'
 
 import ParticleEffectButton from 'react-particle-effect-button'
+import Button from 'react-bootstrap/Button'
 
-class Home extends Component{
 
-    constructor(){
+class Home extends Component {
+  state = {
+    hidden: false
+  }
 
-        super()
-    }
+  render () {
+    return (
+      <ParticleEffectButton
+        color='#121019'
+        hidden={this.state.hidden}
+      >
+    <Button variant="primary" size="lg" block>
+    Block level button
+    </Button>
 
-    render(){
-        return (
-            <ParticleEffectButton
-              color='#121019'
-              hidden={this.state.hidden}
-            >
-              BUTTON CONTENT GOES HERE
-            </ParticleEffectButton>
-          ) 
-    }
+      </ParticleEffectButton>
+    )
+  }
 }
+
 export default withRouter(Home)
