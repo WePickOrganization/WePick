@@ -1,12 +1,12 @@
 import sys
 sys.path.append('..')
-import spotipyModified as spotipy
+from db import DatabaseConnector
+import spotipyModified
 from spotipyModified import client as client
 from spotipyModified import oauth2 as oauth2
 from spotipyModified import util as util
 import pprint
 import json
-from db import DatabaseConnector
 
 # Function which creates recommendation based of an artist id/ids
 def GeneratePlaylist(artistsID):
@@ -18,7 +18,7 @@ def GeneratePlaylist(artistsID):
     token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8')
     print("Token:" + token)
     # Spotify Object
-    spotifyObject = spotipy.Spotify(auth=token)
+    spotifyObject = spotipyModified.Spotify(auth=token)
     
     Recommendation = spotifyObject.recommendations(seed_artists= artistsID, limit=20)
     RecommendationList = []
@@ -41,7 +41,7 @@ def GetArtistID(artists):
     token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8')
 
     # Spotify Object
-    spotifyObject = spotipy.Spotify(auth=token)
+    spotifyObject = spotipyModified.Spotify(auth=token)
     array_length = len(artists)
     pprint.pprint(array_length)
     artistsList = []    
@@ -62,7 +62,7 @@ def CreatePlaylist(tracks):
     token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8')
 
     # Spotify Object
-    spotifyObject = spotipy.Spotify(auth=token)
+    spotifyObject = spotipyModified.Spotify(auth=token)
     spotifyObject.trace = False
     playlists = spotifyObject.user_playlist_create(username, "Recommended", public=True)
     spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
@@ -99,7 +99,7 @@ def testFunction():
     token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
 
     # Spotify Object
-    spotifyObject = spotipy.Spotify(auth=token)
+    spotifyObject = spotipyModified.Spotify(auth=token)
 
     ##########################################################################################
 
@@ -125,5 +125,5 @@ def authenticateUser():
     token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
 
 
-testFunction()
+#testFunction()
 

@@ -1,9 +1,9 @@
 import sys
 sys.path.append('..')
-import spotifyModified as spotipy
-from spotipy import client as client
-from spotipy import oauth2 as oauth2
-from spotipy import util as util
+import spotipyModified as spotipy
+from spotipyModified import client as client
+from spotipyModified import oauth2 as oauth2
+from spotipyModified import util as util
 
 scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
 username='steadueddie'
