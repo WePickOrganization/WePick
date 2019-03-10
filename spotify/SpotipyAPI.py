@@ -1,12 +1,12 @@
 import sys
 sys.path.append('..')
-import spotipy
-import spotipy.oauth2 as oauth2
-import spotipy.util as util
+import spotipyModified as spotipy
+from spotipyModified import client as client
+from spotipyModified import oauth2 as oauth2
+from spotipyModified import util as util
 import pprint
 import json
 from db import DatabaseConnector
-print(spotipy.__file__)
 
 # Function which creates recommendation based of an artist id/ids
 def GeneratePlaylist(artistsID):
@@ -96,7 +96,7 @@ def testFunction():
     # Can change redirect_uri to website name soon and parse it somehow
     # Once token has been generated, copy into command prompt
     # This should only have to be done once hopefully.
-    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8',redirect_uri='http://localhost/')
+    token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
 
     # Spotify Object
     spotifyObject = spotipy.Spotify(auth=token)
@@ -119,7 +119,11 @@ def testFunction():
     pprint.pprint(Tracks)
 
 
+def authenticateUser():
+    username='steadueddie'
+    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+    token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
 
 
-
+testFunction()
 
