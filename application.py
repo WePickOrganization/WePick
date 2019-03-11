@@ -155,29 +155,34 @@ def loginUser():
             print(jsonData)
 
             user = mongo.db.Users.find_one({'email': jsonData['email']})
-        
-            # If the users password is correct
-            if user and flask_bcrypt.check_password_hash(user['password'],jsonData['password']):
 
-                print("Details correct!")
 
-                # Delete their password and give them an access token
-                del user['password']
-                access_token = create_access_token(identity=jsonData)
-                refresh_token = create_refresh_token(identity=jsonData)
-                user['token'] = access_token
-                user['refresh'] = refresh_token
-                 # Return the information as JSON with status code 200
-                return jsonify({'ok': True, 'data': user, 'message': 'Record exists.. Creating access token and Logging in..'}), 200
+            try:
+                # If the users password is correct
+                if user and flask_bcrypt.check_password_hash(user['password'],jsonData['password']):
 
-            else:
-                print("Details incorrect!")
+                    print("Details correct!")
 
+                    # Delete their password and give them an access token
+                    del user['password']
+                    access_token = create_access_token(identity=jsonData)
+                    refresh_token = create_refresh_token(identity=jsonData)
+                    user['token'] = access_token
+                    user['refresh'] = refresh_token
+                    # Return the information as JSON with status code 200
+                    return jsonify({'ok': True, 'data': user, 'message': 'Record exists.. Creating access token and Logging in..'}), 200
+
+                else:
+                    raise ValueError("Invalid Salt")
+                    print('Caught this error: ' + repr(error))
+
+            except Exception as error:         
                 # If the list is empty due to an error with login details, motify the user
-                return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 401
+                return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 201
+           
         else:
             # Return a bad request response in JSON if the paramaters are incorrect
-            return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 402
+            return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 202
 
 @application.route('/showUser', methods=['GET'])
 def showUser():
