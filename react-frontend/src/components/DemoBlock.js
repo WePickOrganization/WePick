@@ -43,7 +43,7 @@ export default class DemoBlock extends Component {
           background
         }}
       >
-        {hidden && !animating && (
+        {hidden && !animating && (//This is the reset button that appears once you press the generate button
           <button
             style={{
               position: 'absolute',
