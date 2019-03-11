@@ -1,5 +1,5 @@
 import sys
-sys.path.append('..')
+sys.path.append("..")
 import os
 import json
 import datetime
@@ -104,7 +104,6 @@ def index():
   return render_template('index.html')
 
 @application.route('/CreatePlaylist', methods=['POST'])
-@jwt_required
 def CreatePlaylist():
     jsonData = request.get_json(force=True)
 

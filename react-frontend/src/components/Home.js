@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 import ParticleEffectButton from 'react-particle-effect-button'
 import Button from 'react-bootstrap/Button'
 import DemoBlock from './DemoBlock'
-import demos from './demos'
+import demos from './GenerateButton'
 
 import '../stylesheets/styles.css'
 
@@ -12,11 +12,11 @@ class Home extends Component {
     return (
       <div
         style={{
-          padding: '48px 0',
-          background: '#000',
+          padding: '10px 0',
+          background: '#fff', //This value is for the home background color
           width: '100%',
           minHeight: '100vh',
-          color: '#fff'
+          color: '#000'
         }}
       >
 
