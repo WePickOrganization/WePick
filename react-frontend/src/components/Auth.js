@@ -15,10 +15,11 @@ class Auth extends Component
 
         // Define the variables to be stored in our state
         this.state = {
-            spoptifyUsername: '',
+            spotifyUsername: '',
           };
 
           this.handleSubmit = this.handleSubmit.bind(this); 
+          this.handleChange = this.handleChange.bind(this); 
 
 
     }
@@ -33,9 +34,7 @@ class Auth extends Component
         // Sent to Flask server's route '/createUser'\
         // Send our state variables captured by our handleChange function 
         axios.post('/auth', {
-            params: {
-              spoptifyUsername: this.state.spoptifyUsername,
-            }
+              spotifyUsername: this.state.spotifyUsername,
           })
           .then(function (response) {
             console.log("Server Response: " + response.status)
@@ -57,6 +56,16 @@ class Auth extends Component
           });
     }
 
+    handleChange(event)
+    {
+        let target = event.target;
+        let value = target.type === 'checkbox' ? target.checked : target.value;
+        let name = target.name;
+
+        this.setState({
+            [name]: value   
+        });
+    }
     handleFailedAuth()
     {
     }
@@ -78,7 +87,7 @@ class Auth extends Component
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="spotifyUsername">Spotify Username</label>
-                        <input type="text" id="spotifyUsername" className="FormField__Input" placeholder="Enter your Spotify username" name="spotifyUsername" value={this.state.spotifyUsername}></input>
+                        <input type="text" id="spotifyUsername" className="FormField__Input" placeholder="Enter your Spotify username" name="spotifyUsername" value={this.state.spotifyUsername} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">

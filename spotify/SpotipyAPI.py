@@ -8,6 +8,7 @@ from spotipyModified import util as util
 import pprint
 import json
 
+
 # Function which creates recommendation based of an artist id/ids
 def GeneratePlaylist(artistsID):
     
@@ -126,4 +127,5 @@ def authenticateUser():
 
 
 #testFunction()
+#authenticateUser()
 
