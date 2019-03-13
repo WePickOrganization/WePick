@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
 class ArtistEnter extends Component
 {

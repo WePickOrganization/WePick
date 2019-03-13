@@ -10,6 +10,16 @@ import '../stylesheets/styles.css'
 class Home extends Component {
   render () {
     return (
+      
+      <div className="AppSite">About
+                      <div className=”Site-content”>
+
+      </div>
+      </div>
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
       <div
         style={{
           padding: '10px 0',
@@ -19,7 +29,6 @@ class Home extends Component {
           color: '#000'
         }}
       >
-
         <h1 style={{ textAlign: 'center' }}>
         </h1>
 
