@@ -1,14 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
-class StickyFooter extends React{
+class StickyFooter extends Component{
   render(){
     return(
     <MDBContainer>
-      <DocsLink
-        title="Footer"
-        href="https://mdbootstrap.com/docs/react/navigation/footer/"
-      />
       <MDBFooter color="blue" className="font-small pt-4 mt-4">
         <MDBContainer fluid className="text-center text-md-left">
           <MDBRow>

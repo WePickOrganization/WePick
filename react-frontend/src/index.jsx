@@ -95,7 +95,10 @@ class App extends React.Component {
           <Route path="/Home" component={Home}>
               </Route>
 
-          <div className="StickyFooter"></div>
+          <div className="StickyFooter">
+          <Route path="/" component={StickyFooter}>
+            </Route>
+          </div>
 
             {/* The blank space to the left of the forms*/}
             <div className='App__Aside'>
