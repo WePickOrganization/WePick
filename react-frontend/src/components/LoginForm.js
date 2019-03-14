@@ -9,7 +9,11 @@ import '../stylesheets/index.css'
 const withErrorHandling = WrappedComponent => ({ showError, children }) => {
     return (
       <WrappedComponent>
+<<<<<<< HEAD
         {showError && <div className="error-message">Your login details are incorrect.</div>}
+=======
+        {showError && <div className="error-message">Oops! Something went wrong!</div>}
+>>>>>>> 237a5b47a94344aa17aa9fca6ab4939541b93bc7
         {children}
       </WrappedComponent>
     );
@@ -69,6 +73,7 @@ class LoginForm extends Component
             }
           })
           .then(function (response) {
+<<<<<<< HEAD
             console.log("Server Response: " + response.status)
             if(response.status==200)
             {
@@ -87,6 +92,19 @@ class LoginForm extends Component
             }
           })
           .catch(function (error) {
+=======
+            console.log(response);
+            console.log("Handling error");
+            self.handleSuccessfulLogin();
+          })
+          .catch(function (error) {
+            console.log(this.response);
+            console.log(this.response.status);
+            if(response.status.error==500)
+            {
+                this.toggleError();
+            }
+>>>>>>> 237a5b47a94344aa17aa9fca6ab4939541b93bc7
             self.handleFailedLogin();
           });
     }
@@ -136,8 +154,13 @@ class LoginForm extends Component
                 <form onSubmit={this.handleSubmit} className="FormFields">
 
                     <div className="FormField">
+<<<<<<< HEAD
                         <label className="FormField__Label" htmlFor="email">Email</label>
                         <input type="email" id="email" className="FormField__Input" placeholder="Enter your email address" name="email" value={this.state.email} onChange={this.handleChange}></input>
+=======
+                        <label className="FormField__Label" htmlFor="email"></label>
+                        <input type="email" id="email" className="FormField__InputTHIS IS A TEST" placeholder="Enter your email address" name="email" value={this.state.email} onChange={this.handleChange}></input>
+>>>>>>> 237a5b47a94344aa17aa9fca6ab4939541b93bc7
                     </div>
 
                     <div className="FormField">

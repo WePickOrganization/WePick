@@ -3,6 +3,7 @@ sys.path.append('..')
 import pymongo
 import pprint
 
+
 # Remote Connection URI
 # # MongoDB Server Connection URI: mongo 54.76.32.181 --username mongo --authenticationDatabase admin -p
 class DatabaseConnector:
@@ -90,7 +91,7 @@ class DatabaseConnector:
         # Shows user and favourite Artist from database
         def showUsersFavArtist(self):
           all = dict()
-          for x in self.usersCollection.find({},{'name':1,'fav_artist':1}):
+          for x in self.usersCollection.find({},{'email':1,'fav_artist':1}):
             print(x)
             print(type(x))
             all.update(x)
