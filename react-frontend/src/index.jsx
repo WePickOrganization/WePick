@@ -12,7 +12,7 @@ import NavBar from './components/NavBar'
 import Logout from './components/Logout'
 import Home from './components/Home'
 import StickyFooter from './components/StickyFooter'
-
+import Carousel from './components/Carousel'
 
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -92,7 +92,6 @@ class App extends React.Component {
           </div>
 
           <div className="BelowNavBar">
-
             
           <Route path="/Home" component={Home}>
               </Route>
@@ -125,6 +124,11 @@ class App extends React.Component {
                 )} />
               </div>
 
+
+              <div className="Carousel">
+          <Route path="/Home" component={Carousel}>
+            </Route>
+          </div>
               
           <div className="StickyFooter">
           <Route path="/" component={StickyFooter}>
