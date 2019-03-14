@@ -125,8 +125,10 @@ def CreatePlaylist():
     artistList.append(jsonData['params']['artistThree'])
     artistList.append(jsonData['params']['artistFour'])
 
+    SpotipyAPI.authentication()
     artistid = SpotipyAPI.GetArtistID(artistList)
     SpotipyAPI.GeneratePlaylist(artistid)
+    SpotipyAPI.CreatePlaylist(artistid)
     print(artistList)
     return jsonify(jsonData)
 
