@@ -10,10 +10,6 @@ import '../stylesheets/styles.css'
 class Home extends Component {
   render () {
     return (
-      
-
-
-///////////////////////////////////////////////////////////////////////////////////////
 
       <div
         style={{

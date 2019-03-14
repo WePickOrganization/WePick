@@ -30,6 +30,7 @@
     "react-fontawesome": "^1.6.1",
     "react-native": "^0.58.6",
     "react-particle-effect-button": "^1.0.1",
+    "react-responsive-carousel": "^3.1.47",
     "react-router-dom": "^4.3.1",
     "react-sticky": "^5.0.8",
     "react-sticky-footer": "0.1.0-rc3",
