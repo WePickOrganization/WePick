@@ -104,7 +104,6 @@ def index():
   return render_template('index.html')
 
 @application.route('/CreatePlaylist', methods=['POST'])
-@jwt_required
 def CreatePlaylist():
     jsonData = request.get_json(force=True)
 
@@ -122,8 +121,10 @@ def CreatePlaylist():
     artistList.append(jsonData['params']['artistThree'])
     artistList.append(jsonData['params']['artistFour'])
 
+    SpotipyAPI.authentication()
     artistid = SpotipyAPI.GetArtistID(artistList)
     SpotipyAPI.GeneratePlaylist(artistid)
+    SpotipyAPI.CreatePlaylist(artistid)
     print(artistList)
     return jsonify(jsonData)
 
