@@ -11,18 +11,8 @@ import ArtistEnter from './components/ArtistEnter'
 import NavBar from './components/NavBar'
 import Logout from './components/Logout'
 import Home from './components/Home'
-<<<<<<< HEAD
-import StickyFooter from './components/StickyFooter'
-import Carousel from './components/Carousel'
-
-
-=======
 import Auth from './components/Auth'
-<<<<<<< HEAD
 import StickyFooter from './components/StickyFooter'
-=======
->>>>>>> 2e877204f04e996e8f0aa2f1305baecd32430cba
->>>>>>> 3f57e0d9f4aa3f935a964ab1d44ebe7afe977000
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
@@ -59,7 +49,7 @@ class App extends React.Component {
     // Depending on the current loggedIn status, redirect the user
     <Route path="/" render={() => (
       loggedIn ? (
-        <Redirect to="/Create" />
+        <Redirect to="/auth" />
       ) : (
           <Redirect to="/Login" />
         )
@@ -99,14 +89,8 @@ class App extends React.Component {
             </Route>
           </div>
 
-          
-          <div className="Carousel">
-          <Route path="/Home" component={Carousel}>
-            </Route>
-          </div>
-
-
           <div className="BelowNavBar">
+
             
           <Route path="/Home" component={Home}>
               </Route>

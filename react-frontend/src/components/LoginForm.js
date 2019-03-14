@@ -94,7 +94,7 @@ class LoginForm extends Component
     handleSuccessfulLogin()
     {
         this.props.setLoggedIn(this.state.email);
-        this.props.history.push('/Create');
+        this.props.history.push('/auth');
     }
 
     handleFailedLogin()
