@@ -1,17 +1,53 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
+import ParticleEffectButton from 'react-particle-effect-button'
+import Button from 'react-bootstrap/Button'
+import DemoBlock from './DemoBlock'
+import demos from './GenerateButton'
 
-class Home extends Component{
+import '../stylesheets/styles.css'
 
-    constructor(){
-
-        super()
-    }
-
-    render(){
-        
-    }
+class Home extends Component {
+  render () {
+    return (
+      
 
 
-}
+///////////////////////////////////////////////////////////////////////////////////////
+
+      <div
+        style={{
+          padding: '10px 0',
+          background: '#fff', //This value is for the home background color
+          width: '100%',
+          minHeight: '100vh',
+          color: '#000'
+        }}
+      >
+        <h1 style={{ textAlign: 'center' }}>
+        </h1>
+
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center'
+          }}
+        >
+          {demos.map((demo, index) => (
+            <DemoBlock
+              key={index}
+              background={demo.background}
+              text={demo.text}
+              buttonStyles={demo.buttonStyles}
+              buttonOptions={demo.buttonOptions}
+            />
+          ))}
+        </div>
+      </div>
+    )
+          }
+        }
+
+export default withRouter(Home)

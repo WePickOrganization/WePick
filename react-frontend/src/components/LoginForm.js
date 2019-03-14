@@ -1,24 +1,42 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom'
+import { HashRouter as Router, Route, Link, NavLink, Redirect } from 'react-router-dom';
+
+import '../stylesheets/app.css'
+import '../stylesheets/index.css'
+
+const withErrorHandling = WrappedComponent => ({ showError, children }) => {
+    return (
+      <WrappedComponent>
+        {showError && <div className="error-message">Your login details are incorrect.</div>}
+        {children}
+      </WrappedComponent>
+    );
+  };
+
+const DivWithErrorHandling = withErrorHandling(({children}) => <div>{children}</div>)
 
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
 class LoginForm extends Component
 {
-    constructor()
+    constructor(props)
     {
-      super()
+      super(props)
       
       // Define the variables to be stored in our state
       this.state = {
         email: '',
-        password: ''
+        password: '',
+        redirect: false,
+        showError: false,
       };
       
       // This lets us define functions outside of the constructor
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this); 
       this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this); 
+      this.handleFailedLogin = this.handleFailedLogin.bind(this); 
     }
 
     // Function that gets called when values inside a text field are changed and sets them in our state
@@ -29,7 +47,7 @@ class LoginForm extends Component
         let name = target.name;
 
         this.setState({
-            [name]: value,        
+            [name]: value   
         });
     }
     
@@ -38,41 +56,82 @@ class LoginForm extends Component
     {
         event.preventDefault();
         console.log(this.state);
-        
         var self = this;
+        //this.setState({ redirect: true });
 
         // Perform Axios GET Request
         // Sent to Flask server's route '/createUser'\
         // Send our state variables captured by our handleChange function 
-        axios.get('/loginUser', {
+        axios.post('/loginUser', {
             params: {
               email: this.state.email,
               password: this.state.password
             }
           })
           .then(function (response) {
-            if(response.status === 200){
-                console.log("SUCCESSS");
-                console.log(response);
-                self.handleSuccessfulLogin();
+            console.log("Server Response: " + response.status)
+            if(response.status==200)
+            {
+              console.log("Successful Login!")
+              self.handleSuccessfulLogin();
+            }
+            if(response.status==201)
+            {
+              console.log("Wrong login details!")
+              self.toggleError();
+              self.handleFailedLogin();
+            }
+            else
+            {
+              console.log("Server error! Contact the server administrator for details.")
             }
           })
           .catch(function (error) {
-            console.log(error);
+            self.handleFailedLogin();
           });
     }
 
     handleSuccessfulLogin()
     {
-        this.props.setLoggedIn();
+        this.props.setLoggedIn(this.state.email);
+        this.props.history.push('/Create');
     }
 
+    handleFailedLogin()
+    {
+        this.props.setLoggedOut();
+        this.toggleError();
+    }
+      
+    toggleError = () => {
+        this.setState((prevState, props) => {
+          return { showError: !prevState.showError }
+        })
+      };
+    
     render()
     {
 
+       
+
         // Render the forms required for login
         return(
+            <DivWithErrorHandling showError={this.state.showError}>
+            
+            
             <div className="FormCenter">
+
+            {/* Login/Signup text links above the forms */}
+            <div className="FormTitle">
+                    <NavLink to="/Login"
+                    activeClassName="FormTitle__Link--Active"
+                    className="FormTitle__Link">Sign In</NavLink> or
+
+                    <NavLink to="/Register"
+                    activeClassName="FormTitle__Link--Active"
+                    className="FormTitle__Link">Sign Up</NavLink>
+             </div>
+                
 
                 <form onSubmit={this.handleSubmit} className="FormFields">
 
@@ -92,12 +151,13 @@ class LoginForm extends Component
                     </div>
 
                 </form>
-
             </div>
+            </DivWithErrorHandling>
+
             );
    
         }
     }
     
-    export default LoginForm
+    export default withRouter(LoginForm)
     

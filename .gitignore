@@ -26,6 +26,8 @@ wheels/
 MANIFEST
 *.vscode
 .cache*
+.vs*
+cache*
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -105,8 +107,18 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# Specifics
-config.txt
-
 # Node stuff
 node_modules
+
+#dissertation stuff
+project.aux
+project.fdb_latexmk
+project.fls
+project.bbl
+project.blg
+project.out
+project.synctex.gz
+project.toc
+
+# AWS Elastic Beanstalk stuff
+app_versions/

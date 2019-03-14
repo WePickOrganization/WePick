@@ -12,7 +12,7 @@ class DatabaseConnector:
             print("DatabaseConnector initialized...")
 
             # Load in the password and IP address for the database from a config file found locally
-            with open("../db/config.txt", "r") as ins:
+            with open("db/config.txt", "r") as ins:
                 configurationVariables = []
                 for line in ins:
                     configurationVariables.append(line)
