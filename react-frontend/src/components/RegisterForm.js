@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import withRouter from 'react-router-dom'; 
+import {withRouter} from 'react-router-dom'; 
 import { HashRouter as Router, Route, Link, NavLink, Redirect } from 'react-router-dom';
 
 import '../stylesheets/app.css'
 import '../stylesheets/index.css'
+
 // A RegisterForm component that can be exported at the end of the file and can be reused anywhere
 class RegisterForm extends Component
 {
-    constructor()
+    constructor(props)
     {
-      super()
+      super(props)
       
       // Define the variables to be stored in our state
       this.state = {
@@ -23,7 +24,6 @@ class RegisterForm extends Component
       // This lets us define functions outside of the constructor
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     // Function that gets called
@@ -43,28 +43,9 @@ class RegisterForm extends Component
     // Function that gets called when we press our submit button, in this case SignUp/Login
     handleSubmit(event)
     {
-        // Log the details
-        event.preventDefault();
-        console.log(this.state);
-
-        // Perform Axios POST Request
-        // Sent to Flask server's route '/createUser'
-        // Send our state variables captured by our handleChange function 
-        axios.post('/createUser', {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        
+        console.log("Register successfull.. Redirecting to authentication");
+        this.props.history.push('/auth');
     }
-
-    
 
     render()
     {
@@ -119,4 +100,4 @@ class RegisterForm extends Component
     }
 }
 
-export default RegisterForm
+export default withRouter(RegisterForm)

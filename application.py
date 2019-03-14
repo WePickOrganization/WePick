@@ -59,6 +59,8 @@ mongo = PyMongo(application)
 flask_bcrypt = Bcrypt(application)
 jwt = JWTManager(application)
 
+currentEmail = ""
+
 
 # Extend the JSONEncoder class to support more stuff
 class JSONEncoder(json.JSONEncoder):
@@ -151,17 +153,14 @@ def loginUser():
 
         # Pass the jsonData into our function to validate it
         jsonData = validateRequest(jsonData)
+        
+        print(jsonData)
 
         # If the data is in the correct format
         if jsonData['ok']:
             
-            # Remove the ok part of JsonData
-            jsonData = loginData['params']
-
-            print(jsonData)
 
             user = mongo.db.Users.find_one({'email': jsonData['email']})
-
 
             try:
                 # If the users password is correct
@@ -243,6 +242,9 @@ def createUser():
             
         # Pass the jsonData into our function to validate it
         jsonData = validateRequest(request.get_json(force=True))
+       
+        
+        print(jsonData)
         
         # If the data is in the correct format
         if jsonData['ok']:
@@ -252,6 +254,12 @@ def createUser():
 
             # Encrypt the password before inserting it into the database
             jsonData['password'] = flask_bcrypt.generate_password_hash(jsonData['password'])
+
+            print(jsonData)
+            
+            global currentEmail
+            currentEmail = jsonData['email']
+            print(currentEmail)
 
             mongo.db.Users.insert_one(jsonData)
 
@@ -334,11 +342,6 @@ def auth():
         else:
             return jsonify({'ok': True, 'message': 'Authorization Success'}), 200
        
-
-            
-
-
-
 # Notify the user the server is starting
 print("Starting Flask server...")
 
