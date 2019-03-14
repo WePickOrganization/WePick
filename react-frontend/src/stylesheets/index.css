@@ -7,3 +7,9 @@ div.BelowNavBar {
   position: relative;
   width: 100%;
 }
+
+div.StickyFooter{
+  position: relative;
+  width:100%;
+  margin: 0 auto;
+}
