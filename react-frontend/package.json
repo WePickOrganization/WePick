@@ -34,6 +34,7 @@
     "react-sticky": "^5.0.8",
     "react-sticky-footer": "0.1.0-rc3",
     "react-tap-event-plugin": "^3.0.3",
+    "sticky-footer": "^4.2.0",
     "url-loader": "^1.1.2"
   },
   "devDependencies": {
