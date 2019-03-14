@@ -91,6 +91,13 @@ class App extends React.Component {
             </Route>
           </div>
 
+          
+          <div className="Carousel">
+          <Route path="/Home" component={Carousel}>
+            </Route>
+          </div>
+
+
           <div className="BelowNavBar">
             
           <Route path="/Home" component={Home}>
@@ -124,11 +131,6 @@ class App extends React.Component {
                 )} />
               </div>
 
-
-              <div className="Carousel">
-          <Route path="/Home" component={Carousel}>
-            </Route>
-          </div>
               
           <div className="StickyFooter">
           <Route path="/" component={StickyFooter}>

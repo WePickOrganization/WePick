@@ -11,7 +11,7 @@ class Carousel extends Component {
         <MDBCarouselInner>
           <MDBCarouselItem itemId="1">
             <MDBView>
-              <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide" />
+              <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(28).jpg" alt="First slide" />
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>
@@ -21,7 +21,7 @@ class Carousel extends Component {
           </MDBCarouselItem>
           <MDBCarouselItem itemId="2">
             <MDBView>
-              <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(99).jpg" alt="Second slide" />
+              <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(24).jpg" alt="Second slide" />
               <MDBMask overlay="black-strong" />
             </MDBView>
             <MDBCarouselCaption>
@@ -31,7 +31,7 @@ class Carousel extends Component {
           </MDBCarouselItem>
           <MDBCarouselItem itemId="3">
             <MDBView>
-              <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(17).jpg" alt="Third slide" />
+              <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(33).jpg" alt="Third slide" />
               <MDBMask overlay="black-slight" />
             </MDBView>
             <MDBCarouselCaption>
