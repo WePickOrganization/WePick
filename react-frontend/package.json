@@ -32,6 +32,7 @@
     "react-particle-effect-button": "^1.0.1",
     "react-router-dom": "^4.3.1",
     "react-sticky": "^5.0.8",
+    "react-sticky-footer": "0.1.0-rc3",
     "react-tap-event-plugin": "^3.0.3",
     "url-loader": "^1.1.2"
   },
