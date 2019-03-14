@@ -1,5 +1,5 @@
 import sys
-sys.path.append('..')
+sys.path.append("..")
 import os
 import json
 import datetime
@@ -18,6 +18,10 @@ from jsonschema.exceptions import ValidationError
 from jsonschema.exceptions import SchemaError
 from flask_jwt_extended import (create_access_token, create_refresh_token,
 jwt_required, jwt_refresh_token_required, get_jwt_identity)
+import spotipyModified
+from spotipyModified import client as client
+from spotipyModified import oauth2 as oauth2
+from spotipyModified import util as util
 
 user_schema = {
     "type": "object",
@@ -157,29 +161,34 @@ def loginUser():
             print(jsonData)
 
             user = mongo.db.Users.find_one({'email': jsonData['email']})
-        
-            # If the users password is correct
-            if user and flask_bcrypt.check_password_hash(user['password'],jsonData['password']):
 
-                print("Details correct!")
 
-                # Delete their password and give them an access token
-                del user['password']
-                access_token = create_access_token(identity=jsonData)
-                refresh_token = create_refresh_token(identity=jsonData)
-                user['token'] = access_token
-                user['refresh'] = refresh_token
-                 # Return the information as JSON with status code 200
-                return jsonify({'ok': True, 'data': user, 'message': 'Record exists.. Creating access token and Logging in..'}), 200
+            try:
+                # If the users password is correct
+                if user and flask_bcrypt.check_password_hash(user['password'],jsonData['password']):
 
-            else:
-                print("Details incorrect!")
+                    print("Details correct!")
 
+                    # Delete their password and give them an access token
+                    del user['password']
+                    access_token = create_access_token(identity=jsonData)
+                    refresh_token = create_refresh_token(identity=jsonData)
+                    user['token'] = access_token
+                    user['refresh'] = refresh_token
+                    # Return the information as JSON with status code 200
+                    return jsonify({'ok': True, 'data': user, 'message': 'Record exists.. Creating access token and Logging in..'}), 200
+
+                else:
+                    raise ValueError("Invalid Salt")
+                    print('Caught this error: ' + repr(error))
+
+            except Exception as error:         
                 # If the list is empty due to an error with login details, motify the user
-                return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 401
+                return jsonify({'ok': False, 'message': 'Record does not exist. Please check log-in parameters.'}), 201
+           
         else:
             # Return a bad request response in JSON if the paramaters are incorrect
-            return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 402
+            return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 202
 
 @application.route('/showUser', methods=['GET'])
 def showUser():
@@ -297,6 +306,38 @@ def updateUser():
             return jsonify({'ok': True, 'message': 'Record updated'}), 200
         else:
           return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
+
+@application.route('/auth', methods=['POST'])
+def auth():
+
+    # Define the incoming json data from the request as 'data'
+    jsonData = request.get_json()
+
+    print (jsonData)
+
+    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+
+    # If the HTTP Request is a 'PATCH' request
+    if request.method == 'POST':
+
+        # Show that a GET request is being recieved
+        username = jsonData['spotifyUsername']
+         # This token is generated in the web browser
+        # Can change redirect_uri to website name soon and parse it somehow
+        # Once token has been generated, copy into command prompt
+        # This should only have to be done once hopefully.
+        token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
+
+        # If the data is in the correct format
+        if token==None:
+            return jsonify({'ok': False, 'message': 'Authorization failed'}), 400
+        else:
+            return jsonify({'ok': True, 'message': 'Authorization Success'}), 200
+       
+
+            
+
+
 
 # Notify the user the server is starting
 print("Starting Flask server...")

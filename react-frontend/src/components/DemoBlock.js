@@ -43,7 +43,7 @@ export default class DemoBlock extends Component {
           background
         }}
       >
-        {hidden && !animating && (
+        {hidden && !animating && (//This is the reset button that appears once you press the generate button
           <button
             style={{
               position: 'absolute',
@@ -80,7 +80,7 @@ export default class DemoBlock extends Component {
               fontSize: '1.2em',
               ...buttonStyles
             }}
-            onClick={this._onToggle}
+            onClick={this.OnClick}
           >
             {text}
           </button>
@@ -89,9 +89,17 @@ export default class DemoBlock extends Component {
     )
   }
 
+  OnClick = () =>{
+    _onToggle();
+    GeneratePlaylist();
+  }
+
+  GeneratePlaylist = () =>{
+    console.log("bruh")
+  }
+
   _onToggle = () => {
     if (this.state.animating) return
-
     this.setState({
       hidden: !this.state.hidden,
       animating: true
@@ -100,7 +108,7 @@ export default class DemoBlock extends Component {
 
   _onAnimationComplete = () => {
     this.setState({
-      animating: false
+      animating: false,
     })
   }
 }

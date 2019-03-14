@@ -6,6 +6,17 @@ import { HashRouter as Router, Route, Link, NavLink, Redirect } from 'react-rout
 import '../stylesheets/app.css'
 import '../stylesheets/index.css'
 
+const withErrorHandling = WrappedComponent => ({ showError, children }) => {
+    return (
+      <WrappedComponent>
+        {showError && <div className="error-message">Your login details are incorrect.</div>}
+        {children}
+      </WrappedComponent>
+    );
+  };
+
+const DivWithErrorHandling = withErrorHandling(({children}) => <div>{children}</div>)
+
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
 class LoginForm extends Component
 {
@@ -17,7 +28,8 @@ class LoginForm extends Component
       this.state = {
         email: '',
         password: '',
-        redirect: false
+        redirect: false,
+        showError: false,
       };
       
       // This lets us define functions outside of the constructor
@@ -57,11 +69,24 @@ class LoginForm extends Component
             }
           })
           .then(function (response) {
-            console.log(response);
-            self.handleSuccessfulLogin();
+            console.log("Server Response: " + response.status)
+            if(response.status==200)
+            {
+              console.log("Successful Login!")
+              self.handleSuccessfulLogin();
+            }
+            if(response.status==201)
+            {
+              console.log("Wrong login details!")
+              self.toggleError();
+              self.handleFailedLogin();
+            }
+            else
+            {
+              console.log("Server error! Contact the server administrator for details.")
+            }
           })
           .catch(function (error) {
-            console.log(error.response);
             self.handleFailedLogin();
           });
     }
@@ -75,9 +100,15 @@ class LoginForm extends Component
     handleFailedLogin()
     {
         this.props.setLoggedOut();
-        this.props.history.push('/Login');
+        this.toggleError();
     }
-
+      
+    toggleError = () => {
+        this.setState((prevState, props) => {
+          return { showError: !prevState.showError }
+        })
+      };
+    
     render()
     {
 
@@ -85,6 +116,9 @@ class LoginForm extends Component
 
         // Render the forms required for login
         return(
+            <DivWithErrorHandling showError={this.state.showError}>
+            
+            
             <div className="FormCenter">
 
             {/* Login/Signup text links above the forms */}
@@ -102,7 +136,7 @@ class LoginForm extends Component
                 <form onSubmit={this.handleSubmit} className="FormFields">
 
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="email">THIS IS A TEST PLEASE REMOVE ME Email</label>
+                        <label className="FormField__Label" htmlFor="email">Email</label>
                         <input type="email" id="email" className="FormField__Input" placeholder="Enter your email address" name="email" value={this.state.email} onChange={this.handleChange}></input>
                     </div>
 
@@ -117,8 +151,9 @@ class LoginForm extends Component
                     </div>
 
                 </form>
-
             </div>
+            </DivWithErrorHandling>
+
             );
    
         }
