@@ -98,7 +98,7 @@ class DatabaseConnector:
           return all
 	
 		    # self.usersCollection.find({name:1,fav_artist:1})
-        
+     
         # Test function
         #addUser(123, 'Steven', 'BobMarley', 'Jamming')
 

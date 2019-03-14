@@ -11,6 +11,11 @@ import ArtistEnter from './components/ArtistEnter'
 import NavBar from './components/NavBar'
 import Logout from './components/Logout'
 import Home from './components/Home'
+<<<<<<< HEAD
+=======
+import StickyFooter from './components/StickyFooter'
+import Carousel from './components/Carousel'
+>>>>>>> 73002a0ac2351e3cee64a5634b41deb5548fb3c4
 import Auth from './components/Auth'
 import StickyFooter from './components/StickyFooter'
 import "@fortawesome/fontawesome-free/css/all.min.css";

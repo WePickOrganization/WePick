@@ -232,7 +232,7 @@ def showAllUsers():
         # Query the database and get the data from the query
         databaseResponse = mongo.db.Users.find()
         
-        collectionList = list(databaseResponse)\
+        collectionList = list(databaseResponse)
 
         # Print the entries in the console
         for document in databaseResponse:
