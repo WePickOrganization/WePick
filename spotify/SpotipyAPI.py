@@ -8,14 +8,28 @@ from spotipyModified import util as util
 import pprint
 import json
 
-# Function which creates recommendation based of an artist id/ids
-def GeneratePlaylist(artistsID):
-    
+
+token = ""
+username = ""
+
+def authentication():
+    global username
     username = input("Enter username: ")
 
     scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+<<<<<<< HEAD
+    global token
+    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8')
+
+
+# Function which creates recommendation based of an artist id/ids
+def GeneratePlaylist(artistsID):
+    
+   
+=======
 
     token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
+>>>>>>> d93cf9ae942faf43a4f2c99d1432b1a7d70ceabc
     print("Token:" + token)
     # Spotify Object
     spotifyObject = spotipyModified.Spotify(auth=token)
@@ -32,6 +46,8 @@ def GeneratePlaylist(artistsID):
 # Function which converts artist name to id (Very slightly glitchy)
 def GetArtistID(artists):
 
+<<<<<<< HEAD
+=======
 
     username = input("Enter username: ")
 
@@ -40,6 +56,7 @@ def GetArtistID(artists):
 
     token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
 
+>>>>>>> d93cf9ae942faf43a4f2c99d1432b1a7d70ceabc
     # Spotify Object
     spotifyObject = spotipyModified.Spotify(auth=token)
     array_length = len(artists)
@@ -55,16 +72,19 @@ def GetArtistID(artists):
 
 # Function which creates playlist of a given list 
 def CreatePlaylist(tracks):
+<<<<<<< HEAD
+=======
     username = input("Enter username: ")
 
     scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
 
     token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
 
+>>>>>>> d93cf9ae942faf43a4f2c99d1432b1a7d70ceabc
     # Spotify Object
     spotifyObject = spotipyModified.Spotify(auth=token)
     spotifyObject.trace = False
-    playlists = spotifyObject.user_playlist_create(username, "Recommended", public=True)
+    playlists = spotifyObject.user_playlist_create(username, "Recommended2", public=True)
     spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
     pprint.pprint("Successfully created playlist")   
 
@@ -96,7 +116,11 @@ def testFunction():
     # Can change redirect_uri to website name soon and parse it somehow
     # Once token has been generated, copy into command prompt
     # This should only have to be done once hopefully.
+<<<<<<< HEAD
+    token = util.prompt_for_user_token(username,scope,client_id='0dc45951e1c9441db418cfcd3950414f',client_secret='5efbb9963b654491bb2024f13c1eccf8')
+=======
     token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
+>>>>>>> d93cf9ae942faf43a4f2c99d1432b1a7d70ceabc
 
     # Spotify Object
     spotifyObject = spotipyModified.Spotify(auth=token)
@@ -126,4 +150,5 @@ def authenticateUser():
 
 
 #testFunction()
+#authenticateUser()
 

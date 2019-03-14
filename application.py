@@ -18,6 +18,10 @@ from jsonschema.exceptions import ValidationError
 from jsonschema.exceptions import SchemaError
 from flask_jwt_extended import (create_access_token, create_refresh_token,
 jwt_required, jwt_refresh_token_required, get_jwt_identity)
+import spotipyModified
+from spotipyModified import client as client
+from spotipyModified import oauth2 as oauth2
+from spotipyModified import util as util
 
 user_schema = {
     "type": "object",
@@ -121,8 +125,10 @@ def CreatePlaylist():
     artistList.append(jsonData['params']['artistThree'])
     artistList.append(jsonData['params']['artistFour'])
 
+    SpotipyAPI.authentication()
     artistid = SpotipyAPI.GetArtistID(artistList)
     SpotipyAPI.GeneratePlaylist(artistid)
+    SpotipyAPI.CreatePlaylist(artistid)
     print(artistList)
     return jsonify(jsonData)
 
@@ -300,6 +306,38 @@ def updateUser():
             return jsonify({'ok': True, 'message': 'Record updated'}), 200
         else:
           return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
+
+@application.route('/auth', methods=['POST'])
+def auth():
+
+    # Define the incoming json data from the request as 'data'
+    jsonData = request.get_json()
+
+    print (jsonData)
+
+    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+
+    # If the HTTP Request is a 'PATCH' request
+    if request.method == 'POST':
+
+        # Show that a GET request is being recieved
+        username = jsonData['spotifyUsername']
+         # This token is generated in the web browser
+        # Can change redirect_uri to website name soon and parse it somehow
+        # Once token has been generated, copy into command prompt
+        # This should only have to be done once hopefully.
+        token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
+
+        # If the data is in the correct format
+        if token==None:
+            return jsonify({'ok': False, 'message': 'Authorization failed'}), 400
+        else:
+            return jsonify({'ok': True, 'message': 'Authorization Success'}), 200
+       
+
+            
+
+
 
 # Notify the user the server is starting
 print("Starting Flask server...")
