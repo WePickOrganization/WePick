@@ -22,9 +22,23 @@
     pointer-events: none;
   }
 
-  .footer{
-      background: #42A5F5;
-      color: white;
-      line-height: 50px;
-      padding: 0 20px;
+  @media (min-width: 768px){
+  .container {
+    max-width: 100%;
   }
+}
+
+@media (min-width: 576px){
+  .container {
+    max-width: 100%;
+  }
+}
+
+.container{
+  width: 100%;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: auto;
+  margin-left: auto;
+}
+

@@ -3,8 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Link, NavLink, Redirect } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
-import './stylesheets/app.css'
-import './stylesheets/index.css'
+
 import axios from 'axios'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
@@ -19,6 +18,9 @@ import StickyFooter from './components/StickyFooter'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
+import './stylesheets/app.css'
+import './stylesheets/index.css'
+import './stylesheets/styles.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -95,15 +97,11 @@ class App extends React.Component {
           <Route path="/Home" component={Home}>
               </Route>
 
-          <div className="StickyFooter">
-          <Route path="/" component={StickyFooter}>
-            </Route>
-          </div>
 
             {/* The blank space to the left of the forms*/}
-            <div className='App__Aside'>
+            
 
-            </div>
+          
 
             <div className='App__Form'>
               
@@ -126,6 +124,12 @@ class App extends React.Component {
                   <LoginForm setLoggedIn={this.setLoggedIn} />
                 )} />
               </div>
+
+              
+          <div className="StickyFooter">
+          <Route path="/" component={StickyFooter}>
+            </Route>
+          </div>
           </div>
 
 
