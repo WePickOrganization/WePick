@@ -10,14 +10,6 @@ import '../stylesheets/styles.css'
 class Home extends Component {
   render () {
     return (
-<<<<<<< HEAD
-=======
-      
-    
-
-///////////////////////////////////////////////////////////////////////////////////////
->>>>>>> 2e877204f04e996e8f0aa2f1305baecd32430cba
-
       <div
         style={{
           padding: '10px 0',

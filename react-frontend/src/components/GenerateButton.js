@@ -1,7 +1,7 @@
 export default [
   //Button stuff
     {
-        background: 'f2f2f2',
+        background: '#333333',
         text: 'Generate Playlist',//This is what the text is for the button
         buttonStyles: {
           background: '#c13a3a',//This is the color of the actual button
