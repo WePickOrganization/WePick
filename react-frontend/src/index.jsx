@@ -12,7 +12,8 @@ import ArtistEnter from './components/ArtistEnter'
 import NavBar from './components/NavBar'
 import Logout from './components/Logout'
 import Home from './components/Home'
-import Auth from './components/Auth'
+import StickyFooter from './components/StickyFooter'
+
 
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -94,7 +95,11 @@ class App extends React.Component {
           <Route path="/Home" component={Home}>
               </Route>
 
-           
+          <div className="StickyFooter">
+          <Route path="/" component={StickyFooter}>
+            </Route>
+          </div>
+
             {/* The blank space to the left of the forms*/}
             <div className='App__Aside'>
 
@@ -103,9 +108,6 @@ class App extends React.Component {
             <div className='App__Form'>
               
               <Route path="/Create" component={ArtistEnter}>
-              </Route>
-
-              <Route path="/Auth" component={Auth}>
               </Route>
 
               <Route path="/Logout" render={() => (
