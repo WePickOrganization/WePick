@@ -127,6 +127,9 @@ def CreatePlaylist():
     artistList.append(jsonData['params']['artistThree'])
     artistList.append(jsonData['params']['artistFour'])
 
+    print(currentEmail)
+    mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
+
     SpotipyAPI.authentication()
     artistid = SpotipyAPI.GetArtistID(artistList)
     SpotipyAPI.GeneratePlaylist(artistid)
@@ -154,13 +157,21 @@ def loginUser():
         # Pass the jsonData into our function to validate it
         jsonData = validateRequest(jsonData)
         
-        print(jsonData)
+        print("json" + str(jsonData['data']['email']))
 
         # If the data is in the correct format
         if jsonData['ok']:
             
+            jsonData = jsonData['data']
+            print("data ok")
 
             user = mongo.db.Users.find_one({'email': jsonData['email']})
+            
+            global currentEmail
+            currentEmail = jsonData['email']
+            
+            print(flask_bcrypt.check_password_hash(user['password'],jsonData['password']))
+
 
             try:
                 # If the users password is correct
@@ -255,6 +266,7 @@ def createUser():
             # Encrypt the password before inserting it into the database
             jsonData['password'] = flask_bcrypt.generate_password_hash(jsonData['password'])
 
+            print("hash : " + jsonData['password'])
             print(jsonData)
             
             global currentEmail
