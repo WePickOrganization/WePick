@@ -242,6 +242,8 @@ def createUser():
         # Pass the jsonData into our function to validate it
         jsonData = validateRequest(request.get_json(force=True))
         
+        print(jsonData)
+        
         # If the data is in the correct format
         if jsonData['ok']:
             
@@ -332,11 +334,6 @@ def auth():
         else:
             return jsonify({'ok': True, 'message': 'Authorization Success'}), 200
        
-
-            
-
-
-
 # Notify the user the server is starting
 print("Starting Flask server...")
 

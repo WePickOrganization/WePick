@@ -12,10 +12,7 @@ import ArtistEnter from './components/ArtistEnter'
 import NavBar from './components/NavBar'
 import Logout from './components/Logout'
 import Home from './components/Home'
-import StickyFooter from './components/StickyFooter'
-
-
-
+import Auth from './components/Auth'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
@@ -95,10 +92,7 @@ class App extends React.Component {
           <Route path="/Home" component={Home}>
               </Route>
 
-          <div className="StickyFooter">
-          <Route path="/" component={StickyFooter}>
-            </Route>
-          </div>
+  
 
             {/* The blank space to the left of the forms*/}
             <div className='App__Aside'>
@@ -118,6 +112,11 @@ class App extends React.Component {
                 {/* Define an exact route for when the components below will be rendered */}
                 {/* E.G. When on the path '/', render the RegisterForm found in components/RegisterForm.js */}
                 <Route path="/Register" component={RegisterForm}>
+                </Route>
+
+                 {/* Define an exact route for when the components below will be rendered */}
+                {/* E.G. When on the path '/', render the RegisterForm found in components/RegisterForm.js */}
+                <Route path="/Auth" component={Auth}>
                 </Route>
 
                 {/* Define an exact route for when the components below will be rendered */}

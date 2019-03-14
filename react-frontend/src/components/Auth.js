@@ -13,39 +13,40 @@ class Auth extends Component
     {
       super(props)
 
-        // Define the variables to be stored in our state
-        this.state = {
-            spotifyUsername: '',
-          };
-
+       // Define the variables to be stored in our state
+      this.state = {
+        name:'',
+        email: '',
+        password: '',
+        spotifyUsername: ''
+      };
           this.handleSubmit = this.handleSubmit.bind(this); 
           this.handleChange = this.handleChange.bind(this); 
-
-
     }
 
     handleSubmit(event)
     {
         event.preventDefault();
         var self = this;
-        //this.setState({ redirect: true });
 
         // Perform Axios GET Request
         // Sent to Flask server's route '/createUser'\
         // Send our state variables captured by our handleChange function 
         axios.post('/auth', {
-              spotifyUsername: this.state.spotifyUsername,
+              name: this.state.name,
+              email: this.state.email,
+              password: this.state.password,
+              spotifyUsername: this.state.spotifyUsername
           })
           .then(function (response) {
             console.log("Server Response: " + response.status)
             if(response.status==200)
             {
-              console.log("Successful Authorization!")
+              handleSuccessfulAuth();
             }
             if(response.status==201)
             {
-              console.log("Wrong login details!")
-              self.toggleError();
+              handleFailedAuth();
             }
             else
             {
@@ -66,21 +67,43 @@ class Auth extends Component
             [name]: value   
         });
     }
+
     handleFailedAuth()
     {
+      console.log("Authorization failed...")
+      this.props.history.push('/Create')
     }
 
     handleSuccessfulAuth()
     {
+      console.log("Successful Authorization!")
+
+      // Log the details
+      event.preventDefault();
+      console.log(this.state);
+
+      // Perform Axios POST Request
+      // Sent to Flask server's route '/createUser'
+      // Send our state variables captured by our handleChange function 
+      axios.post('/createUser', {
+          name: this.state.name,
+          email: this.state.email,
+          password: this.state.password,
+          spotifyUsername: this.state.spotifyUsername
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
 
    
     render()
     {
         // Render the forms required for login
-        return(
-           
-            
+        return( 
             <div className="FormCenter">
 
                 <form onSubmit={this.handleSubmit} className="FormFields">
@@ -91,12 +114,11 @@ class Auth extends Component
                     </div>
 
                     <div className="FormField">
-                        <button className="FormField__Button mr-20">Authenticate with Spotify</button>
+                        <button className="FormField__Button mr-20" onSubmit={this.handleSubmit}>Authenticate with Spotify</button>
                     </div>
 
                 </form>
             </div>
-
             );
    
         }

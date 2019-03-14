@@ -11,12 +11,7 @@ class Home extends Component {
   render () {
     return (
       
-      <div className="AppSite">About
-                      <div className=”Site-content”>
-
-      </div>
-      </div>
-
+    
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
