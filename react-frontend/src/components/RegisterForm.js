@@ -82,6 +82,11 @@ class RegisterForm extends Component
                     </div>
 
                     <div className="FormField">
+                        <label className="FormField__Label" htmlFor="password">Spotify</label>
+                        <input type="spotifyUsername" id="spotifyUsername" className="FormField__Input" placeholder="Enter your Spotify username" name="spotifyUsername" onChange={this.handleChange} value={this.state.spotifyUsername}></input>
+                    </div>
+
+                    <div className="FormField">
                     <label className="FormField__CheckboxLabel">
                         <input className="FormField__Checkbox" type="checkbox" name="hasAgreed"/> I agree all statements in <a href="" className="FormField__TermsLink" onChange={this.handleChange} value={this.state.hasAgreed}>terms of service</a>
                     </label>

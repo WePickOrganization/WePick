@@ -155,13 +155,16 @@ def loginUser():
         # If the data is in the correct format
         if jsonData['ok']:
             
+            print(jsonData)
             # Remove the ok part of JsonData
-            jsonData = loginData['params']
+            jsonData = jsonData['data']
 
             print(jsonData)
 
             user = mongo.db.Users.find_one({'email': jsonData['email']})
-
+            
+            print(user['password'])
+            print(jsonData['password'])
 
             try:
                 # If the users password is correct
@@ -222,7 +225,7 @@ def showAllUsers():
         # Query the database and get the data from the query
         databaseResponse = mongo.db.Users.find()
         
-        collectionList = list(databaseResponse)\
+        collectionList = list(databaseResponse)
 
         # Print the entries in the console
         for document in databaseResponse:
