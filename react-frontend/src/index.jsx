@@ -11,11 +11,7 @@ import ArtistEnter from './components/ArtistEnter'
 import NavBar from './components/NavBar'
 import Logout from './components/Logout'
 import Home from './components/Home'
-<<<<<<< HEAD
-=======
-import StickyFooter from './components/StickyFooter'
 import Carousel from './components/Carousel'
->>>>>>> 73002a0ac2351e3cee64a5634b41deb5548fb3c4
 import Auth from './components/Auth'
 import StickyFooter from './components/StickyFooter'
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -31,7 +27,10 @@ class App extends React.Component {
 
     // Define the variables to be stored in our state
     this.state = {
+      name: '',
       email: '',
+      password: '',
+      spotifyUsername: '',
       password: '',
       isLoggedIn: false
     };
@@ -39,6 +38,8 @@ class App extends React.Component {
     // Declare these functions here so we can use them outside the constructor
     this.setLoggedIn = this.setLoggedIn.bind(this)
     this.setLoggedOut = this.setLoggedOut.bind(this)
+    this.createState = this.createState.bind(this)
+    this.createStateWithUsername = this.createStateWithUsername.bind(this)
   }
 
     // Handle a user logging in by setting some state and passsing in the email from the LoginForm component
@@ -78,7 +79,27 @@ class App extends React.Component {
     return <Redirect to="/Home" />
   }
 
-  
+  createState(nameFromRegister, emailFromRegister, passwordFromRegister)
+  {
+    this.setState({
+     name: nameFromRegister,
+     email: emailFromRegister,
+     password: passwordFromRegister,
+    })
+
+    console.log("Adding name, email and password to state.");
+
+  }
+
+  createStateWithUsername(spotifyUsernameFromRegister)
+  {
+    this.setState({
+     spotifyUsername: spotifyUsernameFromRegister,
+    })
+
+    console.log("Adding spotify username to state.");
+
+  }
 
 
   render() {
@@ -119,12 +140,12 @@ class App extends React.Component {
               
                 {/* Define an exact route for when the components below will be rendered */}
                 {/* E.G. When on the path '/', render the RegisterForm found in components/RegisterForm.js */}
-                <Route path="/Register" component={RegisterForm}>
+                <Route path="/Register" component={(props) => <RegisterForm createState={this.createState}>{props.children}</RegisterForm>}>
                 </Route>
 
                  {/* Define an exact route for when the components below will be rendered */}
                 {/* E.G. When on the path '/', render the RegisterForm found in components/RegisterForm.js */}
-                <Route path="/Auth" component={Auth}>
+                <Route path="/Auth" component={(props) => <Auth createStateWithUsername={this.createStateWithUsername}  name={this.state.name} email={this.state.email} password={this.state.password}>{props.children}</Auth>}>
                 </Route>
 
                 {/* Define an exact route for when the components below will be rendered */}

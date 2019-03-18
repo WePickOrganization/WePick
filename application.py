@@ -35,7 +35,11 @@ user_schema = {
         },
         "password": {
             "type": "string",
-        }
+        },
+        "spotifyUsername": {
+            "type": "string",
+        },
+       
     },
     "required": ["email", "password"],
     "additionalProperties": False
@@ -156,22 +160,20 @@ def loginUser():
 
         # Pass the jsonData into our function to validate it
         jsonData = validateRequest(jsonData)
-        
-        print("json" + str(jsonData['data']['email']))
 
+        print(jsonData)
+
+        
         # If the data is in the correct format
         if jsonData['ok']:
             
             jsonData = jsonData['data']
-            print("data ok")
 
             user = mongo.db.Users.find_one({'email': jsonData['email']})
             
-            global currentEmail
-            currentEmail = jsonData['email']
-            
-            print(flask_bcrypt.check_password_hash(user['password'],jsonData['password']))
-
+            print(jsonData)
+            #global currentEmail
+            #currentEmail = jsonData['email']
 
             try:
                 # If the users password is correct
@@ -254,7 +256,6 @@ def createUser():
         # Pass the jsonData into our function to validate it
         jsonData = validateRequest(request.get_json(force=True))
        
-        
         print(jsonData)
         
         # If the data is in the correct format
@@ -266,12 +267,10 @@ def createUser():
             # Encrypt the password before inserting it into the database
             jsonData['password'] = flask_bcrypt.generate_password_hash(jsonData['password'])
 
-            print("hash : " + jsonData['password'])
-            print(jsonData)
             
-            global currentEmail
-            currentEmail = jsonData['email']
-            print(currentEmail)
+           # global currentEmail
+           # currentEmail = jsonData['email']
+            #print(currentEmail)
 
             mongo.db.Users.insert_one(jsonData)
 

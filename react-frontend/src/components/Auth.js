@@ -26,6 +26,7 @@ class Auth extends Component
 
     handleSubmit(event)
     {
+        this.props.createStateWithUsername(this.state.spotifyUsername)
         event.preventDefault();
         var self = this;
 
@@ -33,20 +34,17 @@ class Auth extends Component
         // Sent to Flask server's route '/createUser'\
         // Send our state variables captured by our handleChange function 
         axios.post('/auth', {
-              name: this.state.name,
-              email: this.state.email,
-              password: this.state.password,
               spotifyUsername: this.state.spotifyUsername
           })
           .then(function (response) {
             console.log("Server Response: " + response.status)
             if(response.status==200)
             {
-              handleSuccessfulAuth();
+              self.handleSuccessfulAuth();
             }
             if(response.status==201)
             {
-              handleFailedAuth();
+              self.handleFailedAuth();
             }
             else
             {
@@ -76,27 +74,37 @@ class Auth extends Component
 
     handleSuccessfulAuth()
     {
-      console.log("Successful Authorization!")
-
-      // Log the details
-      event.preventDefault();
-      console.log(this.state);
+     console.log("Successful Authorization!")
+     console.log("Attempting to create user..")
 
       // Perform Axios POST Request
       // Sent to Flask server's route '/createUser'
       // Send our state variables captured by our handleChange function 
       axios.post('/createUser', {
-          name: this.state.name,
-          email: this.state.email,
-          password: this.state.password,
+          name: this.props.name,
+          email: this.props.email,
+          password: this.props.password,
           spotifyUsername: this.state.spotifyUsername
         })
         .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+            console.log("Server Response: " + response.status)
+            if(response.status==200)
+            {
+                console.log("User created and authenticated successfully!")
+                this.context.history.push('/Login');
+            }
+            if(response.status==400)
+            {
+                console.log("Could not create user. Please try again or check the server logs for errors.")
+                this.context.history.push('/Register');
+            }
+            else
+            {
+              console.log("Server error! Contact the server administrator for details.")
+            }
+          })
+          .catch(function (error) {
+          });
     }
 
    
