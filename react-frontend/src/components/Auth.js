@@ -91,12 +91,13 @@ class Auth extends Component
             if(response.status==200)
             {
                 console.log("User created and authenticated successfully!")
-                this.context.history.push('/Login');
+                this.props.setLoggedIn(this.state.email);
+                this.props.history.push('/Home');
             }
             if(response.status==400)
             {
                 console.log("Could not create user. Please try again or check the server logs for errors.")
-                this.context.history.push('/Register');
+                this.props.history.push('/Register');
             }
             else
             {

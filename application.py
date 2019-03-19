@@ -90,6 +90,19 @@ def validateRequest(jsonData):
         return {'ok': False, 'message': e}
     return {'ok': True, 'data': jsonData}
 
+
+# This function gets the corresponding username when searching by ID
+def getSpotifyUsernameByEmail(email):
+
+    print("Retrieving Spotify username from database...")
+
+    user = mongo.db.Users.find_one({'email': email})
+
+    username = user['spotifyUsername']
+
+    return username
+
+
 # Authentication Stuff
 @application.route('/refresh', methods=['POST'])
 @jwt_refresh_token_required
