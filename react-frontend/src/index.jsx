@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 
 import axios from 'axios'
 import RegisterForm from './components/RegisterForm'
+import StickyFooter from './components/StickyFooter'
 import LoginForm from './components/LoginForm'
 import ArtistEnter from './components/ArtistEnter'
 import NavBar from './components/NavBar'
