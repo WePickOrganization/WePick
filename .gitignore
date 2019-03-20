@@ -122,3 +122,6 @@ project.toc
 
 # AWS Elastic Beanstalk stuff
 app_versions/
+
+# JavaScript Stuff
+transformed.js

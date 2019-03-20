@@ -12,11 +12,14 @@ cache:
 before_script: 
   - cd react-frontend 
   - npm install
+  - npm run dev
   
 script:
   - npm test
 
-before_deploy: cd ..
+before_deploy:
+  - npm run dev
+  - cd ..
 
 deploy:
   skip_cleanup: true

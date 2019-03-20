@@ -80,7 +80,7 @@ export default class DemoBlock extends Component {
               fontSize: '1.2em',
               ...buttonStyles
             }}
-            onClick={this.OnClick}
+            onClick={this._onToggle}
           >
             {text}
           </button>

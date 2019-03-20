@@ -7,6 +7,7 @@
     position: relative;
     display: inline-block;
     overflow: hidden;
+    background: #333333;
   }
   
   .content:focus,
@@ -20,6 +21,8 @@
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     pointer-events: none;
+    background: #333333;
+
   }
 
   @media (min-width: 768px){
@@ -40,5 +43,11 @@
   padding-left: 0px;
   margin-right: auto;
   margin-left: auto;
+  background: #333333;
+}
+
+
+element.style{
+  background:#333333 !important;
 }
 

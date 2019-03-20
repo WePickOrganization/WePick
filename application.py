@@ -35,7 +35,11 @@ user_schema = {
         },
         "password": {
             "type": "string",
-        }
+        },
+        "spotifyUsername": {
+            "type": "string",
+        },
+       
     },
     "required": ["email", "password"],
     "additionalProperties": False
@@ -58,6 +62,8 @@ application.config['SECRET_KEY'] = "'\xe9\xa5'"
 mongo = PyMongo(application)
 flask_bcrypt = Bcrypt(application)
 jwt = JWTManager(application)
+
+currentEmail = ""
 
 
 # Extend the JSONEncoder class to support more stuff
@@ -83,6 +89,19 @@ def validateRequest(jsonData):
     except SchemaError as e:
         return {'ok': False, 'message': e}
     return {'ok': True, 'data': jsonData}
+
+
+# This function gets the corresponding username when searching by ID
+def getSpotifyUsernameByEmail(email):
+
+    print("Retrieving Spotify username from database...")
+
+    user = mongo.db.Users.find_one({'email': email})
+
+    username = user['spotifyUsername']
+
+    return username
+
 
 # Authentication Stuff
 @application.route('/refresh', methods=['POST'])
@@ -125,6 +144,9 @@ def CreatePlaylist():
     artistList.append(jsonData['params']['artistThree'])
     artistList.append(jsonData['params']['artistFour'])
 
+    print(currentEmail)
+    mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
+
     SpotipyAPI.authentication()
     artistid = SpotipyAPI.GetArtistID(artistList)
     SpotipyAPI.GeneratePlaylist(artistid)
@@ -152,16 +174,19 @@ def loginUser():
         # Pass the jsonData into our function to validate it
         jsonData = validateRequest(jsonData)
 
+        print(jsonData)
+
+        
         # If the data is in the correct format
         if jsonData['ok']:
             
-            # Remove the ok part of JsonData
-            jsonData = loginData['params']
-
-            print(jsonData)
+            jsonData = jsonData['data']
 
             user = mongo.db.Users.find_one({'email': jsonData['email']})
-
+            
+            print(jsonData)
+            #global currentEmail
+            #currentEmail = jsonData['email']
 
             try:
                 # If the users password is correct
@@ -222,7 +247,7 @@ def showAllUsers():
         # Query the database and get the data from the query
         databaseResponse = mongo.db.Users.find()
         
-        collectionList = list(databaseResponse)\
+        collectionList = list(databaseResponse)
 
         # Print the entries in the console
         for document in databaseResponse:
@@ -243,6 +268,8 @@ def createUser():
             
         # Pass the jsonData into our function to validate it
         jsonData = validateRequest(request.get_json(force=True))
+       
+        print(jsonData)
         
         # If the data is in the correct format
         if jsonData['ok']:
@@ -252,6 +279,11 @@ def createUser():
 
             # Encrypt the password before inserting it into the database
             jsonData['password'] = flask_bcrypt.generate_password_hash(jsonData['password'])
+
+            
+           # global currentEmail
+           # currentEmail = jsonData['email']
+            #print(currentEmail)
 
             mongo.db.Users.insert_one(jsonData)
 
@@ -334,11 +366,6 @@ def auth():
         else:
             return jsonify({'ok': True, 'message': 'Authorization Success'}), 200
        
-
-            
-
-
-
 # Notify the user the server is starting
 print("Starting Flask server...")
 
