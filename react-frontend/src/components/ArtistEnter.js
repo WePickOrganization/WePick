@@ -10,6 +10,9 @@ class ArtistEnter extends Component
     {
     
       super(props)
+
+      
+    
       
       // Define the variables to be stored in our state
       this.state = {
@@ -18,12 +21,27 @@ class ArtistEnter extends Component
         artistThree: '',
         artistFour: ''
       };
+
       
       // This lets us define functions outside of the constructor
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
 
     
+    }
+
+    componentDidMount() {
+        console.log('GrandChild did mount.');
+
+        axios.get('/getArtists', {
+            
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     // Function that gets called when values inside a text field are changed and sets them in our state
@@ -56,6 +74,7 @@ class ArtistEnter extends Component
               artistTwo: this.state.artistTwo,
               artistThree: this.state.artistThree,
               artistFour: this.state.artistFour
+
             }
           })
           .then(function (response) {
@@ -67,10 +86,10 @@ class ArtistEnter extends Component
     }
 
     render()
-    {
-        
+    {   
         // Render the forms required for login
         return(
+            
             <div className="FormCenter">
                 <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
 

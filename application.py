@@ -126,6 +126,17 @@ def unauthorized_response(callback):
 def index():
   return render_template('index.html')
 
+# Returns the favourite artists
+@application.route('/getArtists', methods=['GET'])
+def getArtistsDB():
+  artists = mongo.db.Users.find_one({'email':currentEmail},{'favArtist':1})
+  artists = artists['favArtist']
+  print(artists)
+
+  return jsonify({'ok': False, 'message': 'GotArtists'}), 202
+  
+
+
 @application.route('/CreatePlaylist', methods=['POST'])
 def CreatePlaylist():
     jsonData = request.get_json(force=True)
@@ -144,13 +155,17 @@ def CreatePlaylist():
     artistList.append(jsonData['params']['artistThree'])
     artistList.append(jsonData['params']['artistFour'])
 
-    print(currentEmail)
+    # updaes favourite artists in db
     mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
 
-    SpotipyAPI.authentication()
+    # finds username from database
+    username = mongo.db.Users.find_one({'email':currentEmail},{'spotifyUsername':1})
+
+    # Passes username to authentication
+    SpotipyAPI.authentication(username['spotifyUsername'])
     artistid = SpotipyAPI.GetArtistID(artistList)
-    SpotipyAPI.GeneratePlaylist(artistid)
-    SpotipyAPI.CreatePlaylist(artistid)
+    artistList = SpotipyAPI.GeneratePlaylist(artistid)
+    SpotipyAPI.CreatePlaylist(artistList)
     print(artistList)
     return jsonify(jsonData)
 
@@ -185,8 +200,10 @@ def loginUser():
             user = mongo.db.Users.find_one({'email': jsonData['email']})
             
             print(jsonData)
-            #global currentEmail
-            #currentEmail = jsonData['email']
+
+            global currentEmail
+            currentEmail = jsonData['email']
+            print(currentEmail)
 
             try:
                 # If the users password is correct
@@ -281,9 +298,9 @@ def createUser():
             jsonData['password'] = flask_bcrypt.generate_password_hash(jsonData['password'])
 
             
-           # global currentEmail
-           # currentEmail = jsonData['email']
-            #print(currentEmail)
+            global currentEmail
+            currentEmail = jsonData['email']
+            print(currentEmail)
 
             mongo.db.Users.insert_one(jsonData)
 

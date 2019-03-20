@@ -6,13 +6,12 @@ import { withRouter } from "react-router-dom";
 
 import axios from 'axios'
 import RegisterForm from './components/RegisterForm'
+import StickyFooter from './components/StickyFooter'
 import LoginForm from './components/LoginForm'
 import ArtistEnter from './components/ArtistEnter'
 import NavBar from './components/NavBar'
 import Logout from './components/Logout'
 import Home from './components/Home'
-import StickyFooter from './components/StickyFooter'
-import Carousel from './components/Carousel'
 import Auth from './components/Auth'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
