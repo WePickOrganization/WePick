@@ -126,6 +126,7 @@ def unauthorized_response(callback):
 def index():
   return render_template('index.html')
 
+# Returns the favourite artists
 @application.route('/getArtists', methods=['GET'])
 def getArtistsDB():
   artists = mongo.db.Users.find_one({'email':currentEmail},{'favArtist':1})
@@ -154,10 +155,13 @@ def CreatePlaylist():
     artistList.append(jsonData['params']['artistThree'])
     artistList.append(jsonData['params']['artistFour'])
 
-    #currentEmail = "Keith@test.com"
+    # updaes favourite artists in db
     mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
+
+    # finds username from database
     username = mongo.db.Users.find_one({'email':currentEmail},{'spotifyUsername':1})
 
+    # Passes username to authentication
     SpotipyAPI.authentication(username['spotifyUsername'])
     artistid = SpotipyAPI.GetArtistID(artistList)
     artistList = SpotipyAPI.GeneratePlaylist(artistid)
