@@ -19,16 +19,16 @@ class StickyFooter extends Component{
               <h5 className="title">Links</h5>
               <ul>
                 <li className="list-unstyled">
-                  <a href="#!">Link 1</a>
+                  <a href="/#/Home">Home</a>
                 </li>
                 <li className="list-unstyled">
-                  <a href="#!">Link 2</a>
+                  <a href="/#/Profile">Profile</a>
                 </li>
                 <li className="list-unstyled">
-                  <a href="#!">Link 3</a>
+                  <a href="/#/Generate">Generate</a>
                 </li>
                 <li className="list-unstyled">
-                  <a href="#!">Link 4</a>
+                  <a href="/#/About">About</a>
                 </li>
               </ul>
             </MDBCol>
