@@ -10,6 +10,7 @@ import StickyFooter from './components/StickyFooter'
 import LoginForm from './components/LoginForm'
 import ArtistEnter from './components/ArtistEnter'
 import NavBar from './components/NavBar'
+import Carousel from './components/Carousel'
 import Logout from './components/Logout'
 import Home from './components/Home'
 import Auth from './components/Auth'
@@ -114,8 +115,13 @@ class App extends React.Component {
             </Route>
           </div>
 
-          <div className="BelowNavBar">
 
+          <div className="Carousel">
+          <Route path="/Home" component={Carousel}>
+            </Route>
+          </div>
+
+          <div className="BelowNavBar">
             
           <Route path="/Home" component={Home}>
               </Route>
