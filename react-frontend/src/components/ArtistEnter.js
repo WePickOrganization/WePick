@@ -33,9 +33,7 @@ class ArtistEnter extends Component
     componentDidMount() {
         console.log('GrandChild did mount.');
 
-        axios.get('/getArtists', {
-            
-          })
+        axios.get('/getArtists')
           .then(function (response) {
             console.log(response);
           })
