@@ -46,8 +46,6 @@
   background: #333333;
 }
 
-
-element.style{
-  background:#333333 !important;
+.element.style[style]{
+  background-color: #333333 !important;
 }
-
