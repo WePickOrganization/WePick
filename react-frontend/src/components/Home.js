@@ -10,6 +10,7 @@ import '../stylesheets/styles.css'
 class Home extends Component {
   render () {
     return (
+
       <div
         style={{
           padding: '10px 0',

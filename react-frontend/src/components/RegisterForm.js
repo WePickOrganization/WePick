@@ -44,6 +44,7 @@ class RegisterForm extends Component
     handleSubmit(event)
     {
         console.log("Register successfull.. Redirecting to authentication");
+        this.props.createState(this.state.name, this.state.email, this.state.password);
         this.props.history.push('/auth');
     }
 
