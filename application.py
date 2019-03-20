@@ -156,7 +156,7 @@ def CreatePlaylist():
 
     #currentEmail = "Keith@test.com"
     mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
-    username = mongo.db.Users.find_one({'email':currentEmail},{'spotifyUsernam':1})
+    username = mongo.db.Users.find_one({'email':currentEmail},{'spotifyUsername':1})
 
     SpotipyAPI.authentication(username)
     artistid = SpotipyAPI.GetArtistID(artistList)
