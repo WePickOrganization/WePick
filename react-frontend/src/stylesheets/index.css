@@ -6,6 +6,7 @@ div.NavBar {
 div.BelowNavBar {
   position: relative;
   width: 100%;
+  background:  #333333;
 }
 
 div.StickyFooter{

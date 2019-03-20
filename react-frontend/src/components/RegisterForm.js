@@ -44,6 +44,7 @@ class RegisterForm extends Component
     handleSubmit(event)
     {
         console.log("Register successfull.. Redirecting to authentication");
+        this.props.createState(this.state.name, this.state.email, this.state.password);
         this.props.history.push('/auth');
     }
 
@@ -79,11 +80,6 @@ class RegisterForm extends Component
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="password">Password</label>
                         <input type="Password" id="Password" className="FormField__Input" placeholder="Enter your password" name="password" onChange={this.handleChange} value={this.state.password}></input>
-                    </div>
-
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="password">Spotify</label>
-                        <input type="spotifyUsername" id="spotifyUsername" className="FormField__Input" placeholder="Enter your Spotify username" name="spotifyUsername" onChange={this.handleChange} value={this.state.spotifyUsername}></input>
                     </div>
 
                     <div className="FormField">
