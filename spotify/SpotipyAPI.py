@@ -67,7 +67,7 @@ def CreatePlaylist(tracks):
     spotifyObject = spotipyModified.Spotify(auth=token)
     spotifyObject.trace = False
     print("username:" + str(username))
-    playlists = spotifyObject.user_playlist_create(username, "Recommended2", public=True)
+    playlists = spotifyObject.user_playlist_create(username, "DemoForMartin", public=True)
     spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
     pprint.pprint("Successfully created playlist")   
 

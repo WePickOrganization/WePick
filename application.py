@@ -153,32 +153,21 @@ def CreatePlaylist():
     jsonData = request.get_json(force=True)
 
     print(jsonData)
-    print(jsonData['params']['artistOne'])
-    print(jsonData['params']['artistTwo'])
-    print(jsonData['params']['artistThree'])
-    print(jsonData['params']['artistFour'])
     print(jsonData['params']['spotUser'])
 
+    UserOneartists = mongo.db.Users.find_one({'email':currentEmail},{'favArtist':1})
     UserTwoartists = mongo.db.Users.find_one({'email':jsonData['params']['spotUser']},{'favArtist':1})
    
 
-    artistList = []
-
-    
-    artistList.append(jsonData['params']['artistOne'])
-    artistList.append(jsonData['params']['artistTwo'])
-    artistList.append(jsonData['params']['artistThree'])
-    artistList.append(jsonData['params']['artistFour'])
-    #artistList.append(UserTwoartists['favArtist'])
 
     print(UserTwoartists['favArtist'])
 
-    artistLists = random.sample(artistList,2)
+    artistLists = random.sample(UserOneartists['favArtist'],2)
     userTwoLists = random.sample(UserTwoartists['favArtist'],2)
     artistListCombined = artistLists + userTwoLists
 
     # updaes favourite artists in db
-    mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
+    #mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
 
     # finds username from database
     username = mongo.db.Users.find_one({'email':currentEmail},{'spotifyUsername':1})
