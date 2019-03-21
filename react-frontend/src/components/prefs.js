@@ -28,7 +28,9 @@ class prefs extends React.Component {
           });
     }
 
-    editSubmit(){
+    editSubmit(event){
+        event.preventDefault();
+        console.log(this.state);
         axios.post('/UpdateFavArtists', {
             
               dynamicList: this.state.dynamicList
@@ -54,10 +56,13 @@ class prefs extends React.Component {
     }
     render(){
       return(
-        <div class="component-wrapper">
+        <div className="component-wrapper">
+        <form  onSubmit={this.editSubmit}>
           <h1>Simple Dynamic List</h1>
           <DynamicList listItems={this.state.dynamicList} removeItem={this.removeListItem} />
           <InputBox addItem={this.addListItem} />
+          <button type="submit" className="btn btn-primary">Save</button>
+        </form>
         </div>
       );
     }
@@ -95,7 +100,7 @@ class prefs extends React.Component {
         <form ref="itemForm" onSubmit={e => this.formSubmit(e)}>
           <p>Artists</p>
           <input type="text" id="item" ref="item"/><br />
-          <button type="submit" class="btn btn-primary">Add Item</button>
+          <button type="submit" className="btn btn-primary">Add Item</button>
         </form>
        </div>
       );

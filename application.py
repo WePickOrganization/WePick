@@ -136,12 +136,13 @@ def getArtistsDB():
 
   return json.dumps(artists)
 
-@application.route('/UpdateFavArtists', methods=['GET'])
+@application.route('/UpdateFavArtists', methods=['POST'])
 def sendArtists():
   jsonData = request.get_json(force=True)
+  artistList = jsonData['dynamicList']
   print(jsonData)
   print("Inside fav aritst functon")
-  #mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
+  mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
 
   return jsonify({'ok': True, 'message': 'artists updates'}), 200
   
