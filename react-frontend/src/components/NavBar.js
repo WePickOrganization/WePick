@@ -27,7 +27,7 @@ class NavbarPage extends Component
 
 render() {
   return (
-    <MDBNavbar color="default-color" dark expand="md">
+    <MDBNavbar color="purple-gradient" dark expand="md">
       <MDBNavbarBrand>
         <strong className="white-text">WePick</strong>
       </MDBNavbarBrand>

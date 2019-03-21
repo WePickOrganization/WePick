@@ -6,7 +6,7 @@ class Carousel extends Component {
     render(){
         return(
     <MDBContainer>
-      <MDBCarousel activeItem={1} length={7} showControls={true} showIndicators={false} className="z-depth-1">
+      <MDBCarousel activeItem={1} length={7} showControls={false} showIndicators={false} className="z-index-99">
         <MDBCarouselInner>
           <MDBCarouselItem itemId="1">
             <MDBView>
@@ -50,7 +50,7 @@ class Carousel extends Component {
           </MDBCarouselItem>
           <MDBCarouselItem itemId="5">
             <MDBView>
-              <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(77).jpg" alt="Fifth slide" />
+              <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(90).jpg" alt="Fifth slide" />
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>

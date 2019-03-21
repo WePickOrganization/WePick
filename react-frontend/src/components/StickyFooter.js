@@ -5,7 +5,7 @@ class StickyFooter extends Component{
   render(){
     return(
     <MDBContainer>
-      <MDBFooter color="default-color" className="font-small pt-4 mt-4">
+      <MDBFooter color="purple-gradient" className="font-small pt-4 mt-4">
         <MDBContainer fluid className="text-center text-md-left">
           <MDBRow>
             <MDBCol md="6">
