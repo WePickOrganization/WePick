@@ -10,14 +10,8 @@ div.BelowNavBar{
   background-color: #333333;
 }
 
-div.BelowNavBar:nth-child(1){
-  background-color: #333333 !important;
-  background: #333333;
-
-}
-
-element.style{
-  background-color: #333333 !important;
+.BelowNavBar > div:nth-child(1) > div:nth-child(2){
+  background-color: #333333;
 }
 
 

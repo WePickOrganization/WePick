@@ -5,7 +5,7 @@ class StickyFooter extends Component{
   render(){
     return(
     <MDBContainer>
-      <MDBFooter color="blue" className="font-small pt-4 mt-4">
+      <MDBFooter color="default-color" className="font-small pt-4 mt-4">
         <MDBContainer fluid className="text-center text-md-left">
           <MDBRow>
             <MDBCol md="6">
@@ -19,16 +19,16 @@ class StickyFooter extends Component{
               <h5 className="title">Links</h5>
               <ul>
                 <li className="list-unstyled">
-                  <a href="#!">Link 1</a>
+                  <a href="/#/Home">Home</a>
                 </li>
                 <li className="list-unstyled">
-                  <a href="#!">Link 2</a>
+                  <a href="/#/Profile">Profile</a>
                 </li>
                 <li className="list-unstyled">
-                  <a href="#!">Link 3</a>
+                  <a href="/#/Generate">Generate</a>
                 </li>
                 <li className="list-unstyled">
-                  <a href="#!">Link 4</a>
+                  <a href="/#/About">About</a>
                 </li>
               </ul>
             </MDBCol>
