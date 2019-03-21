@@ -123,7 +123,7 @@ def unauthorized_response(callback):
 
 
 # The default route for the application
-@application.route("/Home")
+@application.route("/")
 def index():
   return render_template('index.html')
 
@@ -134,7 +134,7 @@ def getArtistsDB():
   artists = artists['favArtist']
   print(artists)
 
-  return jsonify({'ok': False, 'message': 'GotArtists'}), 202
+  return json.dumps(artists)
   
 
 
@@ -163,9 +163,9 @@ def CreatePlaylist():
 
     print(UserTwoartists['favArtist'])
 
-    artistList = random.sample(artistList,2)
+    artistLists = random.sample(artistList,2)
     userTwoLists = random.sample(UserTwoartists['favArtist'],2)
-    artistListCombined = artistList + userTwoLists
+    artistListCombined = artistLists + userTwoLists
 
     # updaes favourite artists in db
     mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})

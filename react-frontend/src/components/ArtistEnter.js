@@ -12,7 +12,7 @@ class ArtistEnter extends Component
     
       super(props)
 
-      
+    
     
       
       // Define the variables to be stored in our state
@@ -21,7 +21,8 @@ class ArtistEnter extends Component
         artistTwo: '',
         artistThree: '',
         artistFour: '',
-        spotUser: ''
+        spotUser: '',
+        artists : []
       };
 
       
@@ -36,9 +37,8 @@ class ArtistEnter extends Component
         console.log('GrandChild did mount.');
 
         axios.get('/getArtists')
-          .then(function (response) {
-            console.log(response);
-          })
+          .then(response =>{this.state.artists = response.data;console.log(this.state.artists);this.forceUpdate();}
+          )
           .catch(function (error) {
             console.log(error);
           });
@@ -91,6 +91,7 @@ class ArtistEnter extends Component
         return(
             
             <div className="FormCenter">
+                <p>dddddd{this.state.artists}</p>
                 <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
 
                     <div className="FormField">
