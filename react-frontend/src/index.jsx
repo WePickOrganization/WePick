@@ -14,6 +14,7 @@ import Carousel from './components/Carousel'
 import Logout from './components/Logout'
 import Home from './components/Home'
 import Auth from './components/Auth'
+import Prefs from './components/prefs'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
@@ -158,6 +159,10 @@ class App extends React.Component {
                 <Route path="/Login" render={() => (
                   <LoginForm setLoggedIn={this.setLoggedIn} />
                 )} />
+
+
+                 <Route path="/Preferences" component={Prefs}></Route>
+
               </div>
 
               
