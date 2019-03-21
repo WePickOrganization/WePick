@@ -89,8 +89,7 @@ class RegisterForm extends Component
                     </div>
                 
                     <div className="FormField">
-                        <button className="FormField__Button mr-20" onSubmit={this.handleSubmit}>Sign Up</button> <Link to="/Login"
-                        className="FormField__Link">I'm already member</Link>
+                        <button className="FormField__Button mr-20" onSubmit={this.handleSubmit}>Sign Up</button>
                     </div>
 
                 </form>
