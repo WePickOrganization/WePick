@@ -2,7 +2,7 @@ export default [
   //Button stuff
     {
         background: '#333333',
-        text: 'Generate Playlist',//This is what the text is for the button
+        text: 'Get Started',//This is what the text is for the button
         buttonStyles: {
           background: '#9933CC',//This is the color of the actual button
           color: '#ffffff',//This is the color of the text
