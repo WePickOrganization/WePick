@@ -33,10 +33,10 @@ class StickyFooter extends Component{
                   <a href="/#/Home">Home</a>
                 </li>
                 <li className="list-unstyled">
-                  <a href="/#/Profile">Profile</a>
+                  <a href="/#/Profile">Artist</a>
                 </li>
                 <li className="list-unstyled">
-                  <a href="/#/Generate">Generate</a>
+                  <a href="/#/Create">Generate</a>
                 </li>
                 <li className="list-unstyled">
                   <a href="/#/About">About</a>
