@@ -3,11 +3,21 @@ div.NavBar {
   width: 100%;
 }
 
-div.BelowNavBar {
+div.BelowNavBar{
   position: relative;
   width: 100%;
   background:  #333333;
+  background-color: #333333;
 }
+
+.BelowNavBar > div:nth-child(1) > div:nth-child(2){
+  background-color: #333333;
+}
+
+.BelowNavBar > div:nth-child(1){
+  background-color: #333333 !important;
+}
+
 
 div.StickyFooter{
   position: relative;

@@ -11,8 +11,6 @@
   width: 200px;
 }
 
-
-
 .App {
   height: 100vh;
   color: rgb(255, 255, 255);
@@ -31,7 +29,7 @@
 
 .App__Form {
   width: 25%;
-  background-color: rgba(5, 139, 139, 0.432);
+  background-color:#333333;
   padding: 25px 40px;
   overflow: auto;
   display: inline-block;
