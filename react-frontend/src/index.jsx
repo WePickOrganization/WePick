@@ -115,17 +115,17 @@ class App extends React.Component {
             </Route>
           </div>
 
+          <div className="BelowNavBar">
 
           <div className="Carousel">
           <Route path="/Home" component={Carousel}>
             </Route>
           </div>
-
-          <div className="BelowNavBar">
             
+          <div className="Home">
           <Route path="/Home" component={Home}>
               </Route>
-
+          </div>
   
 
             {/* The blank space to the left of the forms*/}
