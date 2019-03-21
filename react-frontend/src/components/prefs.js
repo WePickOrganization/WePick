@@ -14,6 +14,7 @@ class prefs extends React.Component {
       };
       this.addListItem = this.addListItem.bind(this);
       this.removeListItem = this.removeListItem.bind(this);
+      this.editSubmit = this.editSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -22,6 +23,20 @@ class prefs extends React.Component {
         axios.get('/getArtists')
           .then(response =>{this.state.dynamicList = response.data;console.log(this.state.dynamicList);this.forceUpdate();}
           )
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+
+    editSubmit(){
+        axios.post('/UpdateFavArtists', {
+            
+              dynamicList: this.state.dynamicList
+            
+          })
+          .then(function (response) {
+            console.log("Response" + response);
+          })
           .catch(function (error) {
             console.log(error);
           });
@@ -55,7 +70,7 @@ class prefs extends React.Component {
           {
             Object.keys(this.props.listItems).map( (index) => {
               return (
-                <li onClick={ () => this.props.removeItem(index) } name={index}>{this.props.listItems[index]}</li>
+                <li key={index} onClick={ () => this.props.removeItem(index) } name={index}>{this.props.listItems[index]}</li>
               );
             })
           }
@@ -73,13 +88,16 @@ class prefs extends React.Component {
         this.refs.item.value = '';
       }
     }
+
     render(){
       return (
+        <div>
         <form ref="itemForm" onSubmit={e => this.formSubmit(e)}>
-          <p>Add items to the dynamic list</p>
+          <p>Artists</p>
           <input type="text" id="item" ref="item"/><br />
           <button type="submit" class="btn btn-primary">Add Item</button>
         </form>
+       </div>
       );
     }
   }
