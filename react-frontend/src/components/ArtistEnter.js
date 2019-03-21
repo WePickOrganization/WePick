@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 
+
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
 class ArtistEnter extends Component
 {
@@ -19,7 +20,8 @@ class ArtistEnter extends Component
         artistOne: '',
         artistTwo: '',
         artistThree: '',
-        artistFour: ''
+        artistFour: '',
+        spotUser: ''
       };
 
       
@@ -71,8 +73,8 @@ class ArtistEnter extends Component
               artistOne: this.state.artistOne,
               artistTwo: this.state.artistTwo,
               artistThree: this.state.artistThree,
-              artistFour: this.state.artistFour
-
+              artistFour: this.state.artistFour,
+              spotUser: this.state.spotUser
             }
           })
           .then(function (response) {
@@ -111,7 +113,10 @@ class ArtistEnter extends Component
                         <input type="text" id="artistFour" className="FormField__Input" placeholder="Enter your password" name="artistFour" value={this.state.artistFour} onChange={this.handleChange}></input>
                     </div>
 
-
+                    <div className="FormField">
+                        <label className="FormField__Label" htmlFor="artistFour">Spotify Email</label>
+                        <input type="text" id="spotUser" className="FormField__Input" placeholder="Enter your password" name="spotUser" value={this.state.spotUser} onChange={this.handleChange}></input>
+                    </div>
 
                     <div className="FormField">
                         <button className="FormField__Button mr-20">Create</button> <Link to="/"

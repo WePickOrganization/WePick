@@ -22,6 +22,7 @@ import spotipyModified
 from spotipyModified import client as client
 from spotipyModified import oauth2 as oauth2
 from spotipyModified import util as util
+import random
 
 user_schema = {
     "type": "object",
@@ -146,6 +147,10 @@ def CreatePlaylist():
     print(jsonData['params']['artistTwo'])
     print(jsonData['params']['artistThree'])
     print(jsonData['params']['artistFour'])
+    print(jsonData['params']['spotUser'])
+
+    UserTwoartists = mongo.db.Users.find_one({'email':jsonData['params']['spotUser']},{'favArtist':1})
+   
 
     artistList = []
 
@@ -154,6 +159,13 @@ def CreatePlaylist():
     artistList.append(jsonData['params']['artistTwo'])
     artistList.append(jsonData['params']['artistThree'])
     artistList.append(jsonData['params']['artistFour'])
+    #artistList.append(UserTwoartists['favArtist'])
+
+    print(UserTwoartists['favArtist'])
+
+    artistList = random.sample(artistList,2)
+    userTwoLists = random.sample(UserTwoartists['favArtist'],2)
+    artistListCombined = artistList + userTwoLists
 
     # updaes favourite artists in db
     mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
@@ -163,7 +175,7 @@ def CreatePlaylist():
 
     # Passes username to authentication
     SpotipyAPI.authentication(username['spotifyUsername'])
-    artistid = SpotipyAPI.GetArtistID(artistList)
+    artistid = SpotipyAPI.GetArtistID(artistListCombined)
     artistList = SpotipyAPI.GeneratePlaylist(artistid)
     SpotipyAPI.CreatePlaylist(artistList)
     print(artistList)
