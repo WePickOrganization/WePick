@@ -27,7 +27,7 @@ div.StickyFooter{
 div.Carousel{
   position: absolute;
   width: 100%;
-  margin-top: 22%;
+  margin-bottom: 22%;
 }
 
 div.Home{
@@ -39,7 +39,7 @@ div.Home{
   width: 20vmax !important;
   height: 1vmax !important;
   background: none !important;
-  margin-top: 60% !important;
+  margin-top: 40% !important;
 }
 
 .BelowNavBar > div.Home > div{

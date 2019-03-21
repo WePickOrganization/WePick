@@ -89,14 +89,6 @@ export default class DemoBlock extends Component {
     )
   }
 
-  OnClick = () =>{
-    _onToggle();
-    GeneratePlaylist();
-  }
-
-  GeneratePlaylist = () =>{
-    console.log("bruh")
-  }
 
   _onToggle = () => {
     if (this.state.animating) return
@@ -110,5 +102,6 @@ export default class DemoBlock extends Component {
     this.setState({
       animating: false,
     })
+    window.location.replace("/#/Create");
   }
 }
