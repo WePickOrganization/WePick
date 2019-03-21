@@ -123,9 +123,10 @@ class App extends React.Component {
 
           <div className="BelowNavBar">
             
+          <div className="Home">
           <Route path="/Home" component={Home}>
               </Route>
-
+          </div>
   
 
             {/* The blank space to the left of the forms*/}
