@@ -6,7 +6,6 @@ class Carousel extends Component {
     render(){
         return(
     <MDBContainer>
-      <h4 className="mt-5 mb-2">Basic example</h4>
       <MDBCarousel activeItem={1} length={4} showControls={true} showIndicators={true} className="z-depth-1">
         <MDBCarouselInner>
           <MDBCarouselItem itemId="1">
@@ -15,8 +14,8 @@ class Carousel extends Component {
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>
-              <h3 className="h3-responsive">Light mask</h3>
-              <p>First text</p>
+              <h3 className="h3-responsive"></h3>
+              <p></p>
             </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="2">
@@ -25,8 +24,8 @@ class Carousel extends Component {
               <MDBMask overlay="black-strong" />
             </MDBView>
             <MDBCarouselCaption>
-              <h3 className="h3-responsive">Strong mask</h3>
-              <p>Second text</p>
+              <h3 className="h3-responsive"></h3>
+              <p></p>
             </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="3">
@@ -35,18 +34,18 @@ class Carousel extends Component {
               <MDBMask overlay="black-slight" />
             </MDBView>
             <MDBCarouselCaption>
-              <h3 className="h3-responsive">Slight mask</h3>
-              <p>Third text</p>
+              <h3 className="h3-responsive"></h3>
+              <p></p>
             </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="4">
             <MDBView>
-              <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20%28143%29.jpg" alt="Mattonit's item" />
+              <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(30).jpg" alt="Mattonit's item" />
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>
-              <h3 className="h3-responsive">Sopot Beach</h3>
-              <p>Taken june 21th by @mattonit</p>
+              <h3 className="h3-responsive"></h3>
+              <p></p>
             </MDBCarouselCaption>
           </MDBCarouselItem>
         </MDBCarouselInner>
