@@ -30,7 +30,6 @@
 .App__Form {
   width: 25%;
   background-color:#333333;
-  padding: 25px 40px;
   overflow: auto;
   display: inline-block;
 }
