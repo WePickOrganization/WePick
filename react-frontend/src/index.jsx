@@ -115,13 +115,12 @@ class App extends React.Component {
             </Route>
           </div>
 
+          <div className="BelowNavBar">
 
           <div className="Carousel">
           <Route path="/Home" component={Carousel}>
             </Route>
           </div>
-
-          <div className="BelowNavBar">
             
           <div className="Home">
           <Route path="/Home" component={Home}>
