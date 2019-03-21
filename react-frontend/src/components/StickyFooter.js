@@ -9,11 +9,22 @@ class StickyFooter extends Component{
         <MDBContainer fluid className="text-center text-md-left">
           <MDBRow>
             <MDBCol md="6">
-              <h5 className="title">Find us on:</h5>
-              <p>
-                Here you can use rows and columns here to organize your footer
-                content.
-              </p>
+            <h6 className="text-uppercase font-weight-bold">
+              <strong>Contact</strong>
+            </h6>
+            <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
+            <p>
+              <i className="fa fa-home mr-3" /> Trim City, TC 10012, IE
+            </p>
+            <p>
+              <i className="fa fa-envelope mr-3" /> info@example.com
+            </p>
+            <p>
+              <i className="fa fa-phone mr-3" /> + 01 234 567 88
+            </p>
+            <p>
+              <i className="fa fa-print mr-3" /> + 01 234 567 89
+            </p>
             </MDBCol>
             <MDBCol md="6">
               <h5 className="title">Links</h5>
