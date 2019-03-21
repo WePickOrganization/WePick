@@ -6,7 +6,7 @@ class Carousel extends Component {
     render(){
         return(
     <MDBContainer>
-      <MDBCarousel activeItem={1} length={7} showControls={false} showIndicators={false} className="z-index-99">
+      <MDBCarousel activeItem={1} length={7} showControls={false} showIndicators={false} className="z-depth-1">
         <MDBCarouselInner>
           <MDBCarouselItem itemId="1">
             <MDBView>
