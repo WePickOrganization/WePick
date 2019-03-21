@@ -38,7 +38,7 @@ render() {
             <MDBNavLink to="/Home">Home</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="/Profile">Artist</MDBNavLink>
+            <MDBNavLink to="/Preferences">Preferences</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
             <MDBNavLink to="/Create">Generate</MDBNavLink>
