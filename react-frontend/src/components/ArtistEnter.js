@@ -91,7 +91,7 @@ class ArtistEnter extends Component
         return(
             
             <div className="FormCenter">
-                <p>dddddd{this.state.artists}</p>
+                <p>{this.state.artists}</p>
                 <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
 
                     <div className="FormField">
