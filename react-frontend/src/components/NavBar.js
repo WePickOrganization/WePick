@@ -27,7 +27,7 @@ class NavbarPage extends Component
 
 render() {
   return (
-    <MDBNavbar color="default-color" dark expand="md">
+    <MDBNavbar color="purple-gradient" dark expand="md">
       <MDBNavbarBrand>
         <strong className="white-text">WePick</strong>
       </MDBNavbarBrand>
@@ -35,13 +35,13 @@ render() {
       <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
         <MDBNavbarNav left>
           <MDBNavItem active>
-            <MDBNavLink to="/#/Home">Home</MDBNavLink>
+            <MDBNavLink to="/Home">Home</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="/#/Profile">Artist</MDBNavLink>
+            <MDBNavLink to="/Profile">Artist</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="/#/Create">Generate</MDBNavLink>
+            <MDBNavLink to="/Create">Generate</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
             <MDBDropdown>

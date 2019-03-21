@@ -123,7 +123,7 @@ def unauthorized_response(callback):
 
 
 # The default route for the application
-@application.route("/")
+@application.route("/Home")
 def index():
   return render_template('index.html')
 
