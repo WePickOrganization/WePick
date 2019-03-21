@@ -91,7 +91,7 @@
 
 .FormTitle__Link--Active {
   color: white;
-  border-bottom: 1px solid #199087;
+  border-bottom: 1px solid rgb(189, 38, 189);
 }
 
 .FormField {
@@ -122,7 +122,7 @@
 }
 
 .FormField__Button {
-  background-color: #52C4B9;
+  background-color: rgb(189, 38, 189);
   color: white;
   border: none;
   outline: none;
@@ -136,7 +136,7 @@
   color: #66707D;
   text-decoration: none;
   display: inline-block;
-  border-bottom: 1.5px solid #225E62;
+  border-bottom: 1.5px solid rgb(189, 38, 189);
   padding-bottom: 5px;
 }
 
@@ -152,7 +152,7 @@
 
 .FormField__TermsLink {
   color: white;
-  border-bottom: 1px solid #199087;
+  border-bottom: 1px solid rgb(189, 38, 189);
   text-decoration: none;
   display: inline-block;
   padding-bottom: 2px;
