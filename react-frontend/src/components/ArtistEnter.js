@@ -70,10 +70,6 @@ class ArtistEnter extends Component
         // Send our state variables captured by our handleChange function 
         axios.post('/CreatePlaylist', {
             params: {
-              artistOne: this.state.artistOne,
-              artistTwo: this.state.artistTwo,
-              artistThree: this.state.artistThree,
-              artistFour: this.state.artistFour,
               spotUser: this.state.spotUser
             }
           })
@@ -95,25 +91,7 @@ class ArtistEnter extends Component
                 <p>{this.state.artists}</p>
                 <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
 
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="artistOne">Artist 1</label>
-                        <input type="text" id="artistOne" className="FormField__Input" placeholder="Enter artist name" name="artistOne" value={this.state.artistOne} onChange={this.handleChange}></input>
-                    </div>
-
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="artistTwo">Artist 2</label>
-                        <input type="text" id="artistTwo" className="FormField__Input" placeholder="Enter artist name" name="artistTwo" value={this.state.artistTwo} onChange={this.handleChange}></input>
-                    </div>
-
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="artistThree">Artist 3</label>
-                        <input type="text" id="artistThree" className="FormField__Input" placeholder="Enter artist name" name="artistThree" value={this.state.artistThree} onChange={this.handleChange}></input>
-                    </div>
-
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="artistFour">Artist 4</label>
-                        <input type="text" id="artistFour" className="FormField__Input" placeholder="Enter your password" name="artistFour" value={this.state.artistFour} onChange={this.handleChange}></input>
-                    </div>
+                    
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="artistFour">Spotify Email</label>
