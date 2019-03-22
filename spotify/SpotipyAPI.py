@@ -8,33 +8,31 @@ from spotipyModified import util as util
 import pprint
 import json
 
-
-token = ""
-username = ""
-scope = ""
-
-def authentication(usernameG):
+def authentication(username):
     #global username
-    #this.username = input("Enter username: ")
-
-    global username
-    username = usernameG
-
-    global scope
+    #global username
+    #username = usernameG
+    #global scope
+    
     scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
     
-    global token
-    token = util.prompt_for_user_token(str(usernameG),scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
+    token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
+
+    return token
 
 
 
 # Function which creates recommendation based of an artist id/ids
-def GeneratePlaylist(artistsID):
-    
-   
-    print("Token:" + token)
+def GeneratePlaylist(artistsID, token):
+       
     spotifyObject = spotipyModified.Spotify(auth=token)
-    Recommendation = spotifyObject.recommendations(seed_artists= artistsID, limit=20)
+
+    print("Created object")
+
+    Recommendation = spotifyObject.recommendations(seed_artists=artistsID, limit=20)
+
+    print("Seeded artists")
+
     RecommendationList = []
     for i in range(20):
         pprint.pprint("In function! song reccommend = " + Recommendation['tracks'][i]['id'])
@@ -44,10 +42,8 @@ def GeneratePlaylist(artistsID):
     return RecommendationList
 
 # Function which converts artist name to id (Very slightly glitchy)
-def GetArtistID(artists):
+def GetArtistID(artists, token):
 
-    #token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
-    print("Token:" + token)
     # Spotify Object
     spotifyObject = spotipyModified.Spotify(auth=token)
     array_length = len(artists)
@@ -62,11 +58,11 @@ def GetArtistID(artists):
     return artistsList
 
 # Function which creates playlist of a given list 
-def CreatePlaylist(tracks):
+def CreatePlaylist(tracks, token):
+
     # Spotify Object
     spotifyObject = spotipyModified.Spotify(auth=token)
     spotifyObject.trace = False
-    print("username:" + str(username))
     playlists = spotifyObject.user_playlist_create(username, "DemoForMartin", public=True)
     spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
     pprint.pprint("Successfully created playlist")   
@@ -120,14 +116,4 @@ def testFunction():
 
     pprint.pprint(ArtistsID)
     pprint.pprint(Tracks)
-
-
-def authenticateUser():
-    username='steadueddie'
-    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
-    token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
-
-
-#testFunction()
-#authenticateUser()
 

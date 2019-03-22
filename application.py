@@ -158,32 +158,62 @@ def CreatePlaylist():
     # Get the users from the jsonData
     WePickUsers = jsonData['spotUsers']
 
+    # Filter out any empty strings from the list
+    WePickUsersFiltered = list(filter(None, WePickUsers))
+
     # Conver the list of users to an array
-    usersToGenerateWith = np.asarray(WePickUsers)
+    usersToGenerateWith = np.asarray(WePickUsersFiltered)
 
     # The first user will always be the user currently logged in
-    usersToGenerateWith[0] = mongo.db.Users.find_one({'email':currentEmail},{'favArtist':1})
+    #usersToGenerateWith[0] = mongo.db.Users.find_one({'email':currentEmail},{'favArtist':1})
+
+    usersInfo = list()
+    artistsArray = list()
+    artistsList = list()
 
     # For all the rest of the users, get their favorite artists from the database
     for i in range(usersToGenerateWith.size):
-     usersArtists += mongo.db.Users.find_one({'email':usersToGenerateWith[i]},{'favArtist':1})
-     print(usersArtists)
+       usersInfo.append(mongo.db.Users.find_one({'email':usersToGenerateWith[i]},{'favArtist':1})) 
+
+    # From the users info, get their favorite artists
+    for i in range(len(usersInfo)):
+       artistsArray.append(usersInfo[i]['favArtist'])
     
-    # Debug
-    print("Generating playlist with the following artists: " + usersArtists)
+    # Combine all these artists into one giant list
+    for i in range(len(artistsArray)):
+        artistsList += artistsArray[i]
+    
+    # Remove any duplicates
+    artistsList = list(dict.fromkeys(artistsList))
 
     # Get a random sample from all the artists collected from the database
-    randomSampleFromArtists = random.sample(usersArtists,10)
+    randomSampleFromArtists = random.sample(artistsList,6)
 
     # Using the currently logged in user, get their Spotify username from the database
     loggedInUser = mongo.db.Users.find_one({'email':usersToGenerateWith[0]},{'spotifyUsername':1})
 
-    # Passes username to authentication
-    SpotipyAPI.authentication(username['spotifyUsername'])
-    artistid = SpotipyAPI.GetArtistID(artistListCombined)
-    artistList = SpotipyAPI.GeneratePlaylist(artistid)
-    SpotipyAPI.CreatePlaylist(artistList)
-    print(artistList)
+    print("\n Getting token for authentication....... \n")
+
+    # Passes username to authentication and gets the returned token
+    token = SpotipyAPI.authentication(loggedInUser['spotifyUsername'])
+
+    print("\n Getting artists ids....... \n")
+
+    # Using the random sample of artists, get their artists ID's
+    artistsIDs = SpotipyAPI.GetArtistID(randomSampleFromArtists, token)
+
+    print("\n Getting recommended artists.... \n")
+    
+    # Pass the id's into the GeneratePlaylist function
+    recommendedSongs = SpotipyAPI.GeneratePlaylist(artistsIDs, token)
+    
+    print("\n Creating playlist.... \n")
+
+    # Create a playlist with these IDs
+    SpotipyAPI.CreatePlaylist(recommendedSongs, token)
+
+    print("\n ==== PLAYLIST CREATED ==== \n")
+
     return jsonify(jsonData)
 
 
