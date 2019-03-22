@@ -18,20 +18,18 @@ def authentication(username):
     
     token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
 
-    return token
-
 
 
 # Function which creates recommendation based of an artist id/ids
-def GeneratePlaylist(artistsID, token):
-       
+def GeneratePlaylist(artistsID, username):
+    
+     # Spotify Object
+    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+    token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
     spotifyObject = spotipyModified.Spotify(auth=token)
 
-    print("Created object")
-
+    
     Recommendation = spotifyObject.recommendations(seed_artists=artistsID, limit=20)
-
-    print("Seeded artists")
 
     RecommendationList = []
     for i in range(20):
@@ -42,10 +40,14 @@ def GeneratePlaylist(artistsID, token):
     return RecommendationList
 
 # Function which converts artist name to id (Very slightly glitchy)
-def GetArtistID(artists, token):
+def GetArtistID(artists, username):
 
     # Spotify Object
+    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+    token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
     spotifyObject = spotipyModified.Spotify(auth=token)
+
+    # Get ID's
     array_length = len(artists)
     pprint.pprint(array_length)
     artistsList = []    
@@ -58,11 +60,13 @@ def GetArtistID(artists, token):
     return artistsList
 
 # Function which creates playlist of a given list 
-def CreatePlaylist(tracks, token):
-
+def CreatePlaylist(tracks, username):
     # Spotify Object
+    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+    token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
     spotifyObject = spotipyModified.Spotify(auth=token)
     spotifyObject.trace = False
+
     playlists = spotifyObject.user_playlist_create(username, "DemoForMartin", public=True)
     spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
     pprint.pprint("Successfully created playlist")   
