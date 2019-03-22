@@ -1,52 +1,56 @@
-body{
-    background: #C33764;
-    background: -webkit-linear-gradient(to top, #1D2671, #C33764);
-    background: linear-gradient(to top, #1D2671, #C33764);
-    color: #fff;
-    }
-    html{
-      background: #1D2671;
-    }
-    ul{
-      list-style: none;
-      padding: 0;
-      width: 70%;
-      float:right;
-    }
-    
-    li{
-      width: 100%;
-      text-align: center;
-      background-color: #0d264f;
-      border-radius: 10px;
-      margin: 2px;
-      padding: 5px;
-      font-size: 18px;
-      cursor: pointer;
-    }
-    
-    form{
-      float:left;
-      width: 30%;
-      padding: 20px;
-      background-color: white;
-    }
-    
-    input{
-      width: 100%;
-      border: none;
-      padding: 10px;
-      font-size:20px;
-      color: #0d264f;
-      background-color: #c7c7e7;
-    }
-    
-    button{
-      float: right;
-      padding: 10px 20px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 3px;
-      color: #fff;
-      background-color: #0d264f;
-    }
+#unorderedList{
+list-style: none;
+padding: 0;
+width: 99%;
+float:center;
+}
+
+#listElements{
+width: 100%;
+text-align: center;
+background-color: #cf0492fd;
+border-radius: 10px;
+margin: 2px;
+padding: 5px;
+font-size: 18px;
+padding-left: 10px;
+cursor: pointer;
+}
+
+#item{
+width: 100%;
+border: none;
+padding: 0px;
+font-size:20px;
+color: #0d264f;
+background-color: #c7c7e7;
+}
+
+h1{
+  padding-top: 10px;
+}
+
+#item{
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+#item[type=text]:focus {
+  background-color: rgba(236, 91, 229, 0.678);
+}
+
+button.FormField__Button:nth-child(3) {
+  background-color: rgba(185, 51, 247, 0.712);
+  color: rgb(209, 193, 193);
+  border: black;
+  outline: black;
+  border-radius: 25px;
+  padding: 15px 70px;
+  font-size: .8em;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+button.FormField__Button:nth-child(4){
+  background-color: rgba(67, 169, 252, 0.712);
+}

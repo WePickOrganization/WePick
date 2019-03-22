@@ -124,7 +124,7 @@
 
 .FormField__Button {
   background-color: rgb(189, 38, 189);
-  color: white;
+  color: rgb(209, 193, 193);
   border: none;
   outline: none;
   border-radius: 25px;
@@ -159,3 +159,4 @@
   padding-bottom: 2px;
   margin-left: 5px;
 }
+

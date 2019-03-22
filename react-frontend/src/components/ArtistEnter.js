@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 
-
+import '../stylesheets/ArtistEnter.css'
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
 class ArtistEnter extends Component
 {
@@ -11,38 +11,23 @@ class ArtistEnter extends Component
     {
     
       super(props)
-
-    
-    
       
       // Define the variables to be stored in our state
       this.state = {
-        artistOne: '',
-        artistTwo: '',
-        artistThree: '',
-        artistFour: '',
-        spotUser: '',
-        artists : []
+        spotUser1: '',
+        spotUser2: '',
+        spotUser3: '',
+        spotUser4: '',
+        spotUser5: '',
+        spotUsers : []
       };
 
       
       // This lets us define functions outside of the constructor
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
-
-    
     }
 
-    componentDidMount() {
-        console.log('GrandChild did mount.');
-
-        axios.get('/getArtists')
-          .then(response =>{this.state.artists = response.data;console.log(this.state.artists);this.forceUpdate();}
-          )
-          .catch(function (error) {
-            console.log(error);
-          });
-    }
 
     // Function that gets called when values inside a text field are changed and sets them in our state
     handleChange(event) 
@@ -52,9 +37,7 @@ class ArtistEnter extends Component
         const name = target.name;    
         
         this.setState({
-        
             [name]: value     
-            
         });
     }
     
@@ -63,15 +46,19 @@ class ArtistEnter extends Component
     handleSubmit(event)
     {
         event.preventDefault();
-        console.log(this.state);
 
-        // Perform Axios GET Request
-        // Sent to Flask server's route '/createUser'\
-        // Send our state variables captured by our handleChange function 
+        this.state.spotUsers[0] = this.props.email
+        this.state.spotUsers[1] = this.state.spotUser1
+        this.state.spotUsers[2] = this.state.spotUser2
+        this.state.spotUsers[3] = this.state.spotUser3
+        this.state.spotUsers[4] = this.state.spotUser4
+        this.state.spotUsers[5] = this.state.spotUser5
+        console.log(this.state.spotUsers);
+
+        // Perform Axios POST Request
+        // Sent to Flask server's route '/createPlaylist'
         axios.post('/CreatePlaylist', {
-            params: {
-              spotUser: this.state.spotUser
-            }
+          spotUsers: this.state.spotUsers
           })
           .then(function (response) {
             console.log(response);
@@ -87,20 +74,20 @@ class ArtistEnter extends Component
         return(
             
             <div className="FormCenter">
-                <h1>Current Artists:</h1>
-                <p>{this.state.artists}</p>
+                <h3>WePick Email Addresses</h3>
                 <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
 
-                    
-
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="artistFour">Spotify Email</label>
-                        <input type="text" id="spotUser" className="FormField__Input" placeholder="Enter your password" name="spotUser" value={this.state.spotUser} onChange={this.handleChange}></input>
+                        <label className="FormField__Label" htmlFor="artistFour"></label>
+                        <input type="text" id="spotUser1" className="FormField__Input" placeholder="WePick email" name="spotUser1" value={this.state.spotUser1} onChange={this.handleChange}></input>
+                        <input type="text" id="spotUser2" className="FormField__Input" placeholder="WePick email" name="spotUser2" value={this.state.spotUser2} onChange={this.handleChange}></input>
+                        <input type="text" id="spotUser3" className="FormField__Input" placeholder="WePick email" name="spotUser3" value={this.state.spotUser3} onChange={this.handleChange}></input>
+                        <input type="text" id="spotUser4" className="FormField__Input" placeholder="WePick email" name="spotUser4" value={this.state.spotUser4} onChange={this.handleChange}></input>
+                        <input type="text" id="spotUser5" className="FormField__Input" placeholder="WePick email" name="spotUser5" value={this.state.spotUser5} onChange={this.handleChange}></input>
                     </div>
 
                     <div className="FormField">
-                        <button className="FormField__Button mr-20">Create</button> <Link to="/"
-                            className="FormField__Link">Create a playlist</Link>
+                        <button className="FormField__Button mr-20">Generate Playlist</button> 
                     </div>
 
                 </form>

@@ -23,6 +23,7 @@ from spotipyModified import client as client
 from spotipyModified import oauth2 as oauth2
 from spotipyModified import util as util
 import random
+import numpy as np
 
 user_schema = {
     "type": "object",
@@ -150,27 +151,32 @@ def sendArtists():
 
 @application.route('/CreatePlaylist', methods=['POST'])
 def CreatePlaylist():
+
+    # Get the json data from the request
     jsonData = request.get_json(force=True)
 
-    print(jsonData)
-    print(jsonData['params']['spotUser'])
+    # Get the users from the jsonData
+    WePickUsers = jsonData['spotUsers']
 
-    UserOneartists = mongo.db.Users.find_one({'email':currentEmail},{'favArtist':1})
-    UserTwoartists = mongo.db.Users.find_one({'email':jsonData['params']['spotUser']},{'favArtist':1})
-   
+    # Conver the list of users to an array
+    usersToGenerateWith = np.asarray(WePickUsers)
 
+    # The first user will always be the user currently logged in
+    usersToGenerateWith[0] = mongo.db.Users.find_one({'email':currentEmail},{'favArtist':1})
 
-    print(UserTwoartists['favArtist'])
+    # For all the rest of the users, get their favorite artists from the database
+    for i in range(usersToGenerateWith.size):
+     usersArtists += mongo.db.Users.find_one({'email':usersToGenerateWith[i]},{'favArtist':1})
+     print(usersArtists)
+    
+    # Debug
+    print("Generating playlist with the following artists: " + usersArtists)
 
-    artistLists = random.sample(UserOneartists['favArtist'],2)
-    userTwoLists = random.sample(UserTwoartists['favArtist'],2)
-    artistListCombined = artistLists + userTwoLists
+    # Get a random sample from all the artists collected from the database
+    randomSampleFromArtists = random.sample(usersArtists,10)
 
-    # updaes favourite artists in db
-    #mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
-
-    # finds username from database
-    username = mongo.db.Users.find_one({'email':currentEmail},{'spotifyUsername':1})
+    # Using the currently logged in user, get their Spotify username from the database
+    loggedInUser = mongo.db.Users.find_one({'email':usersToGenerateWith[0]},{'spotifyUsername':1})
 
     # Passes username to authentication
     SpotipyAPI.authentication(username['spotifyUsername'])

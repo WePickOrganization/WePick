@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom'
 import { HashRouter as Router, Route, Link, NavLink, Redirect } from 'react-router-dom';
-
-
-
+import '../stylesheets/pref.css'
 
 class prefs extends React.Component {
     constructor(props){
@@ -18,8 +16,6 @@ class prefs extends React.Component {
     }
 
     componentDidMount() {
-        console.log('GrandChild did mount.');
-
         axios.get('/getArtists')
           .then(response =>{this.state.dynamicList = response.data;console.log(this.state.dynamicList);this.forceUpdate();}
           )
@@ -58,10 +54,10 @@ class prefs extends React.Component {
       return(
         <div className="component-wrapper">
         <form  onSubmit={this.editSubmit}>
-          <h1>Simple Dynamic List</h1>
+          <h1>Artists</h1>
           <DynamicList listItems={this.state.dynamicList} removeItem={this.removeListItem} />
           <InputBox addItem={this.addListItem} />
-          <button type="submit" className="btn btn-primary">Save</button>
+          <button type="submit" className="FormField__Button mr-20">Save</button>
         </form>
         </div>
       );
@@ -71,11 +67,11 @@ class prefs extends React.Component {
   class DynamicList extends React.Component {
     render(){
       return (
-        <ul>
+        <ul id="unorderedList">
           {
             Object.keys(this.props.listItems).map( (index) => {
               return (
-                <li key={index} onClick={ () => this.props.removeItem(index) } name={index}>{this.props.listItems[index]}</li>
+                <li id="listElements"key={index} onClick={ () => this.props.removeItem(index) } name={index}>{this.props.listItems[index]}</li>
               );
             })
           }
@@ -98,9 +94,8 @@ class prefs extends React.Component {
       return (
         <div>
         <form ref="itemForm" onSubmit={e => this.formSubmit(e)}>
-          <p>Artists</p>
-          <input type="text" id="item" ref="item"/><br />
-          <button type="submit" className="btn btn-primary">Add Item</button>
+          <input type="text" id="item" placeholder="Enter an artist..." ref="item"/><br />
+          <button type="submit" className="FormField__Button mr-20">Add Item</button>
         </form>
        </div>
       );

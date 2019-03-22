@@ -41,8 +41,12 @@ class App extends React.Component {
     this.setLoggedOut = this.setLoggedOut.bind(this)
     this.createState = this.createState.bind(this)
     this.createStateWithUsername = this.createStateWithUsername.bind(this)
+
+
   }
 
+  // When the index page is mounted, redirect to home.
+  
     // Handle a user logging in by setting some state and passsing in the email from the LoginForm component
   setLoggedIn(emailFromLogin) 
   {
@@ -136,8 +140,8 @@ class App extends React.Component {
 
             <div className='App__Form'>
               
-              <Route path="/Create" component={ArtistEnter}>
-              </Route>
+              <Route path="/Create" component={(props) => <ArtistEnter email={this.state.email}>{props.children}</ArtistEnter>}>
+                </Route>
 
               <Route path="/Logout" render={() => (
                   <Logout setLoggedOut={this.setLoggedOut} />
