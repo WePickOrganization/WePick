@@ -5,4 +5,10 @@ A.~Einstein, ``{Zur Elektrodynamik bewegter K{\"o}rper}. ({German}) [{On} the
   electrodynamics of moving bodies],'' {\em Annalen der Physik}, vol.~322,
   no.~10, pp.~891--921, 1905.
 
+\bibitem{SoftwareRobustness}
+B.~Eslamnour, ``Measuring robustness of computing systems,''
+
+\bibitem{WebsiteDowntimeStats}
+Pingdom, ``Downtime for the world’s top-50 e-commerce websites.''
+
 \end{thebibliography}

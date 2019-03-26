@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{err}{\PYGZlt{}this\PYGZgt{}}
+  \PYG{err}{\PYGZlt{}looks} \PYG{err}{lookswhat=}\PYG{l+s+s2}{\PYGZdq{}good\PYGZdq{}}\PYG{err}{\PYGZgt{}}
+    \PYG{err}{Good}
+  \PYG{err}{\PYGZlt{}/looks\PYGZgt{}}
+\PYG{err}{\PYGZlt{}/this\PYGZgt{}}
+\PYG{err}{Good}
+          \PYG{err}{\PYGZlt{}/looks\PYGZgt{}}
+        \PYG{err}{\PYGZlt{}/this\PYGZgt{}}
+\end{Verbatim}

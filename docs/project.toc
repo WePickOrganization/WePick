@@ -9,10 +9,13 @@
 \contentsline {chapter}{\numberline {4}Technology Review}{10}{chapter.4}
 \contentsline {section}{\numberline {4.1}AWS}{10}{section.4.1}
 \contentsline {section}{\numberline {4.2}MongoDB}{10}{section.4.2}
-\contentsline {section}{\numberline {4.3}Flask}{10}{section.4.3}
+\contentsline {section}{\numberline {4.3}Flask}{11}{section.4.3}
 \contentsline {section}{\numberline {4.4}Python}{11}{section.4.4}
 \contentsline {section}{\numberline {4.5}Mocha}{11}{section.4.5}
 \contentsline {section}{\numberline {4.6}React}{11}{section.4.6}
 \contentsline {chapter}{\numberline {5}System Design}{12}{chapter.5}
 \contentsline {chapter}{\numberline {6}System Evaluation}{13}{chapter.6}
-\contentsline {chapter}{\numberline {7}Conclusion}{14}{chapter.7}
+\contentsline {subsection}{\numberline {6.0.1}Robustness}{13}{subsection.6.0.1}
+\contentsline {subsection}{\numberline {6.0.2}Error Handling}{14}{subsection.6.0.2}
+\contentsline {subsection}{\numberline {6.0.3}Time between failures and time between recovery}{16}{subsection.6.0.3}
+\contentsline {chapter}{\numberline {7}Conclusion}{17}{chapter.7}

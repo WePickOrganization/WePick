@@ -177,13 +177,97 @@ As many pages as needed.
 \end{table}
 
 \chapter{System Evaluation}
-As many pages as needed.
+In this chapter, we will discuss many aspects of the software. We will break the evaluation down into 4 headings.
 \begin{itemize}
-\item Prove that your software is robust. How? Testing etc. 
-\item Use performance benchmarks (space and time) if algorithmic.
-\item Measure the outcomes / outputs of your system / software against the objectives from the Introduction.
-\item Highlight any limitations or opportuni-ties in your approach or technologies used.
-\end{itemize}
+  \item Robustness - How well the software can deal with problems, it's ability to handle change etc.
+  \item Performance - Space and time complexity of the software, responsiveness etc.
+  \item Testing - A general overview of the testing approach taken
+  \item Overall evaluation - Where the project succeeded/failed, limitations in our approach and technologies etc.
+  \end{itemize}
+
+  \subsection{Robustness}
+  Robustness in regards to software can be defined as the ability of the software to cope with errors during execution and cope with erroneous input. Measuring the robustness of a system is difficult 
+  as no system can be considered completely robust. However, there are certain methodologies and practices we can implement to increase the robustness of a system. {\textit{Behdis Eslamnour and Shoukat Ali}} discuss these metrics in their paper entitled {\textit{Measuring robustness of computing systems}}\cite{SoftwareRobustness}
+  Some of these proposed metrics include
+    \newline
+    \begin{itemize}
+      \item Error Handling/Error Catching
+      \item Time between failures and time between recovery
+    \end{itemize}
+
+    \subsection{Error Handling}
+    Error handling refers to how a system handles errors should they occur. This can be as simple as logging the error in the console to rolling back the system to a previous stable release.
+    It is a vital aspect for any system from both the perspective of the user and developer. As a developer, implementing proper error handling and catching is an important aspect of development
+    as it enables the developer to work more effectively and efficiently as less time is spent fixing and locating the cause of bugs if proper error handling is done pre-emptively.
+
+    For the user, it's vital that error handling is done correctly as incorrect error handling can have a significant impact on the end-users experience of the system/software. For example, if a user
+    attempts to login to a system and their login details are incorrect, a meaningful way of handling this error would be to notify the user that their login details are incorrect. If this is not done, 
+    the end user won't understand what's happening and why they can't use the system and as a result of this will become frustrated/unhappy with the service. As such it's important to make sure any critical
+    problems such as this are caught and handled in an appropriate manner. However, it's also important to remember that complete robustness can not be achieved and as such one must try and figure out the 
+    most important and likely errors to handle. When making these decisions, one can consider many factors when deciding what errors to handle such as the risk of not handling the error (application crashing, unexpected behaviour, potential security risk, loss of data etc.)
+    , how much time will be required to handle the error and the likelihood of the error occuring. However, as mentioned above complete robustness can not be achieved as to even consider the above factors,
+    one must have the foresight to see that the error will occur in the firstplace.
+
+    Below I will discuss some error handling that occured in our project and how it contributed to the overall robustness of the system.
+    
+    \textbf{Example 1 - Login/Register} 
+    In the image below we can see how error handling and error catching can produce meaningful output and guide the user through login/register scenario of our application
+
+    ---- user login diagram here ----
+
+    \textbf{Example 2 - Authentication with Spotify}
+    In the image below we can see how error handling and error catching can produce meaningful output and guide the user through authenticating our applicatin with Spotify.
+
+    --- authentication diagram here ----
+
+
+    The above error handling was done on both the server and client-side of the application. Both Python, MongoDB and Pythn provide useful tools for error handling/catching.
+    Some examples include \textit{Error boundaries} in React, \textit{Try/Catch/Raise statements} and \textit{Schema validation} in MongoDB.
+
+    \begin{itemize}
+      \item Error Boundaries - Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.
+      \item Try/Catch/Raise statemetns - These commonly found in most programming languages and Python is no exception. We used these to catch certain errors such as HTTPErrors, null value errors, MongoDB errors and many others.
+      \item Schema Validation - To ensure the data being passed into the Mongo database was in the correct format, we used a JSON Schema to validate our inputs against before passing it to Mongo. In the below example, we can see that for a user 
+      to be validated correctly, the minimum required properties are an email and password. This ensures that user's cant create accounts without these two required properties.
+      \begin{minted}{JSON}
+      user_schema = {
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string",
+            },
+            "email": {
+                "type": "string",
+                "format": "email"
+            },
+            "password": {
+                "type": "string",
+            },
+            "spotifyUsername": {
+                "type": "string",
+            },
+          
+        },
+        "required": ["email", "password"],
+        "additionalProperties": False
+      }
+      \end{minted}
+      
+    \end{itemize}
+
+    \subsection{Time between failures and time between recovery}
+    Time between failures and time between recovery are too very useful metrics in determining the robustness of a system. Systems that have a short mean time between failures and mean time between recovery
+    either have excellent error handling or are designed in such a way that errors do not occur frequently. A good way of measuring this could be 
+    the downtime of your application over the course of a year. For example, on average, the top 50 e-commerce websites experienced 99.03\% uptime. Over a year, 99.03\% uptime would result in 3 days 15 hours and 39 minutes of downtime. 32 of
+    these websites experienced 99.99\% uptime. 9 out of 10 of users encountering a website that is not up will choose to use a competitors website \cite{WebsiteDowntimeStats}. From these statistics, we can see that time between failures anre time between recovery are extremely important aspects to 
+    any system/application. As such, they can be very helpful metrics when trying to measure the robustness of an application. 
+
+    In regards to WePick's failure and recovery time, since the project was hosted on AWS' Elastic Beanstalk, there have been little to no outages as due 
+    to the continous integration solution integrated upon deployment, it was not possible for broken code to be deployed as any code proposed to be deployed had 
+    to first pass tests that were outlined by Travis CI and any problems that did arrive were dealt with quickly as Travis instantly notified us of any problems which we were 
+    able to fix quickly and promptly.
+
+
 
 \chapter{Conclusion}
 About three pages.
