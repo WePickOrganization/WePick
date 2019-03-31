@@ -15,6 +15,7 @@ import Logout from './components/Logout'
 import Home from './components/Home'
 import Auth from './components/Auth'
 import Prefs from './components/prefs'
+import Stats from './components/Stats'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
@@ -131,7 +132,9 @@ class App extends React.Component {
           <Route path="/Home" component={Home}>
               </Route>
           </div>
-  
+
+          <Route path="/Stats" component={(props) => <Stats email={this.state.email}>{props.children}</Stats>}>
+                </Route>
 
             {/* The blank space to the left of the forms*/}
             
