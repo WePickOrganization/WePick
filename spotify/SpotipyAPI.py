@@ -71,6 +71,24 @@ def CreatePlaylist(tracks, username):
     spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
     pprint.pprint("Successfully created playlist")   
 
+def getStats(username):
+
+    # Spotify Object
+    scope = 'user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read playlist-modify-public'
+    token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
+    spotifyObject = spotipyModified.Spotify(auth=token)
+
+    # Get the data
+    currentPlaylists =  spotifyObject.current_user_playlists(limit=10)
+    print(currentPlaylists)
+    topArtists = spotifyObject.current_user_top_artists(limit=10)
+    print(topArtists)
+    topTracks = spotifyObject.current_user_top_tracks(limit=10)
+    print(topTracks)
+
+
+    # Return data as a list
+    return [currentPlaylists, topArtists, topTracks]
 ##########################################################################################
 ############################### Connect to database ######################################
 def testFunction():
