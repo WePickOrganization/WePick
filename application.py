@@ -128,28 +128,8 @@ def unauthorized_response(callback):
 def index():
   return render_template('index.html')
 
-# Returns the favourite artists
-@application.route('/getArtists', methods=['GET'])
-def getArtistsDB():
-  artists = mongo.db.Users.find_one({'email':currentEmail},{'favArtist':1})
-  artists = artists['favArtist']
-  print(artists)
-
-  return json.dumps(artists)
-
-@application.route('/UpdateFavArtists', methods=['POST'])
-def sendArtists():
-  jsonData = request.get_json(force=True)
-  artistList = jsonData['dynamicList']
-  print(jsonData)
-  print("Inside fav aritst functon")
-  mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
-
-  return jsonify({'ok': True, 'message': 'artists updates'}), 200
-  
-
-
 @application.route('/CreatePlaylist', methods=['POST'])
+@jwt_refresh_token_required
 def CreatePlaylist():
 
     # Get the json data from the request
@@ -217,6 +197,26 @@ def CreatePlaylist():
     print("\n ==== PLAYLIST CREATED ==== \n")
 
     return jsonify(jsonData)
+
+# Returns the favourite artists
+@application.route('/getArtists', methods=['GET'])
+def getArtistsDB():
+  artists = mongo.db.Users.find_one({'email':currentEmail},{'favArtist':1})
+  artists = artists['favArtist']
+  print(artists)
+
+  return json.dumps(artists)
+  
+@application.route('/UpdateFavArtists', methods=['POST'])
+def sendArtists():
+  jsonData = request.get_json(force=True)
+  artistList = jsonData['dynamicList']
+  print(jsonData)
+  print("Inside fav aritst functon")
+  mongo.db.Users.update_one({'email':currentEmail},{'$set' : {'favArtist' : artistList}})
+
+  return jsonify({'ok': True, 'message': 'artists updates'}), 200
+  
 
 
 # Define the routes through our Flask applicationlication
@@ -431,7 +431,24 @@ def auth():
             return jsonify({'ok': False, 'message': 'Authorization failed'}), 400
         else:
             return jsonify({'ok': True, 'message': 'Authorization Success'}), 200
-       
+
+@application.route('/getStats', methods=['POST'])
+def getSpotifyStats():
+
+    # Define the incoming json data from the request as 'data'
+    jsonData = request.get_json()
+
+    print("JSON DATA: " + str(jsonData))
+
+    # Get the current users email address
+    currentUser = getSpotifyUsernameByEmail(jsonData['email'])
+
+    usersStats = list()
+
+    usersStats = SpotipyAPI.getStats(currentUser)
+
+    return json.dumps(usersStats)
+
 # Notify the user the server is starting
 print("Starting Flask server...")
 

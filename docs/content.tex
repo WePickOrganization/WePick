@@ -181,7 +181,7 @@ In this chapter, we will discuss many aspects of the software. We will break the
 \begin{itemize}
   \item Robustness - How well the software can deal with problems, it's ability to handle change etc.
   \item Performance - Space and time complexity of the software, responsiveness etc.
-  \item Testing - A general overview of the testing approach taken
+  \item Security - How vulnerable is the application to attacks and security risks?
   \item Overall evaluation - Where the project succeeded/failed, limitations in our approach and technologies etc.
   \end{itemize}
 
@@ -266,6 +266,72 @@ In this chapter, we will discuss many aspects of the software. We will break the
     to the continous integration solution integrated upon deployment, it was not possible for broken code to be deployed as any code proposed to be deployed had 
     to first pass tests that were outlined by Travis CI and any problems that did arrive were dealt with quickly as Travis instantly notified us of any problems which we were 
     able to fix quickly and promptly.
+
+    \subsection{Performance}
+    When planning and designing the project, one of our main aim's was that we wanted the project to perform operations and tasks quickly as well as being responsive to user input. Taking these considerations into account, we choose
+    Python and MongoDB for our backend as they are generally considered lightweight and easier to handle performance than say something like Java. We chose React for the front-end of the application as React is well known for it's performance and
+    responsiveness. This generally comes from the fact that React applications usually implement a single page design. React works by creating multiple components that can be re-used multiple times in the application. For example, in our 
+    application, instead of creating multiple pages with the same code (Navbar, Footer, Forms etc.), we can create seperate components for each of these items and only re-render what is required. So if the user needs a different form only that form will
+    be re-rendered and the Navbar and Footer don't need to be re-rendered This choice of technology helped us achieve our overall goal in regards to perfromance and I think it was a good choice.
+
+    Our choice of MongoDB as a database was also important to the overall perfromance of our application as MongoDB is considered much faster than SQL and other relational databases in certain scenarios. This is because of it's non-relational, no-SQL way of storing data.
+    Instead of storing data in rows, columns and tables, Mongo works by using a document style architecture. These documents are structured similarly to a JSON document and as such are easy to extract data from and manipulate without navigating through 
+    large sets of data like you would in a traditional SQL database. Generally, this performance increase can be seen most when you start to scale up the size of your database. For our application, it was important to be able to access user's favorite artists
+    quickly so that they didn't have to wait a long time to generate a playlist.  
+
+    \begin{center}    
+      \includegraphics{img/SQLvsNOSQL.png}
+    \end{center}
+
+    From the above graph, we can see that when performin a search in the database, NoSQL databases like Mongo are considerably faster than a traditional SQL database /cite{SQLvsNOSQL}
+
+    \subsection{Security}
+    Securit was an important factor for us to consider when designing and creating the application as we had all experienced problems with group projects in the previous year. For example, many students dealt with problems where database tables were wiped and/or hijacked and held ransom
+    to the owners. As such, we did not want to deal with such problems and thought it would be a good oppurtunity for us all to learn a bit more about how one goes about securing an application in a real world context. We also wanted user's information to be secure and not easily accessible by anyone.
+    
+    To ensure our RESTful routes were not accessible to anyone, we implemented JWT Tokens into our application. A JWT Token or JSON Web Token is an open-standard that defines a way for securely transmitting and verifiying information between systems.
+    JWT's are signed using a secret key or a public/private key using RSA encryption.
+    
+    The way this ends up working in the application is as follows. When the user successfully logs in, a JSON Web Token is generated and each subsequent request
+    made by the user will include that web token. Setting up the system in this way means that to perform a HTTP request on one of our many RESTFul routes, the user first has to 
+    verify that they are an authenicated user. This prevents from people performing actions on routes that they should not have access to. 
+
+    A traditional JSON Web Token consists of a Header, Payload and Signature in the following format 
+    
+    \begin{center}    
+      \includegraphics{img/JWTTokens.png}
+    \end{center}
+
+    \begin{minted}{JSON}
+      header.payload.signature
+    \end{minted}
+
+    The header details what type of token is being sent and the algorthim used to generate the token.
+    The payload contains the information about the person sending the token and what they would like to do.
+    The signature is essentially an your header and payload encrypted and is used to verify the payload wasn't altered during transit as well as verifying the sender is who they say they are.
+    
+    An example token can be seen below
+
+    \begin{center}    
+      \includegraphics{img/JWTTokenHASH.png}
+    \end{center}
+
+    To implement this technology in our application, we used Flask-JWT, a simple Python library that provides JWT Support for Flask applications.
+    A simple example of how this technology was implemented can be seen below.
+
+    \begin{center}    
+      \includegraphics{img/JWTExample.png}
+    \end{center}
+
+    As well as ensuring API calls were authenicated, we also made sure that our database and user information was secure. A secure admin account was created on the database, requring a password to perform any actions in the databse.
+    This way, no operations could be performed on the database without knowing both the IP address of the server the database was hosted on and the password required to gain access. These two important pieces of information were known only to us and 
+    weren't available anywhere else. 
+
+    We also made sure that any important user information such as passwords were encrypted before being entered into the databse.
+    For this, we used another Python library for Flask entitiled Flask-Bycrypt. Using this library, we can generate a hash of the user's password and store this in the database instead of storing their password in plaintext. Then, when checking if 
+    the user's login details are correct, we compare the generated hash of the passwords instead of the actual passwords themselves. This enables a secure login scenario and prevents passwords being revelead to anyone.
+
+    To improve overall security, we also chose to host our application on a different instance than our database. This meant that if one were to be compromised in any way, it would prevent the other in turn being compromised.
 
 
 
