@@ -5,4 +5,4 @@ spotipy==2.4.4
 Flask_JWT_Extended==3.7.2
 Flask_Bcrypt==0.7.1
 jsonschema==2.5.1
-numpy=1.16.2
+numpy==1.16.2
