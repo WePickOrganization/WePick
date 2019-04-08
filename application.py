@@ -129,7 +129,6 @@ def index():
   return render_template('index.html')
 
 @application.route('/CreatePlaylist', methods=['POST'])
-@jwt_refresh_token_required
 def CreatePlaylist():
 
     # Get the json data from the request
@@ -192,11 +191,11 @@ def CreatePlaylist():
     print("\n Creating playlist.... \n")
 
     # Create a playlist with these IDs
-    SpotipyAPI.CreatePlaylist(recommendedSongs, currentUser)
+    createdPlaylist = SpotipyAPI.CreatePlaylist(recommendedSongs, currentUser)
 
     print("\n ==== PLAYLIST CREATED ==== \n")
 
-    return jsonify(jsonData)
+    return jsonify({'ok': True, 'data': createdPlaylist['id'], 'message': 'Playlist successfully created.'}), 200
 
 # Returns the favourite artists
 @application.route('/getArtists', methods=['GET'])

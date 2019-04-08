@@ -66,10 +66,12 @@ def CreatePlaylist(tracks, username):
     token = util.prompt_for_user_token(username,scope,client_id='e6b98ce6b2cf483c832c652aada81bea',client_secret='5325fce64c6b4c4aad72b34029085111')
     spotifyObject = spotipyModified.Spotify(auth=token)
     spotifyObject.trace = False
-
-    playlists = spotifyObject.user_playlist_create(username, "DemoForMartin", public=True)
-    spotifyObject.user_playlist_add_tracks(username, playlist_id=playlists['id'], tracks=tracks)
+    createdPlaylist = spotifyObject.user_playlist_create(username, "WePick Custom Playlist", public=True)
+    spotifyObject.user_playlist_add_tracks(username, playlist_id=createdPlaylist['id'], tracks=tracks)
+    
     pprint.pprint("Successfully created playlist")   
+
+    return createdPlaylist
 
 def getStats(username):
 

@@ -6,10 +6,11 @@ import axios from 'axios';
 import '../stylesheets/ArtistEnter.css'
 // A LoginForm component that can be exported at the end of the file and can be reused anywhere
 class ArtistEnter extends Component
-{
+{   
+    
     constructor(props)
     {
-    
+
       super(props)
       
       // Define the variables to be stored in our state
@@ -19,7 +20,8 @@ class ArtistEnter extends Component
         spotUser3: '',
         spotUser4: '',
         spotUser5: '',
-        spotUsers : []
+        spotUsers : [],
+        spotifyEmbedURL: 'https://open.spotify.com/embed/playlist/'
       };
 
       
@@ -45,6 +47,8 @@ class ArtistEnter extends Component
     // Function that gets called when we press our submit button, in this case SignUp/Login
     handleSubmit(event)
     {
+        var self = this;
+
         event.preventDefault();
 
         this.state.spotUsers[0] = this.props.email
@@ -61,7 +65,17 @@ class ArtistEnter extends Component
           spotUsers: this.state.spotUsers
           })
           .then(function (response) {
-            console.log(response);
+            if(response.status==200)
+            {
+                var playlistID;
+                
+                console.log(response);
+                playlistID = response.data.data;
+                console.log("Playlist ID: " + playlistID);
+                self.state.spotifyEmbedURL = "https://open.spotify.com/embed/playlist/" + playlistID;
+                console.log("Playlist URL: " + self.state.spotifyEmbedURL);
+                self.forceUpdate();
+            }
           })
           .catch(function (error) {
             console.log(error);
@@ -89,6 +103,8 @@ class ArtistEnter extends Component
                     <div className="FormField">
                         <button className="FormField__Button mr-20">Generate Playlist</button> 
                     </div>
+
+                    <iframe src={this.state.spotifyEmbedURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
                 </form>
 
