@@ -283,7 +283,7 @@ In this chapter, we will discuss many aspects of the software. We will break the
       \includegraphics{img/SQLvsNOSQL.png}
     \end{center}
 
-    From the above graph, we can see that when performin a search in the database, NoSQL databases like Mongo are considerably faster than a traditional SQL database /cite{SQLvsNOSQL}
+    From the above graph, we can see that when performing a search in the database, NoSQL databases like Mongo are considerably faster than a traditional SQL database /cite{SQLvsNOSQL}
 
     \subsection{Security}
     Securit was an important factor for us to consider when designing and creating the application as we had all experienced problems with group projects in the previous year. For example, many students dealt with problems where database tables were wiped and/or hijacked and held ransom
@@ -333,6 +333,54 @@ In this chapter, we will discuss many aspects of the software. We will break the
 
     To improve overall security, we also chose to host our application on a different instance than our database. This meant that if one were to be compromised in any way, it would prevent the other in turn being compromised.
 
+    \subsection{Improving Security}
+    \subsubsection{HTTP/HTTPS}
+    One shortcoming of our project is the lack of a secure Hyper Text Transfer Protocol (HTTPS). HTTP can be described by Mozilla's standards /cite{HTTPviaMozilla} as an application-layer protocol 
+    for transmitting data and documents. It was originally designed for communication between web browsers and web servers but it has since exceeded it's original purpose. It follows a client/server model. The client makes a 
+    request to establish a connection and waits for a response from the server. Despite this however, it is a /bf{stateless} protocol. This means that once communication between server and client, the server forgets all information regarding
+    the communication. It can be used on any reliable transfer layer such as TCP/IP or UDP.
+
+    The difference between HTTPS and HTTP is that HTTPS is considered 'secure' where HTTP is not. Essentially, the difference between the two can be illustrated cleary in the following diagram.
+
+    \begin{center}    
+      \includegraphics{img/HTTPS.png}
+    \end{center}
+
+    In standard HTTP, the information is transmitted in hypertext format whereas with HTTPS, the information is first encrypted before sending the information.
+    The issue with standard HTTP is that the data is transmitted in plaintext. This means that anyone who can 'see' the data or is monitoring the network can potentially intercept this data and/or modify it before being passed on to the server. This can 
+    lead to serious security issues. This could be potentially devestating to an application/system that relies on sensitive data such as passwords or bank/card details.
+
+    HTTPS guarantees that even if the message is intercepted, it would be of no value as it is encrypted. HTTPS provides these guarantees using a security standard known as SSL or Secure-Socket Layer.
+    SSL is a standard for establishing an encryped link between a client and server. To first use SSL, one must aquire an SSL certificate. These certificates are small files that bind a domain name/IP address/hostname to an organizational identity and location.
+
+    \subsubsection{But who exactly has the authority to issue these certificates and how can we trust them?}
+    To issue SSL certificates and guarantee their authenticity, one must become a Certificate Authority. 
+    This title is usually limited to private companies and governments that have proven that the certificates they issue are secure. The more secure certificates they authorize, the more certificates they are able to distribute. 
+    This means that when aquiring an SSL certificate, you can guarantee it's authenticity. A certified certificate should contain your domain name, company name, address, city, state, country. It also contains an expiration date upon which the certificate must be renewed as well as the Certificate Authority that issued the certificate in the first place.
+    All these factors provide some kind of accountability in regards to the certificate if something were to go wrong. Expiring certificates is a common occurence, even for large companies. According to GlobalSign /cite{GlobalSign}, between just October 2017 and February 2018, large organizations such as LinkedIn, PokemonGO the British Conservative Party and astonglishly The White House 
+    have all let their SSL certificates expire. Any users arriving on these websites would have been instantly greeted with a warning that these websites are not secure and sensitive information could have possibly been leaked in the process. For something like a goverment website, this kind of behaviour is a perfect example of why we have SSL and HTTPS in the first place and why it's vital that these systems are maintained and updated.
+
+    \subsubsection{How does SSL work?}
+    Let's use a traditional client/server architecture as our example. The browser/client connects to the server secured with SSL. The server will then prompt the client to identify itself.
+    The server then sends a copy of it's SSL certificate. These certificate is then verified by the client. If verification is successful and the client is comfortable sending messages, it sends a response to the server which consists of a digitally signed acknowledgement which initiates an SSL encryped session.
+    Any data exchanged between these two parties is now sent over the Secure-Socket Layer established by the client/server.
+
+
+    \subsubsection{Benefits of SSL/HTTPS}
+    We can describe the overall benefits of SSL/HTTPS as the following
+
+    \begin{itemize}
+      \item Utilize HTTPs, which elicits a stronger Google ranking.
+      \item Create safer experiences for your customers.
+      \item Build customer trust and improve conversions.
+      \item Protect both customer and internal data.
+      \item Encrypt browser-to-server and server-to-server communication.
+      \item Increase security of your mobile and cloud apps.
+    \end{itemize}
+
+    \subsubsection{Why didn't we implement SSL/HTTPS?}
+    Due to the nature of aquiring an SSL certificate, one usually has to purchase a certificate and pay a yearly fee for using it. We made a decision based on the information stored by our application and by factoring in the cost, decided that we didn't think it would be critical if HTTPS wasn't implemented.
+    We understand it makes our application insecure, but we also understand why it makes it insecure and how this could be dealt with appropriately in future projects.
 
 
 \chapter{Conclusion}

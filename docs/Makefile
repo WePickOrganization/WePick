@@ -1,4 +1,4 @@
-PROJECT=project 
+PROJECT=Project 
 TEX=pdflatex --shell-escape --interaction=nonstopmode -halt-on-error
 
 all:

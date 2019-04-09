@@ -16,4 +16,7 @@
 \BOOKMARK [1][-]{subsection.6.0.1}{Robustness}{chapter.6}% 16
 \BOOKMARK [2][-]{subsection.6.0.2}{Error Handling}{subsection.6.0.1}% 17
 \BOOKMARK [2][-]{subsection.6.0.3}{Time between failures and time between recovery}{subsection.6.0.1}% 18
-\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 19
+\BOOKMARK [2][-]{subsection.6.0.4}{Performance}{subsection.6.0.1}% 19
+\BOOKMARK [2][-]{subsection.6.0.5}{Security}{subsection.6.0.1}% 20
+\BOOKMARK [2][-]{subsection.6.0.6}{Improving Security}{subsection.6.0.1}% 21
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 22

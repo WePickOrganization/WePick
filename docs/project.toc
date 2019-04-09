@@ -1,5 +1,5 @@
-\contentsline {paragraph}{Abstract}{3}{paragraph*.3}
-\contentsline {paragraph}{Authors}{3}{paragraph*.4}
+\contentsline {paragraph}{\numberline {0.0.0.0.1}Abstract}{3}{paragraph.0.0.0.0.1}
+\contentsline {paragraph}{\numberline {0.0.0.0.2}Authors}{3}{paragraph.0.0.0.0.2}
 \contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}
 \contentsline {chapter}{\numberline {2}Context}{5}{chapter.2}
 \contentsline {section}{\numberline {2.1}Filler}{5}{section.2.1}
@@ -18,4 +18,12 @@
 \contentsline {subsection}{\numberline {6.0.1}Robustness}{13}{subsection.6.0.1}
 \contentsline {subsection}{\numberline {6.0.2}Error Handling}{14}{subsection.6.0.2}
 \contentsline {subsection}{\numberline {6.0.3}Time between failures and time between recovery}{16}{subsection.6.0.3}
-\contentsline {chapter}{\numberline {7}Conclusion}{17}{chapter.7}
+\contentsline {subsection}{\numberline {6.0.4}Performance}{16}{subsection.6.0.4}
+\contentsline {subsection}{\numberline {6.0.5}Security}{17}{subsection.6.0.5}
+\contentsline {subsection}{\numberline {6.0.6}Improving Security}{22}{subsection.6.0.6}
+\contentsline {subsubsection}{\numberline {6.0.6.1}HTTP/HTTPS}{22}{subsubsection.6.0.6.1}
+\contentsline {subsubsection}{\numberline {6.0.6.2}But who exactly has the authority to issue these certificates and how can we trust them?}{24}{subsubsection.6.0.6.2}
+\contentsline {subsubsection}{\numberline {6.0.6.3}How does SSL work?}{24}{subsubsection.6.0.6.3}
+\contentsline {subsubsection}{\numberline {6.0.6.4}Benefits of SSL/HTTPS}{24}{subsubsection.6.0.6.4}
+\contentsline {subsubsection}{\numberline {6.0.6.5}Why didn't we implement SSL/HTTPS?}{25}{subsubsection.6.0.6.5}
+\contentsline {chapter}{\numberline {7}Conclusion}{26}{chapter.7}
