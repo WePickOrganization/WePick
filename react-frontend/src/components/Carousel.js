@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
 "mdbreact";
 
-import '../stylesheets/Carousel.css'
+import '../stylesheets/carousel.css'
 
 class Carousel extends Component {
     render(){
