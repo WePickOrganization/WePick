@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
 "mdbreact";
 
+import '../stylesheets/Carousel.css'
+
 class Carousel extends Component {
     render(){
         return(
@@ -15,7 +17,12 @@ class Carousel extends Component {
             </MDBView>
             <MDBCarouselCaption>
               <h3 className="h3-responsive"></h3>
-              <p></p>
+              <img id="WePickLogo" src="https://user-images.githubusercontent.com/22448079/56497612-37a7ff80-64f6-11e9-88a1-574d372b2921.png" alt="WePick Logo"/>
+              <div className="gettingStartedTextDiv">
+              <h2 className="gettingStartedText">1.  Register an account</h2>
+              <h2 className="gettingStartedText">2.  Fill out your music preferences</h2>
+              <h2 className="gettingStartedText">3.  Generate your curated playlist!</h2>          
+              </div>
             </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="2">
@@ -25,8 +32,12 @@ class Carousel extends Component {
             </MDBView>
             <MDBCarouselCaption>
               <h3 className="h3-responsive"></h3>
-              <p></p>
-            </MDBCarouselCaption>
+              <div className="gettingStartedTextDiv">
+              <img id="WePickLogo" src="https://user-images.githubusercontent.com/22448079/56497612-37a7ff80-64f6-11e9-88a1-574d372b2921.png" alt="WePick Logo"/>
+              <h2 className="gettingStartedText">1.  Register an account</h2>
+              <h2 className="gettingStartedText">2.  Fill out your music preferences</h2>
+              <h2 className="gettingStartedText">3.  Generate your curated playlist!</h2>          
+              </div>           </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="3">
             <MDBView>
@@ -35,8 +46,12 @@ class Carousel extends Component {
             </MDBView>
             <MDBCarouselCaption>
               <h3 className="h3-responsive"></h3>
-              <p></p>
-            </MDBCarouselCaption>
+              <div className="gettingStartedTextDiv">
+              <img id="WePickLogo" src="https://user-images.githubusercontent.com/22448079/56497612-37a7ff80-64f6-11e9-88a1-574d372b2921.png" alt="WePick Logo"/>
+              <h2 className="gettingStartedText">1.  Register an account</h2>
+              <h2 className="gettingStartedText">2.  Fill out your music preferences</h2>
+              <h2 className="gettingStartedText">3.  Generate your curated playlist!</h2>          
+              </div>           </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="4">
             <MDBView>
@@ -45,7 +60,12 @@ class Carousel extends Component {
             </MDBView>
             <MDBCarouselCaption>
               <h3 className="h3-responsive"></h3>
-              <p></p>
+              <div className="gettingStartedTextDiv">
+              <img id="WePickLogo" src="https://user-images.githubusercontent.com/22448079/56497612-37a7ff80-64f6-11e9-88a1-574d372b2921.png" alt="WePick Logo"/>
+              <h2 className="gettingStartedText">1.  Register an account</h2>
+              <h2 className="gettingStartedText">2.  Fill out your music preferences</h2>
+              <h2 className="gettingStartedText">3.  Generate your curated playlist!</h2>          
+              </div>   
             </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="5">
@@ -55,8 +75,13 @@ class Carousel extends Component {
             </MDBView>
             <MDBCarouselCaption>
               <h3 className="h3-responsive"></h3>
-              <p></p>
-            </MDBCarouselCaption>
+              <div className="gettingStartedTextDiv">
+              <img id="WePickLogo" src="https://user-images.githubusercontent.com/22448079/56497612-37a7ff80-64f6-11e9-88a1-574d372b2921.png" alt="WePick Logo"/>
+              <h2 className="gettingStartedText">1.  Create an account</h2>
+              <h2 className="gettingStartedText">2.  Fill out your music preferences</h2>
+              <h2 className="gettingStartedText">3.  Generate your curated playlist!</h2>          
+              </div>
+              </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="6">
             <MDBView>
@@ -65,8 +90,12 @@ class Carousel extends Component {
             </MDBView>
             <MDBCarouselCaption>
               <h3 className="h3-responsive"></h3>
-              <p></p>
-            </MDBCarouselCaption>
+              <div className="gettingStartedTextDiv">
+              <img id="WePickLogo" src="https://user-images.githubusercontent.com/22448079/56497612-37a7ff80-64f6-11e9-88a1-574d372b2921.png" alt="WePick Logo"/>
+              <h2 className="gettingStartedText">1.  Create an account</h2>
+              <h2 className="gettingStartedText">2.  Fill out your music preferences</h2>
+              <h2 className="gettingStartedText">3.  Generate your curated playlist!</h2>          
+              </div>          </MDBCarouselCaption>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="7">
             <MDBView>
@@ -75,8 +104,12 @@ class Carousel extends Component {
             </MDBView>
             <MDBCarouselCaption>
               <h3 className="h3-responsive"></h3>
-              <p></p>
-            </MDBCarouselCaption>
+              <div className="gettingStartedTextDiv">
+              <img id="WePickLogo" src="https://user-images.githubusercontent.com/22448079/56497612-37a7ff80-64f6-11e9-88a1-574d372b2921.png" alt="WePick Logo"/>
+              <h2 className="gettingStartedText">1.  Create an account</h2>
+              <h2 className="gettingStartedText">2.  Fill out your music preferences</h2>
+              <h2 className="gettingStartedText">3.  Generate your curated playlist!</h2>          
+              </div>          </MDBCarouselCaption>
           </MDBCarouselItem>
         </MDBCarouselInner>
       </MDBCarousel>

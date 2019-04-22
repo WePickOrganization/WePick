@@ -1,0 +1,17 @@
+.gettingStartedText{
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+    text-shadow: 2px 2px 50px #000000;
+}
+
+.gettingStartedTextDiv{
+    padding-bottom: 100px;
+    padding-top: 10px;
+}
+
+#WePickLogo{
+    padding-top: 5px;
+    width: 25%; 
+    height: 25%; 
+}

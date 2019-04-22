@@ -6,8 +6,8 @@ export default [
         buttonStyles: {
           background: '#9933CC',//This is the color of the actual button
           color: '#ffffff',//This is the color of the text
-          padding: '1.5rem 3rem',
-          borderRadius: 10
+          padding: '1.10rem 3rem',
+          borderRadius: 10,
         },
         buttonOptions: {
           color: '#f50057', //Particle color

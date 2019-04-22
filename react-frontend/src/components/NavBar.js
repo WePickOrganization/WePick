@@ -20,7 +20,6 @@ class NavbarPage extends Component
               email: this.props.email
             };
         }
-
         toggleCollapse = () => {
           this.setState({ isOpen: !this.state.isOpen });
         }
@@ -43,19 +42,6 @@ render() {
           <MDBNavItem>
             <MDBNavLink to="/Create">Generate</MDBNavLink>
           </MDBNavItem>
-          <MDBNavItem>
-            <MDBDropdown>
-              <MDBDropdownToggle nav caret>
-                <div className="d-none d-md-inline">About</div>
-              </MDBDropdownToggle>
-              <MDBDropdownMenu className="dropdown-default" right>
-                <MDBDropdownItem href="#!">What is WePick?</MDBDropdownItem>
-                <MDBDropdownItem href="#!">How to use</MDBDropdownItem>
-                <MDBDropdownItem href="#!">Common problems</MDBDropdownItem>
-                <MDBDropdownItem href="https://github.com/WePickOrganization/WePick">GitHub</MDBDropdownItem>
-              </MDBDropdownMenu>
-            </MDBDropdown>
-          </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
         <MDBNavItem>
@@ -68,7 +54,7 @@ render() {
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default" right>
                 <MDBDropdownItem href="#/Login">Account Login/Register</MDBDropdownItem>
-                <MDBDropdownItem href="#/Create">Edit preferences</MDBDropdownItem>
+                <MDBDropdownItem href="#/Preferences">Edit preferences</MDBDropdownItem>
                 <MDBDropdownItem href="#/Logout">Logout</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>

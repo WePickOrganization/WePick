@@ -49,3 +49,8 @@
 .element.style[style]{
   background-color: #333333 !important;
 }
+
+.h1
+{
+  color: white;
+}

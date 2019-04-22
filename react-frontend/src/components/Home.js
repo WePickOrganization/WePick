@@ -14,7 +14,7 @@ class Home extends Component {
       <div
         style={{
           padding: '10px 0',
-          background: '#fff', //This value is for the home background color
+          background: 'white', //This value is for the home background color
           width: '100%',
           minHeight: '100vh',
           color: '#000'
