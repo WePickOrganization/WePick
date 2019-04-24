@@ -11,9 +11,9 @@ from urllib.parse import urlparse, parse_qs
 import spotipy
 
 PORT = 8080
-REDIRECT_URI = "http://localhost"
-REDIRECT_URI = REDIRECT_URI + ":" + str(PORT)
-print(REDIRECT_URI)
+REDIRECT_URI = "http://wepick.eu-west-1.elasticbeanstalk.com"
+#REDIRECT_URI = REDIRECT_URI + ":" + str(PORT)
+print("Redirect URI: " + REDIRECT_URI)
 
 def prompt_for_user_token(username, scope=None, client_id = None,
         client_secret = None, cache_path = None):
@@ -100,7 +100,6 @@ def assert_port_available(port):
 
 def get_authentication_code():
     httpd = MicroServer((REDIRECT_URI.split("://")[1].split(":")[0], PORT), CustomHandler)
-    print(REDIRECT_URI)
     while not httpd.latest_query_components:
         httpd.handle_request()
     httpd.server_close()
