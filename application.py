@@ -56,7 +56,7 @@ application = Flask(__name__, template_folder='react-frontend/templates', static
 
 # Prepare the mongo instance
 application.config["MONGO_URI"] = databaseConnection.getURI()
-application.config['JWT_ACCESS_TOKEN_EXPIRES'] =  datetime.timedelta(days=1)
+application.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(days=1)
 application.config['PROPAGATE_EXCEPTIONS'] = True
 application.config['SECRET_KEY'] = "'\xe9\xa5'"
 
@@ -205,7 +205,8 @@ def getArtistsDB():
   print(artists)
 
   return json.dumps(artists)
-  
+
+# Updates the users favorite artists
 @application.route('/UpdateFavArtists', methods=['POST'])
 def sendArtists():
   jsonData = request.get_json(force=True)
@@ -280,6 +281,7 @@ def loginUser():
             # Return a bad request response in JSON if the paramaters are incorrect
             return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 202
 
+# Shows specific details of a user
 @application.route('/showUser', methods=['GET'])
 def showUser():
     # If the HTTP Request is a 'GET' request
@@ -383,7 +385,7 @@ def deleteUser():
         else:
           return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
-
+# Route for updating a user
 @application.route('/updateUser', methods=['PATCH'])
 def updateUser():
 
@@ -404,6 +406,7 @@ def updateUser():
         else:
           return jsonify({'ok': False, 'message': 'Bad request parameters!'}), 400
 
+# Authentication route for Spotify authentication
 @application.route('/auth', methods=['POST'])
 def auth():
 
@@ -431,6 +434,7 @@ def auth():
         else:
             return jsonify({'ok': True, 'message': 'Authorization Success'}), 200
 
+# Route for getting a users spotify Stats
 @application.route('/getStats', methods=['POST'])
 def getSpotifyStats():
 

@@ -47,8 +47,12 @@ class App extends React.Component {
   }
 
   // When the index page is mounted, redirect to home.
+  componentDidMount()
+  {
+    window.location.replace("/#/Home");
+  }
   
-    // Handle a user logging in by setting some state and passsing in the email from the LoginForm component
+  // Handle a user logging in by setting some state and passsing in the email from the LoginForm component
   setLoggedIn(emailFromLogin) 
   {
     this.setState({
