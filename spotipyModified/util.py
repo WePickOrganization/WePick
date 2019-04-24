@@ -10,7 +10,7 @@ from urllib.parse import urlparse, parse_qs
 
 import spotipy
 
-PORT = 80
+PORT = 8080
 REDIRECT_URI = "http://wepick.eu-west-1.elasticbeanstalk.com"
 #REDIRECT_URI = REDIRECT_URI + ":" + str(PORT)
 print("Redirect URI: " + REDIRECT_URI)
