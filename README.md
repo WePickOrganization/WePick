@@ -6,31 +6,29 @@
   <b>A dynamic web app that creates curated playlists based on multiple user's music preferences using Spotify. Built with React, Flask, Python, Node.js, Mocha, AWS and Mongo.</b><br>
 </p>
 
-
-
-[![Build Status](https://travis-ci.com/WePickOrganization/WePick.svg?branch=master)](https://travis-ci.com/WePickOrganization/WePick)
-
-
 ## Contents
-* [Description](#description)
-* [How to run](#how-to-run-the-program)
-* [Design](https://github.com/Store-Compare-Project/StoreCompare/wiki/Design-Document)
+* [Running/Compiling](#Prerequisites)
 * [Documentation](#documentation)
-* [Information](#information)
-* [Video](#video)
+* [Video Demonstration](#video)
 * [Technologies](#technologies-and-software)
 * [Resources](#resources)
-* [Wiki](https://github.com/EddieEldridge/GoLangAutomaton/wiki)
+* [Contributors](#resources)
+
+
+## Status
+[![Build Status](https://travis-ci.com/WePickOrganization/WePick.svg?branch=master)](https://travis-ci.com/WePickOrganization/WePick)
 
 ## What is WePick?
-WePick is an application that works in parallel with Spotify to help solve the age old problem of deciding what to listen to when you are with a group of friends. It accomplishes this by creating curated Spotify playlists that are generated using a pool of the <b>user's artists</b> and a selected <b>mood</b>
+WePick is an application that works in parallel with Spotify to help solve the age old problem of deciding what to listen to when you are with a group of friends. It accomplishes this by creating curated Spotify playlists that are generated using a pool of the <b>user's artists</b> and a selected <b>mood</b>.
 
 ## Prerequisites
 
 You should install the following before attempting to run the application
 
-* Python3
-* NodeJS
+* [Python3]()
+* [NodeJS]()
+* [Spotify Account](https://www.spotify.com/is/signup/)
+
 
 ## Running/Installation
 The following are steps required to compile the source code for this application.
@@ -80,33 +78,49 @@ The following are steps required to compile the source code for this application
       http://127.0.0.1:5000/ 
        
 
-## Information
-
-
 ## Documentation
+A comprehensive writeup on the development process can be found in the <b>docs</b> folder of the project.
 
+You can read our dissertation on this project [here](https://github.com/WePickOrganization/WePick/blob/master/docs/project.pdf).
+
+If you think the documentation is lacking and/or you have any issues with the project, please open an <b>Issue</b> using GitHub's <i>Issues</i> tab. You can do that [here](https://github.com/WePickOrganization/WePick/issues).
 
 ## Video
 Below is a video demonstration of the application in practice
 
-## Technologies and Software
-**Technologies**
+## Technologies
 
-- AWS
-- MongoDB
-- Flask
-- Python
-- Mocha 
-- React
+* [Python]()
+* [NodeJS]()
+* [TravisCI]()
+* [Spotify]()
+* [React]()
+* [MongoDB]()
+* [Amazon Web Services]()
+
 
 ## Resources
+A collection of resources used when developing the project can be found below
 
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
+* [Research link here]()
 
-## Developers
-[Eddie Eldridge](https://github.com/EddieEldridge)	
+## Contributors
+* [Eddie Eldridge](https://github.com/EddieEldridge)	
  	 
-[Danielis Joniskis](https://github.com/jawneck)
+* [Danielis Joniskis](https://github.com/jawneck)
  	 
-[Keith Higgins](https://github.com/cian2009/KeithHiggins)
+* [Keith Higgins](https://github.com/cian2009/KeithHiggins)
 
 ## Acknowledgments
