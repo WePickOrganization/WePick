@@ -101,7 +101,7 @@ def assert_port_available(port):
 def get_authentication_code():
     print("Attempting to get authentication code....")
     #httpd = MicroServer((REDIRECT_URI.split("://")[1].split(":")[0], PORT), CustomHandler)
-    httpd = MicroServer(SERVERADDRESS, CustomHandler)
+    httpd = MicroServer((SERVERADDRESS), CustomHandler)
     while not httpd.latest_query_components:
         httpd.handle_request()
     httpd.server_close()
