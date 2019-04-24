@@ -12,7 +12,7 @@ import spotipy
 
 PORT = 8080
 REDIRECT_URI = "http://wepick.eu-west-1.elasticbeanstalk.com"
-SERVERADDRESS = "127.0.0.1"
+SERVERADDRESS = "http://127.0.0.1"
 #REDIRECT_URI = REDIRECT_URI + ":" + str(PORT)
 SERVERADDRESS = SERVERADDRESS + ":" + str(PORT)
 print("Redirect URI: " + REDIRECT_URI)
