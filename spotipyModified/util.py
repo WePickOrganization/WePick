@@ -10,7 +10,7 @@ from urllib.parse import urlparse, parse_qs
 
 import spotipy
 
-PORT = 8080
+PORT = 80
 REDIRECT_URI = "http://wepick.eu-west-1.elasticbeanstalk.com"
 #REDIRECT_URI = REDIRECT_URI + ":" + str(PORT)
 print("Redirect URI: " + REDIRECT_URI)
@@ -30,7 +30,6 @@ def prompt_for_user_token(username, scope=None, client_id = None,
          - cache_path - path to location to save tokens
 
     '''
-
 
     if not client_id:
         client_id = os.getenv('SPOTIPY_CLIENT_ID')
@@ -99,6 +98,7 @@ def assert_port_available(port):
 
 
 def get_authentication_code():
+    print("Attempting to get authentication code....")
     httpd = MicroServer((REDIRECT_URI.split("://")[1].split(":")[0], PORT), CustomHandler)
     while not httpd.latest_query_components:
         httpd.handle_request()
@@ -128,6 +128,7 @@ class CustomHandler(BaseHTTPRequestHandler):
 
 class MicroServer(HTTPServer):
     def __init__(self, server_address, RequestHandlerClass):
+        print("Attempting to start micro server....")
         self.latest_query_components = None
         super().__init__(server_address, RequestHandlerClass)
 
