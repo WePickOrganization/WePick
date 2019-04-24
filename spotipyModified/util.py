@@ -12,8 +12,9 @@ import spotipy
 
 PORT = 8080
 REDIRECT_URI = "http://wepick.eu-west-1.elasticbeanstalk.com"
-SERVERADDRESS = "127.0.0.1:8080"
+SERVERADDRESS = "127.0.0.1"
 #REDIRECT_URI = REDIRECT_URI + ":" + str(PORT)
+SERVERADDRESS = SERVERADDRESS + ":" + str(PORT)
 print("Redirect URI: " + REDIRECT_URI)
 
 def prompt_for_user_token(username, scope=None, client_id = None,
@@ -100,8 +101,8 @@ def assert_port_available(port):
 
 def get_authentication_code():
     print("Attempting to get authentication code....")
-    #httpd = MicroServer((REDIRECT_URI.split("://")[1].split(":")[0], PORT), CustomHandler)
-    httpd = MicroServer((SERVERADDRESS), CustomHandler)
+    httpd = MicroServer((SERVERADDRESS.split("://")[1].split(":")[0], PORT), CustomHandler)
+    #httpd = MicroServer((SERVERADDRESS), CustomHandler)
     while not httpd.latest_query_components:
         httpd.handle_request()
     httpd.server_close()
