@@ -22,7 +22,8 @@
 * [Resources](#resources)
 * [Wiki](https://github.com/EddieEldridge/GoLangAutomaton/wiki)
 
-## Description
+## What is WePick?
+WePick is an application that works in parallel with Spotify to help solve the age old problem of deciding what to listen to when you are with a group of friends. It accomplishes this by creating curated Spotify playlists that are generated using a pool of 
 
 ## How to run the program
 From inside flask-backend

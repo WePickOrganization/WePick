@@ -29,7 +29,7 @@ def GeneratePlaylist(artistsID, username):
     spotifyObject = spotipyModified.Spotify(auth=token)
 
     
-    Recommendation = spotifyObject.recommendations(seed_artists=artistsID, limit=20)
+    Recommendation = spotifyObject.recommendations(seed_artists=artistsID, limit=30)
 
     RecommendationList = []
     for i in range(20):

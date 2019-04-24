@@ -21,6 +21,7 @@ class ArtistEnter extends Component
         spotUser4: '',
         spotUser5: '',
         spotUsers : [],
+        genre: '',
         spotifyEmbedURL: 'https://open.spotify.com/embed/playlist/'
       };
 
@@ -98,6 +99,16 @@ class ArtistEnter extends Component
                         <input type="text" id="spotUser3" className="FormField__Input" placeholder="WePick email" name="spotUser3" value={this.state.spotUser3} onChange={this.handleChange}></input>
                         <input type="text" id="spotUser4" className="FormField__Input" placeholder="WePick email" name="spotUser4" value={this.state.spotUser4} onChange={this.handleChange}></input>
                         <input type="text" id="spotUser5" className="FormField__Input" placeholder="WePick email" name="spotUser5" value={this.state.spotUser5} onChange={this.handleChange}></input>
+                    </div>
+
+                    <div id="mainselection">
+                        <select>
+                            <option value={this.state.genre}>Relaxing</option>
+                            <option value={this.state.genre}>Driving</option>
+                            <option value={this.state.genre}>Partying</option>
+                            <option value={this.state.genre}>Studying</option>
+                            <option value={this.state.genre}>Working</option>
+                        </select>
                     </div>
 
                     <div className="FormField">
