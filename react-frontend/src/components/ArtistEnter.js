@@ -103,11 +103,11 @@ class ArtistEnter extends Component
 
                     <div id="mainselection">
                         <select>
-                            <option value={this.state.genre}>Relaxing</option>
-                            <option value={this.state.genre}>Driving</option>
-                            <option value={this.state.genre}>Partying</option>
-                            <option value={this.state.genre}>Studying</option>
-                            <option value={this.state.genre}>Working</option>
+                            <option>Relaxing</option>
+                            <option>Driving</option>
+                            <option>Partying</option>
+                            <option>Studying</option>
+                            <option>Working</option>
                         </select>
                     </div>
 
