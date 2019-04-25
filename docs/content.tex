@@ -473,7 +473,27 @@ The getSpotifyStats() function uses a POST request to display the current users 
 
 
 \subsection{MongoDB (database)}
-The MongoDB is what is at the Data layer. On this tier data is stored and managed. Once the database was set up, we wrote DatabaseConnector.py. We loaded in the IP address and password for the database from a config file found locally on the machine. Once the database was created, we could view the collection of users in the database. We made use of functions to add, show and delete users. We also wrote a function which could be used to show a user and their favourite artist from the database.
+The MongoDB is what is at the Data layer. On this tier data is stored and managed. Once the database was set up, we wrote DatabaseConnector.py. We loaded in the IP address and password for the database from a config file found locally on the machine. Once the database was created, we could view the collection of users in the database.
+
+. There are several getter functions written for this database which allows for basic functionality.
+
+getUsersCollection(self) is a simple getter function which is performed on the database itself. The function returns the collection of users in the database.
+getURI(self) function returns the Uniform Resource Locator of the database.
+getClient(self) function returns the Client.
+getDatabase(self) returns the Database.
+
+There are also functions which serve the database in handling user data.
+
+The addUser() function adds the id, name, favouriteArtists and favouriteSong of the user into the collection of users. This collection of users is in the database.
+
+The showUsers() function finds every user in the collection and displays them.
+
+The deleteUser() function takes in a user id and deletes a user from the user collection based on that id.
+
+The showUsersFaveArtist() function displays a user and their favourite artist depending on which user is shown from the collection.
+
+The MongoDB database is hosted remotely in the cloud using Amazon Web Services. The user on the client side should be able to access the application from any desktop. Therefore, it was necessary for us to host the application on a Ubuntu Virtual Machine. An SSH key is needed to gain access to the remote instance, and this SSH key is stored securely. A password is then also necessary to access the database. The configuration for the remote hosting was all done on the command line.
+
 
 \chapter{System Evaluation}
 In this chapter, we will discuss many aspects of the software. We will break the evaluation down into 4 headings.
