@@ -1,6 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2018)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: project.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: project.aux
 The style file: ieeetr.bst
 Database file #1: bibliography.bib
 Warning--entry type for "WebsiteDowntimeStats" isn't style-file defined
@@ -8,45 +6,4 @@ Warning--entry type for "WebsiteDowntimeStats" isn't style-file defined
 Warning--I didn't find a database entry for "w3schools"
 Warning--empty journal in SoftwareRobustness
 Warning--empty year in SoftwareRobustness
-You've used 3 entries,
-            1876 wiz_defined-function locations,
-            494 strings with 3832 characters,
-and the built_in function-call counts, 578 in all, are:
-= -- 53
-> -- 12
-< -- 0
-+ -- 6
-- -- 3
-* -- 35
-:= -- 85
-add.period$ -- 1
-call.type$ -- 3
-change.case$ -- 3
-chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 30
-empty$ -- 66
-format.name$ -- 3
-if$ -- 137
-int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 2
-newline$ -- 12
-num.names$ -- 3
-pop$ -- 13
-preamble$ -- 1
-purify$ -- 0
-quote$ -- 0
-skip$ -- 24
-stack$ -- 0
-substring$ -- 32
-swap$ -- 9
-text.length$ -- 0
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 0
-warning$ -- 2
-while$ -- 6
-width$ -- 4
-write$ -- 25
 (There were 4 warnings)

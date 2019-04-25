@@ -10,7 +10,7 @@ A dynamic web app that creates curated playlists based on multiple user's music 
 	
 	Danielis Joniskis
 	
-	Keith Higgins
+	Keith Higgins 
 	
 	Three students from the Galway-Mayo Institute of Technology
 \end{flushleft}
@@ -32,12 +32,14 @@ Make sure you use references~\cite{einstein}
 
 
 \chapter{Context}
-\begin{itemize}
-\item Provide a context for your project.
-\item Set out the objectives of the project
-\item Briefly list each chapter / section and provide a 1-2 line description of what each section contains.
-\item List the resource URL (GitHub address) for the project and provide a brief list of the main elements at the URL.
-\end{itemize}
+The context of this project revolves around the use case of multiple people sitting together in a car or house and not being able to design on what music to play. One of the people can open the app and generate a play list that they can all enjoy instead of spending time on deciding what to play specifically.
+
+The goal of our project was to develop a dynamic web application that creates curated playlists based on multiple user's music preferences using Spotify.
+
+The project was completed over a 7-month period and this meant that the project environment didn’t change drastically.
+
+\section{Project Reference}
+https://github.com/WePickOrganization/WePick
 
 \section{Filler}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi enim, interdum ut elit lobortis, bibendum tempus diam. Etiam turpis ex, viverra tristique finibus nec, feugiat at metus. Curabitur tempus gravida interdum. Donec ac felis a lorem scelerisque elementum. Vestibulum sit amet gravida tortor, a iaculis orci. Nam a molestie augue. Curabitur malesuada odio at mattis molestie. In hac habitasse platea dictumst. Donec eu lectus eget risus hendrerit euismod nec at orci. Praesent porttitor aliquam diam, eu vestibulum nisl sollicitudin vel. Nullam sed egestas mi.
@@ -158,23 +160,60 @@ Mocha is a JavaScript test framework running on Node.js. Mocha tests run seriall
 React is a JavaScript library for building user interfaces. React is developed by Facebook. It is a tool for building UI components. React uses Babel to convert JSX (JavaScript XML) into JavaScript. Babel is a JavaScript compiler that can translate markup or programming languages into JavaScript. With Babel, you can use the newest features of JavaScript (ES6 - ECMAScript 2015). \cite{w3schools}
 
 \chapter{System Design}
-As many pages as needed.
-\begin{itemize}
-\item Architecture, UML etc. An overview of the different components of the system. Diagrams etc… Screen shots etc.
-\end{itemize}
+We looked at different architectures for our web application and decided to use 3-tier architecture. In doing this we were able to separate the work between the group, purposely playing to each team members strengths. Utilizing a 3-tier architecture allowed us to comfortably work on one tier without impacting the other tiers directly. It proved especially useful when a update came out for the technology at a given layer, we were able to update that layer independently without trouble.
 
-\begin{table}[h]
-  \centering
-  \begin{tabular}{x{2cm}p{3cm}}
-    \toprule \\
-    Column 1 & Column 2 \\
-    \midrule \\
-    Rows 2.1 & Row 2.2 \\
-    \bottomrule
-  \end{tabular}
-  \caption{A table.}
-  \label{table:mytable}
-\end{table}
+
+We opted to utilise a 3-tier architecture consisting of the following components:
+
+\begin{center}    
+	\includegraphics{img/3tier.png}
+\end{center}
+
+\subsection{React frontend (Client)}
+The React front-end is what you see at the Presentation layer. This is what the user is interacting with on their own PC. On this tier input is received, and output is displayed.
+We used ReactJS for the front-end as there is good support for it. A great thing about React is that you can create reusable UI components. React is good for its simplicity. It makes use of JSX syntax which allows you to produce React elements more intuitively, but still also allows you to write in plain Javascript.
+
+
+The React front end consists mainly of index.jsx and several separate component classes. The index page acts an entry point and is the outermost component class in the React application. The index page handles the user logging in by passing in the email from the LoginForm component. Once the details are verified, the user is redirected to the Create page which contains the ArtistEnter component. The index page handles the user logging out by clearing the logged in state and redirecting back to the Home page. 
+The index page is where the React components are rendered visually. The Home page components displayed consist of the NavBar, Carousel, Home, GenerateButton, and StickyFooter. 
+
+There is also an app form which consists of the ArtistEnter, Logout, RegisterForm, Auth, LoginForm and Prefs.
+
+These components are then styled with multiple CSS files.
+
+
+The LoginForm component takes in the user’s email and password. Once the user clicks on the submit button. An Axios GET request is performed. Sent to the Flask servers createUser route.
+
+The Logout component simply clears any state held by its parent component and then redirects to the Home page.
+
+The Home component acts as the component between the NavBar, Carousel and StickyFooter components. The Home component is where the GenerateButton component is rendered.
+
+The NavBar component contains the navigation bar that is always rendered in the application. The user can follow the links on the NavBar to the Home, Create and Profile pages respectively.
+
+The Carousel component is used to render an image carousel on the Home page. The carousel cycles through 7 different images and is a style choice which gives a more professional look to the application.
+
+The Auth component handles authorization.
+
+The RegisterForm component renders the form which is displayed to the user when they are registering a new account in the application. It takes in the user’s name, email and password. On submit the user’s information is routed to auth.
+
+The ArtistEnter component contains the form which allows the user to generate a play list based on their preferences. Once the user has logged in successfully, they can enter four different artists of their choosing and their email address. The user can then generate a playlist by submitting the form.
+
+The Prefs
+
+\subsection{Python backend (Server)}
+The python backend is what is present at the Application layer. This is the server which is made using flask and python. On this tier the logic is processed, and calculations are made.
+SpotipyAPI.py is where the playlist generation is handled behind the front-end. When an artist is searched, a lot of information about the artist is returned i.e. Hometown etc.
+The JSON data that is returned is where their artist ID is stored. This in-turn allows us to grab that artist ID and use it in generating the playlist. 
+
+We make use of OAuth 2.0; this is the industry standard protocol for authorization. We use OAuth2 to authenticate the user through Spotify. When the user is trying to login to their account on our application, they are in turn brought to a login dialogue through their Spotify account. Once they have logged into Spotify they are authorized and can continue with our application. 
+
+\begin{center}    
+	\includegraphics{img/auth.png}
+\end{center}
+The user starts out by going to the application. The application then sends the user to the authorization server. The user logs in here and the authorization server sends the user back to the application. The application then makes a POST request to the authorization server to get an access token.
+
+\subsection{MongoDB (database)}
+The MongoDB is what is at the Data layer. On this tier data is stored and managed. Once the database was set up, we wrote DatabaseConnector.py. We loaded in the IP address and password for the database from a config file found locally on the machine. Once the database was created, we could view the collection of users in the database. We made use of functions to add, show and delete users. We also wrote a function which could be used to show a user and their favourite artist from the database.
 
 \chapter{System Evaluation}
 In this chapter, we will discuss many aspects of the software. We will break the evaluation down into 4 headings.
