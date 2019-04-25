@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nl}{language:} \PYG{n}{node\PYGZus{}js}
+
+\PYG{n+nl}{before\PYGZus{}script:}
+  \PYG{o}{\PYGZhy{}} \PYG{n}{cd} \PYG{n}{react}\PYG{o}{\PYGZhy{}}\PYG{n}{frontend}
+  \PYG{o}{\PYGZhy{}} \PYG{n}{npm} \PYG{n}{install}
+  \PYG{o}{\PYGZhy{}} \PYG{n}{npm} \PYG{n}{run} \PYG{n}{dev}
+
+\PYG{n+nl}{script:}
+  \PYG{o}{\PYGZhy{}} \PYG{n}{npm} \PYG{n}{test}
+
+\PYG{n+nl}{before\PYGZus{}deploy:}
+  \PYG{o}{\PYGZhy{}} \PYG{n}{npm} \PYG{n}{run} \PYG{n}{dev}
+  \PYG{o}{\PYGZhy{}} \PYG{n}{cd} \PYG{o}{..}
+
+\PYG{n+nl}{deploy:}
+  \PYG{n}{skip\PYGZus{}cleanup}\PYG{o}{:} \PYG{k+kc}{true}
+\PYG{n+nl}{provider:} \PYG{n}{elasticbeanstalk}
+\end{Verbatim}

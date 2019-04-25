@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZlt{}}\PYG{n+nx}{Route} \PYG{n+nx}{path}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}/Register\PYGZdq{}}
-  \PYG{n+nx}{component}\PYG{o}{=}\PYG{p}{\PYGZob{}(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{=\PYGZgt{}}
-    \PYG{o}{\PYGZlt{}}\PYG{n+nx}{RegisterForm}
-      \PYG{n+nx}{createState}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{createState}\PYG{p}{\PYGZcb{}}\PYG{o}{\PYGZgt{}}\PYG{p}{\PYGZob{}}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{children}\PYG{p}{\PYGZcb{}}
-    \PYG{o}{\PYGZlt{}}\PYG{err}{/RegisterForm\PYGZgt{}\PYGZcb{}\PYGZgt{}}
-\PYG{o}{\PYGZlt{}}\PYG{err}{/Route\PYGZgt{}}
-\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{\PYGZlt{}Route} \PYG{n+na}{path=}\PYG{l+s}{\PYGZdq{}/Register\PYGZdq{}}
+  \PYG{n+na}{component=}\PYG{l+s}{\PYGZob{}(props)} \PYG{err}{=}\PYG{n+nt}{\PYGZgt{}}
+    \PYG{n+nt}{\PYGZlt{}RegisterForm}
+      \PYG{n+na}{createState=}\PYG{l+s}{\PYGZob{}this.createState\PYGZcb{}}\PYG{n+nt}{\PYGZgt{}}\PYGZob{}props.children\PYGZcb{}
+    \PYG{n+nt}{\PYGZlt{}/RegisterForm\PYGZgt{}}\PYGZcb{}\PYGZgt{}
+\PYG{n+nt}{\PYGZlt{}/Route\PYGZgt{}}
+\end{Verbatim}
