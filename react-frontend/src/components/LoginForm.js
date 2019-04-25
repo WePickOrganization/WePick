@@ -60,7 +60,7 @@ class LoginForm extends Component
         //this.setState({ redirect: true });
 
         // Perform Axios GET Request
-        // Sent to Flask server's route '/createUser'\
+        // Sent to Flask server's route '/loginUser'
         // Send our state variables captured by our handleChange function 
         axios.post('/loginUser', {
             params: {

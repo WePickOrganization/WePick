@@ -1,38 +1,38 @@
-\contentsline {paragraph}{\numberline {0.0.0.0.1}Abstract}{4}{paragraph.0.0.0.0.1}% 
-\contentsline {paragraph}{\numberline {0.0.0.0.2}Authors}{4}{paragraph.0.0.0.0.2}% 
-\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}% 
-\contentsline {chapter}{\numberline {2}Context}{6}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Project Reference}{6}{section.2.1}% 
-\contentsline {section}{\numberline {2.2}Filler}{6}{section.2.2}% 
-\contentsline {subsection}{\numberline {2.2.1}More filler}{7}{subsection.2.2.1}% 
-\contentsline {section}{\numberline {2.3}Filler}{7}{section.2.3}% 
-\contentsline {chapter}{\numberline {3}Methodology}{9}{chapter.3}% 
-\contentsline {chapter}{\numberline {4}Technology Review}{11}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}AWS}{11}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}MongoDB}{11}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Flask}{12}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Python}{12}{section.4.4}% 
-\contentsline {section}{\numberline {4.5}Mocha}{12}{section.4.5}% 
-\contentsline {section}{\numberline {4.6}React}{12}{section.4.6}% 
-\contentsline {chapter}{\numberline {5}System Design}{13}{chapter.5}% 
-\contentsline {subsection}{\numberline {5.0.1}React frontend (Client)}{13}{subsection.5.0.1}% 
-\contentsline {subsection}{\numberline {5.0.2}Python backend (Server)}{15}{subsection.5.0.2}% 
-\contentsline {subsection}{\numberline {5.0.3}MongoDB (database)}{16}{subsection.5.0.3}% 
-\contentsline {chapter}{\numberline {6}System Evaluation}{17}{chapter.6}% 
-\contentsline {subsection}{\numberline {6.0.1}Robustness}{17}{subsection.6.0.1}% 
-\contentsline {subsection}{\numberline {6.0.2}Error Handling}{18}{subsection.6.0.2}% 
-\contentsline {subsection}{\numberline {6.0.3}Time between failures and time between recovery}{20}{subsection.6.0.3}% 
-\contentsline {subsection}{\numberline {6.0.4}Performance}{20}{subsection.6.0.4}% 
-\contentsline {subsection}{\numberline {6.0.5}Security}{21}{subsection.6.0.5}% 
-\contentsline {subsection}{\numberline {6.0.6}Improving Security}{26}{subsection.6.0.6}% 
-\contentsline {subsubsection}{\numberline {6.0.6.1}HTTP/HTTPS}{26}{subsubsection.6.0.6.1}% 
-\contentsline {subsubsection}{\numberline {6.0.6.2}But who exactly has the authority to issue these certificates and how can we trust them?}{28}{subsubsection.6.0.6.2}% 
-\contentsline {subsubsection}{\numberline {6.0.6.3}How does SSL work?}{28}{subsubsection.6.0.6.3}% 
-\contentsline {subsubsection}{\numberline {6.0.6.4}Benefits of SSL/HTTPS}{28}{subsubsection.6.0.6.4}% 
-\contentsline {subsubsection}{\numberline {6.0.6.5}Why didn't we implement SSL/HTTPS?}{29}{subsubsection.6.0.6.5}% 
-\contentsline {chapter}{\numberline {7}Conclusion}{30}{chapter.7}% 
-\contentsline {subsection}{\numberline {7.0.1}Original Idea vs. Actual Implementation}{30}{subsection.7.0.1}% 
-\contentsline {subsection}{\numberline {7.0.2}Learning Outcomes}{30}{subsection.7.0.2}% 
-\contentsline {subsection}{\numberline {7.0.3}Shortcomings/Oppurtunities}{30}{subsection.7.0.3}% 
-\contentsline {subsection}{\numberline {7.0.4}Closing Statement}{30}{subsection.7.0.4}% 
-\contentsline {subsection}{\numberline {7.0.5}Acknowledgements}{30}{subsection.7.0.5}% 
+\contentsline {paragraph}{\numberline {0.0.0.0.1}Abstract}{4}{paragraph.0.0.0.0.1}
+\contentsline {paragraph}{\numberline {0.0.0.0.2}Authors}{4}{paragraph.0.0.0.0.2}
+\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}
+\contentsline {chapter}{\numberline {2}Context}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Project Reference}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}Objectives}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}Overview}{7}{section.2.3}
+\contentsline {chapter}{\numberline {3}Methodology}{8}{chapter.3}
+\contentsline {chapter}{\numberline {4}Technology Review}{10}{chapter.4}
+\contentsline {section}{\numberline {4.1}React}{10}{section.4.1}
+\contentsline {section}{\numberline {4.2}Flask}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}MongoDB}{15}{section.4.3}
+\contentsline {section}{\numberline {4.4}Amazon Web Services}{16}{section.4.4}
+\contentsline {section}{\numberline {4.5}TravisCI}{17}{section.4.5}
+\contentsline {section}{\numberline {4.6}Mocha}{17}{section.4.6}
+\contentsline {section}{\numberline {4.7}Spotify API}{17}{section.4.7}
+\contentsline {chapter}{\numberline {5}System Design}{19}{chapter.5}
+\contentsline {subsection}{\numberline {5.0.1}React frontend (Client)}{19}{subsection.5.0.1}
+\contentsline {subsection}{\numberline {5.0.2}Python backend (Server)}{21}{subsection.5.0.2}
+\contentsline {subsection}{\numberline {5.0.3}MongoDB (database)}{22}{subsection.5.0.3}
+\contentsline {chapter}{\numberline {6}System Evaluation}{23}{chapter.6}
+\contentsline {subsection}{\numberline {6.0.1}Robustness}{23}{subsection.6.0.1}
+\contentsline {subsection}{\numberline {6.0.2}Error Handling}{24}{subsection.6.0.2}
+\contentsline {subsection}{\numberline {6.0.3}Time between failures and time between recovery}{26}{subsection.6.0.3}
+\contentsline {subsection}{\numberline {6.0.4}Performance}{26}{subsection.6.0.4}
+\contentsline {subsection}{\numberline {6.0.5}Security}{27}{subsection.6.0.5}
+\contentsline {subsection}{\numberline {6.0.6}Improving Security}{32}{subsection.6.0.6}
+\contentsline {subsubsection}{\numberline {6.0.6.1}HTTP/HTTPS}{32}{subsubsection.6.0.6.1}
+\contentsline {subsubsection}{\numberline {6.0.6.2}But who exactly has the authority to issue these certificates and how can we trust them?}{34}{subsubsection.6.0.6.2}
+\contentsline {subsubsection}{\numberline {6.0.6.3}How does SSL work?}{34}{subsubsection.6.0.6.3}
+\contentsline {subsubsection}{\numberline {6.0.6.4}Benefits of SSL/HTTPS}{34}{subsubsection.6.0.6.4}
+\contentsline {subsubsection}{\numberline {6.0.6.5}Why didn't we implement SSL/HTTPS?}{35}{subsubsection.6.0.6.5}
+\contentsline {chapter}{\numberline {7}Conclusion}{36}{chapter.7}
+\contentsline {subsection}{\numberline {7.0.1}Original Idea vs. Actual Implementation}{36}{subsection.7.0.1}
+\contentsline {subsection}{\numberline {7.0.2}Learning Outcomes}{36}{subsection.7.0.2}
+\contentsline {subsection}{\numberline {7.0.3}Shortcomings/Oppurtunities}{36}{subsection.7.0.3}
+\contentsline {subsection}{\numberline {7.0.4}Closing Statement}{36}{subsection.7.0.4}
+\contentsline {subsection}{\numberline {7.0.5}Acknowledgements}{36}{subsection.7.0.5}

@@ -127,36 +127,193 @@ Check out the nice graphs in Figure \ref{tikz:graphs}, and the nice diagram in F
 
 
 \chapter{Technology Review}
-About seven to ten pages.
+In the following section, we will discuss the technologies used in the project, how we went about implementing them and the reasoning behind our decisions.
+
 \begin{itemize}
 \item Describe each of the technologies you used at a conceptual level. Standards, Database Model (e.g. MongoDB, CouchDB), XMl, WSDL, JSON, JAXP.
 \item Use references (IEEE format, e.g. [1]), Books, Papers, URLs (timestamp) – sources should be authoritative. 
 \end{itemize}
 
-\section{AWS}
-Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services.
+\begin{itemize}
+  \item React
+  \item Flask
+  \item MongoDB
+  \item Amazon Web Services
+  \item TravisCI
+  \item MochaJS
+  \item Spotify API
+  \end{itemize}
 
-\begin{minted}{xml}
-<this>
-  <looks lookswhat="good">
-    Good
-  </looks>
-</this>
+\section{React}
+For developing the front-end of our application, we used React. React is a JavaScript library for creating responsive and elegent user interfaces. It is an open source technology and this was one of the 
+driving forces which led us to choose it over other popular choices such as Angular, Vue.js or Ember. We were more comfortable working with open source software as we knew the documentation and help online would be much more reliable than traditional propertiary software.
+React implements a component based architecture. This means that the user interface consists of multiple, abstracted \textbf{components} that each manage their own state and properties.
+This component based architecture means promotes re-use and effifiency as when the page loads, each component is loaded and rendered only once and is subsequently updated accordingly when the data of that component changes. This means that in practice, instead of the user having to reload commonly rendered aspects of a web page such as
+the footer and navigation bar every time they visit a new page, we can only re-render and update the components that need to change. For example, if the user arrives at the home page of the website, they will load the navbar, footer and home components. On a traditional webpage, when visiting the register/login page they would have to reload the navbar and footer again. 
+Using React, we were able to eleminate this shortcoming of traditional web design and only re-render what is required - the Login/Register forms.
+
+This component based architecture also helped us to achieve one of our original goals of the webpage being fast and responsive to use.
+
+This design approach implementing abstraction and re-use also means that it is easy and painless to share components with others and this greatly helped us rapidly develop the webpages in a clean and easy to understand manner. We were each able to work on seperate components of the web page in parallel without massively conflicting with each others work.
+We were then able to render these components depending on which RESTful route the user was on. We accomplished this using React-Router, a React library that enables the rendering of specific components on specific RESTful routes.
+
+An example of this can be seen below
+
+\begin{minted}{javascript}
+<Route path="/Register" 
+  component={(props) => 
+    <RegisterForm 
+      createState={this.createState}>{props.children}
+    </RegisterForm>}>
+</Route>
 \end{minted}
 
-\section{MongoDB}
-MongoDB is an open-source, document database designed for ease of development and scaling. MongoDB stores data in JSON-like documents, which makes the database very flexible and scalable.\cite{w3schools}
+The above code means that when the user is on the route '/Register', render the component called 'RegisterForm'. We also create a state for this component and pass in the 'props' to this component.
+'Props' refers to the parent component, which in this case is our Index page. We pass the current state of the parent component to it's child, RegisterForm.
+
+As mentioned above, we used RESTful routes in our application. As such, we had needed a way to handle HTTP Requests. Unfortunately, unlike other popular front-end frameworks such as Angular, React does not include a HTTP Client to handle requests.
+To combat this shortcoming, we researched a couple of popular React HTTP Libraries but ended up settling on the most popular, Axios. 
+
+Axios is a promise based HTTP client that works with nearly ever browser and has a host of features including automatically transforming requests into JSON, support for protecting against cross-side forgery attacks as well support for NodeJS. Axios was very simple to use and made handling HTTP Requests and Responses from our server painless and easy to handle.
+
+\newpage
+
+\begin{minted}{javascript}
+
+// Perform Axios GET Request
+// Sent to Flask server's route '/loginUser'
+// Send our state variables captured by our handleChange function 
+axios.post('/loginUser', {
+    params: {
+      email: this.state.email,
+      password: this.state.password
+    }
+  })
+  .then(function (response) {
+    console.log("Server Response: " + response.status)
+    if(response.status==200)
+    {
+      console.log("Successful Login!")
+      self.handleSuccessfulLogin();
+    }
+    if(response.status==201)
+    {
+      console.log("Wrong login details!")
+      self.toggleError();
+      self.handleFailedLogin();
+    }
+    else
+    {
+      console.log("Server error!")
+    }
+  })
+  .catch(function (error) {
+    self.handleFailedLogin();
+  });  
+\end{minted}
+
+As you can see from the code above, implementation is simple, logical and easy to understand.
+
 
 \section{Flask}
-Flask is a microframework for Python.
+In order to serve our React files, we needed a web server. We spent a lot of time researching aspect of the application as we knew it would be a critical part and we did not want to regret our decision down the line. Some of the contenders included Ruby on Rails (Ruby), Django (Python) and 
+Grails (Java). In the end, we decided on Flask as it suited our needs the most. Flask is 'microframework' written in Python. It's lightweight and get's it's 'microframework' name from it's lack of standard support for traditional functionality such as form validation, a database abstraction layer or object-relational mapping tools. Instead, these tools and libraries are provided by third parties. 
+As a result of this architectural design, your resulting server can be custom-made to suit your specific needs with the least amount of bloat possible. This tied in nicely with our original goal of the application being fast and easy to use. The nature of Flask's architecture meant that we only needed to include what we needed and no extra baggage was included.
 
-\section{Python}
-Python is a programming language that lets you work more quickly and integrate your systems more effectively.
+Although originally conceived in 2010 as an April Fool's Joke \cite{FlaskOrigins}, Flask went on to be etremely popular being picked up by large corporations such as LinkedIn and Pinterest. A basic Flask application can be setup in as little as 7 lines 
+
+\begin{minted}{python}
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run()
+\end{minted}
+
+One of the driving factors regarding our choice of Flask was that it is written in Python, a language none of were hugely familiar with. We all thought it would be a good oppurtunity to learn a new language, especially since it is considerably
+different to previous languages we had used such as C\# and Java.
+
+Some of the Flask libraries we used in development of the application included 
+
+\begin{itemize}
+  \item Flask-PyMongo
+  \item Flask-ByCrypt
+  \item Flask-JWT
+\end{itemize}
+
+Flask-PyMongo enabled us to connect our MongoDB database with our Flask application in a simple and easy to use manner. 
+
+Flask-ByCrypt helped us with the encryption of user's passwords before they were entered in the database upon registering as well as subsequent decryption of these passwords upon logging in.
+
+Flask-JWT provided support for securing our RESTFul routes with JavaScript Web Tokens which will be discussed later in the System Methodology chapter.
+
+\section{MongoDB}
+To satisfy our goal of an overall fast and efficient system, we wanted to make sure that access to the databse was fast as well as secure. To satisfy this need, we chose MongoDB for our database.
+We considered using an relational-style database such as SQL but we had used this technology many times before and we wanted to try something new. We also were aware that MongoDB used a document-style model to store information. This tied in nicely with our choice of Python as MongoDB's document-style of storing information is very similar to Python's 'dictionary' variable type.
+It is also very similar to JSON Style documents which are passed in from our React front-end. Overall, this resulted in us being able toe easily pass the data between our React front-end, Flask back-end and our MongoDB database without having to hugely change the data at each step of the process.
+
+As mentioned above, MongoDB uses a document-style model for storing information. This document style allows for many for many features such as 
+
+\begin{itemize}
+  \item Scalibility
+  \item High performance
+  \item Flexible and consistent
+  \item Simple and powerful indexing tools
+\end{itemize}
+
+Another advantage of MongoDB is that like React, it's also open-source. This again played a large role in why we chose it as we knew that any questions or queries we might have about the technology would be easily answered online as developers of open-source software generally encourage this behaviour.
+
+From our research, we also found that Mongo was considerably faster in general than traditional SQL databases, especially when the size of the tables/data was limited. However, I went delve into detail on this as the performance of this is discussed later in the System Methodology chapter.
+
+An example model of our MongoDB document we used can be seen below
+
+\begin{minted}{javascript}
+"_id": {
+"$oid": "5c90d0d31fd421123063d92f"
+},
+"name": "Edward Eldridge",
+"email": "steadyeddie101@hotmail.co.uk",
+"password": {
+    "$binary": "JDJiJDEyJDBlZWtUeTRMS0xQRnhFV0NGMU9vT08wb3Z5TTExOFdxTTP",
+    "$type": "00"
+},
+"spotifyUsername": "Steadueddie",
+"favArtist": [
+    "Nujabes",
+    "Kanye West",
+    "Chief Keef",
+    "Gotan Project",
+    "Sia"
+]
+},
+\end{minted}
+
+In order for the application to function in the manner we intended, we needed to host the database somewhere remotely. We researched lots of ways of doing this but ended up settling on using a an Amazon Web Services Ubuntu Virtual Machine. The database was setup on a Ubuntu 18.04 system running on a virtual machine. The provided instance had no desktop or user interface so all the database setup was done on the command line.
+It was setup with security in mind, meaning a securely kept SSH key was needed to access the instance and a password was required to access subsequently the database. This meant the database and it's contents were kept secure. We had all experienced security issues with databaess in previous projects, whether it was a ransom attempt or deleting all contents of the database so this was a priority for us.
+
+
+\section{Amazon Web Services}
+Amazon Web Services, a subsidiary of the well known company Amazon, provides solutions to a vast range of cloud-computing problems. Some of these services include Elastic Beanstalk (for hosting websites), EC2 (for creating virtual machines) and they also provide their own database services if you don't fancy setting it up yourself.
+As mentioned above, we used Amazon Web Services to host our MongoDB instance. However, we also used Amazon Web Services to host our actual Flask application so that it could be used by anyone, without the need download and compile the source code.
+
+To accomplish this task we used Amazon Web Services' \textit{Elastic Beanstalk} service. AWS describes Elastic Beanstalk as an 'orchestration' service. Essentially what this means is that they handle the large majority of the configuration, management and co-ordination required to keep a website hosted and up and running. To enable this, AWS provides a command line tool called AWS EB CLI. It's essentially a command line program that helps simplify creating, updating and monitoring your enviroments/applications from a local repository. 
+AWS provies built in support for Flask applications so the setup was relatively simple. To further compliment our deployment, AWS provides support with TravisCI for seamless transition off code from a local repository to deplotment. I will discuss this further in the section below.
+
+We ensure that all our Amazon Web Services instances were on the EU-West server as we expected the large majority of our user-base to be based in Europe and this would enable better speeds and reliability. AWS also provides a lot of free services as our Ubuntu and Elastic Beanstalk instances were able to run for roughly 2 months before reaching the free tier. This is useful 
+for people who might be curious as to what the process of hosting an application/setting up a database is like wihout having to pay excessive ammounts of money. Once we reached our limit, we were able to supplement our credits with free credits provided by GitHub's Student Package. 
+
+
+\section{TravisCI}
+TravisCI or Travis Continous Integration is a continous integration tool that works in parallel with GitHub repository. Continous integration can be decribed as               
 
 \section{Mocha}
 Mocha is a JavaScript test framework running on Node.js. Mocha tests run serially, allowing for flexible and accurate reporting
 
-\section{React}
+\section{Spotify API}
 React is a JavaScript library for building user interfaces. React is developed by Facebook. It is a tool for building UI components. React uses Babel to convert JSX (JavaScript XML) into JavaScript. Babel is a JavaScript compiler that can translate markup or programming languages into JavaScript. With Babel, you can use the newest features of JavaScript (ES6 - ECMAScript 2015). \cite{w3schools}
 
 \chapter{System Design}

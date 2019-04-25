@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+s2}{\PYGZdq{}\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}oid\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}5c90d0d31fd421123063d92f\PYGZdq{}}
+\PYG{p}{\PYGZcb{},}
+\PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Edward Eldridge\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}email\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}steadyeddie101@hotmail.co.uk\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}password\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}binary\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}JDJiJDEyJDBlZWtUeTRMS0xQRnhFV0NGMU9vT08wb3Z5TTExOFdxTTP\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}type\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}00\PYGZdq{}}
+\PYG{p}{\PYGZcb{},}
+\PYG{l+s+s2}{\PYGZdq{}spotifyUsername\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Steadueddie\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}favArtist\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+    \PYG{l+s+s2}{\PYGZdq{}Nujabes\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}Kanye West\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}Chief Keef\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}Gotan Project\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}Sia\PYGZdq{}}
+\PYG{p}{]}
+\PYG{p}{\PYGZcb{},}
+\end{Verbatim}

@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Perform Axios GET Request}
+\PYG{c+c1}{// Sent to Flask server\PYGZsq{}s route \PYGZsq{}/loginUser\PYGZsq{}}
+\PYG{c+c1}{// Send our state variables captured by our handleChange function}
+\PYG{n+nx}{axios}\PYG{p}{.}\PYG{n+nx}{post}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/loginUser\PYGZsq{}}\PYG{p}{,} \PYG{p}{\PYGZob{}}
+    \PYG{n+nx}{params}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{email}\PYG{o}{:} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{email}\PYG{p}{,}
+      \PYG{n+nx}{password}\PYG{o}{:} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{password}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{})}
+  \PYG{p}{.}\PYG{n+nx}{then}\PYG{p}{(}\PYG{k+kd}{function} \PYG{p}{(}\PYG{n+nx}{response}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Server Response: \PYGZdq{}} \PYG{o}{+} \PYG{n+nx}{response}\PYG{p}{.}\PYG{n+nx}{status}\PYG{p}{)}
+    \PYG{k}{if}\PYG{p}{(}\PYG{n+nx}{response}\PYG{p}{.}\PYG{n+nx}{status}\PYG{o}{==}\PYG{l+m+mi}{200}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Successful Login!\PYGZdq{}}\PYG{p}{)}
+      \PYG{n+nx}{self}\PYG{p}{.}\PYG{n+nx}{handleSuccessfulLogin}\PYG{p}{();}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{if}\PYG{p}{(}\PYG{n+nx}{response}\PYG{p}{.}\PYG{n+nx}{status}\PYG{o}{==}\PYG{l+m+mi}{201}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Wrong login details!\PYGZdq{}}\PYG{p}{)}
+      \PYG{n+nx}{self}\PYG{p}{.}\PYG{n+nx}{toggleError}\PYG{p}{();}
+      \PYG{n+nx}{self}\PYG{p}{.}\PYG{n+nx}{handleFailedLogin}\PYG{p}{();}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Server error!\PYGZdq{}}\PYG{p}{)}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{})}
+  \PYG{p}{.}\PYG{k}{catch}\PYG{p}{(}\PYG{k+kd}{function} \PYG{p}{(}\PYG{n+nx}{error}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n+nx}{self}\PYG{p}{.}\PYG{n+nx}{handleFailedLogin}\PYG{p}{();}
+  \PYG{p}{\PYGZcb{});}
+\end{Verbatim}
