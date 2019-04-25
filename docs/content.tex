@@ -136,6 +136,39 @@ When we finished the first sprint, we wanted to create a diagram which showed ho
 \subsection{Sprint 3: Front-End design and database design}
 For the design of our front end, we wanted to make it very simplistic with a dark theme of colours. We decided this by visiting our favourite websites and deciding what we liked and didn’t like about the design. We then wrote down all the things we liked and based our design of these points. From here, we sketched out a simple homepage and other components. This allowed us to get a real taste of how the application would look a few months down the line. After we completed this we sketched out the different attributes we needed for our database and built a simple table. We decided we would work more on the database down the line but just wanted to have a simple table to test on.
 
+\section{Development Sprints}
+\subsection{Sprint 1: Flask app connected to database}
+When we began writing the application, we based our development of a sample flask app we found online. Although we used nothing from this, we used it to understand how everything worked. From here we then began to connect the flask app to our database using the PyMongo libraries. We set up simple functions to add/select/remove and update attributes in our database to check if our connection was working properly. We hosted our database on a linux virtual machine.
+
+\subsection{Sprint 2: SpotiPy Set-Up}
+After we set up the simple flask app, we then decided to start experimenting with SpotiPy, A Spotify API based around Python. First, we began by getting the users account authenticated with our api, in the beginning this was very simple because we just needed it for one user to test and we didn’t need to worry about major validation , this is however a problem we faced later on in our development journey. We then set up some simple functions in our script, this included but not limited to converting artist names to artist id, creating a function which returned a list of track ids based of the artists we entered and then finally by creating a playlist based of these songs.
+
+\subsection{Sprint 3: Postman requests and Travis}
+Next, we began to test functions to do with our database. These are our POST/UPDATE/GET/DELETE methods when it comes to updating our user preferences database. Although we had no GUI, we used postman to confirm that these methods were indeed working. We also began implementing simple Travis testing to our application.
+
+\subsection{Sprint 4: React Development}
+After we were sure of our http methods were working, we began to begin our GUI development. This included creating log in/register forms and other work on our front-end design. Once we were happy with the design of these forms, we linked these forms to our http methods and got the log in and register components completely working with our development scripts.
+
+\subsection{Sprint 5: Further react development}
+Next, we began further development of our front end. This included creating forms for the user to enter their favourite artists and store them in our database. We also began to work on styling the smaller elements on our website, this included styling the nav bar, header and fixing some navigation issues we were having. We also began deciding on a colour scheme for our website. 
+
+\subsection{Sprint 6: AWS Deployment and user password encryption}
+Once we had the foundation of our website working, we decided to begin deploying our app on amazon web services. After we finished this we figured we had a major security issue in our database, we were currently storing our user’s password as plain text in our database. To fix this, we added a simple hashing function to encrypt the user’s password on registration.
+
+\subsection{Sprint 7: OAuth-2 Spotify}
+In this sprint, we decided to implement OAuth-2 which is an authorization framework that enables applications to obtain limited access to user accounts on an HTTP service in our case Spotify. This works by sending various requests to and from the service api to make sure that the correct user is trying to access the correct account. Below is a quick diagram explaining this as it is quite hard to explain verbally.
+
+\begin{figure}[ht]
+\renewcommand\thefigure{3.5}
+\centering
+\includegraphics[width=10cm, height=5cm]{img/oauth.png},
+\caption{oauth2}
+\label{oauth2}
+\end{figure}
+
+\subsection{Sprint 8: Final touches and Spotify widgets}
+In our final sprints we finished the final touches to the website e.g icons and animations and also added a Spotify widget to show what playlist the user has created.
+
 
 \chapter{Technology Review}
 In the following section, we will discuss the technologies used in the project, how we went about implementing them and the reasoning behind our decisions.
