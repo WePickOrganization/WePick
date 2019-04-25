@@ -1,38 +1,56 @@
-\contentsline {paragraph}{\numberline {0.0.0.0.1}Abstract}{4}{paragraph.0.0.0.0.1}% 
-\contentsline {paragraph}{\numberline {0.0.0.0.2}Authors}{4}{paragraph.0.0.0.0.2}% 
+\contentsline {paragraph}{\numberline {0.0.0.0.1}Authors}{4}{paragraph.0.0.0.0.1}% 
 \contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}% 
 \contentsline {chapter}{\numberline {2}Context}{7}{chapter.2}% 
 \contentsline {section}{\numberline {2.1}Project Reference}{7}{section.2.1}% 
 \contentsline {section}{\numberline {2.2}Objectives}{7}{section.2.2}% 
 \contentsline {section}{\numberline {2.3}Overview}{8}{section.2.3}% 
 \contentsline {chapter}{\numberline {3}Methodology}{9}{chapter.3}% 
-\contentsline {chapter}{\numberline {4}Technology Review}{11}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}React}{11}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Flask}{14}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}MongoDB}{16}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Amazon Web Services}{17}{section.4.4}% 
-\contentsline {section}{\numberline {4.5}TravisCI}{18}{section.4.5}% 
-\contentsline {section}{\numberline {4.6}MochaJS}{20}{section.4.6}% 
-\contentsline {section}{\numberline {4.7}Spotify API}{20}{section.4.7}% 
-\contentsline {chapter}{\numberline {5}System Design}{22}{chapter.5}% 
-\contentsline {subsection}{\numberline {5.0.1}React frontend (Client)}{22}{subsection.5.0.1}% 
-\contentsline {subsection}{\numberline {5.0.2}Python backend (Server)}{24}{subsection.5.0.2}% 
-\contentsline {subsection}{\numberline {5.0.3}MongoDB (database)}{26}{subsection.5.0.3}% 
-\contentsline {chapter}{\numberline {6}System Evaluation}{27}{chapter.6}% 
-\contentsline {subsection}{\numberline {6.0.1}Robustness}{27}{subsection.6.0.1}% 
-\contentsline {subsection}{\numberline {6.0.2}Error Handling}{28}{subsection.6.0.2}% 
-\contentsline {subsection}{\numberline {6.0.3}Time between failures and time between recovery}{30}{subsection.6.0.3}% 
-\contentsline {subsection}{\numberline {6.0.4}Performance}{30}{subsection.6.0.4}% 
-\contentsline {subsection}{\numberline {6.0.5}Security}{31}{subsection.6.0.5}% 
-\contentsline {subsection}{\numberline {6.0.6}Improving Security}{36}{subsection.6.0.6}% 
-\contentsline {subsubsection}{\numberline {6.0.6.1}HTTP/HTTPS}{36}{subsubsection.6.0.6.1}% 
-\contentsline {subsubsection}{\numberline {6.0.6.2}But who exactly has the authority to issue these certificates and how can we trust them?}{38}{subsubsection.6.0.6.2}% 
-\contentsline {subsubsection}{\numberline {6.0.6.3}How does SSL work?}{38}{subsubsection.6.0.6.3}% 
-\contentsline {subsubsection}{\numberline {6.0.6.4}Benefits of SSL/HTTPS}{38}{subsubsection.6.0.6.4}% 
-\contentsline {subsubsection}{\numberline {6.0.6.5}Why didn't we implement SSL/HTTPS?}{39}{subsubsection.6.0.6.5}% 
-\contentsline {chapter}{\numberline {7}Conclusion}{40}{chapter.7}% 
-\contentsline {subsection}{\numberline {7.0.1}Original Idea vs. Actual Implementation}{40}{subsection.7.0.1}% 
-\contentsline {subsection}{\numberline {7.0.2}Learning Outcomes}{40}{subsection.7.0.2}% 
-\contentsline {subsection}{\numberline {7.0.3}Shortcomings/Oppurtunities}{40}{subsection.7.0.3}% 
-\contentsline {subsection}{\numberline {7.0.4}Closing Statement}{40}{subsection.7.0.4}% 
-\contentsline {subsection}{\numberline {7.0.5}Acknowledgements}{40}{subsection.7.0.5}% 
+\contentsline {section}{\numberline {3.1}Agile Development}{9}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Version Control}{11}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Travis CI}{11}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Whitebox Testing}{12}{subsection.3.2.2}% 
+\contentsline {subsection}{\numberline {3.2.3}Blackbox Testing}{12}{subsection.3.2.3}% 
+\contentsline {section}{\numberline {3.3}Sprints}{13}{section.3.3}% 
+\contentsline {section}{\numberline {3.4}Research Sprints}{14}{section.3.4}% 
+\contentsline {subsection}{\numberline {3.4.1}Sprint 1: Initial Research}{14}{subsection.3.4.1}% 
+\contentsline {subsection}{\numberline {3.4.2}Sprint 2: Review}{14}{subsection.3.4.2}% 
+\contentsline {subsection}{\numberline {3.4.3}Sprint 3: Front-End design and database design}{14}{subsection.3.4.3}% 
+\contentsline {section}{\numberline {3.5}Development Sprints}{15}{section.3.5}% 
+\contentsline {subsection}{\numberline {3.5.1}Sprint 1: Flask app connected to database}{15}{subsection.3.5.1}% 
+\contentsline {subsection}{\numberline {3.5.2}Sprint 2: SpotiPy Set-Up}{15}{subsection.3.5.2}% 
+\contentsline {subsection}{\numberline {3.5.3}Sprint 3: Postman requests and Travis}{15}{subsection.3.5.3}% 
+\contentsline {subsection}{\numberline {3.5.4}Sprint 4: React Development}{15}{subsection.3.5.4}% 
+\contentsline {subsection}{\numberline {3.5.5}Sprint 5: Further react development}{16}{subsection.3.5.5}% 
+\contentsline {subsection}{\numberline {3.5.6}Sprint 6: AWS Deployment and user password encryption}{16}{subsection.3.5.6}% 
+\contentsline {subsection}{\numberline {3.5.7}Sprint 7: OAuth-2 Spotify}{16}{subsection.3.5.7}% 
+\contentsline {subsection}{\numberline {3.5.8}Sprint 8: Final touches and Spotify widgets}{17}{subsection.3.5.8}% 
+\contentsline {chapter}{\numberline {4}Technology Review}{18}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}React}{18}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Flask}{21}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}MongoDB}{23}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Amazon Web Services}{24}{section.4.4}% 
+\contentsline {section}{\numberline {4.5}TravisCI}{25}{section.4.5}% 
+\contentsline {section}{\numberline {4.6}MochaJS}{27}{section.4.6}% 
+\contentsline {section}{\numberline {4.7}Spotify API}{27}{section.4.7}% 
+\contentsline {chapter}{\numberline {5}System Design}{29}{chapter.5}% 
+\contentsline {subsection}{\numberline {5.0.1}React frontend (Client)}{29}{subsection.5.0.1}% 
+\contentsline {subsection}{\numberline {5.0.2}Python backend (Server)}{31}{subsection.5.0.2}% 
+\contentsline {subsection}{\numberline {5.0.3}MongoDB (database)}{33}{subsection.5.0.3}% 
+\contentsline {chapter}{\numberline {6}System Evaluation}{34}{chapter.6}% 
+\contentsline {subsection}{\numberline {6.0.1}Robustness}{34}{subsection.6.0.1}% 
+\contentsline {subsection}{\numberline {6.0.2}Error Handling}{35}{subsection.6.0.2}% 
+\contentsline {subsection}{\numberline {6.0.3}Time between failures and time between recovery}{37}{subsection.6.0.3}% 
+\contentsline {subsection}{\numberline {6.0.4}Performance}{37}{subsection.6.0.4}% 
+\contentsline {subsection}{\numberline {6.0.5}Security}{38}{subsection.6.0.5}% 
+\contentsline {subsection}{\numberline {6.0.6}Improving Security}{43}{subsection.6.0.6}% 
+\contentsline {subsubsection}{\numberline {6.0.6.1}HTTP/HTTPS}{43}{subsubsection.6.0.6.1}% 
+\contentsline {subsubsection}{\numberline {6.0.6.2}But who exactly has the authority to issue these certificates and how can we trust them?}{45}{subsubsection.6.0.6.2}% 
+\contentsline {subsubsection}{\numberline {6.0.6.3}How does SSL work?}{45}{subsubsection.6.0.6.3}% 
+\contentsline {subsubsection}{\numberline {6.0.6.4}Benefits of SSL/HTTPS}{45}{subsubsection.6.0.6.4}% 
+\contentsline {subsubsection}{\numberline {6.0.6.5}Why didn't we implement SSL/HTTPS?}{46}{subsubsection.6.0.6.5}% 
+\contentsline {chapter}{\numberline {7}Conclusion}{47}{chapter.7}% 
+\contentsline {subsection}{\numberline {7.0.1}Original Idea vs. Actual Implementation}{47}{subsection.7.0.1}% 
+\contentsline {subsection}{\numberline {7.0.2}Learning Outcomes}{47}{subsection.7.0.2}% 
+\contentsline {subsection}{\numberline {7.0.3}Shortcomings/Oppurtunities}{47}{subsection.7.0.3}% 
+\contentsline {subsection}{\numberline {7.0.4}Closing Statement}{47}{subsection.7.0.4}% 
+\contentsline {subsection}{\numberline {7.0.5}Acknowledgements}{47}{subsection.7.0.5}% 
