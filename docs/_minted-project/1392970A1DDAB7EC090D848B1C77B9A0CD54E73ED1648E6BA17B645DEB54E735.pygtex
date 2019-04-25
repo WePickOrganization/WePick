@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{err}{user\PYGZus{}schema} \PYG{err}{=} \PYG{p}{\PYGZob{}}
+        \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}object\PYGZdq{}}\PYG{p}{,}
+        \PYG{n+nt}{\PYGZdq{}properties\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+            \PYG{n+nt}{\PYGZdq{}name\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}string\PYGZdq{}}\PYG{p}{,}
+            \PYG{p}{\PYGZcb{},}
+            \PYG{n+nt}{\PYGZdq{}email\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}string\PYGZdq{}}\PYG{p}{,}
+                \PYG{n+nt}{\PYGZdq{}format\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}email\PYGZdq{}}
+            \PYG{p}{\PYGZcb{},}
+            \PYG{n+nt}{\PYGZdq{}password\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}string\PYGZdq{}}\PYG{p}{,}
+            \PYG{p}{\PYGZcb{},}
+            \PYG{n+nt}{\PYGZdq{}spotifyUsername\PYGZdq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+                \PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}string\PYGZdq{}}\PYG{p}{,}
+            \PYG{p}{\PYGZcb{},}
+
+        \PYG{p}{\PYGZcb{},}
+        \PYG{n+nt}{\PYGZdq{}required\PYGZdq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}email\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}password\PYGZdq{}}\PYG{p}{],}
+        \PYG{n+nt}{\PYGZdq{}additionalProperties\PYGZdq{}}\PYG{p}{:} \PYG{err}{False}
+      \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
