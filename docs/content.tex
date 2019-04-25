@@ -105,6 +105,20 @@ Travis CI is a hosted, distributed continuous integration service used to build 
 \label{TravisCI}
 \end{figure}
 
+\subsection{Whitebox Testing}
+White box testing is a software testing method in which the internal structure/design/implementation of the item being tested is known to the tester. During the life cycle of our project we did a lot of white box testing. This included testing a lot of the input fields to see if it would accept illegal characters or text that wasn’t in the right format for the input. One we took caution when testing was the log-in/register as we wanted to make sure that the user could only enter an email for the email field. In the beginning we knew this wasn’t going to work but then we added in some simple functions that checked wither the string had an ‘@’ symbol and also contained a ‘.’. These two conditions are a good way of checking if a user has entered a valid email or not. A major advantage of white box testing was that we were able to test inputs earlier in the development process as we didn’t need a GUI which took a long time by itself to create. This however wouldn’t be suitable as a black box test as the user shouldn’t know how to test the code using the command line and only using a GUI with well written instructions.
+
+\begin{figure}[ht]
+\renewcommand\thefigure{3.4}
+\centering
+\includegraphics[width=10cm, height=5cm]{img/whitebox.jpg},
+\caption{Whitebox vs Blackbox testig}
+\label{whiteboxvblackbox}
+\end{figure}
+
+\subsection{Whitebox Testing}
+Black box testing, also known as Behavioural Testing, is a software testing method in which the internal structure/design/implementation of the item being tested is not known to the tester. This is sometimes a better approach to testing as the tester can test the system as they please in contrast to a developer where they sometimes test a system gently to keep the system working. We also used a lot of black box testing towards the end of our project. We let random students in our class test different components of our application and recorded the result. With this type of testing we were extremely interested to see how a regular user would navigate our application and if they would face problems. One interesting observation we saw was that sometimes when registering a user may incorrectly enter the ‘@’ character with the ‘ ‘ ‘ character when entering the email. This was something we hadn’t spotted before and then began to implement string checks on the input of emails. This was something we may not have spotted with white box testing as we may have only entered valid emails because we assumed that an end user would never make mistakes. This however, we found to be false as everyone makes mistakes.
+
 
 \chapter{Technology Review}
 In the following section, we will discuss the technologies used in the project, how we went about implementing them and the reasoning behind our decisions.
