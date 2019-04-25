@@ -382,7 +382,9 @@ The RegisterForm component renders the form which is displayed to the user when 
 
 The ArtistEnter component contains the form which allows the user to generate a play list based on their preferences. Once the user has logged in successfully, they can enter four different artists of their choosing and their email address. The user can then generate a playlist by submitting the form.
 
-The Prefs
+The Prefs component is what is used to handle the user preferences.
+
+The StickyFooter component renders the footer which is present on all pages of the application. The footer acts as a second navbar and contains information about the organization.
 
 \subsection{Python backend (Server)}
 The python backend is what is present at the Application layer. This is the server which is made using flask and python. On this tier the logic is processed, and calculations are made.
@@ -395,6 +397,36 @@ We make use of OAuth 2.0; this is the industry standard protocol for authorizati
 	\includegraphics{img/auth.png}
 \end{center}
 The user starts out by going to the application. The application then sends the user to the authorization server. The user logs in here and the authorization server sends the user back to the application. The application then makes a POST request to the authorization server to get an access token.
+
+Application.py is the main backend server content file in this project. This is where an instance of the DatabaseConnector.py is created. The Flask server is created here and pointed to the static file within the frontend to serve the HTML. The Mongo object is created here along with the Flask. The getSpotifyUsernameByEmail() function gets the Spotify username from the database. The default route of the application is here, and this is where the index.html file is rendered.
+
+The CreatePlaylist() function is where the playlist is generated. The function first gets the JSON data from the request and in turn gets the users from that JSON data. Any empty strings from the list of users is filtered out and the list of users is then converted into an array. The first user in the list is always the home user currently logged into the application.
+
+The favourite artists for all the users in the array are then retrieved from the database. The collection of artists is then combined into one large list and any duplicates of artists are removed. A random sample is taken from all the artists collected from the database. 
+
+The Spotify username is taken from the currently logged in user. Their username is passed onto authentication and a token is returned. The artist IDs of the random sample are retrieved and those IDs are passed on to the GeneratePlaylist() function. A play list is then created.
+
+The getArtistDB() function sends a GET request to return the artists from the MongoDB database based on the users email address.
+
+The sendArtists() function sends a POST request to update the users favourite artists.
+
+The loginUser() function handles the user logging into the application using a POST request. Once the login data comes in from the login form component the loginUser() function checks the JSON data, making sure it is in the correct format. The email is checked against the database to see if it is present. If this user’s email is present, the password is then checked to see if it is correct.  If the user’s password checks out, that password is deleted, and the user is given an access token in exchange. 
+If, however the user does not have a registered email in the database, the user is notified on the client end. If the user does not supply the correct login details the user is notified also.
+
+The showUser() function uses a GET request to show specific details of a user. A query is taken from the HTTP request argument. The data is retrieved from the MongoDB database using this query and is displayed as JSON format.
+
+The showAllUsers() function is similar to the showUser() function  naturally. This function also uses a GET request and receives a query. It then queries the MongoDB database and retrieves the data. This data of all users is added to a list and is then printed out in the console.
+
+The createUser() function handles the user creating a account using a POST request. Once the user details come in from the form component the createUser() function validates the JSON data making sure it is in the correct format. The password is encrypted before it is inserted into the MongoDB database. Once the user details have been successfully added to the database the user on the client side is notified. If the user does not input parameters correctly, they receive an error message.
+
+The deleteUser() function uses a DELETE request to delete a user from the database. Once the user data is in the correct format and the user details are present, the record can be deleted from the database. If there is no such user present, then an error is thrown.
+
+The updateUser() function uses a PATCH request to update the user’s details. First the data is checked that it is in the correct JSON format. The MongoDB database is then queried to update the record if it is present, otherwise an error is thrown.
+
+The auth() function handles the Spotify authentication required , using a POST request. Once a GET request is received a token is generated in the browser. If the data is in the correct format, the token will be successfully generated and authentication will pass, otherwise it will fail.
+
+The getSpotifyStats() function uses a POST request to display the current users statistics. A user’s email is taken in, the stats are added to a list and displayed as JSON data.
+
 
 \subsection{MongoDB (database)}
 The MongoDB is what is at the Data layer. On this tier data is stored and managed. Once the database was set up, we wrote DatabaseConnector.py. We loaded in the IP address and password for the database from a config file found locally on the machine. Once the database was created, we could view the collection of users in the database. We made use of functions to add, show and delete users. We also wrote a function which could be used to show a user and their favourite artist from the database.
