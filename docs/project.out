@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
 \BOOKMARK [0][-]{chapter.2}{Context}{}% 2
 \BOOKMARK [1][-]{section.2.1}{Project Reference}{chapter.2}% 3
@@ -29,3 +30,35 @@
 \BOOKMARK [2][-]{subsection.7.0.3}{Shortcomings/Oppurtunities}{subsection.7.0.1}% 29
 \BOOKMARK [2][-]{subsection.7.0.4}{Closing Statement}{subsection.7.0.1}% 30
 \BOOKMARK [2][-]{subsection.7.0.5}{Acknowledgements}{subsection.7.0.1}% 31
+=======
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Context}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Project Reference}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Objectives}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{Overview}{chapter.2}% 5
+\BOOKMARK [0][-]{chapter.3}{Methodology}{}% 6
+\BOOKMARK [0][-]{chapter.4}{Technology Review}{}% 7
+\BOOKMARK [1][-]{section.4.1}{AWS}{chapter.4}% 8
+\BOOKMARK [1][-]{section.4.2}{MongoDB}{chapter.4}% 9
+\BOOKMARK [1][-]{section.4.3}{Flask}{chapter.4}% 10
+\BOOKMARK [1][-]{section.4.4}{Python}{chapter.4}% 11
+\BOOKMARK [1][-]{section.4.5}{Mocha}{chapter.4}% 12
+\BOOKMARK [1][-]{section.4.6}{React}{chapter.4}% 13
+\BOOKMARK [0][-]{chapter.5}{System Design}{}% 14
+\BOOKMARK [1][-]{subsection.5.0.1}{React frontend \(Client\)}{chapter.5}% 15
+\BOOKMARK [2][-]{subsection.5.0.2}{Python backend \(Server\)}{subsection.5.0.1}% 16
+\BOOKMARK [2][-]{subsection.5.0.3}{MongoDB \(database\)}{subsection.5.0.1}% 17
+\BOOKMARK [0][-]{chapter.6}{System Evaluation}{}% 18
+\BOOKMARK [1][-]{subsection.6.0.1}{Robustness}{chapter.6}% 19
+\BOOKMARK [2][-]{subsection.6.0.2}{Error Handling}{subsection.6.0.1}% 20
+\BOOKMARK [2][-]{subsection.6.0.3}{Time between failures and time between recovery}{subsection.6.0.1}% 21
+\BOOKMARK [2][-]{subsection.6.0.4}{Performance}{subsection.6.0.1}% 22
+\BOOKMARK [2][-]{subsection.6.0.5}{Security}{subsection.6.0.1}% 23
+\BOOKMARK [2][-]{subsection.6.0.6}{Improving Security}{subsection.6.0.1}% 24
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 25
+\BOOKMARK [1][-]{subsection.7.0.1}{Original Idea vs. Actual Implementation}{chapter.7}% 26
+\BOOKMARK [2][-]{subsection.7.0.2}{Learning Outcomes}{subsection.7.0.1}% 27
+\BOOKMARK [2][-]{subsection.7.0.3}{Shortcomings/Oppurtunities}{subsection.7.0.1}% 28
+\BOOKMARK [2][-]{subsection.7.0.4}{Closing Statement}{subsection.7.0.1}% 29
+\BOOKMARK [2][-]{subsection.7.0.5}{Acknowledgements}{subsection.7.0.1}% 30
+>>>>>>> da9a960c86cd03aa9e09777b93c42575932f48c7
