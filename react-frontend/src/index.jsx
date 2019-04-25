@@ -156,7 +156,7 @@ class App extends React.Component {
 
               
                 {/* Define an exact route for when the components below will be rendered */}
-                {/* E.G. When on the path '/', render the RegisterForm found in components/RegisterForm.js */}
+                {/* E.G. When on the path '/Register', render the RegisterForm found in components/RegisterForm.js */}
                 <Route path="/Register" component={(props) => <RegisterForm createState={this.createState}>{props.children}</RegisterForm>}>
                 </Route>
 

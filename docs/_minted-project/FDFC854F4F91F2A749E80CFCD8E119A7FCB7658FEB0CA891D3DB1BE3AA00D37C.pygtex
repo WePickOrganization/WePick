@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZlt{}}\PYG{n}{this}\PYG{o}{\PYGZgt{}}
+  \PYG{o}{\PYGZlt{}}\PYG{n}{looks} \PYG{n}{lookswhat}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}good\PYGZdq{}}\PYG{o}{\PYGZgt{}}
+    \PYG{n}{Good}
+  \PYG{o}{\PYGZlt{}/}\PYG{n}{looks}\PYG{o}{\PYGZgt{}}
+\PYG{o}{\PYGZlt{}/}\PYG{n}{this}\PYG{o}{\PYGZgt{}}
+\end{Verbatim}

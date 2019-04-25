@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{x}{      user\PYGZus{}schema = \PYGZob{}}
+\PYG{x}{        \PYGZdq{}type\PYGZdq{}: \PYGZdq{}object\PYGZdq{},}
+\PYG{x}{        \PYGZdq{}properties\PYGZdq{}: \PYGZob{}}
+\PYG{x}{            \PYGZdq{}name\PYGZdq{}: \PYGZob{}}
+\PYG{x}{                \PYGZdq{}type\PYGZdq{}: \PYGZdq{}string\PYGZdq{},}
+\PYG{x}{            \PYGZcb{},}
+\PYG{x}{            \PYGZdq{}email\PYGZdq{}: \PYGZob{}}
+\PYG{x}{                \PYGZdq{}type\PYGZdq{}: \PYGZdq{}string\PYGZdq{},}
+\PYG{x}{                \PYGZdq{}format\PYGZdq{}: \PYGZdq{}email\PYGZdq{}}
+\PYG{x}{            \PYGZcb{},}
+\PYG{x}{            \PYGZdq{}password\PYGZdq{}: \PYGZob{}}
+\PYG{x}{                \PYGZdq{}type\PYGZdq{}: \PYGZdq{}string\PYGZdq{},}
+\PYG{x}{            \PYGZcb{},}
+\PYG{x}{            \PYGZdq{}spotifyUsername\PYGZdq{}: \PYGZob{}}
+\PYG{x}{                \PYGZdq{}type\PYGZdq{}: \PYGZdq{}string\PYGZdq{},}
+\PYG{x}{            \PYGZcb{},}
+
+\PYG{x}{        \PYGZcb{},}
+\PYG{x}{        \PYGZdq{}required\PYGZdq{}: [\PYGZdq{}email\PYGZdq{}, \PYGZdq{}password\PYGZdq{}],}
+\PYG{x}{        \PYGZdq{}additionalProperties\PYGZdq{}: False}
+\PYG{x}{      \PYGZcb{}}
+\end{Verbatim}
