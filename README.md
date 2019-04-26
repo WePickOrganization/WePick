@@ -12,7 +12,7 @@
 ![BuildStatus](https://user-images.githubusercontent.com/22448079/56818214-0bb2b400-683f-11e9-8f97-8835a4641069.png)
  
 
-[![Build Status](https://travis-ci.com/WePickOrganization/WePick.svg?branch=master)](https://travis-ci.com/WePickOrganization/WePick) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://shields.io/) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE) 
+[![Build Status](https://travis-ci.com/WePickOrganization/WePick.svg?branch=master)](https://travis-ci.com/WePickOrganization/WePick) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://wepick.eu-west-1.elasticbeanstalk.com/) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE) 
 
 
 ![WhatIsWePick](https://user-images.githubusercontent.com/22448079/56818212-0bb2b400-683f-11e9-9ae1-29771d5dc142.png)
@@ -53,6 +53,7 @@ You should install/setup the following before attempting to run the application
 * The application's version control is managed by Git
 * Utilizes MochaJS, Travis and Amazon Web Services to deliver a fully automatated delivery pipeline
 * Committed code is ran against tests and if it passes, is subsequently deployed to our AWS Elastic Beanstalk Enviroment
+* You can find the application hosted [here.](http://wepick.eu-west-1.elasticbeanstalk.com/)
 
 ![Running](https://user-images.githubusercontent.com/22448079/56818206-0b1a1d80-683f-11e9-98ab-9483cee98add.png)
 
