@@ -1,0 +1,51 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Context}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Project Reference}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Objectives}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{Overview}{chapter.2}% 5
+\BOOKMARK [0][-]{chapter.3}{Methodology}{}% 6
+\BOOKMARK [1][-]{section.3.1}{Agile Development}{chapter.3}% 7
+\BOOKMARK [1][-]{section.3.2}{Version Control}{chapter.3}% 8
+\BOOKMARK [2][-]{subsection.3.2.1}{Travis CI}{section.3.2}% 9
+\BOOKMARK [2][-]{subsection.3.2.2}{Whitebox Testing}{section.3.2}% 10
+\BOOKMARK [2][-]{subsection.3.2.3}{Blackbox Testing}{section.3.2}% 11
+\BOOKMARK [1][-]{section.3.3}{Sprints}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.4}{Research Sprints}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.4.1}{Sprint 1: Initial Research}{section.3.4}% 14
+\BOOKMARK [2][-]{subsection.3.4.2}{Sprint 2: Review}{section.3.4}% 15
+\BOOKMARK [2][-]{subsection.3.4.3}{Sprint 3: Front-End design and database design}{section.3.4}% 16
+\BOOKMARK [1][-]{section.3.5}{Development Sprints}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.5.1}{Sprint 1: Flask app connected to database}{section.3.5}% 18
+\BOOKMARK [2][-]{subsection.3.5.2}{Sprint 2: SpotiPy Set-Up}{section.3.5}% 19
+\BOOKMARK [2][-]{subsection.3.5.3}{Sprint 3: Postman requests and Travis}{section.3.5}% 20
+\BOOKMARK [2][-]{subsection.3.5.4}{Sprint 4: React Development}{section.3.5}% 21
+\BOOKMARK [2][-]{subsection.3.5.5}{Sprint 5: Further react development}{section.3.5}% 22
+\BOOKMARK [2][-]{subsection.3.5.6}{Sprint 6: AWS Deployment and user password encryption}{section.3.5}% 23
+\BOOKMARK [2][-]{subsection.3.5.7}{Sprint 7: OAuth-2 Spotify}{section.3.5}% 24
+\BOOKMARK [2][-]{subsection.3.5.8}{Sprint 8: Final touches and Spotify widgets}{section.3.5}% 25
+\BOOKMARK [0][-]{chapter.4}{Technology Review}{}% 26
+\BOOKMARK [1][-]{section.4.1}{React}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.2}{Flask}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.3}{MongoDB}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.4}{Amazon Web Services}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.5}{TravisCI}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.6}{MochaJS}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.7}{Spotify API}{chapter.4}% 33
+\BOOKMARK [0][-]{chapter.5}{System Design}{}% 34
+\BOOKMARK [1][-]{subsection.5.0.1}{React frontend \(Client\)}{chapter.5}% 35
+\BOOKMARK [2][-]{subsection.5.0.2}{Python backend \(Server\)}{subsection.5.0.1}% 36
+\BOOKMARK [2][-]{subsection.5.0.3}{MongoDB \(database\)}{subsection.5.0.1}% 37
+\BOOKMARK [0][-]{chapter.6}{System Evaluation}{}% 38
+\BOOKMARK [1][-]{subsection.6.0.1}{Robustness}{chapter.6}% 39
+\BOOKMARK [2][-]{subsection.6.0.2}{Error Handling}{subsection.6.0.1}% 40
+\BOOKMARK [2][-]{subsection.6.0.3}{Time between failures and time between recovery}{subsection.6.0.1}% 41
+\BOOKMARK [2][-]{subsection.6.0.4}{Performance}{subsection.6.0.1}% 42
+\BOOKMARK [2][-]{subsection.6.0.5}{Security}{subsection.6.0.1}% 43
+\BOOKMARK [2][-]{subsection.6.0.6}{Improving Security}{subsection.6.0.1}% 44
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 45
+\BOOKMARK [1][-]{subsection.7.0.1}{Original Idea vs. Actual Implementation}{chapter.7}% 46
+\BOOKMARK [2][-]{subsection.7.0.2}{Learning Outcomes}{subsection.7.0.1}% 47
+\BOOKMARK [2][-]{subsection.7.0.3}{Shortcomings/Oppurtunities}{subsection.7.0.1}% 48
+\BOOKMARK [2][-]{subsection.7.0.4}{Closing Statement}{subsection.7.0.1}% 49
+\BOOKMARK [2][-]{subsection.7.0.5}{Acknowledgements}{subsection.7.0.1}% 50
+\BOOKMARK [1][-]{section.7.1}{Appendix}{chapter.7}% 51
