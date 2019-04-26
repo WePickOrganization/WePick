@@ -9,21 +9,6 @@
   <br>
 </h3>
 
-
-
-
-![Contents](https://user-images.githubusercontent.com/22448079/56818199-09e8f080-683f-11e9-95c6-f18f3de4f353.png)
-
-* [Running/Compiling](#Prerequisites)
-* [Documentation](#documentation)
-* [Video Demonstration](#video)
-* [Technologies](#technologies-and-software)
-* [Resources](#resources)
-* [Contributors](#resources)
-
-
-
-
 ![BuildStatus](https://user-images.githubusercontent.com/22448079/56818214-0bb2b400-683f-11e9-8f97-8835a4641069.png)
  
 
@@ -32,11 +17,12 @@
 
 ![WhatIsWePick](https://user-images.githubusercontent.com/22448079/56818212-0bb2b400-683f-11e9-9ae1-29771d5dc142.png)
 
-WePick is an application that works in parallel with Spotify to help solve the age old problem of deciding what to listen to when you are with a group of friends. It accomplishes this by creating curated Spotify playlists that are generated using a pool of the <b>user's artists</b> and a selected <b>mood</b>.
+WePick is an application that works in parallel with Spotify to help solve the age old problem of deciding what to listen to when you are with a group of friends. It accomplishes this by creating curated Spotify playlists that are generated using each <b>user's favorite artists</b> and a selected <b>mood</b>.
 
 
 
-![Pre](https://user-images.githubusercontent.com/22448079/56818204-0a818700-683f-11e9-800e-010a51cf733d.png)
+![Pre](https://user-images.githubusercontent.com/22448079/56818808-541ea180-6840-11e9-86cc-3edbe43b6c2d.png)
+
 You should install/setup the following before attempting to run the application
 
 * [Python3]()
@@ -52,7 +38,6 @@ You should install/setup the following before attempting to run the application
 * Design promotes re-use and abstraction of implemented components
 
 ### Back-End 
-
 * Python/Flask Server Backend
 * <b>REST</b>ful Web API with Javascript Web Token Secured Endpoints
 * Works in parallel with Spotify using our own version of the <b>Spotipy</b> Python library
@@ -117,12 +102,12 @@ The following are steps required to compile the source code for this application
 
       http://127.0.0.1:5000/ 
        
+![Doc](https://user-images.githubusercontent.com/22448079/56818896-8fb96b80-6840-11e9-9545-5e5e88d2b1e4.png)
 
-![Documentation](https://user-images.githubusercontent.com/22448079/56818201-0a818700-683f-11e9-8e56-797f1e9a850e.png)
 
 A comprehensive writeup on the development process can be found in the <b>docs</b> folder of the project.
 
-You can read our dissertation on this project [here](https://github.com/WePickOrganization/WePick/blob/master/docs/project.pdf).
+You can read our dissertation on this project [here.](https://github.com/WePickOrganization/WePick/blob/master/docs/project.pdf).
 
 If you think the documentation is lacking and/or you have any issues with the project, please open an <b>Issue</b> using GitHub's <i>Issues</i> tab. You can do that [here](https://github.com/WePickOrganization/WePick/issues).
 
@@ -154,7 +139,9 @@ A collection of resources used when developing the project can be found below
 
 
 
-![Devs](https://user-images.githubusercontent.com/22448079/56818200-0a818700-683f-11e9-96ec-167b9917ebe0.png)* [Eddie Eldridge](https://github.com/EddieEldridge)	
+![Devs](https://user-images.githubusercontent.com/22448079/56818200-0a818700-683f-11e9-96ec-167b9917ebe0.png)
+
+* [Eddie Eldridge](https://github.com/EddieEldridge)	
  	 
 * [Danielis Joniskis](https://github.com/jawneck)
  	 
