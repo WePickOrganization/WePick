@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{MusicApps}
 G.~P. Store, ``Music apps.''
@@ -8,6 +8,18 @@ E.~Elliot, ``Top javascript frameworks and topics to learn in 2019.''
 
 \bibitem{FlaskOrigins}
 A.~Ronacher, ``Opening the flask.''
+
+\bibitem{3TierArchitecture}
+JReport, ``3-tier architecture: A complete overview.''
+
+\bibitem{ReactDocumentation}
+Reactjs, ``Getting started.''
+
+\bibitem{OAuth2}
+OAuth2, ``Oauth2.''
+
+\bibitem{MongoDBDocumentation}
+MongoDB, ``Welcome to the mongodb docs.''
 
 \bibitem{SoftwareRobustness}
 B.~Eslamnour, ``Measuring robustness of computing systems,''

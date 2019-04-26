@@ -15,8 +15,16 @@ Warning--entry type for "MusicApps" isn't style-file defined
 --line 58 of file bibliography.bib
 Warning--entry type for "Top5Frontend" isn't style-file defined
 --line 63 of file bibliography.bib
+Warning--entry type for "3TierArchitecture" isn't style-file defined
+--line 68 of file bibliography.bib
+Warning--entry type for "MongoDBDocumentation" isn't style-file defined
+--line 73 of file bibliography.bib
+Warning--entry type for "ReactDocumentation" isn't style-file defined
+--line 78 of file bibliography.bib
+Warning--entry type for "OAuth2" isn't style-file defined
+--line 83 of file bibliography.bib
 Warning--I didn't find a database entry for "SQLvsNOSQL"
 Warning--I didn't find a database entry for "GlobalSign"
 Warning--empty journal in SoftwareRobustness
 Warning--empty year in SoftwareRobustness
-(There were 11 warnings)
+(There were 15 warnings)
