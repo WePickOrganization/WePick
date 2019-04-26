@@ -15,4 +15,13 @@ B.~Eslamnour, ``Measuring robustness of computing systems,''
 \bibitem{WebsiteDowntimeStats}
 Pingdom, ``Downtime for the world’s top-50 e-commerce websites.''
 
+\bibitem{SQLvsNOSQLPerformance}
+D.~Fontani, ``Nosql or not nosql?.''
+
+\bibitem{HTTPviaMozilla}
+Mozilla, ``Http details.''
+
+\bibitem{SSLExpired}
+GlobalSign, ``What happens when you don't renew your ssl certificate?.''
+
 \end{thebibliography}

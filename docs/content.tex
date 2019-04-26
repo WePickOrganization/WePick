@@ -343,7 +343,7 @@ Amazon Web Services, a subsidiary of the well known company Amazon, provides sol
 As mentioned above, we used Amazon Web Services to host our MongoDB instance. However, we also used Amazon Web Services to host our actual Flask application so that it could be used by anyone, without the need to download and compile the source code.
 
 To accomplish this task we used Amazon Web Services' \textit{Elastic Beanstalk} service. AWS describes Elastic Beanstalk as an 'orchestration' service. Essentially what this means is that they handle the large majority of the configuration, management and co-ordination required to keep a website hosted and up and running. To enable this, AWS provides a command line tool called AWS EB CLI. It's essentially a command line program that helps simplify creating, updating and monitoring your environments/applications from a local repository. 
-AWS provides built in support for Flask applications so the setup was relatively simple. To further compliment our deployment, AWS provides support for Travis Continous Integration for seamless transition of code from a local repository to deployment.
+AWS provides built in support for Flask applications so the setup was relatively simple. To further compliment our deployment, AWS provides support for Travis continuous Integration for seamless transition of code from a local repository to deployment.
 
 We ensured that all our Amazon Web Services instances were on the EU-West server as we expected the large majority of our user-base to be based in Europe and this would enable better speeds and reliability. AWS also provides a lot of free services as our Ubuntu and Elastic Beanstalk instances were able to run for roughly 2 months before reaching the free tier. This is useful 
 for people who might be curious as to what the process of hosting an application/setting up a database is like without having to pay excessive amounts of money. Once we reached our limit, we were able to supplement our credits with free credits provided by GitHub's Student Package. 
@@ -631,25 +631,11 @@ In this chapter, we will discuss many aspects of the software. We will break the
     , how much time will be required to handle the error and the likelihood of the error occuring. However, as mentioned above complete robustness can not be achieved as to even consider the above factors,
     one must have the foresight to see that the error will occur in the firstplace.
 
-    Below I will discuss some error handling that occured in our project and how it contributed to the overall robustness of the system.
-    
-    \textbf{Example 1 - Login/Register} 
-    In the image below we can see how error handling and error catching can produce meaningful output and guide the user through login/register scenario of our application
-
-    ---- user login diagram here ----
-
-    \textbf{Example 2 - Authentication with Spotify}
-    In the image below we can see how error handling and error catching can produce meaningful output and guide the user through authenticating our applicatin with Spotify.
-
-    --- authentication diagram here ----
-
-
-    The above error handling was done on both the server and client-side of the application. Both Python, MongoDB and Pythn provide useful tools for error handling/catching.
-    Some examples include \textit{Error boundaries} in React, \textit{Try/Catch/Raise statements} and \textit{Schema validation} in MongoDB.
+    Some examples include of error-handling include \textit{Error boundaries} in React, \textit{Try/Catch/Raise statements} and \textit{Schema validation} in MongoDB.
 
     \begin{itemize}
       \item Error Boundaries - Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.
-      \item Try/Catch/Raise statemetns - These commonly found in most programming languages and Python is no exception. We used these to catch certain errors such as HTTPErrors, null value errors, MongoDB errors and many others.
+      \item Try/Catch/Raise statements - These commonly found in most programming languages and Python is no exception. We used these to catch certain errors such as HTTPErrors, null value errors, MongoDB errors and many others.
       \item Schema Validation - To ensure the data being passed into the Mongo database was in the correct format, we used a JSON Schema to validate our inputs against before passing it to Mongo. In the below example, we can see that for a user 
       to be validated correctly, the minimum required properties are an email and password. This ensures that user's cant create accounts without these two required properties.
       \begin{minted}{JSON}
@@ -686,7 +672,7 @@ In this chapter, we will discuss many aspects of the software. We will break the
     any system/application. As such, they can be very helpful metrics when trying to measure the robustness of an application. 
 
     In regards to WePick's failure and recovery time, since the project was hosted on AWS' Elastic Beanstalk, there have been little to no outages as due 
-    to the continous integration solution integrated upon deployment, it was not possible for broken code to be deployed as any code proposed to be deployed had 
+    to the continuous integration solution integrated upon deployment, it was not possible for broken code to be deployed as any code proposed to be deployed had 
     to first pass tests that were outlined by Travis CI and any problems that did arrive were dealt with quickly as Travis instantly notified us of any problems which we were 
     able to fix quickly and promptly.
 
@@ -697,7 +683,7 @@ In this chapter, we will discuss many aspects of the software. We will break the
     application, instead of creating multiple pages with the same code (Navbar, Footer, Forms etc.), we can create seperate components for each of these items and only re-render what is required. So if the user needs a different form only that form will
     be re-rendered and the Navbar and Footer don't need to be re-rendered This choice of technology helped us achieve our overall goal in regards to perfromance and I think it was a good choice.
 
-    Our choice of MongoDB as a database was also important to the overall perfromance of our application as MongoDB is considered much faster than SQL and other relational databases in certain scenarios. This is because of it's non-relational, no-SQL way of storing data.
+    Our choice of MongoDB as a database was also important to the overall perfromance of our application as MongoDB is considered much faster than SQL \cite{SQLvsNOSQLPerformance} and other relational databases in certain scenarios. This is because of it's non-relational, no-SQL way of storing data.
     Instead of storing data in rows, columns and tables, Mongo works by using a document style architecture. These documents are structured similarly to a JSON document and as such are easy to extract data from and manipulate without navigating through 
     large sets of data like you would in a traditional SQL database. Generally, this performance increase can be seen most when you start to scale up the size of your database. For our application, it was important to be able to access user's favorite artists
     quickly so that they didn't have to wait a long time to generate a playlist.  
@@ -706,7 +692,7 @@ In this chapter, we will discuss many aspects of the software. We will break the
       \includegraphics{img/SQLvsNOSQL.png}
     \end{center}
 
-    From the above graph, we can see that when performing a search in the database, NoSQL databases like Mongo are considerably faster than a traditional SQL database /cite{SQLvsNOSQL}
+    From the above graph, we can see that when performing a search in the database, NoSQL databases like Mongo are considerably faster than a traditional SQL database \cite{SQLvsNOSQL}
 
     \subsection{Security}
     Securit was an important factor for us to consider when designing and creating the application as we had all experienced problems with group projects in the previous year. For example, many students dealt with problems where database tables were wiped and/or hijacked and held ransom
@@ -769,9 +755,9 @@ In this chapter, we will discuss many aspects of the software. We will break the
 
     \subsection{Improving Security}
     \subsubsection{HTTP/HTTPS}
-    One shortcoming of our project is the lack of a secure Hyper Text Transfer Protocol (HTTPS). HTTP can be described by Mozilla's standards /cite{HTTPviaMozilla} as an application-layer protocol 
+    One shortcoming of our project is the lack of a secure Hyper Text Transfer Protocol (HTTPS). HTTP can be described by Mozilla's standards \cite{HTTPviaMozilla} as an application-layer protocol 
     for transmitting data and documents. It was originally designed for communication between web browsers and web servers but it has since exceeded it's original purpose. It follows a client/server model. The client makes a 
-    request to establish a connection and waits for a response from the server. Despite this however, it is a /bf{stateless} protocol. This means that once communication between server and client, the server forgets all information regarding
+    request to establish a connection and waits for a response from the server. Despite this however, it is a \bf{stateless} protocol. This means that once communication between server and client, the server forgets all information regarding
     the communication. It can be used on any reliable transfer layer such as TCP/IP or UDP.
 
     The difference between HTTPS and HTTP is that HTTPS is considered 'secure' where HTTP is not. Essentially, the difference between the two can be illustrated cleary in the following diagram.
@@ -791,12 +777,12 @@ In this chapter, we will discuss many aspects of the software. We will break the
     To issue SSL certificates and guarantee their authenticity, one must become a Certificate Authority. 
     This title is usually limited to private companies and governments that have proven that the certificates they issue are secure. The more secure certificates they authorize, the more certificates they are able to distribute. 
     This means that when aquiring an SSL certificate, you can guarantee it's authenticity. A certified certificate should contain your domain name, company name, address, city, state, country. It also contains an expiration date upon which the certificate must be renewed as well as the Certificate Authority that issued the certificate in the first place.
-    All these factors provide some kind of accountability in regards to the certificate if something were to go wrong. Expiring certificates is a common occurence, even for large companies. According to GlobalSign /cite{GlobalSign}, between just October 2017 and February 2018, large organizations such as LinkedIn, PokemonGO the British Conservative Party and astonglishly The White House 
+    All these factors provide some kind of accountability in regards to the certificate if something were to go wrong. Expiring certificates is a common occurence, even for large companies. According to GlobalSign \cite{GlobalSign}, between just October 2017 and February 2018, large organizations such as LinkedIn, PokemonGO the British Conservative Party and astonglishly The White House 
     have all let their SSL certificates expire. Any users arriving on these websites would have been instantly greeted with a warning that these websites are not secure and sensitive information could have possibly been leaked in the process. For something like a goverment website, this kind of behaviour is a perfect example of why we have SSL and HTTPS in the first place and why it's vital that these systems are maintained and updated.
 
     \subsubsection{How does SSL work?}
     Let's use a traditional client/server architecture as our example. The browser/client connects to the server secured with SSL. The server will then prompt the client to identify itself.
-    The server then sends a copy of it's SSL certificate. These certificate is then verified by the client. If verification is successful and the client is comfortable sending messages, it sends a response to the server which consists of a digitally signed acknowledgement which initiates an SSL encryped session.
+    The server then sends a copy of it's SSL certificate. These certificate is then verified by the client. \cite{SSLExpired} If verification is successful and the client is comfortable sending messages, it sends a response to the server which consists of a digitally signed acknowledgement which initiates an SSL encryped session.
     Any data exchanged between these two parties is now sent over the Secure-Socket Layer established by the client/server.
 
 
