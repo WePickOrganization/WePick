@@ -24,7 +24,7 @@ class StickyFooter extends Component{
               <i className="fa fa-home mr-3" /> Trim City, TC 10012, IE
             </p>
             <p>
-              <i className="fa fa-envelope mr-3" /> info@example.com
+              <i className="fa fa-envelope mr-3" /> danielisjoniskis@gmail.com
             </p>
             <p>
               <i className="fa fa-phone mr-3" /> + 01 234 567 88
