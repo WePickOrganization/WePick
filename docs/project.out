@@ -3,7 +3,6 @@
 \BOOKMARK [1][-]{section.2.1}{Project Reference}{chapter.2}% 3
 \BOOKMARK [1][-]{section.2.2}{Objectives}{chapter.2}% 4
 \BOOKMARK [1][-]{section.2.3}{Overview}{chapter.2}% 5
-<<<<<<< Updated upstream
 \BOOKMARK [0][-]{chapter.3}{Context}{}% 6
 \BOOKMARK [1][-]{section.3.1}{Project Reference}{chapter.3}% 7
 \BOOKMARK [1][-]{section.3.2}{Objectives}{chapter.3}% 8
@@ -53,31 +52,3 @@
 \BOOKMARK [2][-]{subsection.8.0.3}{Shortcomings/Oppurtunities}{subsection.8.0.1}% 52
 \BOOKMARK [2][-]{subsection.8.0.4}{Closing Statement}{subsection.8.0.1}% 53
 \BOOKMARK [2][-]{subsection.8.0.5}{Acknowledgements}{subsection.8.0.1}% 54
-=======
-\BOOKMARK [0][-]{chapter.3}{Methodology}{}% 6
-\BOOKMARK [0][-]{chapter.4}{Technology Review}{}% 7
-\BOOKMARK [1][-]{section.4.1}{React}{chapter.4}% 8
-\BOOKMARK [1][-]{section.4.2}{Flask}{chapter.4}% 9
-\BOOKMARK [1][-]{section.4.3}{MongoDB}{chapter.4}% 10
-\BOOKMARK [1][-]{section.4.4}{Amazon Web Services}{chapter.4}% 11
-\BOOKMARK [1][-]{section.4.5}{TravisCI}{chapter.4}% 12
-\BOOKMARK [1][-]{section.4.6}{Mocha}{chapter.4}% 13
-\BOOKMARK [1][-]{section.4.7}{Spotify API}{chapter.4}% 14
-\BOOKMARK [0][-]{chapter.5}{System Design}{}% 15
-\BOOKMARK [1][-]{subsection.5.0.1}{React frontend \(Client\)}{chapter.5}% 16
-\BOOKMARK [2][-]{subsection.5.0.2}{Python backend \(Server\)}{subsection.5.0.1}% 17
-\BOOKMARK [2][-]{subsection.5.0.3}{MongoDB \(database\)}{subsection.5.0.1}% 18
-\BOOKMARK [0][-]{chapter.6}{System Evaluation}{}% 19
-\BOOKMARK [1][-]{subsection.6.0.1}{Robustness}{chapter.6}% 20
-\BOOKMARK [2][-]{subsection.6.0.2}{Error Handling}{subsection.6.0.1}% 21
-\BOOKMARK [2][-]{subsection.6.0.3}{Time between failures and time between recovery}{subsection.6.0.1}% 22
-\BOOKMARK [2][-]{subsection.6.0.4}{Performance}{subsection.6.0.1}% 23
-\BOOKMARK [2][-]{subsection.6.0.5}{Security}{subsection.6.0.1}% 24
-\BOOKMARK [2][-]{subsection.6.0.6}{Improving Security}{subsection.6.0.1}% 25
-\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 26
-\BOOKMARK [1][-]{subsection.7.0.1}{Original Idea vs. Actual Implementation}{chapter.7}% 27
-\BOOKMARK [2][-]{subsection.7.0.2}{Learning Outcomes}{subsection.7.0.1}% 28
-\BOOKMARK [2][-]{subsection.7.0.3}{Shortcomings/Oppurtunities}{subsection.7.0.1}% 29
-\BOOKMARK [2][-]{subsection.7.0.4}{Closing Statement}{subsection.7.0.1}% 30
-\BOOKMARK [2][-]{subsection.7.0.5}{Acknowledgements}{subsection.7.0.1}% 31
->>>>>>> Stashed changes
