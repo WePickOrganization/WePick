@@ -436,12 +436,24 @@ Here you can see the home page as a new user will see it. You can see the navbar
 The background is a carousel of images. The get started button is also visible.\newline
 
 
-There is also an app form which consists of the ArtistEnter, Logout, RegisterForm, Auth, LoginForm and Prefs.\newline
+There is also a Create page which contains the ArtistEnter component along with Navbar and StickyFooter.\newline
+The Register page consists of the RegisterForm component along with NavBar and StickyFooter.\newline
+The Auth page is handled by the Auth component.\newline
+The Login page consists of the LoginForm component along with with NavBar and StickyFooter.\newline
+
 
 These components are then styled with multiple CSS files.\newline
 
 
-The \textbf{LoginForm} component takes in the user’s email and password. Once the user clicks on the submit button. An Axios GET request is performed. Sent to the Flask servers createUser route.\newline
+The \textbf{LoginForm} component takes in the user’s email and password. Once the user clicks on the submit button. An Axios GET request is performed. Sent to the Flask servers loginUser route.\newline
+Below is an example of the axios request being sent to the /loginUser route\newline
+\begin{minted}{Python} 
+axios.post('/loginUser', {
+params: {
+email: this.state.email,
+password: this.state.password
+}})
+\end{minted}
 
 The \textbf{Logout} component simply clears any state held by its parent component and then redirects to the Home page.\newline
 
@@ -456,8 +468,30 @@ The \textbf{DemoBlock} component renders the "Get Started" button which is visib
 The \textbf{Auth} component handles authorization.\newline
 
 The \textbf{RegisterForm} component renders the form which is displayed to the user when they are registering a new account in the application. It takes in the user’s name, email and password. On submit the user’s information is routed to auth.\newline
+Below is an example of how the users details are sent to authentication\newline
+\begin{minted}{Python} 
+
+handleSubmit(event){
+console.log("Register successful.. Redirecting to authentication");
+
+this.props.createState(this.state.name,
+this.state.email, this.state.password);
+		
+this.props.history.push('/auth');
+}
+\end{minted}
+
 
 The \textbf{ArtistEnter} component contains the form which allows the user to generate a play list based on their preferences. Once the user has logged in successfully, they can enter four different artists of their choosing and their email address. The user can then generate a playlist by submitting the form.\newline
+Below is an example of the ArtistEnter component on the /Create route found on the Create page.\newline
+\begin{minted}{Python} 
+<Route path="/Create" component={(props) => <ArtistEnter
+ email={this.state.email}>{props.children}</ArtistEnter>}>
+ 
+</Route>
+\end{minted}
+
+
 
 \begin{center}    
 	\includegraphics{img/AddArtist.png}
@@ -487,10 +521,77 @@ The \textbf{CreatePlaylist()} function is where the playlist is generated. The f
 The favourite artists for all the users in the array are then retrieved from the database. The collection of artists is then combined into one large list and any duplicates of artists are removed. A random sample is taken from all the artists collected from the database.\newline 
 
 The Spotify username is taken from the currently logged in user. Their username is passed onto authentication and a token is returned. The artist IDs of the random sample are retrieved and those IDs are passed on to the GeneratePlaylist() function. A play list is then created.\newline
+Below is an example of this.\newline
+\begin{minted}{Python}
+@application.route('/CreatePlaylist', methods=['POST'])
+def CreatePlaylist():
+
+jsonData = request.get_json(force=True)
+WePickUsers = jsonData['spotUsers']
+WePickUsersFiltered = list(filter(None, WePickUsers))
+usersToGenerateWith = np.asarray(WePickUsersFiltered)
+
+usersInfo = list()
+artistsArray = list()
+artistsList = list()
+
+for i in range(usersToGenerateWith.size):
+usersInfo.append(mongo.db.Users.find_one({'email':usersToGenerateWith[i]},
+{'favArtist':1})) 
+for i in range(len(usersInfo)):
+artistsArray.append(usersInfo[i]['favArtist'])
+for i in range(len(artistsArray)):
+artistsList += artistsArray[i]
+
+artistsList = list(dict.fromkeys(artistsList))
+randomSampleFromArtists = random.sample(artistsList,5)
+loggedInUser = mongo.db.Users.find_one({'email':usersToGenerateWith[0]},
+{'spotifyUsername':1})
+
+print("\n Getting token for authentication....... \n")
+currentUser = loggedInUser['spotifyUsername']
+token = SpotipyAPI.authentication(currentUser)
+print("\n Getting artists ids....... \n")
+
+artistsIDs = SpotipyAPI.GetArtistID(randomSampleFromArtists, currentUser)
+print("\n Getting recommended artists.... \n")
+recommendedSongs = SpotipyAPI.GeneratePlaylist(artistsIDs, currentUser)
+print("\n Creating playlist.... \n")
+
+createdPlaylist = SpotipyAPI.CreatePlaylist(recommendedSongs, currentUser)
+print("\n ==== PLAYLIST CREATED ==== \n")
+return jsonify({'ok': True, 'data': createdPlaylist['id'], 
+'message': 'Playlist successfully created.'}), 200
+
+\end{minted}
+
 
 The \textbf{getArtistDB()} function sends a GET request to return the artists from the MongoDB database based on the users email address.\newline
+Below is an example of this.
+\begin{minted}{Python} 
+@application.route('/getArtists', methods=['GET'])
+def getArtistsDB():
+artists = mongo.db.Users.find_one({'email':currentEmail},{'favArtist':1})
+artists = artists['favArtist']
+print(artists)
+
+return json.dumps(artists)
+\end{minted}
 
 The \textbf{sendArtists()} function sends a POST request to update the users favourite artists.\newline
+Below is an example of this.
+\begin{minted}{Python}
+@application.route('/UpdateFavArtists', methods=['POST'])
+def sendArtists():
+jsonData = request.get_json(force=True)
+artistList = jsonData['dynamicList']
+print(jsonData)
+print("Inside fav aritst functon")
+mongo.db.Users.update_one({'email':currentEmail},
+                          {'$set' : {'favArtist' : artistList}})
+
+return jsonify({'ok': True, 'message': 'artists updates'}), 200
+\end{minted}
 
 The \textbf{loginUser()} function handles the user logging into the application using a POST request. Once the login data comes in from the login form component the loginUser() function checks the JSON data, making sure it is in the correct format. The email is checked against the database to see if it is present. If this user’s email is present, the password is then checked to see if it is correct.  If the user’s password checks out, that password is deleted, and the user is given an access token in exchange. 
 If, however the user does not have a registered email in the database, the user is notified on the client end. If the user does not supply the correct login details the user is notified also.\newline
@@ -506,6 +607,34 @@ The \textbf{deleteUser()} function uses a DELETE request to delete a user from t
 The \textbf{updateUser()} function uses a PATCH request to update the user’s details. First the data is checked that it is in the correct JSON format. The MongoDB database is then queried to update the record if it is present, otherwise an error is thrown.\newline
 
 The \textbf{auth()} function handles the Spotify authentication required , using a POST request. Once a GET request is received a token is generated in the browser. If the data is in the correct format, the token will be successfully generated and authentication will pass, otherwise it will fail.\newline
+Below is an example of this.\newline
+\begin{minted}{Python}
+@application.route('/auth', methods=['POST'])
+def auth():
+
+jsonData = request.get_json()
+print (jsonData)
+
+scope = 'user-read-email user-read-private 
+         user-read-playback-state 
+         user-modify-playback-state 
+         user-library-read playlist-modify-public'
+
+if request.method == 'POST':
+username = jsonData['spotifyUsername']
+
+token = util.prompt_for_user_token(username,
+                 scope,
+                 client_id='e6b98ce6b2cf483c832c652aada81bea',
+                 client_secret='5325fce64c6b4c4aad72b34029085111')
+if token==None:
+return jsonify({'ok': False, 'message': 'Authorization failed'}), 400
+else:
+return jsonify({'ok': True, 'message': 'Authorization Success'}), 200
+
+
+\end{minted}
+
 
 The \textbf{getSpotifyStats()} function uses a POST request to display the current users statistics. A user’s email is taken in, the stats are added to a list and displayed as JSON data.\newline
 

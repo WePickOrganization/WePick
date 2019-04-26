@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@application.route}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/UpdateFavArtists\PYGZsq{}}\PYG{p}{,} \PYG{n}{methods}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}POST\PYGZsq{}}\PYG{p}{])}
+\PYG{k}{def} \PYG{n+nf}{sendArtists}\PYG{p}{():}
+\PYG{n}{jsonData} \PYG{o}{=} \PYG{n}{request}\PYG{o}{.}\PYG{n}{get\PYGZus{}json}\PYG{p}{(}\PYG{n}{force}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{)}
+\PYG{n}{artistList} \PYG{o}{=} \PYG{n}{jsonData}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}dynamicList\PYGZsq{}}\PYG{p}{]}
+\PYG{k}{print}\PYG{p}{(}\PYG{n}{jsonData}\PYG{p}{)}
+\PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Inside fav aritst functon\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{mongo}\PYG{o}{.}\PYG{n}{db}\PYG{o}{.}\PYG{n}{Users}\PYG{o}{.}\PYG{n}{update\PYGZus{}one}\PYG{p}{(\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}email\PYGZsq{}}\PYG{p}{:}\PYG{n}{currentEmail}\PYG{p}{\PYGZcb{},}
+                          \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}set\PYGZsq{}} \PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}favArtist\PYGZsq{}} \PYG{p}{:} \PYG{n}{artistList}\PYG{p}{\PYGZcb{}\PYGZcb{})}
+
+\PYG{k}{return} \PYG{n}{jsonify}\PYG{p}{(\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}ok\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{True}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}artists updates\PYGZsq{}}\PYG{p}{\PYGZcb{}),} \PYG{l+m+mi}{200}
+\end{Verbatim}

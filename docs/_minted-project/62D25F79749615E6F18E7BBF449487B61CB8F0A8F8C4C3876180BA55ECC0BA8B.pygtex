@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@application.route}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/getArtists\PYGZsq{}}\PYG{p}{,} \PYG{n}{methods}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}GET\PYGZsq{}}\PYG{p}{])}
+\PYG{k}{def} \PYG{n+nf}{getArtistsDB}\PYG{p}{():}
+\PYG{n}{artists} \PYG{o}{=} \PYG{n}{mongo}\PYG{o}{.}\PYG{n}{db}\PYG{o}{.}\PYG{n}{Users}\PYG{o}{.}\PYG{n}{find\PYGZus{}one}\PYG{p}{(\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}email\PYGZsq{}}\PYG{p}{:}\PYG{n}{currentEmail}\PYG{p}{\PYGZcb{},\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}favArtist\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{1}\PYG{p}{\PYGZcb{})}
+\PYG{n}{artists} \PYG{o}{=} \PYG{n}{artists}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}favArtist\PYGZsq{}}\PYG{p}{]}
+\PYG{k}{print}\PYG{p}{(}\PYG{n}{artists}\PYG{p}{)}
+
+\PYG{k}{return} \PYG{n}{json}\PYG{o}{.}\PYG{n}{dumps}\PYG{p}{(}\PYG{n}{artists}\PYG{p}{)}
+\end{Verbatim}
