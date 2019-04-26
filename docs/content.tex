@@ -28,26 +28,25 @@ The project required several objectives to be accomplished in order to provide a
 \begin{itemize}
 	\item Set up a MongoDB database that will be used to store the user’s preferences along with the user’s email and password.
 	\item Host the application in the cloud – using AWS. This must be done so the application can be accessed from any desktop.
-	\item Set up a user interface using React, which will serve as the frontend for the application.
-	\item Make use of Flask and Python to set up the backend for the application.
-	\item Use the Spotify API to generate the playlist.
+	\item Authenticate user register and login through Spotify to give a secure connection.
+	\item Develop an intuitive user interface using React, which will serve as the frontend for the application.
+	\item Set up a Flask server using Python to serve as a backend for the application.
+	\item Use Python along with the SpotifyAPI to generate the playlist using the user’s preferences.
+	\item Allow users to generate a playlist based on different artists.
 \end{itemize}
 
 \section{Overview}
-Each chapter of this minor dissertation gives different details on this group project.
+Each chapter of this minor dissertation gives different details on this group project.\newline
 
-The Methodology outlines the different options that were considered to design the solution. Project management and development methodologies are outlined here.
+The Methodology outlines the various development methodologies that were used through out the development of this project such as version control tools, sprints, weekly meetings etc.\newline
 
-The Technology Review discusses in detail, the different technologies that were used throughout the project.
+The Technology Review discusses in detail, the different technologies that were used throughout the project. Demonstrating the approach to the various technologies and our reasons for choosing them.\newline
 
-The System Design gives a rundown on each part of the system, the technologies used to build each part and how they work.
+The System Design provides the detailed information about the overall architecture of the system whilst also looking at the implementation at a function level.\newline
 
-The System Evaluation section evaluates the project against the objective and proves robustness and performance of the project.
+The System Evaluation section poses the project against the objective and proves robustness and performance of the project through the testing techniques that were used through out development.\newline
 
-The Conclusion will be a reflection on the project.
-
-\chapter{Methodology}
-In this section we do an extensive run through of all the methodology’s we used throughout our project. Methodology is the way you plan and control the development process of a piece of software or anything that needs to be developed. There are lots of software methodology out there like Waterfall model, Rapid Application Development, Extreme Programming Methodology and Spiral Model. They each have their advantages and disadvantages, but we decided to go with Agile as our methodology for our project. The main reason for this being that many jobs that companies advertise around Ireland use Agile, so we wanted to familiarise ourselves with this methodology for when we enter the job-hunting world.
+The Conclusion will be a reflection on the entire project, whilst discussing any difficulties, learning outcomes and future developments of the application.
 
 \chapter{Methodology}
 In this section we do an extensive run through of all the methodology’s we used throughout our project. Methodology is the way you plan and control the development process of a piece of software or anything that needs to be developed. There are lots of software methodology out there like Waterfall model, Rapid Application Development, Extreme Programming Methodology and Spiral Model. They each have their advantages and disadvantages, but we decided to go with Agile as our methodology for our project. The main reason for this being that many jobs that companies advertise around Ireland use Agile, so we wanted to familiarise ourselves with this methodology for when we enter the job-hunting world.
@@ -396,94 +395,103 @@ We used ReactJS for the front-end as there is good support for it. A great thing
 The React front end consists mainly of index.jsx and several separate component classes. The index page acts an entry point and is the outermost component class in the React application. The index page handles the user logging in by passing in the email from the LoginForm component. Once the details are verified, the user is redirected to the Create page which contains the ArtistEnter component. The index page handles the user logging out by clearing the logged in state and redirecting back to the Home page. 
 The index page is where the React components are rendered visually. The Home page components displayed consist of the NavBar, Carousel, Home, GenerateButton, and StickyFooter. 
 
-There is also an app form which consists of the ArtistEnter, Logout, RegisterForm, Auth, LoginForm and Prefs.
+\begin{center}    
+	\includegraphics{img/WePickHome.png}
+\end{center}
+Here you can see the home page as a new user will see it. You can see the navbar at the top
+The background is a carousel of images. The get started button is also visible.\newline
 
-These components are then styled with multiple CSS files.
+
+There is also an app form which consists of the ArtistEnter, Logout, RegisterForm, Auth, LoginForm and Prefs.\newline
+
+These components are then styled with multiple CSS files.\newline
 
 
-The LoginForm component takes in the user’s email and password. Once the user clicks on the submit button. An Axios GET request is performed. Sent to the Flask servers createUser route.
+The \textbf{LoginForm} component takes in the user’s email and password. Once the user clicks on the submit button. An Axios GET request is performed. Sent to the Flask servers createUser route.\newline
 
-The Logout component simply clears any state held by its parent component and then redirects to the Home page.
+The \textbf{Logout} component simply clears any state held by its parent component and then redirects to the Home page.\newline
 
-The Home component acts as the component between the NavBar, Carousel and StickyFooter components. The Home component is where the GenerateButton component is rendered.
+The \textbf{Home} component acts as the component between the NavBar, Carousel and StickyFooter components. The Home component is where the GenerateButton component is rendered.\newline
 
-The NavBar component contains the navigation bar that is always rendered in the application. The user can follow the links on the NavBar to the Home, Create and Profile pages respectively.
+The \textbf{NavBar} component contains the navigation bar that is always rendered in the application. The user can follow the links on the NavBar to the Home, Create and Profile pages respectively.\newline
 
-The Carousel component is used to render an image carousel on the Home page. The carousel cycles through 7 different images and is a style choice which gives a more professional look to the application.
+The \textbf{Carousel} component is used to render an image carousel on the Home page. The carousel cycles through 7 different images and is a style choice which gives a more professional look to the application.\newline
 
-The Auth component handles authorization.
+The \textbf{Auth} component handles authorization.\newline
 
-The RegisterForm component renders the form which is displayed to the user when they are registering a new account in the application. It takes in the user’s name, email and password. On submit the user’s information is routed to auth.
+The \textbf{RegisterForm} component renders the form which is displayed to the user when they are registering a new account in the application. It takes in the user’s name, email and password. On submit the user’s information is routed to auth.\newline
 
-The ArtistEnter component contains the form which allows the user to generate a play list based on their preferences. Once the user has logged in successfully, they can enter four different artists of their choosing and their email address. The user can then generate a playlist by submitting the form.
+The \textbf{ArtistEnter} component contains the form which allows the user to generate a play list based on their preferences. Once the user has logged in successfully, they can enter four different artists of their choosing and their email address. The user can then generate a playlist by submitting the form.\newline
 
-The Prefs component is what is used to handle the user preferences.
+\begin{center}    
+	\includegraphics{img/AddArtist.png}
+\end{center}
+Here you can see a close-up of where the user can enter an artist and add it to their preferences.\newline
 
-The StickyFooter component renders the footer which is present on all pages of the application. The footer acts as a second navbar and contains information about the organization.
+The \textbf{Prefs} component is what is used to handle the user preferences.\newline
+
+The \textbf{StickyFooter} component renders the footer which is present on all pages of the application. The footer acts as a second navbar and contains information about the organization.\newline
 
 \subsection{Python backend (Server)}
 The python backend is what is present at the Application layer. This is the server which is made using flask and python. On this tier the logic is processed, and calculations are made.
-SpotipyAPI.py is where the playlist generation is handled behind the front-end. When an artist is searched, a lot of information about the artist is returned i.e. Hometown etc.
-The JSON data that is returned is where their artist ID is stored. This in-turn allows us to grab that artist ID and use it in generating the playlist. 
+\textbf{SpotipyAPI.py} is where the playlist generation is handled behind the front-end. When an artist is searched, a lot of information about the artist is returned i.e. Hometown etc.
+The JSON data that is returned is where their artist ID is stored. This in-turn allows us to grab that artist ID and use it in generating the playlist.\newline
 
-We make use of OAuth 2.0; this is the industry standard protocol for authorization. We use OAuth2 to authenticate the user through Spotify. When the user is trying to login to their account on our application, they are in turn brought to a login dialogue through their Spotify account. Once they have logged into Spotify they are authorized and can continue with our application. 
+We make use of \textbf{OAuth 2.0}; this is the industry standard protocol for authorization. We use OAuth2 to authenticate the user through Spotify. When the user is trying to login to their account on our application, they are in turn brought to a login dialogue through their Spotify account. Once they have logged into Spotify they are authorized and can continue with our application.\newline
 
 \begin{center}    
 	\includegraphics{img/auth.png}
 \end{center}
-The user starts out by going to the application. The application then sends the user to the authorization server. The user logs in here and the authorization server sends the user back to the application. The application then makes a POST request to the authorization server to get an access token.
+The user starts out by going to the application. The application then sends the user to the authorization server. The user logs in here and the authorization server sends the user back to the application. The application then makes a POST request to the authorization server to get an access token.\newline
 
-Application.py is the main backend server content file in this project. This is where an instance of the DatabaseConnector.py is created. The Flask server is created here and pointed to the static file within the frontend to serve the HTML. The Mongo object is created here along with the Flask. The getSpotifyUsernameByEmail() function gets the Spotify username from the database. The default route of the application is here, and this is where the index.html file is rendered.
+\textbf{Application.py} is the main backend server content file in this project. This is where an instance of the DatabaseConnector.py is created. The Flask server is created here and pointed to the static file within the frontend to serve the HTML. The Mongo object is created here along with the Flask. The getSpotifyUsernameByEmail() function gets the Spotify username from the database. The default route of the application is here, and this is where the index.html file is rendered.\newline
 
-The CreatePlaylist() function is where the playlist is generated. The function first gets the JSON data from the request and in turn gets the users from that JSON data. Any empty strings from the list of users is filtered out and the list of users is then converted into an array. The first user in the list is always the home user currently logged into the application.
+The \textbf{CreatePlaylist()} function is where the playlist is generated. The function first gets the JSON data from the request and in turn gets the users from that JSON data. Any empty strings from the list of users is filtered out and the list of users is then converted into an array. The first user in the list is always the home user currently logged into the application.\newline
 
-The favourite artists for all the users in the array are then retrieved from the database. The collection of artists is then combined into one large list and any duplicates of artists are removed. A random sample is taken from all the artists collected from the database. 
+The favourite artists for all the users in the array are then retrieved from the database. The collection of artists is then combined into one large list and any duplicates of artists are removed. A random sample is taken from all the artists collected from the database.\newline 
 
-The Spotify username is taken from the currently logged in user. Their username is passed onto authentication and a token is returned. The artist IDs of the random sample are retrieved and those IDs are passed on to the GeneratePlaylist() function. A play list is then created.
+The Spotify username is taken from the currently logged in user. Their username is passed onto authentication and a token is returned. The artist IDs of the random sample are retrieved and those IDs are passed on to the GeneratePlaylist() function. A play list is then created.\newline
 
-The getArtistDB() function sends a GET request to return the artists from the MongoDB database based on the users email address.
+The \textbf{getArtistDB()} function sends a GET request to return the artists from the MongoDB database based on the users email address.\newline
 
-The sendArtists() function sends a POST request to update the users favourite artists.
+The \textbf{sendArtists()} function sends a POST request to update the users favourite artists.\newline
 
-The loginUser() function handles the user logging into the application using a POST request. Once the login data comes in from the login form component the loginUser() function checks the JSON data, making sure it is in the correct format. The email is checked against the database to see if it is present. If this user’s email is present, the password is then checked to see if it is correct.  If the user’s password checks out, that password is deleted, and the user is given an access token in exchange. 
-If, however the user does not have a registered email in the database, the user is notified on the client end. If the user does not supply the correct login details the user is notified also.
+The \textbf{loginUser()} function handles the user logging into the application using a POST request. Once the login data comes in from the login form component the loginUser() function checks the JSON data, making sure it is in the correct format. The email is checked against the database to see if it is present. If this user’s email is present, the password is then checked to see if it is correct.  If the user’s password checks out, that password is deleted, and the user is given an access token in exchange. 
+If, however the user does not have a registered email in the database, the user is notified on the client end. If the user does not supply the correct login details the user is notified also.\newline
 
-The showUser() function uses a GET request to show specific details of a user. A query is taken from the HTTP request argument. The data is retrieved from the MongoDB database using this query and is displayed as JSON format.
+The \textbf{showUser()} function uses a GET request to show specific details of a user. A query is taken from the HTTP request argument. The data is retrieved from the MongoDB database using this query and is displayed as JSON format.\newline
 
-The showAllUsers() function is similar to the showUser() function  naturally. This function also uses a GET request and receives a query. It then queries the MongoDB database and retrieves the data. This data of all users is added to a list and is then printed out in the console.
+The \textbf{showAllUsers()} function is similar to the showUser() function  naturally. This function also uses a GET request and receives a query. It then queries the MongoDB database and retrieves the data. This data of all users is added to a list and is then printed out in the console.\newline
 
-The createUser() function handles the user creating a account using a POST request. Once the user details come in from the form component the createUser() function validates the JSON data making sure it is in the correct format. The password is encrypted before it is inserted into the MongoDB database. Once the user details have been successfully added to the database the user on the client side is notified. If the user does not input parameters correctly, they receive an error message.
+The \textbf{createUser()} function handles the user creating a account using a POST request. Once the user details come in from the form component the createUser() function validates the JSON data making sure it is in the correct format. The password is encrypted before it is inserted into the MongoDB database. Once the user details have been successfully added to the database the user on the client side is notified. If the user does not input parameters correctly, they receive an error message.\newline
 
-The deleteUser() function uses a DELETE request to delete a user from the database. Once the user data is in the correct format and the user details are present, the record can be deleted from the database. If there is no such user present, then an error is thrown.
+The \textbf{deleteUser()} function uses a DELETE request to delete a user from the database. Once the user data is in the correct format and the user details are present, the record can be deleted from the database. If there is no such user present, then an error is thrown.\newline
 
-The updateUser() function uses a PATCH request to update the user’s details. First the data is checked that it is in the correct JSON format. The MongoDB database is then queried to update the record if it is present, otherwise an error is thrown.
+The \textbf{updateUser()} function uses a PATCH request to update the user’s details. First the data is checked that it is in the correct JSON format. The MongoDB database is then queried to update the record if it is present, otherwise an error is thrown.\newline
 
-The auth() function handles the Spotify authentication required , using a POST request. Once a GET request is received a token is generated in the browser. If the data is in the correct format, the token will be successfully generated and authentication will pass, otherwise it will fail.
+The \textbf{auth()} function handles the Spotify authentication required , using a POST request. Once a GET request is received a token is generated in the browser. If the data is in the correct format, the token will be successfully generated and authentication will pass, otherwise it will fail.\newline
 
-The getSpotifyStats() function uses a POST request to display the current users statistics. A user’s email is taken in, the stats are added to a list and displayed as JSON data.
+The \textbf{getSpotifyStats()} function uses a POST request to display the current users statistics. A user’s email is taken in, the stats are added to a list and displayed as JSON data.\newline
 
 
 \subsection{MongoDB (database)}
-The MongoDB is what is at the Data layer. On this tier data is stored and managed. Once the database was set up, we wrote DatabaseConnector.py. We loaded in the IP address and password for the database from a config file found locally on the machine. Once the database was created, we could view the collection of users in the database.
+The MongoDB is what is at the Data layer. On this tier data is stored and managed. Once the database was set up, we wrote \textbf{DatabaseConnector.py}. We loaded in the IP address and password for the database from a config file found locally on the machine. Once the database was created, we could view the collection of users in the database.\newline
 
-. There are several getter functions written for this database which allows for basic functionality.
+There are several getter functions written for this database which allows for basic functionality.
 
 getUsersCollection(self) is a simple getter function which is performed on the database itself. The function returns the collection of users in the database.
 getURI(self) function returns the Uniform Resource Locator of the database.
 getClient(self) function returns the Client.
-getDatabase(self) returns the Database.
+getDatabase(self) returns the Database.\newline
 
-There are also functions which serve the database in handling user data.
+There are also functions which serve the database in handling user data.\newline
 
-The addUser() function adds the id, name, favouriteArtists and favouriteSong of the user into the collection of users. This collection of users is in the database.
+The \textbf{addUser()} function adds the id, name, favouriteArtists and favouriteSong of the user into the collection of users. This collection of users is in the database.\newline
+The \textbf{showUsers()} function finds every user in the collection and displays them.\newline
+The \textbf{deleteUser()} function takes in a user id and deletes a user from the user collection based on that id.\newline
+The \textbf{showUsersFaveArtist()} function displays a user and their favourite artist depending on which user is shown from the collection.\newline
 
-The showUsers() function finds every user in the collection and displays them.
-
-The deleteUser() function takes in a user id and deletes a user from the user collection based on that id.
-
-The showUsersFaveArtist() function displays a user and their favourite artist depending on which user is shown from the collection.
-
-The MongoDB database is hosted remotely in the cloud using Amazon Web Services. The user on the client side should be able to access the application from any desktop. Therefore, it was necessary for us to host the application on a Ubuntu Virtual Machine. An SSH key is needed to gain access to the remote instance, and this SSH key is stored securely. A password is then also necessary to access the database. The configuration for the remote hosting was all done on the command line.
+The MongoDB database is hosted remotely in the cloud using Amazon Web Services. The user on the client side should be able to access the application from any desktop. Therefore, it was necessary for us to host the application on a Ubuntu Virtual Machine. An SSH key is needed to gain access to the remote instance, and this SSH key is stored securely. A password is then also necessary to access the database. The configuration for the remote hosting was all done on the command line.\newline
 
 
 \chapter{System Evaluation}
