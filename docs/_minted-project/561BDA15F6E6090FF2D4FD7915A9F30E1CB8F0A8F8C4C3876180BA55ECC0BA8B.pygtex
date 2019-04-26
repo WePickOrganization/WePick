@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@application.route}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/auth\PYGZsq{}}\PYG{p}{,} \PYG{n}{methods}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}POST\PYGZsq{}}\PYG{p}{])}
+\PYG{k}{def} \PYG{n+nf}{auth}\PYG{p}{():}
+
+\PYG{n}{jsonData} \PYG{o}{=} \PYG{n}{request}\PYG{o}{.}\PYG{n}{get\PYGZus{}json}\PYG{p}{()}
+\PYG{k}{print} \PYG{p}{(}\PYG{n}{jsonData}\PYG{p}{)}
+
+\PYG{n}{scope} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}user\PYGZhy{}read\PYGZhy{}email user\PYGZhy{}read\PYGZhy{}private}
+         \PYG{n}{user}\PYG{o}{\PYGZhy{}}\PYG{n}{read}\PYG{o}{\PYGZhy{}}\PYG{n}{playback}\PYG{o}{\PYGZhy{}}\PYG{n}{state}
+         \PYG{n}{user}\PYG{o}{\PYGZhy{}}\PYG{n}{modify}\PYG{o}{\PYGZhy{}}\PYG{n}{playback}\PYG{o}{\PYGZhy{}}\PYG{n}{state}
+         \PYG{n}{user}\PYG{o}{\PYGZhy{}}\PYG{n}{library}\PYG{o}{\PYGZhy{}}\PYG{n}{read} \PYG{n}{playlist}\PYG{o}{\PYGZhy{}}\PYG{n}{modify}\PYG{o}{\PYGZhy{}}\PYG{n}{public}\PYG{l+s+s1}{\PYGZsq{}}
+
+\PYG{k}{if} \PYG{n}{request}\PYG{o}{.}\PYG{n}{method} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}POST\PYGZsq{}}\PYG{p}{:}
+\PYG{n}{username} \PYG{o}{=} \PYG{n}{jsonData}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}spotifyUsername\PYGZsq{}}\PYG{p}{]}
+
+\PYG{n}{token} \PYG{o}{=} \PYG{n}{util}\PYG{o}{.}\PYG{n}{prompt\PYGZus{}for\PYGZus{}user\PYGZus{}token}\PYG{p}{(}\PYG{n}{username}\PYG{p}{,}
+                 \PYG{n}{scope}\PYG{p}{,}
+                 \PYG{n}{client\PYGZus{}id}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}e6b98ce6b2cf483c832c652aada81bea\PYGZsq{}}\PYG{p}{,}
+                 \PYG{n}{client\PYGZus{}secret}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}5325fce64c6b4c4aad72b34029085111\PYGZsq{}}\PYG{p}{)}
+\PYG{k}{if} \PYG{n}{token}\PYG{o}{==}\PYG{n+nb+bp}{None}\PYG{p}{:}
+\PYG{k}{return} \PYG{n}{jsonify}\PYG{p}{(\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}ok\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{False}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}Authorization failed\PYGZsq{}}\PYG{p}{\PYGZcb{}),} \PYG{l+m+mi}{400}
+\PYG{k}{else}\PYG{p}{:}
+\PYG{k}{return} \PYG{n}{jsonify}\PYG{p}{(\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}ok\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{True}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}Authorization Success\PYGZsq{}}\PYG{p}{\PYGZcb{}),} \PYG{l+m+mi}{200}
+\end{Verbatim}
