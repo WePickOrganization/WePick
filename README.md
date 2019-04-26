@@ -159,7 +159,7 @@ A collection of resources used when developing the project can be found below
  	 
 * [Danielis Joniskis](https://github.com/jawneck)
  	 
-* [Keith Higgins](https://github.com/cian2009/KeithHiggins)
+* [Keith Higgins](https://github.com/KeithH4666)
 
 ![Acknowledge](https://user-images.githubusercontent.com/22448079/56728324-6f0eea00-674a-11e9-86b8-cdeaf518ccf3.png)
 
