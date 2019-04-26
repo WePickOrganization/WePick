@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZlt{}}\PYG{n}{Route} \PYG{n}{path}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}/Create\PYGZdq{}} \PYG{n}{component}\PYG{o}{=}\PYG{p}{\PYGZob{}(}\PYG{n}{props}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{o}{\PYGZlt{}}\PYG{n}{ArtistEnter}
+ \PYG{n}{email}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{this}\PYG{o}{.}\PYG{n}{state}\PYG{o}{.}\PYG{n}{email}\PYG{p}{\PYGZcb{}}\PYG{o}{\PYGZgt{}}\PYG{p}{\PYGZob{}}\PYG{n}{props}\PYG{o}{.}\PYG{n}{children}\PYG{p}{\PYGZcb{}}\PYG{o}{\PYGZlt{}/}\PYG{n}{ArtistEnter}\PYG{o}{\PYGZgt{}}\PYG{p}{\PYGZcb{}}\PYG{o}{\PYGZgt{}}
+
+\PYG{o}{\PYGZlt{}/}\PYG{n}{Route}\PYG{o}{\PYGZgt{}}
+\end{Verbatim}
