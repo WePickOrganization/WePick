@@ -50,6 +50,6 @@
 \contentsline {chapter}{\numberline {7}Conclusion}{50}{chapter.7}% 
 \contentsline {subsection}{\numberline {7.0.1}Original Idea vs. Actual Implementation}{50}{subsection.7.0.1}% 
 \contentsline {subsection}{\numberline {7.0.2}Learning Outcomes}{50}{subsection.7.0.2}% 
-\contentsline {subsection}{\numberline {7.0.3}Shortcomings/Oppurtunities}{50}{subsection.7.0.3}% 
-\contentsline {subsection}{\numberline {7.0.4}Closing Statement}{50}{subsection.7.0.4}% 
-\contentsline {subsection}{\numberline {7.0.5}Acknowledgements}{50}{subsection.7.0.5}% 
+\contentsline {subsection}{\numberline {7.0.3}Shortcomings/Oppurtunities}{51}{subsection.7.0.3}% 
+\contentsline {subsection}{\numberline {7.0.4}Closing Statement}{51}{subsection.7.0.4}% 
+\contentsline {subsection}{\numberline {7.0.5}Acknowledgements}{51}{subsection.7.0.5}% 
