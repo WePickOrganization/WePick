@@ -447,7 +447,7 @@ These components are then styled with multiple CSS files.\newline
 
 The \textbf{LoginForm} component takes in the user’s email and password. Once the user clicks on the submit button. An Axios GET request is performed. Sent to the Flask servers loginUser route.\newline
 Below is an example of the axios request being sent to the /loginUser route\newline
-\begin{minted}{Python} 
+\begin{minted}{Javascript} 
 axios.post('/loginUser', {
 params: {
 email: this.state.email,
@@ -469,7 +469,7 @@ The \textbf{Auth} component handles authorization.\newline
 
 The \textbf{RegisterForm} component renders the form which is displayed to the user when they are registering a new account in the application. It takes in the user’s name, email and password. On submit the user’s information is routed to auth.\newline
 Below is an example of how the users details are sent to authentication\newline
-\begin{minted}{Python} 
+\begin{minted}{Javascript} 
 
 handleSubmit(event){
 console.log("Register successful.. Redirecting to authentication");
@@ -521,50 +521,6 @@ The \textbf{CreatePlaylist()} function is where the playlist is generated. The f
 The favourite artists for all the users in the array are then retrieved from the database. The collection of artists is then combined into one large list and any duplicates of artists are removed. A random sample is taken from all the artists collected from the database.\newline 
 
 The Spotify username is taken from the currently logged in user. Their username is passed onto authentication and a token is returned. The artist IDs of the random sample are retrieved and those IDs are passed on to the GeneratePlaylist() function. A play list is then created.\newline
-Below is an example of this.\newline
-\begin{minted}{Python}
-@application.route('/CreatePlaylist', methods=['POST'])
-def CreatePlaylist():
-
-jsonData = request.get_json(force=True)
-WePickUsers = jsonData['spotUsers']
-WePickUsersFiltered = list(filter(None, WePickUsers))
-usersToGenerateWith = np.asarray(WePickUsersFiltered)
-
-usersInfo = list()
-artistsArray = list()
-artistsList = list()
-
-for i in range(usersToGenerateWith.size):
-usersInfo.append(mongo.db.Users.find_one({'email':usersToGenerateWith[i]},
-{'favArtist':1})) 
-for i in range(len(usersInfo)):
-artistsArray.append(usersInfo[i]['favArtist'])
-for i in range(len(artistsArray)):
-artistsList += artistsArray[i]
-
-artistsList = list(dict.fromkeys(artistsList))
-randomSampleFromArtists = random.sample(artistsList,5)
-loggedInUser = mongo.db.Users.find_one({'email':usersToGenerateWith[0]},
-{'spotifyUsername':1})
-
-print("\n Getting token for authentication....... \n")
-currentUser = loggedInUser['spotifyUsername']
-token = SpotipyAPI.authentication(currentUser)
-print("\n Getting artists ids....... \n")
-
-artistsIDs = SpotipyAPI.GetArtistID(randomSampleFromArtists, currentUser)
-print("\n Getting recommended artists.... \n")
-recommendedSongs = SpotipyAPI.GeneratePlaylist(artistsIDs, currentUser)
-print("\n Creating playlist.... \n")
-
-createdPlaylist = SpotipyAPI.CreatePlaylist(recommendedSongs, currentUser)
-print("\n ==== PLAYLIST CREATED ==== \n")
-return jsonify({'ok': True, 'data': createdPlaylist['id'], 
-'message': 'Playlist successfully created.'}), 200
-
-\end{minted}
-
 
 The \textbf{getArtistDB()} function sends a GET request to return the artists from the MongoDB database based on the users email address.\newline
 Below is an example of this.

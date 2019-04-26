@@ -38,22 +38,22 @@
 \contentsline {chapter}{\numberline {6}System Design}{31}{chapter.6}% 
 \contentsline {subsection}{\numberline {6.0.1}React frontend (Client)}{31}{subsection.6.0.1}% 
 \contentsline {subsection}{\numberline {6.0.2}Python backend (Server)}{35}{subsection.6.0.2}% 
-\contentsline {subsection}{\numberline {6.0.3}MongoDB (database)}{40}{subsection.6.0.3}% 
-\contentsline {chapter}{\numberline {7}System Evaluation}{41}{chapter.7}% 
-\contentsline {subsection}{\numberline {7.0.1}Robustness}{41}{subsection.7.0.1}% 
-\contentsline {subsection}{\numberline {7.0.2}Error Handling}{42}{subsection.7.0.2}% 
-\contentsline {subsection}{\numberline {7.0.3}Time between failures and time between recovery}{44}{subsection.7.0.3}% 
-\contentsline {subsection}{\numberline {7.0.4}Performance}{44}{subsection.7.0.4}% 
-\contentsline {subsection}{\numberline {7.0.5}Security}{45}{subsection.7.0.5}% 
-\contentsline {subsection}{\numberline {7.0.6}Improving Security}{50}{subsection.7.0.6}% 
-\contentsline {subsubsection}{\numberline {7.0.6.1}HTTP/HTTPS}{50}{subsubsection.7.0.6.1}% 
-\contentsline {subsubsection}{\numberline {7.0.6.2}But who exactly has the authority to issue these certificates and how can we trust them?}{52}{subsubsection.7.0.6.2}% 
-\contentsline {subsubsection}{\numberline {7.0.6.3}How does SSL work?}{52}{subsubsection.7.0.6.3}% 
-\contentsline {subsubsection}{\numberline {7.0.6.4}Benefits of SSL/HTTPS}{52}{subsubsection.7.0.6.4}% 
-\contentsline {subsubsection}{\numberline {7.0.6.5}Why didn't we implement SSL/HTTPS?}{53}{subsubsection.7.0.6.5}% 
-\contentsline {chapter}{\numberline {8}Conclusion}{54}{chapter.8}% 
-\contentsline {subsection}{\numberline {8.0.1}Original Idea vs. Actual Implementation}{54}{subsection.8.0.1}% 
-\contentsline {subsection}{\numberline {8.0.2}Learning Outcomes}{54}{subsection.8.0.2}% 
-\contentsline {subsection}{\numberline {8.0.3}Shortcomings/Oppurtunities}{55}{subsection.8.0.3}% 
-\contentsline {subsection}{\numberline {8.0.4}Closing Statement}{55}{subsection.8.0.4}% 
-\contentsline {subsection}{\numberline {8.0.5}Acknowledgements}{55}{subsection.8.0.5}% 
+\contentsline {subsection}{\numberline {6.0.3}MongoDB (database)}{39}{subsection.6.0.3}% 
+\contentsline {chapter}{\numberline {7}System Evaluation}{40}{chapter.7}% 
+\contentsline {subsection}{\numberline {7.0.1}Robustness}{40}{subsection.7.0.1}% 
+\contentsline {subsection}{\numberline {7.0.2}Error Handling}{41}{subsection.7.0.2}% 
+\contentsline {subsection}{\numberline {7.0.3}Time between failures and time between recovery}{43}{subsection.7.0.3}% 
+\contentsline {subsection}{\numberline {7.0.4}Performance}{43}{subsection.7.0.4}% 
+\contentsline {subsection}{\numberline {7.0.5}Security}{44}{subsection.7.0.5}% 
+\contentsline {subsection}{\numberline {7.0.6}Improving Security}{49}{subsection.7.0.6}% 
+\contentsline {subsubsection}{\numberline {7.0.6.1}HTTP/HTTPS}{49}{subsubsection.7.0.6.1}% 
+\contentsline {subsubsection}{\numberline {7.0.6.2}But who exactly has the authority to issue these certificates and how can we trust them?}{51}{subsubsection.7.0.6.2}% 
+\contentsline {subsubsection}{\numberline {7.0.6.3}How does SSL work?}{51}{subsubsection.7.0.6.3}% 
+\contentsline {subsubsection}{\numberline {7.0.6.4}Benefits of SSL/HTTPS}{51}{subsubsection.7.0.6.4}% 
+\contentsline {subsubsection}{\numberline {7.0.6.5}Why didn't we implement SSL/HTTPS?}{52}{subsubsection.7.0.6.5}% 
+\contentsline {chapter}{\numberline {8}Conclusion}{53}{chapter.8}% 
+\contentsline {subsection}{\numberline {8.0.1}Original Idea vs. Actual Implementation}{53}{subsection.8.0.1}% 
+\contentsline {subsection}{\numberline {8.0.2}Learning Outcomes}{53}{subsection.8.0.2}% 
+\contentsline {subsection}{\numberline {8.0.3}Shortcomings/Oppurtunities}{54}{subsection.8.0.3}% 
+\contentsline {subsection}{\numberline {8.0.4}Closing Statement}{54}{subsection.8.0.4}% 
+\contentsline {subsection}{\numberline {8.0.5}Acknowledgements}{54}{subsection.8.0.5}% 
