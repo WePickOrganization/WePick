@@ -5,6 +5,10 @@ Warning--entry type for "WebsiteDowntimeStats" isn't style-file defined
 --line 33 of file bibliography.bib
 Warning--entry type for "FlaskOrigins" isn't style-file defined
 --line 53 of file bibliography.bib
+Warning--entry type for "MusicApps" isn't style-file defined
+--line 58 of file bibliography.bib
+Warning--entry type for "Top5Frontend" isn't style-file defined
+--line 63 of file bibliography.bib
 Warning--empty journal in SoftwareRobustness
 Warning--empty year in SoftwareRobustness
-(There were 4 warnings)
+(There were 6 warnings)

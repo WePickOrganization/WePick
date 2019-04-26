@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{handleSubmit}\PYG{p}{(}\PYG{n+nx}{event}\PYG{p}{)\PYGZob{}}
+\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Register successful.. Redirecting to authentication\PYGZdq{}}\PYG{p}{);}
+
+\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{createState}\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{name}\PYG{p}{,}
+\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{email}\PYG{p}{,} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{password}\PYG{p}{);}
+		
+\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{history}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/auth\PYGZsq{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

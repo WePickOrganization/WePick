@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{axios}\PYG{p}{.}\PYG{n+nx}{post}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/loginUser\PYGZsq{}}\PYG{p}{,} \PYG{p}{\PYGZob{}}
+\PYG{n+nx}{params}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+\PYG{n+nx}{email}\PYG{o}{:} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{email}\PYG{p}{,}
+\PYG{n+nx}{password}\PYG{o}{:} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{password}
+\PYG{p}{\PYGZcb{}\PYGZcb{})}
+\end{Verbatim}
