@@ -12,7 +12,7 @@
 
 
 
-![Contents](https://user-images.githubusercontent.com/22448079/56727876-7ed9fe80-6749-11e9-8fc2-8e3fbc67aa60.png)
+![Contents](https://user-images.githubusercontent.com/22448079/56818199-09e8f080-683f-11e9-95c6-f18f3de4f353.png)
 
 * [Running/Compiling](#Prerequisites)
 * [Documentation](#documentation)
@@ -24,26 +24,27 @@
 
 
 
-![BuildStatus](https://user-images.githubusercontent.com/22448079/56727595-ec395f80-6748-11e9-81fe-b8068308a08a.png) 
+![BuildStatus](https://user-images.githubusercontent.com/22448079/56818214-0bb2b400-683f-11e9-8f97-8835a4641069.png)
+ 
 
 [![Build Status](https://travis-ci.com/WePickOrganization/WePick.svg?branch=master)](https://travis-ci.com/WePickOrganization/WePick) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://shields.io/) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE) 
 
 
-![WhatIsWePick](https://user-images.githubusercontent.com/22448079/56727894-8a2d2a00-6749-11e9-899c-2218520e0edb.png)
+![WhatIsWePick](https://user-images.githubusercontent.com/22448079/56818212-0bb2b400-683f-11e9-9ae1-29771d5dc142.png)
 
 WePick is an application that works in parallel with Spotify to help solve the age old problem of deciding what to listen to when you are with a group of friends. It accomplishes this by creating curated Spotify playlists that are generated using a pool of the <b>user's artists</b> and a selected <b>mood</b>.
 
 
 
-![Pre](https://user-images.githubusercontent.com/22448079/56727918-95805580-6749-11e9-8840-8bd5988923fe.png)
-
+![Pre](https://user-images.githubusercontent.com/22448079/56818204-0a818700-683f-11e9-800e-010a51cf733d.png)
 You should install/setup the following before attempting to run the application
 
 * [Python3]()
 * [NodeJS]()
 * [Spotify Account](https://www.spotify.com/is/signup/)
 
-![Feature](https://user-images.githubusercontent.com/22448079/56727968-aa5ce900-6749-11e9-8674-fb406a2be0a5.png)
+![Feature](https://user-images.githubusercontent.com/22448079/56818202-0a818700-683f-11e9-9a9e-1dfb044dce9b.png)
+
 ### Front-End 
 * The front-end of the application was built using React.
 * Single page application with dynamically rendered components
@@ -68,7 +69,7 @@ You should install/setup the following before attempting to run the application
 * Utilizes MochaJS, Travis and Amazon Web Services to deliver a fully automatated delivery pipeline
 * Committed code is ran against tests and if it passes, is subsequently deployed to our AWS Elastic Beanstalk Enviroment
 
-![Running](https://user-images.githubusercontent.com/22448079/56728026-c9f41180-6749-11e9-873b-ed97a831acfc.png)
+![Running](https://user-images.githubusercontent.com/22448079/56818206-0b1a1d80-683f-11e9-98ab-9483cee98add.png)
 
 The following are steps required to compile the source code for this application.
 
@@ -117,7 +118,7 @@ The following are steps required to compile the source code for this application
       http://127.0.0.1:5000/ 
        
 
-![Documentation](https://user-images.githubusercontent.com/22448079/56728198-2ce5a880-674a-11e9-8591-6cb665b3d806.png)
+![Documentation](https://user-images.githubusercontent.com/22448079/56818201-0a818700-683f-11e9-8e56-797f1e9a850e.png)
 
 A comprehensive writeup on the development process can be found in the <b>docs</b> folder of the project.
 
@@ -125,10 +126,9 @@ You can read our dissertation on this project [here](https://github.com/WePickOr
 
 If you think the documentation is lacking and/or you have any issues with the project, please open an <b>Issue</b> using GitHub's <i>Issues</i> tab. You can do that [here](https://github.com/WePickOrganization/WePick/issues).
 
-![Video](https://user-images.githubusercontent.com/22448079/56728197-2c4d1200-674a-11e9-9c90-b799d5c6b400.png)
-[![](https://user-images.githubusercontent.com/22448079/56817605-d0fc4c00-683d-11e9-8eb2-e0c41bede27f.png)](https://www.youtube.com/watch?v=_ExCvI04ueI&feature=youtu.be)
+![Video](https://user-images.githubusercontent.com/22448079/56818211-0bb2b400-683f-11e9-8a2d-8c2ae71a538c.png)[![](https://user-images.githubusercontent.com/22448079/56817605-d0fc4c00-683d-11e9-8eb2-e0c41bede27f.png)](https://www.youtube.com/watch?v=_ExCvI04ueI&feature=youtu.be)
 
-![Tech](https://user-images.githubusercontent.com/22448079/56728196-2c4d1200-674a-11e9-9492-295427be0ca5.png)
+![Technology](https://user-images.githubusercontent.com/22448079/56818210-0b1a1d80-683f-11e9-8f2f-202ea748d912.png)
 
 * [Python]()
 * [NodeJS]()
@@ -139,7 +139,7 @@ If you think the documentation is lacking and/or you have any issues with the pr
 * [Amazon Web Services]()
 
 
-![Resources](https://user-images.githubusercontent.com/22448079/56728194-2c4d1200-674a-11e9-8e5b-51c886d6f0eb.png)
+![Resources](https://user-images.githubusercontent.com/22448079/56818205-0b1a1d80-683f-11e9-9a46-32281cef9009.png)
 
 A collection of resources used when developing the project can be found below
 
@@ -154,14 +154,13 @@ A collection of resources used when developing the project can be found below
 
 
 
-![Devs](https://user-images.githubusercontent.com/22448079/56728263-4ab30d80-674a-11e9-8752-8ec84a1f2c13.png)
-* [Eddie Eldridge](https://github.com/EddieEldridge)	
+![Devs](https://user-images.githubusercontent.com/22448079/56818200-0a818700-683f-11e9-96ec-167b9917ebe0.png)* [Eddie Eldridge](https://github.com/EddieEldridge)	
  	 
 * [Danielis Joniskis](https://github.com/jawneck)
  	 
 * [Keith Higgins](https://github.com/KeithH4666)
 
-![Acknowledge](https://user-images.githubusercontent.com/22448079/56728324-6f0eea00-674a-11e9-86b8-cdeaf518ccf3.png)
+![Acknowledge](https://user-images.githubusercontent.com/22448079/56818213-0bb2b400-683f-11e9-9a04-05d46e4e7111.png)
 
 * [Martin Kenirons](https://github.com/mkenirons)
 
