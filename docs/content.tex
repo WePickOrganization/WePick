@@ -7,14 +7,14 @@ For our final year project, we wanted to create an industry standard application
 \chapter{Introduction}
 When we first began to brainstorm ideas for our project, we decided to focus our project on the theme of music. This was an obvious choice for us because its something that the three of us have a keen interest in. At the start we thought of an idea to create our own music player, but soon decided after great research\cite{MusicApps}  that they’re numerous apps like this available and if we did develop this we would just be adding another music player to the app store that probably wouldn’t be used. 
 \par
-Finally, we thought of the idea of “WePick”, a personalised playlist creator with the ability to create a community playlist with your friends. This seemed like the perfect idea and something that the three of us would regularly use if there was an app like this on the market. Although it was a fantastic idea, we now needed to come up with a development plan. We had decided before the idea of “WePick” that we wanted to create a 3-tier application but were unsure what we would use for the tiers. After about a week of research into different technology we decided to go with React for the presentation tier. The main reason for this was due to it being top 5 in the most used front-end JavaScript frameworks\cite{Top5Frontend} . Our next choice was what type of database to use for our data layer. This was a tough one because we wanted to be able to easily communicate with our database and be able query our database to send and receive Json data. For these reasons, we decided to go with the popular MongoDB. For the logic tier we decided to use Python along with flask for microservices. We then decided to use Axios which is a promise based HTTP client for communication between our database and our react front end.
+Finally, we thought of the idea of “WePick”, a personalised playlist creator with the ability to create a community playlist with your friends. This seemed like the perfect idea and something that the three of us would regularly use if there was an app like this on the market. Although it was a fantastic idea, we now needed to come up with a development plan. We had decided before the idea of “WePick” that we wanted to create a 3-tier application but were unsure what we would use for the tiers. After about a week of research into different technologies we decided to go with React for the presentation tier. The main reason for this was due to it being top 5 in the most used front-end JavaScript frameworks\cite{Top5Frontend}. Our next choice was what type of database to use for our data layer. This was a tough one because we wanted to be able to easily communicate with our database and be able query our database to send and receive JSON data. For these reasons, we decided to go with the popular MongoDB. For the logic tier we decided to use Python along with Flask for web server. We then decided to use Axios which is a Promise based HTTP client for communication between our database and our React front-end.
 \par
-Once again, a quick summery of our project, A three-tier application, using react for the front-end, Mongo for the back-end and python as our middleware. Using all these technologies to create a website which allows the user to create an account and add favourite artists then to create a personalised playlist with the help of the Spotify API. The user then has the option to add another user that is registered to our site to merge their personalised playlist to create one big community playlist with a mix of both tastes of music.
+Once again, a quick summary of our project, A three-tier application, using react for the front-end, Mongo for the back-end and Python as our middleware. Using all these technologies to create a website which allows the user to create an account and add favourite artists then to create a personalised playlist with the help of the Spotify API. The user then has the option to add another user that is registered to our site to merge their personalised playlist to create one community playlist with a mix of both user's music preferences.
 
 
 
 \chapter{Context}
-The context of this project revolves around the use case of multiple people sitting together in a car or house and not being able to design on what music to play. One of the people can open the app and generate a play list that they can all enjoy instead of spending time on deciding what to play specifically.
+The context of this project revolves around the use case of multiple people sitting together in a car or house and not being able to decide on what music to play. One of the people can open the app and generate a playlist that they all enjoy instead of spending time on deciding what to play specifically.
 This person will have had an account registered previously and as long there are other people with them they can all generate playlists of music depending on their preferences.\newline
 
 The goal of our project was to develop a dynamic web application that creates curated playlists based on multiple user's music preferences using Spotify.
@@ -28,10 +28,10 @@ The project required several objectives to be accomplished in order to provide a
 \begin{itemize}
 	\item Set up a MongoDB database that will be used to store the user’s preferences along with the user’s email and password.
 	\item Host the application in the cloud – using AWS. This must be done so the application can be accessed from any desktop.
-	\item Authenticate user register and login through Spotify to give a secure connection.
-	\item Develop an intuitive user interface using React, which will serve as the frontend for the application.
+	\item Authenticate user credentials through Spotify to give a secure connection.
+	\item Develop an intuitive user interface using React, which will serve as the front-end for the application.
 	\item Set up a Flask server using Python to serve as a backend for the application.
-	\item Use Python along with the SpotifyAPI to generate the playlist using the user’s preferences.
+	\item Use Python along with the SpotifyAPI to generate the playlist using the user’s music preferences.
 	\item Allow users to generate a playlist based on different artists.
 \end{itemize}
 
@@ -47,12 +47,6 @@ The System Design provides the detailed information about the overall architectu
 The System Evaluation section poses the project against the objective and proves robustness and performance of the project through the testing techniques that were used through out development.\newline
 
 The Conclusion will be a reflection on the entire project, whilst discussing any difficulties, learning outcomes and future developments of the application.
-\chapter{Context}
-The context of this project revolves around the use case of multiple people sitting together in a car or house and not being able to design on what music to play. One of the people can open the app and generate a play list that they can all enjoy instead of spending time on deciding what to play specifically.
-This person will have had an account registered previously and as long there are other people with them they can all generate playlists of music depending on their preferences.\newline
-
-The goal of our project was to develop a dynamic web application that creates curated playlists based on multiple user's music preferences using Spotify.
-The project was completed over a 7-month period and this meant that the project environment didn’t change drastically.
 
 \section{Project Reference}
 https://github.com/WePickOrganization/WePick
@@ -68,35 +62,22 @@ The project required several objectives to be accomplished in order to provide a
 	\item Use Python along with the SpotifyAPI to generate the playlist using the user’s preferences.
 	\item Allow users to generate a playlist based on different artists.
 \end{itemize}
-
-\section{Overview}
-Each chapter of this minor dissertation gives different details on this group project.\newline
-
-The Methodology outlines the various development methodologies that were used through out the development of this project such as version control tools, sprints, weekly meetings etc.\newline
-
-The Technology Review discusses in detail, the different technologies that were used throughout the project. Demonstrating the approach to the various technologies and our reasons for choosing them.\newline
-
-The System Design provides the detailed information about the overall architecture of the system whilst also looking at the implementation at a function level.\newline
-
-The System Evaluation section poses the project against the objective and proves robustness and performance of the project through the testing techniques that were used through out development.\newline
-
-The Conclusion will be a reflection on the entire project, whilst discussing any difficulties, learning outcomes and future developments of the application.
 
 \chapter{Methodology}
-In this section we do an extensive run through of all the methodology’s we used throughout our project. Methodology is the way you plan and control the development process of a piece of software or anything that needs to be developed. There are lots of software methodology out there like Waterfall model, Rapid Application Development, Extreme Programming Methodology and Spiral Model. They each have their advantages and disadvantages, but we decided to go with Agile as our methodology for our project. The main reason for this being that many jobs that companies advertise around Ireland use Agile, so we wanted to familiarise ourselves with this methodology for when we enter the job-hunting world.
+In this section we do an extensive run through of all the methodologies we used throughout our project. Methodology is the way you plan and control the development process of a piece of software or anything that needs to be developed. There are lots of software methodologies out there like the Waterfall model, Rapid Application Development, Extreme Programming Methodology and Spiral Model. They each have their advantages and disadvantages, but we decided to go with Agile as our methodology for our project. The main reason for this being that many jobs that companies advertise around Ireland use Agile, so we wanted to familiarise ourselves with this methodology for when we enter the job-hunting world.
 
 \section{Agile Development}
-When we began to develop our project, we decided to go with an agile approach for the research, design and implementation stages of our project. As mentioned above, the reason we chose agile was because of its frequent use in most companies that we applied jobs for. But another major reason for the many advantages agile offers. These include but are not limited to continual improvement, flexibility and incremental delivery of the software. This was extremely important for us because we were adding important components every week, and this is something agile allows.
+When we began to develop our project, we decided to go with an Agile approach for the research, design and implementation stages of our project. As mentioned above, the reason we chose Agile was because of its frequent use in most companies that we applied jobs for. But another major reason for the many advantages Agile offers. These include but are not limited to continual improvement, flexibility and incremental delivery of the software. This was extremely important for us because we were adding important components every week, and this is something Agile allows.
 \par
-When we were at the research and development stage, we used a scrum like approach which is very common in an agile environment. Scrum is an agile methodology which a development cycle is carried out in what are called sprints. Later in the document, I will go through each stage of the sprints in the research and development phase and explain in detail what we went through in those sprints.
+When we were at the research and development stage, we used a scrum like approach which is very common in an Agile environment. Scrum is an Agile methodology which a development cycle is carried out in what are called sprints. Later in the document, I will go through each stage of the sprints in the research and development phase and explain in detail what we went through in those sprints.
 \par
-During the life cycle of our project, we would hold meetings three times a week. When I say life cycle, I mean the Initiation, Planning, Execution, Closure of our project. During these meetings we would discuss what features we had working in our projects and what features we planned to start developing in the following week. We would also meet with our project supervisor once a week to discuss our plans for the next week just to keep him updated on our progress throughout our project. Before each sprint in our project, we used these meetings to plan our sprint cycle which usually lasted around two weeks. 
+During the life cycle of our project, we would hold meetings three times a week. When I say life cycle, I mean the Initiation, Planning, Execution, Closure of our project. During these meetings we would discuss what features we had working in our projects and what features we planned to start developing in the following week. We would also meet with our project supervisor once a week to discuss our plans for the next week just to keep him updated on our progress throughout our project and to resolve any issues we might have encountered. Before each sprint in our project, we used these meetings to plan our sprint cycle which usually lasted around two weeks. 
 \par
-To help us keep track of what our sprint plans we used GitHub’s project page. This page was vital for us because it allowed us to add tasks to different lists. These lists include to-do, in-progress and done. Once we thought of something to add or improve at our weekly meetings we added these to the to-do list, then when we were ready to start the task we would add that to our in-progress list, finally when we finished that we added it to the completion list. This proved very important to us because it allowed us to keep track of what we had to do and what we had done already. It was also a plus to be able to look back at how much progress we had completed.
+To help us keep track of our sprint plans we used GitHub’s project page. This page was vital for us because it allowed us to add tasks to different lists. These lists include to-do, in-progress and done. Once we thought of something to add or improve at our weekly meetings we added these to the to-do list, then when we were ready to start the task we would add that to our in-progress list, finally when we finished that we added it to the completion list. This proved very important to us because it allowed us to keep track of what we had to do and what we had done already. It was also a plus to be able to look back at how much progress we had completed.
 \begin{figure}[ht]
 \renewcommand\thefigure{3.1}
 \centering
-\includegraphics[width=10cm, height=5cm]{img/projectboard.JPG},
+\includegraphics[width=14cm, height=8cm]{img/projectboard.JPG},
 \caption{Git Project}
 \label{Github Projects}
 \end{figure}
@@ -108,18 +89,20 @@ Throughout the life-cycle of our project, we used GitHub which is a web-based ho
 \begin{figure}[ht]
 \renewcommand\thefigure{3.2}
 \centering
-\includegraphics[width=10cm, height=5cm]{img/github.png},
+\includegraphics[width=13cm, height=5cm]{img/github.png},
 \caption{Github}
 \label{Github VC}
-\end{figure}
+\end{figure}\\
 
-\subsection{Travis CI}
+
+
+\newpage\subsection{Travis CI}
 Travis CI is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub. The way this works is that it runs your program's tests every time you commit to GitHub (this can be configured in many ways, and you can always disable builds on some branches). The advantages of this is that you can often discover very quickly if your commit broke something and fix it before it becomes a problem. This was very useful for us as it allowed us to see the errors rather then not knowing. This then allowed us to fix the issue before the next commit. 
 
 \begin{figure}[ht]
 \renewcommand\thefigure{3.3}
 \centering
-\includegraphics[width=10cm, height=5cm]{img/travis.png},
+\includegraphics[width=10cm, height=7.5cm]{img/travis.png},
 \caption{Travis CI}
 \label{TravisCI}
 \end{figure}
@@ -131,7 +114,7 @@ White box testing is a software testing method in which the internal structure/d
 \renewcommand\thefigure{3.4}
 \centering
 \includegraphics[width=10cm, height=5cm]{img/whitebox.jpg},
-\caption{Whitebox vs Blackbox testig}
+\caption{Whitebox vs Blackbox Testing}
 \label{whiteboxvblackbox}
 \end{figure}
 
@@ -143,7 +126,7 @@ Black box testing, also known as Behavioural Testing, is a software testing meth
 The following two sections contain information about the various sprints we undertook in the research.
 
 \section{Sprints} 
-In this section we will discuss more about sprints. A sprint is a short, time-boxed period (Usually about 1-2 weeks for us) when a scrum team works to complete a set amount of work. Sprints help teams follow the agile principle of "delivering working software frequently". As I discussed earlier, we used sprints throughout the whole life cycle of the project. Every sprint we completed in the research phase of the project allowed us the opportunity to come together as a team and learn more about the various components needed for our application. During the development stage, each sprint brought us one step closer to having a fully completed project.
+In this section we will discuss more about sprints. A sprint is a short, time-boxed period (Usually about 1-2 weeks for us) where a scrum team works to complete a set amount of work. Sprints help teams follow the Agile principle of "delivering working software frequently". As I discussed earlier, we used sprints throughout the whole life cycle of the project. Every sprint we completed in the research phase of the project allowed us the opportunity to come together as a team and learn more about the various components needed for our application. During the development stage, each sprint brought us one step closer to having a fully completed project.
 
 \section{Research Sprints}
 \subsection{Sprint 1: Initial Research}
@@ -180,7 +163,7 @@ In this sprint, we decided to implement OAuth-2 which is an authorization framew
 \begin{figure}[ht]
 \renewcommand\thefigure{3.5}
 \centering
-\includegraphics[width=10cm, height=5cm]{img/oauth.png},
+\includegraphics[width=7.5cm, height=7.5cm]{img/oauth.png},
 \caption{oauth2}
 \label{oauth2}
 \end{figure}
@@ -206,6 +189,7 @@ In the following section, we will discuss the technologies used in the project, 
 For developing the front-end of our application, we used React. React is a JavaScript library for creating responsive and elegant user interfaces. It is an open source technology and this was one of the 
 driving forces which led us to choose it over other popular choices such as Angular, Vue.js or Ember. We were more comfortable working with open source software as we knew the documentation and help online would be much more reliable than traditional proprietary software.
 React implements a component based architecture. This means that the user interface consists of multiple, abstracted \textbf{components} that each manage their own state and properties.
+\par 
 This component based architecture promotes re-use and efficiency as when the page loads, each component is loaded only once and is subsequently rendered and re-rendered accordingly when the data of that component changes. This means that in practice, instead of the user having to reload commonly rendered aspects of a web page such as
 the footer and navigation bar every time they visit a new page, we only need to update the components that change. For example, if the user arrives at the home page of the website, they will load the navbar, footer and home components. On a traditional webpage, when visiting the register/login page they would have to reload the navbar and footer again. 
 Using React, we were able to eliminate this shortcoming of traditional web design and only re-render what is required - the Login/Register forms.
@@ -273,7 +257,7 @@ axios.post('/loginUser', {
 As you can see from the code above, implementation is simple, logical and easy to understand.
 
 
-\section{Flask}
+\newpage\section{Flask}
 In order to serve our React files, we needed a web server. We spent a lot of time researching this aspect of the application as we knew it would be a critical part and we did not want to regret our decision down the line. Some of the contenders included Ruby on Rails (Ruby), Django (Python) and 
 Grails (Java). In the end, we decided on Flask as it suited our needs the most. Flask is 'microframework' written in Python. It's lightweight and get's it's 'microframework' name from it's lack of standard support for traditional functionality such as form validation, a database abstraction layer or object-relational mapping tools. Instead, these tools and libraries are provided by third parties. 
 As a result of this architectural design choice, your resulting server can be custom-made to suit your specific needs with the least amount of bloat possible. This tied in nicely with our original goal of the application being fast and easy to use. The nature of Flask's architecture meant that we only had to include what we needed and no unused features and services was included.
@@ -370,7 +354,7 @@ code has passed the outlined tests, it's often passed onto to another service to
 the developers needing to fully understand the complete configuration of the Elastic Beanstalk environment. 
 
 \begin{center}    
-	\includegraphics{img/SDLC.png}
+	\includegraphics[width=14cm, height=12cm]{img/SDLC.png}
 \end{center}
 
 
@@ -494,7 +478,7 @@ Below is an example of the ArtistEnter component on the /Create route found on t
 
 
 \begin{center}    
-	\includegraphics{img/AddArtist.png}
+	\includegraphics[width=12cm, height=5cm]{img/AddArtist.png}
 \end{center}
 Here you can see a close-up of where the user can enter an artist and add it to their preferences.\newline
 
@@ -510,7 +494,7 @@ The JSON data that is returned is where their artist ID is stored. This in-turn 
 We make use of \textbf{OAuth 2.0}; this is the industry standard protocol for authorization. We use OAuth2 to authenticate the user through Spotify. When the user is trying to login to their account on our application, they are in turn brought to a login dialogue through their Spotify account. Once they have logged into Spotify they are authorized and can continue with our application.\newline
 
 \begin{center}    
-	\includegraphics{img/auth.png}
+	\includegraphics[width=14cm, height=10cm]{img/auth.png}
 \end{center}
 The user starts out by going to the application. The application then sends the user to the authorization server. The user logs in here and the authorization server sends the user back to the application. The application then makes a POST request to the authorization server to get an access token.\newline
 
@@ -736,10 +720,6 @@ In this chapter, we will discuss many aspects of the software. We will break the
     verify that they are an authenicated user. This prevents from people performing actions on routes that they should not have access to. 
 
     A traditional JSON Web Token consists of a Header, Payload and Signature in the following format 
-    
-    \begin{center}    
-      \includegraphics{img/JWTTokens.png}
-    \end{center}
 
     \begin{minted}{JSON}
       header.payload.signature
@@ -752,15 +732,30 @@ In this chapter, we will discuss many aspects of the software. We will break the
     An example token can be seen below
 
     \begin{center}    
-      \includegraphics{img/JWTTokenHASH.png}
+      \includegraphics[width=15cm, height=10cm]{img/JWTTokens.png}
     \end{center}
 
     To implement this technology in our application, we used Flask-JWT, a simple Python library that provides JWT Support for Flask applications.
     A simple example of how this technology was implemented can be seen below.
 
-    \begin{center}    
-      \includegraphics{img/JWTExample.png}
-    \end{center}
+   
+    \begin{minted}{Python}
+      @application.route('/refresh', methods=['POST'])
+      @jwt_refresh_token_required
+      def refresh():
+          current_user = get_jwt_identity()
+          ret = {
+                  'token': create_access_token(identity=current_user)
+          }
+          return jsonify({'ok': True, 'data': ret}), 200
+      
+      @jwt.unauthorized_loader
+      def unauthorized_response(callback):
+          return jsonify({
+              'ok': False,
+              'message': 'Missing Authorization Header'
+          }), 401
+    \end{minted}
 
     As well as ensuring API calls were authenicated, we also made sure that our database and user information was secure. A secure admin account was created on the database, requring a password to perform any actions in the databse.
     This way, no operations could be performed on the database without knowing both the IP address of the server the database was hosted on and the password required to gain access. These two important pieces of information were known only to us and 
@@ -782,7 +777,7 @@ In this chapter, we will discuss many aspects of the software. We will break the
     The difference between HTTPS and HTTP is that HTTPS is considered 'secure' where HTTP is not. Essentially, the difference between the two can be illustrated cleary in the following diagram.
 
     \begin{center}    
-      \includegraphics{img/HTTPS.png}
+      \includegraphics[width=13cm, height=10cm]{img/HTTPS.png}
     \end{center}
 
     In standard HTTP, the information is transmitted in hypertext format whereas with HTTPS, the information is first encrypted before sending the information.
@@ -833,19 +828,19 @@ We focused heavily on this as we all felt like that websites can be extremely ov
 \subsection{Learning Outcomes}
 At the end of our app development I can see that we learned a huge amount, I would even go as far as saying that it was a fantastic opportunity to see how easy it is to learn new technologies when you are a part of a team.
 \par
-We now have gained huge experience in coding in react, a very popular industry standard front-end framework. We also now have a lot of experience in deploying apps and the configurations it takes to get an app deployed on a web service like on our context Amazon Web Services. It was also very interesting to learn about how HTTP methods are used so widely to manipulate data from a front-end service to a back-end service. One of the things we found most interesting was how important it is to perform testing and continuous testing all throughout your project, this allowed us to see mistakes we were making all throughout the project rather than just at the end where it may have been a huge effort to fix.
+We now have gained huge experience in coding in React, a very popular industry standard front-end framework. We also now have a lot of experience in deploying apps and the configurations it takes to get an app deployed on a web service such as Amazon Web Services. It was also very interesting to learn about how HTTP methods are used so widely to manipulate data from a front-end service to a back-end service. One of the things we found most interesting was how important it is to perform testing and continuous testing all throughout your project, this allowed us to see mistakes we were making all throughout the project rather than just at the end where it may have been a huge effort to fix.
 \par
-All in all though it were a very difficult project but the learning experience is 100% worth all the hard work.
+All in all though it were a very difficult project but the knowledge and expereience we gained while dveloping it was well worth it.
 
 \subsection{Shortcomings/Oppurtunities}
-In the future we would love to get our web app fully deployed to top tier web hosting service to make it available to as many users as we wanted but as currently we don’t have the capital or the time to achieve this due to our exams. But we feel this web application has the potential to be essential app that a huge amount of people would benefit from every day. We would also love to further develop the web application to convert it to both android/ios applications, so we can make it available to a greater proportion of people.
+In the future we would love to get our web app fully deployed to a top tier web hosting service to make it available to as many users as we wanted but as currently we don’t have the capital or the time to achieve this due to our exams. But we feel this web application has the potential to be an essential app that a huge amount of people would benefit from every day. We would also love to further develop the web application to convert it to both Android/iOS applications, so we can make it available to a greater proportion of people.
 
 \subsection{Closing Statement}
-In the end, we had a huge amount of enjoyment working on this web application. Although it was a huge amount of work, we are extremely happy with the professional standard of our application and the overall work and feel of it. It also has shown to us how much more enjoyable it is to work on a project with a team rather than on our own as it is far easier to distribute work load and ask each other for help when a part of a team. 
+In the end, we had a huge amount of enjoyment working on this web application. Although it was a huge amount of work, we are extremely happy with the professional standard of our application and the overall look and feel of it. It also has shown to us how much more enjoyable it is to work on a project with a team rather than on our own as it is far easier to distribute the work load and ask each other for help when working as part of a team. 
 \par
-Although we started this project as good friends, the whole journey has brought the three of us together as a group and the experience will make us friends for life.
+Although we started this project as good friends, the whole journey has brought the three of us together as a group and the experience we gained developing this project will stand for us as we advance through our careers.
 
 \subsection{Acknowledgements}
-We would like to wish a huge thank you to our project supervisor Martin Kenirons for his continued help and support throughout the year. Without his continuous help and support, this would have been a far more difficult project. We would also like to thank John Healy, Head lecturer of the Applied Project and Minor Dissertation module.
+We would like to wish a huge thank you to our project supervisor Martin Kenirons for his continued help and support throughout the year. Without his continued help and support, this would have been a far more difficult project. We would also like to thank John Healy, Head lecturer of the Applied Project and Minor Dissertation module.
 
 
