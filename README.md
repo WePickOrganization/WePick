@@ -126,7 +126,7 @@ You can read our dissertation on this project [here](https://github.com/WePickOr
 If you think the documentation is lacking and/or you have any issues with the project, please open an <b>Issue</b> using GitHub's <i>Issues</i> tab. You can do that [here](https://github.com/WePickOrganization/WePick/issues).
 
 ![Video](https://user-images.githubusercontent.com/22448079/56728197-2c4d1200-674a-11e9-9c90-b799d5c6b400.png)
-Below is a video demonstration of the application in practice
+[![](https://user-images.githubusercontent.com/22448079/56817605-d0fc4c00-683d-11e9-8eb2-e0c41bede27f.png)](https://www.youtube.com/watch?v=_ExCvI04ueI&feature=youtu.be)
 
 ![Tech](https://user-images.githubusercontent.com/22448079/56728196-2c4d1200-674a-11e9-9492-295427be0ca5.png)
 
