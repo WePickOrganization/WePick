@@ -395,14 +395,14 @@ The React front-end is what you see at the Presentation layer. This is what the 
 We used ReactJS for the front-end as there is good support for it. A great thing about React is that you can create reusable UI components. React is good for its simplicity. It makes use of JSX syntax which allows you to produce React elements more intuitively, but still also allows you to write in plain Javascript.\cite{ReactDocumentation}
 
 
-The React front end consists mainly of index.jsx and several separate component classes. The index page acts an entry point and is the outermost component class in the React application. The index page handles the user logging in by passing in the email from the LoginForm component. Once the details are verified, the user is redirected to the Create page which contains the ArtistEnter component. The index page handles the user logging out by clearing the logged in state and redirecting back to the Home page. 
-The index page is where the React components are rendered visually. The Home page components displayed consist of the NavBar, Carousel, Home, GenerateButton, and StickyFooter. 
+The React front end consists mainly of index.jsx and several separate component classes. The index page acts as an entry point and is the outermost component class in the React application. The index page handles the user logging in by passing in the email from the LoginForm component. Once the details are verified, the user is redirected to the Create page which contains the ArtistEnter component. The index page handles the user logging out by clearing the logged in state and redirecting back to the Home page. 
+The index page is where the React components are rendered visually. The Home page components displayed consist of the NavBar, Carousel, Home, Get Started, and StickyFooter. 
 
 \begin{center}    
 	\includegraphics{img/WePickHome.png}
 \end{center}
-Here you can see the home page as a new user will see it. You can see the navbar at the top
-The background is a carousel of images. The get started button is also visible.\newline
+Here you can see the Home page as a new user will see it. You can see the NavBar at the top.
+The background is a Carousel of images. The Get Started button is also visible.\newline
 
 
 There is also a Create page which contains the ArtistEnter component along with Navbar and StickyFooter.\newline
@@ -414,7 +414,7 @@ The Login page consists of the LoginForm component along with with NavBar and St
 These components are then styled with multiple CSS files.\newline
 
 
-The \textbf{LoginForm} component takes in the user’s email and password. Once the user clicks on the submit button. An Axios GET request is performed. Sent to the Flask servers loginUser route.\newline
+The \textbf{LoginForm} component takes in the user’s email and password. Once the user clicks on the submit button, an Axios GET request is performed.It is sent to the Flask servers loginUser route.\newline
 Below is an example of the axios request being sent to the /loginUser route\newline
 \begin{minted}{Javascript} 
 axios.post('/loginUser', {
@@ -426,13 +426,13 @@ password: this.state.password
 
 The \textbf{Logout} component simply clears any state held by its parent component and then redirects to the Home page.\newline
 
-The \textbf{Home} component acts as the component between the NavBar, Carousel and StickyFooter components. The Home component is where the GenerateButton component is rendered.\newline
+The \textbf{Home} component acts as the component between the NavBar, Carousel and StickyFooter components. The Home component is where the Get Started button is rendered.\newline
 
-The \textbf{NavBar} component contains the navigation bar that is always rendered in the application. The user can follow the links on the NavBar to the Home, Create and Profile pages respectively.\newline
+The \textbf{NavBar} component contains the navigation bar that is always rendered in the application. The user can follow the links on the NavBar to the Home, Preferences and Create pages respectively.\newline
 
 The \textbf{Carousel} component is used to render an image carousel on the Home page. The carousel cycles through 7 different images and is a style choice which gives a more professional look to the application.\newline
 
-The \textbf{DemoBlock} component renders the "Get Started" button which is visible on the Home page. The user can click this button and a particle effect animation will play with the button disintegrating. The user will then be taken to the Create page where they can enter artists and generate a playlist.
+The \textbf{DemoBlock} component renders the "Get Started" button which is visible on the Home page. The user can click this button and a particle effect animation will play with the button disintegrating. The user will then be taken to the Create page where they can enter parameters and generate a playlist.
 
 The \textbf{Auth} component handles authorization.\newline
 
@@ -451,7 +451,7 @@ this.props.history.push('/auth');
 \end{minted}
 
 
-The \textbf{ArtistEnter} component contains the form which allows the user to generate a play list based on their preferences. Once the user has logged in successfully, they can enter four different artists of their choosing and their email address. The user can then generate a playlist by submitting the form.\newline
+The \textbf{ArtistEnter} component contains the form which allows the user to generate a play list based on their preferences. Once the user has logged in successfully, they can enter artists of their choosing. The user can move onto generating a playlist by submitting the form and adding the artists to their preferences.\newline
 Below is an example of the ArtistEnter component on the /Create route found on the Create page.\newline
 \begin{minted}{Python} 
 <Route path="/Create" component={(props) => <ArtistEnter
@@ -483,13 +483,13 @@ We make use of \textbf{OAuth 2.0}; this is the industry standard protocol for au
 \end{center}
 The user starts out by going to the application. The application then sends the user to the authorization server. The user logs in here and the authorization server sends the user back to the application. The application then makes a POST request to the authorization server to get an access token.\newline
 
-\textbf{Application.py} is the main backend server content file in this project. This is where an instance of the DatabaseConnector.py is created. The Flask server is created here and pointed to the static file within the frontend to serve the HTML. The Mongo object is created here along with the Flask. The getSpotifyUsernameByEmail() function gets the Spotify username from the database. The default route of the application is here, and this is where the index.html file is rendered.\newline
+\textbf{Application.py} is the main backend server content file in this project. This is where an instance of the DatabaseConnector.py is created. The Flask server is created here and pointed to the static file within the frontend to serve the HTML. The Mongo object is created here along with the Flask. The \textbf{getSpotifyUsernameByEmail()} function gets the Spotify username from the database. The default route of the application is here, and this is where the index.html file is rendered.\newline
 
-The \textbf{CreatePlaylist()} function is where the playlist is generated. The function first gets the JSON data from the request and in turn gets the users from that JSON data. Any empty strings from the list of users is filtered out and the list of users is then converted into an array. The first user in the list is always the home user currently logged into the application.\newline
+The \textbf{CreatePlaylist()} function is where the playlist is generated. The function first gets the JSON data from the request and in turn gets the users from that JSON data. Any empty strings from the list of users are filtered out and the list of users is then converted into an array. The first user in the list is always the home user currently logged into the application.\newline
 
 The favourite artists for all the users in the array are then retrieved from the database. The collection of artists is then combined into one large list and any duplicates of artists are removed. A random sample is taken from all the artists collected from the database.\newline 
 
-The Spotify username is taken from the currently logged in user. Their username is passed onto authentication and a token is returned. The artist IDs of the random sample are retrieved and those IDs are passed on to the GeneratePlaylist() function. A play list is then created.\newline
+The Spotify username is taken from the currently logged in user. Their username is passed onto authentication and a token is returned. The artist IDs of the random sample are retrieved and those IDs are passed on to the CreatePlaylist() function. A play list is then created.\newline
 
 The \textbf{getArtistDB()} function sends a GET request to return the artists from the MongoDB database based on the users email address.\newline
 Below is an example of this.
@@ -521,11 +521,11 @@ return jsonify({'ok': True, 'message': 'artists updates'}), 200
 The \textbf{loginUser()} function handles the user logging into the application using a POST request. Once the login data comes in from the login form component the loginUser() function checks the JSON data, making sure it is in the correct format. The email is checked against the database to see if it is present. If this user’s email is present, the password is then checked to see if it is correct.  If the user’s password checks out, that password is deleted, and the user is given an access token in exchange. 
 If, however the user does not have a registered email in the database, the user is notified on the client end. If the user does not supply the correct login details the user is notified also.\newline
 
-The \textbf{showUser()} function uses a GET request to show specific details of a user. A query is taken from the HTTP request argument. The data is retrieved from the MongoDB database using this query and is displayed as JSON format.\newline
+The \textbf{showUser()} function uses a GET request to show specific details of a user. A query is taken from the HTTP request argument. The data is retrieved from the MongoDB database using this query and is displayed in JSON format.\newline
 
 The \textbf{showAllUsers()} function is similar to the showUser() function  naturally. This function also uses a GET request and receives a query. It then queries the MongoDB database and retrieves the data. This data of all users is added to a list and is then printed out in the console.\newline
 
-The \textbf{createUser()} function handles the user creating a account using a POST request. Once the user details come in from the form component the createUser() function validates the JSON data making sure it is in the correct format. The password is encrypted before it is inserted into the MongoDB database. Once the user details have been successfully added to the database the user on the client side is notified. If the user does not input parameters correctly, they receive an error message.\newline
+The \textbf{createUser()} function handles the user creating an account using a POST request. Once the user details come in from the form component the createUser() function validates the JSON data making sure it is in the correct format. The password is encrypted before it is inserted into the MongoDB database. Once the user details have been successfully added to the database the user on the client side is notified. If the user does not input parameters correctly, they receive an error message.\newline
 
 The \textbf{deleteUser()} function uses a DELETE request to delete a user from the database. Once the user data is in the correct format and the user details are present, the record can be deleted from the database. If there is no such user present, then an error is thrown.\newline
 
