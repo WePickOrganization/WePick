@@ -24,9 +24,9 @@
 
 
 
-![BuildStatus](https://user-images.githubusercontent.com/22448079/56727595-ec395f80-6748-11e9-81fe-b8068308a08a.png)
+![BuildStatus](https://user-images.githubusercontent.com/22448079/56727595-ec395f80-6748-11e9-81fe-b8068308a08a.png) 
 
-[![Build Status](https://travis-ci.com/WePickOrganization/WePick.svg?branch=master)](https://travis-ci.com/WePickOrganization/WePick)
+[![Build Status](https://travis-ci.com/WePickOrganization/WePick.svg?branch=master)](https://travis-ci.com/WePickOrganization/WePick) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://shields.io/) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE) 
 
 
 ![WhatIsWePick](https://user-images.githubusercontent.com/22448079/56727894-8a2d2a00-6749-11e9-899c-2218520e0edb.png)
@@ -37,7 +37,7 @@ WePick is an application that works in parallel with Spotify to help solve the a
 
 ![Pre](https://user-images.githubusercontent.com/22448079/56727918-95805580-6749-11e9-8840-8bd5988923fe.png)
 
-You should install the following before attempting to run the application
+You should install/setup the following before attempting to run the application
 
 * [Python3]()
 * [NodeJS]()
@@ -50,11 +50,7 @@ You should install the following before attempting to run the application
 * Responsive and designed with a modern look and feel
 * Design promotes re-use and abstraction of implemented components
 
-###### Component Examples
-
-![Capture](https://user-images.githubusercontent.com/22448079/56725626-256fd080-6745-11e9-8b06-9d65f6ef0b6e.PNG)
-
-## Back-End 
+### Back-End 
 
 * Python/Flask Server Backend
 * <b>REST</b>ful Web API with Javascript Web Token Secured Endpoints
@@ -62,57 +58,15 @@ You should install the following before attempting to run the application
 * Includes JSON Schema Validation for all incoming HTTP request methods
 * Use of Object-Orientated Python programming throughout
 
-##### JSON Validation Schema Example
-```json
-user_schema = {
-    "type": "object",
-    "properties": {
-        "name": {
-            "type": "string",
-        },
-        "email": {
-            "type": "string",
-            "format": "email"
-        },
-        "password": {
-            "type": "string",
-        },
-        "spotifyUsername": {
-            "type": "string",
-        },
-       
-    },
-    "required": ["email", "password"],
-    "additionalProperties": False
-}
-```
-
-## Database 
+### Database 
 * Account register/login integrated with remote MongoDB Database hosted on Amazon Web Services Virtual Machine
 * Securely stored passwords using SHA256 Hashing Algorithm
 * Secure database connection, authentication required before use
 
-##### Database Schema Example
-```json
-"_id": {
-    "$oid": "5c90d0d31fd421123063d92f"
-},
-"name": "Edward Eldridge",
-"email": "steadyeddie101@hotmail.co.uk",
-"password": {
-    "$binary": "JDJiJDEyJDBlZWtUeTRMS0xQRnhFV0NGMU9vT08wb3Z5TTExOFdxTTJWd29TMGxSd1JYajZtV2VXY3dP",
-    "$type": "00"
-},
-"spotifyUsername": "Steadueddie",
-"favArtist": [
-    "Nujabes",
-    "Kanye West",
-    "Chief Keef",
-    "Gotan Project",
-    "Sia"
-]
-},
-```
+### Version Control/Deployment
+* The application's version control is managed by Git
+* Utilizes MochaJS, Travis and Amazon Web Services to deliver a fully automatated delivery pipeline
+* Committed code is ran against tests and if it passes, is subsequently deployed to our AWS Elastic Beanstalk Enviroment
 
 ![Running](https://user-images.githubusercontent.com/22448079/56728026-c9f41180-6749-11e9-873b-ed97a831acfc.png)
 
@@ -189,19 +143,16 @@ Below is a video demonstration of the application in practice
 
 A collection of resources used when developing the project can be found below
 
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
-* [Research link here]()
+* [Build a Simple CRUD App with Python, Flask, and React](https://developer.okta.com/blog/2018/12/20/crud-app-with-python-flask-react)
+* [Full-stack tutorial: Flask + react + docker](https://medium.com/@riken.mehta/full-stack-tutorial-flask-react-docker-420da3543c91)
+* [AWS CodeDeploy with TravisCI](https://docs.travis-ci.com/user/deployment/codedeploy/)
+* [Getting started with MochaJS](https://mochajs.org/)
+* [Steps to install MongoDB on an EC2 Instance](https://medium.com/@calvin.hsieh/steps-to-install-mongodb-on-aws-ec2-instance-62db66981218)
+* [Spotipy Documentation](https://spotipy.readthedocs.io/en/latest/)
+* [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
+* [How to install and secure MongoDB in Amazon EC2 in minutes?](https://hackernoon.com/how-to-install-and-secure-mongodb-in-amazon-ec2-in-minutes-90184283b0a1)
+
+
 
 ![Devs](https://user-images.githubusercontent.com/22448079/56728263-4ab30d80-674a-11e9-8752-8ec84a1f2c13.png)
 * [Eddie Eldridge](https://github.com/EddieEldridge)	
@@ -212,4 +163,5 @@ A collection of resources used when developing the project can be found below
 
 ![Acknowledge](https://user-images.githubusercontent.com/22448079/56728324-6f0eea00-674a-11e9-86b8-cdeaf518ccf3.png)
 
-* Acknowledgements go here
+* [Martin Kenirons](https://github.com/mkenirons)
+
