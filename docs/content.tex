@@ -7,9 +7,9 @@ For our final year project, we wanted to create an industry standard application
 \chapter{Introduction}
 When we first began to brainstorm ideas for our project, we decided to focus our project on the theme of music. This was an obvious choice for us because its something that the three of us have a keen interest in. At the start we thought of an idea to create our own music player, but soon decided after great research\cite{MusicApps}  that they’re numerous apps like this available and if we did develop this we would just be adding another music player to the app store that probably wouldn’t be used. 
 \par
-Finally, we thought of the idea of “WePick”, a personalised playlist creator with the ability to create a community playlist with your friends. This seemed like the perfect idea and something that the three of us would regularly use if there was an app like this on the market. Although it was a fantastic idea, we now needed to come up with a development plan. We had decided before the idea of “WePick” that we wanted to create a 3-tier application but were unsure what we would use for the tiers. After about a week of research into different technologies we decided to go with React for the presentation tier. The main reason for this was due to it being top 5 in the most used front-end JavaScript frameworks\cite{Top5Frontend}. Our next choice was what type of database to use for our data layer. This was a tough one because we wanted to be able to easily communicate with our database and be able query our database to send and receive JSON data. For these reasons, we decided to go with the popular MongoDB. For the logic tier we decided to use Python along with Flask for web server. We then decided to use Axios which is a Promise based HTTP client for communication between our database and our React front-end.
+Finally, we thought of the idea of “WePick”, a personalised playlist creator with the ability to create a community playlist with your friends. This seemed like the perfect idea and something that the three of us would regularly use if there was an app like this on the market. Although it was a fantastic idea, we now needed to come up with a development plan. We had decided before the idea of “WePick” that we wanted to create a 3-tier application but were unsure what we would use for the tiers. After about a week of research into different technologies we decided to go with React for the presentation tier. The main reason for this was due to it being top 5 in the most used front-end JavaScript frameworks\cite{Top5Frontend}. Our next choice was what type of database to use for our data layer. This was a tough one because we wanted to be able to easily communicate with our database and be able query our database to send and receive JSON data. For these reasons, we decided to go with the popular MongoDB. For the logic tier we decided to use Python along with Flask for web server. We then decided to use Axios which is a Promise based HTTP client for communication between our database/Flask server and our React front-end.
 \par
-Once again, a quick summary of our project, A three-tier application, using react for the front-end, Mongo for the back-end and Python as our middleware. Using all these technologies to create a website which allows the user to create an account and add favourite artists then to create a personalised playlist with the help of the Spotify API. The user then has the option to add another user that is registered to our site to merge their personalised playlist to create one community playlist with a mix of both user's music preferences.
+Using all these technologies we planned to develop an application that was responsive, easy-to-use and overall accomplished our original goal of creating curated playlists based on multiple people's music preferences.
 
 
 
@@ -467,6 +467,9 @@ Below is an example of the ArtistEnter component on the /Create route found on t
 \end{center}
 Here you can see a close-up of where the user can enter an artist and add it to their preferences.\newline
 
+
+The \textbf{Prefs} component is what is used to handle the user music preferences.\newline
+
 The \textbf{StickyFooter} component renders the footer which is present on all pages of the application. The footer acts as a second navbar and contains information about the organization.\newline
 
 \subsection{Python backend (Server)}
@@ -740,7 +743,7 @@ In this chapter, we will discuss many aspects of the software. We will break the
     \subsubsection{HTTP/HTTPS}
     One shortcoming of our project is the lack of a secure Hyper Text Transfer Protocol (HTTPS). HTTP can be described by Mozilla's standards \cite{HTTPviaMozilla} as an application-layer protocol 
     for transmitting data and documents. It was originally designed for communication between web browsers and web servers but it has since exceeded it's original purpose. It follows a client/server model. The client makes a 
-    request to establish a connection and waits for a response from the server. Despite this however, it is a \bf{stateless} protocol. This means that once communication between server and client, the server forgets all information regarding
+    request to establish a connection and waits for a response from the server. Despite this however, it is a \textbf{stateless} protocol. This means that once communication between server and client, the server forgets all information regarding
     the communication. It can be used on any reliable transfer layer such as TCP/IP or UDP.
 
     The difference between HTTPS and HTTP is that HTTPS is considered 'secure' where HTTP is not. Essentially, the difference between the two can be illustrated cleary in the following diagram.
@@ -787,7 +790,6 @@ In this chapter, we will discuss many aspects of the software. We will break the
 
 
 \chapter{Conclusion}
-About three pages.
 
 \subsection{Original Idea vs. Actual Implementation}
 Our original idea/plan for this project was to create an application that created curated playlists based off multiple user's music preferences. This was our original idea before we had chosen any technologies or done any kind of design. Limiting the scope to this simple statement, I feel like we achieved our original goal that we set out in late September.
